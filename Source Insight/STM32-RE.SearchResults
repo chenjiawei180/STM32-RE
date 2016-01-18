@@ -1,0 +1,57 @@
+---- USART1 Matches (65 in 9 files) ----
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):  USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                              */
+Stm32f10x.h (d:\github\stm32-re\cmsis):#define USART1_BASE           (APB2PERIPH_BASE + 0x3800)
+Stm32f10x.h (d:\github\stm32-re\cmsis):#define USART1              ((USART_TypeDef *) USART1_BASE)
+Stm32f10x.h (d:\github\stm32-re\cmsis):#define  RCC_APB2RSTR_USART1RST              ((uint32_t)0x00004000)        /*!< USART1 reset */
+Stm32f10x.h (d:\github\stm32-re\cmsis):#define  RCC_APB2ENR_USART1EN                ((uint32_t)0x00004000)         /*!< USART1 clock enable */
+Stm32f10x.h (d:\github\stm32-re\cmsis):#define AFIO_MAPR_USART1_REMAP               ((uint32_t)0x00000004)        /*!< USART1 remapping */
+Stm32f10x_gpio.h (d:\github\stm32-re\fwlib\inc):#define GPIO_Remap_USART1           ((uint32_t)0x00000004)  /*!< USART1 Alternate Function mapping */
+Stm32f10x_gpio.h (d:\github\stm32-re\fwlib\inc):                              ((REMAP) == GPIO_Remap_USART1) || ((REMAP) == GPIO_Remap_USART2) || \
+Stm32f10x_rcc.h (d:\github\stm32-re\fwlib\inc):#define RCC_APB2Periph_USART1            ((uint32_t)0x00004000)
+Stm32f10x_usart.h (d:\github\stm32-re\fwlib\inc):#define IS_USART_ALL_PERIPH(PERIPH) (((PERIPH) == USART1) || \
+Stm32f10x_usart.h (d:\github\stm32-re\fwlib\inc):#define IS_USART_123_PERIPH(PERIPH) (((PERIPH) == USART1) || \
+Stm32f10x_usart.h (d:\github\stm32-re\fwlib\inc):#define IS_USART_1234_PERIPH(PERIPH) (((PERIPH) == USART1) || \
+Stm32f10x_gpio.c (d:\github\stm32-re\fwlib\src):  *     @arg GPIO_Remap_USART1           : USART1 Alternate Function mapping
+Stm32f10x_rcc.c (d:\github\stm32-re\fwlib\src):  *          RCC_APB2Periph_TIM8, RCC_APB2Periph_USART1, RCC_APB2Periph_ADC3,
+Stm32f10x_rcc.c (d:\github\stm32-re\fwlib\src):  *          RCC_APB2Periph_TIM8, RCC_APB2Periph_USART1, RCC_APB2Periph_ADC3,
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *      USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  if (USARTx == USART1)
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):    RCC_APB2PeriphResetCmd(RCC_APB2Periph_USART1, ENABLE);
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):    RCC_APB2PeriphResetCmd(RCC_APB2Periph_USART1, DISABLE);
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  /* The hardware flow control is available only for USART1, USART2 and USART3 */
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  if (usartxbase == USART1_BASE)
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *           USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+Stm32f10x_usart.c (d:\github\stm32-re\fwlib\src):  *   USART1, USART2, USART3, UART4 or UART5.
+STM32-RE.htm (d:\github\stm32-re\out): <LI><a href="#[32]">USART1_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
+STM32-RE.htm (d:\github\stm32-re\out):<P><STRONG><a name="[32]"></a>USART1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
+Global.h (d:\github\stm32-re\user): * @ USART1  usaer of GD5800
+---- USART1 Search Errors Encountered (1) ----
+The following 1 files could not be processed:
+D:\Github\STM32-RE\OUT\STM32-RE.build_log.htm : File could not be opened.

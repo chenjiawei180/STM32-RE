@@ -138,49 +138,6 @@ void SysTick_Handler(void)
 {}
 
 /******************************************************************************/
-/*            STM32F10x Peripherals Interrupt Handlers                        */
-/******************************************************************************/
-/**
-  * @brief  This function handles TIM3 global interrupt request.
-  * @param  None
-  * @retval None
-  */
-void TIM3_IRQHandler(void)
-{ 
-  if(TIM_GetITStatus(TIM3, TIM_IT_CC2) == SET) 
-  {
-    /* Clear TIM3 Capture compare interrupt pending bit */
-    TIM_ClearITPendingBit(TIM3, TIM_IT_CC2);
-    if(CaptureNumber == 0)
-    {
-      /* Get the Input Capture value */
-      //IC3ReadValue1 = TIM_GetCapture2(TIM3);
-      CaptureNumber = 1;
-			GPIO_SetBits(GPIOA,0);
-    }
-    else if(CaptureNumber == 1)
-    {
-      /* Get the Input Capture value */
-     // IC3ReadValue2 = TIM_GetCapture2(TIM3); 
-      
-      /* Capture computation */
-//      if (IC3ReadValue2 > IC3ReadValue1)
-//      {
-//        Capture = (IC3ReadValue2 - IC3ReadValue1); 
-//      }
-//      else
-//      {
-//        Capture = ((0xFFFF - IC3ReadValue1) + IC3ReadValue2); 
-//      }
-//      /* Frequency computation */ 
-//      TIM3Freq = (uint32_t) SystemCoreClock / Capture;
-			GPIO_ResetBits(GPIOA,0);
-      CaptureNumber = 0;
-    }
-  }
-}
-
-/******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
 /*  available peripheral interrupt handler's name please refer to the startup */
