@@ -1,5 +1,5 @@
  /******************************************************************************
-  * @file       USER/set_system_clock.c 
+  * @file       USER/set_system_clock.h
   * @author  cjw
   * @date     2016.1.18
   * @brief     This file contains the headers of the set system clock funtion and set RTC clock funtion.
@@ -13,3 +13,4 @@
 void set_system_clock(void);
 
 #endif  /*  __SET_SYSTEM_CLOCK_H  */
+

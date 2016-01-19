@@ -30,3 +30,5 @@
 ..\out\main.o: ..\FWlib\inc\misc.h
 ..\out\main.o: ..\USER\global.h
 ..\out\main.o: ..\USER\set_system_clock.h
+..\out\main.o: ..\USER\usart2.h
+..\out\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
