@@ -10,27 +10,23 @@
  * @ DEBUG
 ***************************************************/
 #define DEBUG_GLOBAL
-#ifdef DEBUG_GLOBAL
-#define USART2_GLOBAL
-#endif
 
 /**************************************************
  * @ CLOCK
 ***************************************************/
 #define SYSTEM_CLOCK_GLOBAL
 
-
 /**************************************************
  * @ USART2  usart of CH340G MAX232 DEBUG
 ***************************************************/
-#ifndef USART2_GLOBAL
 #define USART2_GLOBAL
-#endif
+#define CH340_GLOBAL
 
 /**************************************************
  * @ USART1  usaer of GD5800
 ***************************************************/
 #define GD5800_GLOBAL
+#define USART1_GOLBAL
 
 
 #endif /*  __GLOBAL_H */

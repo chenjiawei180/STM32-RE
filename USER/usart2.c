@@ -1,9 +1,8 @@
  /******************************************************************************
-  * @file       USER/usart.c
+  * @file       USER/usart2.c
   * @author  cjw
   * @date     2016.1.19
-  * @brief     This file contains the source of the usart and anything of MAX232 OR CH340 need to 
-                   send data to the computer.
+  * @brief     This file contains the source of the usart2 drive.
   ******************************************************************************/
 #include "usart2.h"
 
@@ -91,6 +90,21 @@ void USART2_SendByte(u8 Date)
 {
     printf("%c",Date); 
 }
+
+/**
+  * @brief  This function is usart2 interrupt process.
+  * @param  None
+  * @retval None
+  */
+void USART2_IRQHandler(void)
+{
+    //u8 c=0;
+    if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
+    {
+        //c=USART1->DR;
+    }
+} 
+
 
 #endif  /* USART2_GLOBAL  */
 

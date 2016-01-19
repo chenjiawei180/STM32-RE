@@ -32,3 +32,4 @@
 ..\out\main.o: ..\USER\set_system_clock.h
 ..\out\main.o: ..\USER\usart2.h
 ..\out\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\main.o: ..\USER\usart1.h
