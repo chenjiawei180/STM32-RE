@@ -6,7 +6,7 @@
   ******************************************************************************/
 #include "set_system_clock.h"
 
-#ifdef SYSTEM_CLOCK_GLOBAL
+#if defined SYSTEM_CLOCK_GLOBAL
 /**
   * @brief  This function set the system clock and release GPIO of JTAG.
   * @param  None
@@ -33,5 +33,5 @@ void set_system_clock(void)
     GPIO_PinRemapConfig( GPIO_Remap_PD01 , ENABLE );	//释放PD0，PD1做普通IO口
 }
 
-#endif
+#endif /* SYSTEM_CLOCK_GLOBAL */
 

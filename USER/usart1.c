@@ -6,7 +6,7 @@
   ******************************************************************************/
 #include "usart1.h"
 
-#ifdef USART1_GOLBAL
+#if defined USART1_GOLBAL
 
 /**
   * @brief  This function is init usart1.

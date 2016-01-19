@@ -1,6 +1,6 @@
 Dependencies for Project 'STM32-RE', Target 'Target 1': (DO NOT MODIFY !)
 F (..\CMSIS\startup\startup_stm32f10x_md.s)(0x5543073C)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x--list ..\list\startup_stm32f10x_md.lst --xref -o ..\out\startup_stm32f10x_md.o --depend ..\out\startup_stm32f10x_md.d)
-F (..\USER\main.c)(0x569E586A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\main.o --omf_browse ..\out\main.crf --depend ..\out\main.d)
+F (..\USER\main.c)(0x569E644D)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\main.o --omf_browse ..\out\main.crf --depend ..\out\main.d)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x554306C6)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7C554)
@@ -29,7 +29,7 @@ I (..\FWlib\inc\stm32f10x_tim.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_wwdg.h)(0x55430744)
 I (..\FWlib\inc\misc.h)(0x5543073C)
-I (..\USER\global.h)(0x569E57FE)
+I (..\USER\global.h)(0x569E6451)
 I (..\USER\set_system_clock.h)(0x569DB90E)
 I (..\USER\usart2.h)(0x569E5669)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
@@ -64,7 +64,7 @@ I (..\FWlib\inc\stm32f10x_tim.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_wwdg.h)(0x55430744)
 I (..\FWlib\inc\misc.h)(0x5543073C)
-F (..\USER\set_system_clock.c)(0x569DB907)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\set_system_clock.o --omf_browse ..\out\set_system_clock.crf --depend ..\out\set_system_clock.d)
+F (..\USER\set_system_clock.c)(0x569E63DB)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\set_system_clock.o --omf_browse ..\out\set_system_clock.crf --depend ..\out\set_system_clock.d)
 I (..\USER\set_system_clock.h)(0x569DB90E)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x554306C6)
@@ -94,9 +94,9 @@ I (..\FWlib\inc\stm32f10x_tim.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_wwdg.h)(0x55430744)
 I (..\FWlib\inc\misc.h)(0x5543073C)
-I (..\USER\global.h)(0x569E57FE)
+I (..\USER\global.h)(0x569E6451)
 F (..\USER\stm32f10x_conf.h)(0x569C9940)()
-F (..\USER\usart2.c)(0x569E5665)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\usart2.o --omf_browse ..\out\usart2.crf --depend ..\out\usart2.d)
+F (..\USER\usart2.c)(0x569E63C4)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\usart2.o --omf_browse ..\out\usart2.crf --depend ..\out\usart2.d)
 I (..\USER\usart2.h)(0x569E5669)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x554306C6)
@@ -126,9 +126,9 @@ I (..\FWlib\inc\stm32f10x_tim.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_wwdg.h)(0x55430744)
 I (..\FWlib\inc\misc.h)(0x5543073C)
-I (..\USER\global.h)(0x569E57FE)
+I (..\USER\global.h)(0x569E6451)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-F (..\USER\usart1.c)(0x569E55EA)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\usart1.o --omf_browse ..\out\usart1.crf --depend ..\out\usart1.d)
+F (..\USER\usart1.c)(0x569E63B7)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\usart1.o --omf_browse ..\out\usart1.crf --depend ..\out\usart1.d)
 I (..\USER\usart1.h)(0x569E55F9)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x554306C6)
@@ -158,7 +158,7 @@ I (..\FWlib\inc\stm32f10x_tim.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55430744)
 I (..\FWlib\inc\stm32f10x_wwdg.h)(0x55430744)
 I (..\FWlib\inc\misc.h)(0x5543073C)
-I (..\USER\global.h)(0x569E57FE)
+I (..\USER\global.h)(0x569E6451)
 F (..\FWlib\src\misc.c)(0x55430746)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\FWlib\inc -I..\FWlib\src -I..\USER-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\ST\STM32F10x-DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD_VL-o ..\out\misc.o --omf_browse ..\out\misc.crf --depend ..\out\misc.d)
 I (..\FWlib\inc\misc.h)(0x5543073C)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)

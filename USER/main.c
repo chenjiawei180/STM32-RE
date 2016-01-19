@@ -12,18 +12,18 @@ int main(void)
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 
 /* Set the system clock and release the GPIO of JTAG */
-#ifdef SYSTEM_CLOCK_GLOBAL
+#if defined SYSTEM_CLOCK_GLOBAL
     set_system_clock();
 #endif /* SYSTEM_CLOCK_GLOBAL */
 
 /* Init the usart2 and set it's class of interrupt*/
-#ifdef USART2_GLOBAL
+#if defined USART2_GLOBAL
     CH340_USART2_Config();
     CH340_NVIC_Configuration();
 #endif /* USART2_GLOBAL */
 
 /* Init the usart1 and set it's class of interrupt*/
-#ifdef USART1_GOLBAL
+#if defined USART1_GOLBAL
     GD5800_USART1_Config();
     GD5800_NVIC_Configuration();
 #endif /* USART1_GOLBAL */

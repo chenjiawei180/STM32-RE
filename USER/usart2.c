@@ -6,7 +6,7 @@
   ******************************************************************************/
 #include "usart2.h"
 
-#ifdef USART2_GLOBAL
+#if defined USART2_GLOBAL
 
 /**
   * @brief  This function is init usart2.
