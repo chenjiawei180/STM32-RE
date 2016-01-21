@@ -5,6 +5,7 @@
 "..\out\set_system_clock.o"
 "..\out\usart2.o"
 "..\out\usart1.o"
+"..\out\rf.o"
 "..\out\misc.o"
 "..\out\stm32f10x_adc.o"
 "..\out\stm32f10x_bkp.o"
