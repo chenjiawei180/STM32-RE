@@ -34,3 +34,5 @@
 ..\out\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 ..\out\main.o: ..\USER\usart1.h
 ..\out\main.o: ..\USER\rf.h
+..\out\main.o: ..\USER\tm1629.h
+..\out\main.o: ..\USER\bitband.h

@@ -12,7 +12,7 @@
   * @param  None
   * @retval None
   */
-void set_system_clock(void)
+void Set_System_Clock(void)
 {
     RCC_DeInit(); //初始化RCC各寄存器
     RCC_HSICmd(ENABLE); //使能内部HSI时

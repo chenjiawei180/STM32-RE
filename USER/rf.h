@@ -30,9 +30,9 @@ extern u8 RF_Flag;    //新信息接收标志
 extern u8 RF_Same_Count;    //重复相同接收次数
 
 
-void EXTI15_10_IRQHandler(void);
-void RF_IO_Init(void); 
-void RF_Config(void);
+extern void EXTI15_10_IRQHandler(void);
+static void RF_IO_Init(void); 
+extern void RF_Config(void);
 
 #endif  /* __RF_H  */
 

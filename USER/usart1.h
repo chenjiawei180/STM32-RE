@@ -10,10 +10,10 @@
 #include "stm32f10x.h"
 #include "global.h"
 
-void GD5800_USART1_Config(void);
-void GD5800_NVIC_Configuration(void);
-void USART1_SendByte(u8 Date);
-void USART1_IRQHandler(void);
+extern void GD5800_USART1_Config(void);
+extern void GD5800_NVIC_Configuration(void);
+extern void USART1_SendByte(u8 Date);
+extern void USART1_IRQHandler(void);
 
 #endif  /* __USART1_H  */
 

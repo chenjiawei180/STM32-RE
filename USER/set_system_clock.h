@@ -10,7 +10,7 @@
 #include "stm32f10x.h"
 #include "global.h"
 
-void set_system_clock(void);
+extern void Set_System_Clock(void);
 
 #endif  /*  __SET_SYSTEM_CLOCK_H  */
 

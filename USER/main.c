@@ -11,17 +11,18 @@
 #include "usart2.h"
 #include "usart1.h"
 #include "rf.h"
+#include "tm1629.h"
 
 int main(void)
 {
-
+    u8 Key_value = 0;
 /* Configure the NVIC Preemption Priority Bits .
     if need use interrupt,the funtion is must.And the whole project only have one this funtion.*/  
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 
 /* Set the system clock and release the GPIO of JTAG */
 #if defined SYSTEM_CLOCK_GLOBAL
-    set_system_clock();
+    Set_System_Clock();
 #endif /* SYSTEM_CLOCK_GLOBAL */
 
 /* Init the usart2 and set it's class of interrupt*/
@@ -41,6 +42,11 @@ int main(void)
     RF_Config();
 #endif
 
+#if defined TM1629_GLOBAL
+    Tm1629_GPIO_Config();
+    Tm1629_Display();
+#endif
+
 /*Print the test information for DUBUG*/
 #if defined (USART2_GLOBAL) && defined (DEBUG_GLOBAL)
     printf("Hello stm32. ");
@@ -55,6 +61,15 @@ int main(void)
             RF_Flag = 0;
         }
 #endif /* RF_GLOBAL && DEBUG_GLOBAL */
+
+#if defined TM1629_GLOBAL
+        Key_value = ReadDataFrom1629_1();
+        if(Key_value != 0xff)
+        {
+            printf("Key_value is %d  \n",Key_value);
+            Key_value = 0xff;
+        }
+#endif /* TM1629_GLOBAL */
         ;
     }
 }

@@ -11,10 +11,10 @@
 #include "global.h"
 #include "stdio.h"
 
-void CH340_USART2_Config(void);
-void CH340_NVIC_Configuration(void);
-void USART2_SendByte(u8 Date);
-void USART2_IRQHandler(void);
+extern void CH340_USART2_Config(void);
+extern void CH340_NVIC_Configuration(void);
+extern void USART2_SendByte(u8 Date);
+extern void USART2_IRQHandler(void);
 
 #endif  /* __USART2_H  */
 
