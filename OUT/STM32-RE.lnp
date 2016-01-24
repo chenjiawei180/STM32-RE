@@ -7,6 +7,7 @@
 "..\out\usart1.o"
 "..\out\rf.o"
 "..\out\tm1629.o"
+"..\out\eeprom_24c.o"
 "..\out\misc.o"
 "..\out\stm32f10x_adc.o"
 "..\out\stm32f10x_bkp.o"

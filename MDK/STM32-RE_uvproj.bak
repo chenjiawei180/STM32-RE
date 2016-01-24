@@ -450,6 +450,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\rf.c</FilePath>
             </File>
+            <File>
+              <FileName>tm1629.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\tm1629.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

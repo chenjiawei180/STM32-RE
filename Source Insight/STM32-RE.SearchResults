@@ -1,10 +1,3 @@
----- USART2_IRQHandler Matches (6 in 3 files) ----
-STM32-RE.htm (d:\github\stm32-re\out): <LI><a href="#[30]">USART2_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
-STM32-RE.htm (d:\github\stm32-re\out):<P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
-STM32-RE.SearchResults (d:\github\stm32-re\source insight):---- USART2_IRQHandler Matches (#count#) ----
-STM32-RE.SearchResults (d:\github\stm32-re\source insight):STM32-RE.htm (d:\github\stm32-re\out): <LI><a href="#[30]">USART2_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
-STM32-RE.SearchResults (d:\github\stm32-re\source insight):STM32-RE.htm (d:\github\stm32-re\out):<P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
-Usart2.c (d:\github\stm32-re\user):void USART2_IRQHandler(void)
----- USART2_IRQHandler Search Errors Encountered (1) ----
-The following 1 files could not be processed:
-D:\Github\STM32-RE\OUT\STM32-RE.build_log.htm : File could not be opened.
+---- EEPROM Matches (2 in 1 files) ----
+Global.h (d:\github\stm32-re\user): * @ EEPROM 24C32
+Global.h (d:\github\stm32-re\user):#define EEPROM_GLOBAL

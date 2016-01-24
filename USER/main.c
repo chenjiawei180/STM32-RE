@@ -12,6 +12,7 @@
 #include "usart1.h"
 #include "rf.h"
 #include "tm1629.h"
+#include "eeprom_24c.h"
 
 int main(void)
 {
@@ -46,6 +47,10 @@ int main(void)
     Tm1629_GPIO_Config();
     Tm1629_Display();
 #endif
+
+#if defined EEPROM_GLOBAL
+    I2C_IO_Init();
+#endif /* EEPROM_GLOBAL */
 
 /*Print the test information for DUBUG*/
 #if defined (USART2_GLOBAL) && defined (DEBUG_GLOBAL)

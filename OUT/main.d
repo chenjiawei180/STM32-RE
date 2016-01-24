@@ -36,3 +36,4 @@
 ..\out\main.o: ..\USER\rf.h
 ..\out\main.o: ..\USER\tm1629.h
 ..\out\main.o: ..\USER\bitband.h
+..\out\main.o: ..\USER\eeprom_24c.h

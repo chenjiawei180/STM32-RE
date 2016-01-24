@@ -1,8 +1,8 @@
  /******************************************************************************
-  * @file       USER/main.c
+  * @file       USER/rf.c
   * @author  cjw
   * @date     2016.1.21
-  * @brief     This file contains the source of the usart1 drive.
+  * @brief     This file contains the source of the RF.
   ******************************************************************************/
 #include "rf.h"
 
