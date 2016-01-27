@@ -455,6 +455,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\tm1629.c</FilePath>
             </File>
+            <File>
+              <FileName>eeprom_24c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\eeprom_24c.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
