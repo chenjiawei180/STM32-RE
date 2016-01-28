@@ -29,3 +29,5 @@
 ..\out\stm32f10x_it.o: ..\FWlib\inc\stm32f10x_usart.h
 ..\out\stm32f10x_it.o: ..\FWlib\inc\stm32f10x_wwdg.h
 ..\out\stm32f10x_it.o: ..\FWlib\inc\misc.h
+..\out\stm32f10x_it.o: ..\USER\set_system_clock.h
+..\out\stm32f10x_it.o: ..\USER\global.h

@@ -27,6 +27,7 @@ int main(void)
 /* Set the system clock and release the GPIO of JTAG */
 #if defined SYSTEM_CLOCK_GLOBAL
     Set_System_Clock();
+    SysTick_Configuration();
 #endif /* SYSTEM_CLOCK_GLOBAL */
 
 /* Init the usart2 and set it's class of interrupt*/
@@ -91,13 +92,14 @@ int main(void)
         }
 #endif /* TM1629_GLOBAL */
 
-#if defined (KEY_GLOBAL) && defined (DEBUG_GLOBAL)
-        Key_value = Key_Scan();
-        //if(Key_value != 0)
+#if  defined (DEBUG_GLOBAL)
+        if(Flag_1_Sec > 0)
         {
-            printf("Key_value is %d  \n",Key_value);
+            printf("Systick one sec test!  \n");
+            Flag_1_Sec = 0;
         }
-#endif /* KEY_GLOBAL */
+#endif /* DEBUG_GLOBAL */
+
         ;
     }
 }

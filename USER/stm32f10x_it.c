@@ -23,6 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "set_system_clock.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Examples
   * @{
@@ -36,11 +37,6 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-__IO uint16_t IC3ReadValue1 = 0, IC3ReadValue2 = 0;
-__IO uint16_t CaptureNumber = 0;
-__IO uint32_t Capture = 0;
-__IO uint32_t TIM3Freq = 0;
-
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -135,7 +131,14 @@ void PendSV_Handler(void)
   * @retval None
   */
 void SysTick_Handler(void)
-{}
+{
+    System_Time_Count ++;
+    if(System_Time_Count > 199)    //√Î ±º‰
+    {
+        Flag_1_Sec = 1;
+        System_Time_Count = 0;
+    }
+}
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */

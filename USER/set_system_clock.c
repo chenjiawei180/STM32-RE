@@ -7,6 +7,11 @@
 #include "set_system_clock.h"
 
 #if defined SYSTEM_CLOCK_GLOBAL
+
+u8 Flag_1_Sec = 0;    //1秒时间到达标志
+u8 Flag_Half_Sec = 0;    //半秒时间到达标志
+u32 System_Time_Count = 0;    //系统计时，只用于产生秒标志
+
 /**
   * @brief  This function set the system clock and release GPIO of JTAG.
   * @param  None
@@ -31,6 +36,24 @@ void Set_System_Clock(void)
     GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);  //释放出三个JTAG的口PB3，PB4，PA15,做普通IO口线,保留SWD端口
 
     GPIO_PinRemapConfig( GPIO_Remap_PD01 , ENABLE );	//释放PD0，PD1做普通IO口
+}
+
+/**
+  * @brief  This function set the Systick timer.
+  * @param  None
+  * @retval None
+  */
+
+void SysTick_Configuration(void)
+{
+    /* Setup SysTick Timer for 10 msec interrupts  */
+    if (SysTick_Config(SystemCoreClock / 200)) //SysTick配置函数
+    { 
+        /* Capture error */ 
+        while (1);
+    }  
+    /* Configure the SysTick handler priority */
+    NVIC_SetPriority(SysTick_IRQn, 0x0);//SysTick中断优先级设置
 }
 
 #endif /* SYSTEM_CLOCK_GLOBAL */
