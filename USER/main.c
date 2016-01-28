@@ -17,9 +17,7 @@
 
 int main(void)
 {
-    u8 Key_value = 0,i;
-    u8 EEPROM_write_test[8]={11,12,13,14,15,16,17,18};
-    u8 EEPROM_read_test[8]={0};
+
 /* Configure the NVIC Preemption Priority Bits .
     if need use interrupt,the funtion is must.And the whole project only have one this funtion.*/  
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
@@ -78,28 +76,9 @@ int main(void)
         }
 #endif /* RF_GLOBAL && DEBUG_GLOBAL */
 
-#if defined (TM1629_GLOBAL) && defined (DEBUG_GLOBAL)
-        Key_value = ReadDataFrom1629_1();
-        if(Key_value == KEY_01)
-        {
-            printf("Key_value is %d  \n",Key_value);
-            EEP_Write_Buffer(0,EEPROM_write_test,8);
-            EEP_Read_Buffer(0,EEPROM_read_test,8);
-            for(i=0;i<8;i++)
-            {
-                printf("EEPROM_read_test[%d] is %d  \n",i,EEPROM_read_test[i]);
-            }
-        }
-#endif /* TM1629_GLOBAL */
-
-#if  defined (DEBUG_GLOBAL)
-        if(Flag_1_Sec > 0)
-        {
-            printf("Systick one sec test!  \n");
-            Flag_1_Sec = 0;
-        }
-#endif /* DEBUG_GLOBAL */
-
+#if defined KEY_GLOBAL
+        Key_Process();
+#endif /* KEY_GLOBAL */
         ;
     }
 }

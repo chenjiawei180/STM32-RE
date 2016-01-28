@@ -11,6 +11,7 @@
 u8 Flag_1_Sec = 0;    //1秒时间到达标志
 u8 Flag_Half_Sec = 0;    //半秒时间到达标志
 u32 System_Time_Count = 0;    //系统计时，只用于产生秒标志
+u8 LongPressSec=0; // calculate the sec number of main key press
 
 /**
   * @brief  This function set the system clock and release GPIO of JTAG.

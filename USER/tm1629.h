@@ -51,6 +51,7 @@
 #define  TM1629_STB2 PBout(6) 
 #define  TM1629_STB3 PBout(7) 
 
+extern u8 Tm1629_Display_Ram[6][8]; 
 extern void Delayus(u16 time);
 extern void Tm1629_GPIO_Config(void);
 
@@ -62,6 +63,10 @@ static void SendCommandTo1629_1(unsigned char Data);
 static void SendCommandTo1629_2(unsigned char Data);
 static void SendCommandTo1629_3(unsigned char Data);
 extern void Tm1629_Display(void);
+
+extern void Tm1629_Clear(void);
+extern void Tm1629_Show_Fx(u8 Data);
+extern void Tm1629_Show_Ex(u8 Data);
 
 #endif /* __TM1629_H */
 

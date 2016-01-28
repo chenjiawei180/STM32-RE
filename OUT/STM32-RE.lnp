@@ -9,6 +9,7 @@
 "..\out\tm1629.o"
 "..\out\eeprom_24c.o"
 "..\out\key.o"
+"..\out\menu.o"
 "..\out\misc.o"
 "..\out\stm32f10x_adc.o"
 "..\out\stm32f10x_bkp.o"

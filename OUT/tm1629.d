@@ -31,3 +31,4 @@
 ..\out\tm1629.o: ..\FWlib\inc\misc.h
 ..\out\tm1629.o: ..\USER\global.h
 ..\out\tm1629.o: ..\USER\bitband.h
+..\out\tm1629.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

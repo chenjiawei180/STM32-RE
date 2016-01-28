@@ -5,6 +5,7 @@
   * @brief     This file contains the source of the tm1629 drive.
   ******************************************************************************/
 #include "tm1629.h"
+#include "string.h"
 
 #if defined TM1629_GLOBAL
 
@@ -28,11 +29,7 @@ u8 const Dis_TAB[]={
     0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,//段 abcdefgh，0-8，+0x2A
 };
 
-u8 Tm1629_Display_Ram[6][8]={
-0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71,
-0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71,
-0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71
-}; 
+u8 Tm1629_Display_Ram[6][8]={0}; 
 
 /**
   * @brief  This function is Tm1629 delay.
@@ -311,6 +308,45 @@ void SendCommandTo1629_3(unsigned char Data)
     SendCommandTo1629_3(0x8C);    //设置显示控制命令：打开显示，并设置为11/16.
     TM1629_STB3 = 1;
 
+}
+
+/**
+  * @brief  This function is clear the tm1629 display buffer .
+  * @param  Data
+  * @retval None
+  */
+
+void Tm1629_Clear(void)
+{
+    memset(Tm1629_Display_Ram,0,48);
+}
+
+/**
+  * @brief  This function is shou menu number . such F1 F2 F3 ,Data is F number.
+  * @param  Data
+  * @retval None
+  */
+
+void Tm1629_Show_Fx(u8 Data)
+{
+    Tm1629_Clear();
+    Tm1629_Display_Ram[0][1]=Dis_TAB[0x0F];
+    Tm1629_Display_Ram[0][0]=Dis_TAB[Data];
+    Tm1629_Display();
+}
+
+/**
+  * @brief  This function is shou menu number . such E1 E2 E3 ,Data is E number.
+  * @param  Data
+  * @retval None
+  */
+
+void Tm1629_Show_Ex(u8 Data)
+{
+    Tm1629_Clear();
+    Tm1629_Display_Ram[0][1]=Dis_TAB[0x0E];
+    Tm1629_Display_Ram[0][0]=Dis_TAB[Data];
+    Tm1629_Display();
 }
 
 #endif /* TM1629_GLOBAL */

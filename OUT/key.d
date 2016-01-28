@@ -31,3 +31,7 @@
 ..\out\key.o: ..\FWlib\inc\misc.h
 ..\out\key.o: ..\USER\global.h
 ..\out\key.o: ..\USER\bitband.h
+..\out\key.o: ..\USER\menu.h
+..\out\key.o: ..\USER\set_system_clock.h
+..\out\key.o: ..\USER\usart2.h
+..\out\key.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

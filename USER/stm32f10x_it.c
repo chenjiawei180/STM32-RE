@@ -132,12 +132,17 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+#if defined SYSTEM_CLOCK_GLOBAL
+
     System_Time_Count ++;
     if(System_Time_Count > 199)    //√Î ±º‰
     {
+        LongPressSec++;
         Flag_1_Sec = 1;
         System_Time_Count = 0;
     }
+
+#endif /* SYSTEM_CLOCK_GLOBAL */
 }
 
 /******************************************************************************/

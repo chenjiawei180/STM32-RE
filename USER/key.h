@@ -24,5 +24,6 @@
 extern void Key_IO_Init(void);
 extern unsigned char Key_Scan(void);
 static void Key_Delay_us(u16 Time);
+extern void Key_Process(void);
 
 #endif /* __KEY_H */

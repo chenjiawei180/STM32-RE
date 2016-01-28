@@ -18,6 +18,7 @@ compiling rf.c...
 compiling tm1629.c...
 compiling eeprom_24c.c...
 compiling key.c...
+compiling menu.c...
 compiling misc.c...
 compiling stm32f10x_adc.c...
 compiling stm32f10x_bkp.c...
@@ -44,7 +45,7 @@ compiling stm32f10x_wwdg.c...
 compiling core_cm3.c...
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=11628 RO-data=268 RW-data=128 ZI-data=1024  
+Program Size: Code=11874 RO-data=510 RW-data=96 ZI-data=1072  
 FromELF: creating hex file...
 "..\OUT\STM32-RE.axf" - 0 Error(s), 0 Warning(s).
 Load "..\\OUT\\STM32-RE.axf" 
@@ -55,3 +56,62 @@ Application running ...
 </pre>
 </body>
 </html>
+f" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+compiling main.c...
+"..\USER\main.c" - 0 Error(s), 0 Warning(s).
+one.
+Verify OK.
+Application running ...
+Load "..\\OUT\\STM32-RE.axf" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+57): error:  #114: function "Menu_FB" was referenced but not defined
+  static void Menu_FB(void);
+..\USER\menu.h(58): error:  #114: function "Menu_FC" was referenced but not defined
+  static void Menu_FC(void);
+..\USER\menu.h(59): error:  #114: function "Menu_FD" was referenced but not defined
+  static void Menu_FD(void);
+..\USER\menu.h(60): error:  #114: function "Menu_FE" was referenced but not defined
+  static void Menu_FE(void);
+..\USER\menu.c: 1 warning, 17 errors
+"..\OUT\STM32-RE.axf" - 17 Error(s), 1 Warning(s).
+Target not created
+
+..\USER\key.c(90): error:  #20: identifier "MenuProc" is undefined
+                          Function = MenuProc[ONE_MENU_F1].handle;
+..\USER\key.c(95): error:  #20: identifier "MenuProc" is undefined
+                  index = MenuProc[index].Enter;
+..\USER\key.c: 1 warning, 3 errors
+"..\USER\key.c" - 3 Error(s), 1 Warning(s).
+compiling key.c...
+..\USER\menu.h(43): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern code struct Menu_def MenuProc[];
+..\USER\menu.h(43): error:  #65: expected a ";"
+  extern code struct Menu_def MenuProc[];
+..\USER\key.c(90): error:  #20: identifier "MenuProc" is undefined
+                          Function = MenuProc[ONE_MENU_F1].handle;
+..\USER\key.c(95): error:  #20: identifier "MenuProc" is undefined
+                  index = MenuProc[index].Enter;
+..\USER\key.c: 1 warning, 3 errors
+"..\USER\key.c" - 3 Error(s), 1 Warning(s).
+compiling key.c...
+..\USER\menu.h(43): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern code struct Menu_def MenuProc[];
+..\USER\menu.h(43): error:  #65: expected a ";"
+  extern code struct Menu_def MenuProc[];
+..\USER\key.c(90): error:  #20: identifier "MenuProc" is undefined
+                          Function = MenuProc[ONE_MENU_F1].handle;
+..\USER\key.c(95): error:  #20: identifier "MenuProc" is undefined
+                  index = MenuProc[index].Enter;
+..\USER\key.c: 1 warning, 3 errors
+"..\USER\key.c" - 3 Error(s), 1 Warning(s).
+compiling key.c...
+"..\USER\key.c" - 0 Error(s), 0 Warning(s).
+compiling key.c...
+"..\USER\key.c" - 0 Error(s), 0 Warning(s).
