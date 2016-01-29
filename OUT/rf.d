@@ -30,3 +30,5 @@
 ..\out\rf.o: ..\FWlib\inc\stm32f10x_wwdg.h
 ..\out\rf.o: ..\FWlib\inc\misc.h
 ..\out\rf.o: ..\USER\global.h
+..\out\rf.o: ..\USER\usart2.h
+..\out\rf.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

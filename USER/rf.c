@@ -5,6 +5,7 @@
   * @brief     This file contains the source of the RF.
   ******************************************************************************/
 #include "rf.h"
+#include "usart2.h"
 
 #if defined RF_GLOBAL
 
@@ -29,7 +30,6 @@ void EXTI15_10_IRQHandler(void)//
 {
     u16 tim_value;
     u8 flag;
-
     flag = 0;
     if(RF_PIN_LEVEL != 0)    //引脚低电平，说明模块输出信号为高电平，信号上升沿中断
     {
@@ -169,7 +169,7 @@ void RF_Config(void)
     /* TIM2 clock enable */
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
     /* Compute the prescaler value */
-    PrescalerValue = (uint16_t) (SystemCoreClock / 100000) - 1;	//10US
+    PrescalerValue = (u16) (SystemCoreClock / 100000) - 1;//10US
     /* Time base configuration */
     TIM_TimeBaseStructure.TIM_Period = 65535;   //计数范围最大值
     TIM_TimeBaseStructure.TIM_Prescaler = PrescalerValue;   //时钟预分频计数

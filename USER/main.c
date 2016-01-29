@@ -71,7 +71,7 @@ int main(void)
 #if defined (RF_GLOBAL) && defined (DEBUG_GLOBAL)
         if(RF_Flag == 1)
         {
-            printf("RF_ID");
+            printf("RF_ID is %x  \r\n ",RF_ID);
             RF_Flag = 0;
         }
 #endif /* RF_GLOBAL && DEBUG_GLOBAL */
