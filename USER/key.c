@@ -91,6 +91,7 @@ void Key_Process(void)
                         index=ONE_MENU_F1;
                         Function = MenuProc[ONE_MENU_F1].handle;
                         (*Function)();
+                        while(!KEY_MAIN) ;
                         return;
                     }                   
                 }

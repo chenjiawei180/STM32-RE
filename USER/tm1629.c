@@ -353,7 +353,7 @@ void Tm1629_Show_Ex(u8 Data)
 
 /**
   * @brief  This function is show RTC.
-  * @param  Data
+  * @param  Time
   * @retval None
   */
   
@@ -390,7 +390,7 @@ void Tm1629_Show_Time(unsigned char* Time)
 
 /**
   * @brief  This function is blink the digital tube of Minute.
-  * @param  Data
+  * @param  None
   * @retval None
   */
   
@@ -412,7 +412,7 @@ void Tm1629_Blink_Time_Minute(void)
 
 /**
   * @brief  This function is blink the digital tube of Hour.
-  * @param  Data
+  * @param  None
   * @retval None
   */
   
@@ -434,7 +434,7 @@ void Tm1629_Blink_Time_Hour(void)
 
 /**
   * @brief  This function is blink the digital tube of Day.
-  * @param  Data
+  * @param  None
   * @retval None
   */
   
@@ -456,7 +456,7 @@ void Tm1629_Blink_Time_Day(void)
 
 /**
   * @brief  This function is blink the digital tube of Month.
-  * @param  Data
+  * @param  None
   * @retval None
   */
   
@@ -478,7 +478,7 @@ void Tm1629_Blink_Time_Month(void)
 
 /**
   * @brief  This function is blink the digital tube of Year.
-  * @param  Data
+  * @param  None
   * @retval None
   */
   
@@ -500,7 +500,7 @@ void Tm1629_Blink_Time_Year(void)
 
 /**
   * @brief  This function is blink the digital tube of Year.
-  * @param  Data
+  * @param  None
   * @retval None
   */
   
@@ -515,6 +515,120 @@ void Tm1629_Blink_Time_Week(void)
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is show four bit number for digital tube on the right. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Show_Four_Number(u16 Number)
+{
+    Tm1629_Clear();
+    Tm1629_Display_Ram[0][3]=Dis_TAB[Number/1000];
+    Tm1629_Display_Ram[0][2]=Dis_TAB[Number/100%10];
+    Tm1629_Display_Ram[0][1]=Dis_TAB[Number%100/10];
+    Tm1629_Display_Ram[0][0]=Dis_TAB[Number%10];
+    Tm1629_Display();
+}
+
+/**
+  * @brief  This function is show two bit number for digital tube on the right. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Show_Two_Number(u8 Number)
+{
+    Tm1629_Clear();
+    Tm1629_Display_Ram[0][1]=Dis_TAB[Number/10];
+    Tm1629_Display_Ram[0][0]=Dis_TAB[Number%10];
+    Tm1629_Display();
+}
+
+/**
+  * @brief  This function is blink the first digital tube. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Blink_One_Position(u16 Number)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][0] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Four_Number(Number);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the second digital tube. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Blink_Two_Position(u16 Number)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][1] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Four_Number(Number);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the third digital tube. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Blink_Three_Position(u16 Number)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][3] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Four_Number(Number);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the fouth digital tube. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Blink_Four_Position(u16 Number)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][4] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Four_Number(Number);
     }
     flag++;
 }

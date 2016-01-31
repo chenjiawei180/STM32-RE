@@ -76,6 +76,13 @@ extern void Tm1629_Blink_Time_Day(void);
 extern void Tm1629_Blink_Time_Month(void);
 extern void Tm1629_Blink_Time_Year(void);
 extern void Tm1629_Blink_Time_Week(void);
+extern void Tm1629_Show_Two_Number(u8 Number);
+extern void Tm1629_Show_Four_Number(u16 Number);
+extern void Tm1629_Blink_One_Position(u16 Number);
+extern void Tm1629_Blink_Two_Position(u16 Number);
+extern void Tm1629_Blink_Three_Position(u16 Number);
+extern void Tm1629_Blink_Four_Position(u16 Number);
+
 
 #endif /* __TM1629_H */
 

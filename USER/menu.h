@@ -180,7 +180,40 @@ static void Menu_F0_Day(void);
 static void Menu_F0_Month(void);
 static void Menu_F0_Year(void);
 static void Menu_F0_Week(void);
-
+static void Menu_F1_E1(void);
+static void Menu_F1_E2(void);
+static void Menu_F1_E3(void);
+static void Menu_F1_E4(void);
+static void Menu_F2_E1(void);
+static void Menu_F2_E2(void);
+static void Menu_F2_E3(void);
+static void Menu_F2_E4(void);
+static void Menu_F3_E1(void);
+static void Menu_F3_E2(void);
+static void Menu_F4_Set(void);
+static void Menu_F5_Set(void);
+static void Menu_F6_E1(void);
+static void Menu_F6_E2(void);
+static void Menu_F6_E3(void);
+static void Menu_F6_E4(void);
+static void Menu_F6_E5(void);
+static void Menu_F6_E6(void);
+static void Menu_F6_E7(void);
+static void Menu_F6_E8(void);
+static void Menu_F7_E1(void);
+static void Menu_F7_E2(void);
+static void Menu_F7_E3(void);
+static void Menu_F7_E4(void);
+static void Menu_F8_E1(void);
+static void Menu_F8_E2(void);
+static void Menu_F9_E1(void);
+static void Menu_F9_E2(void);
+static void Menu_FA_Set(void);
+static void Menu_FB_Set(void);
+static void Menu_FC_Set(void);
+static void Menu_FD_Set(void);
+static void Menu_FE_E1(void);
+static void Menu_FE_E2(void);
 
 #endif /* __MENU_H */
 

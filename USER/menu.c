@@ -11,6 +11,9 @@
 
 #if defined MENU_GLOBAL
 
+u8 Remove_Call_Time = 0 ;
+u8 Cycle_Call_Time = 0;
+
 /**
   * @brief  This is Menu index.
   * @param  None
@@ -21,11 +24,11 @@ const struct Menu_def MenuProc[]=
 {
     {STANDBY_MENU,  STANDBY_MENU, STANDBY_MENU, STANDBY_MENU,STANDBY_MENU,Menu_Standby},  
     {ONE_MENU_F0,  TWO_MENU_F0_MINUTE, ONE_MENU_FE, ONE_MENU_F1,STANDBY_MENU,Menu_F0},  
-    {ONE_MENU_F1,  ONE_MENU_F1, ONE_MENU_F0, ONE_MENU_F2,STANDBY_MENU,Menu_F1},  
-    {ONE_MENU_F2,  ONE_MENU_F2, ONE_MENU_F1, ONE_MENU_F3,STANDBY_MENU,Menu_F2},  
-    {ONE_MENU_F3,  ONE_MENU_F3, ONE_MENU_F2, ONE_MENU_F4,STANDBY_MENU,Menu_F3},  
-    {ONE_MENU_F4,  ONE_MENU_F4, ONE_MENU_F3, ONE_MENU_F5,STANDBY_MENU,Menu_F4}, 
-    {ONE_MENU_F5,  ONE_MENU_F5, ONE_MENU_F4, ONE_MENU_F6,STANDBY_MENU,Menu_F5},  
+    {ONE_MENU_F1,  TWO_MENU_F1_E1, ONE_MENU_F0, ONE_MENU_F2,STANDBY_MENU,Menu_F1},  
+    {ONE_MENU_F2,  TWO_MENU_F2_E1, ONE_MENU_F1, ONE_MENU_F3,STANDBY_MENU,Menu_F2},  
+    {ONE_MENU_F3,  TWO_MENU_F3_E1, ONE_MENU_F2, ONE_MENU_F4,STANDBY_MENU,Menu_F3},  
+    {ONE_MENU_F4,  TWO_MENU_F4_SET, ONE_MENU_F3, ONE_MENU_F5,STANDBY_MENU,Menu_F4}, 
+    {ONE_MENU_F5,  TWO_MENU_F5_SET, ONE_MENU_F4, ONE_MENU_F6,STANDBY_MENU,Menu_F5},  
     {ONE_MENU_F6,  ONE_MENU_F6, ONE_MENU_F5, ONE_MENU_F7,STANDBY_MENU,Menu_F6},  
     {ONE_MENU_F7,  ONE_MENU_F7, ONE_MENU_F6, ONE_MENU_F8,STANDBY_MENU,Menu_F7},  
     {ONE_MENU_F8,  ONE_MENU_F8, ONE_MENU_F7, ONE_MENU_F9,STANDBY_MENU,Menu_F8},  
@@ -43,21 +46,21 @@ const struct Menu_def MenuProc[]=
     {TWO_MENU_F0_YEAR,  TWO_MENU_F0_WEEK, TWO_MENU_F0_YEAR, TWO_MENU_F0_YEAR,ONE_MENU_F0,Menu_F0_Year},
     {TWO_MENU_F0_WEEK,  TWO_MENU_F0_MINUTE, TWO_MENU_F0_WEEK, TWO_MENU_F0_WEEK,ONE_MENU_F0,Menu_F0_Week},    
 
-    {TWO_MENU_F1_E1,  TWO_MENU_F1_E1, TWO_MENU_F1_E1, TWO_MENU_F1_E1,ONE_MENU_F1,Menu_F0},
-    {TWO_MENU_F1_E2,  TWO_MENU_F1_E2, TWO_MENU_F1_E2, TWO_MENU_F1_E2,ONE_MENU_F1,Menu_F0},
-    {TWO_MENU_F1_E3,  TWO_MENU_F1_E3, TWO_MENU_F1_E3, TWO_MENU_F1_E3,ONE_MENU_F1,Menu_F0},
-    {TWO_MENU_F1_E4,  TWO_MENU_F1_E4, TWO_MENU_F1_E4, TWO_MENU_F1_E4,ONE_MENU_F1,Menu_F0},
+    {TWO_MENU_F1_E1,  TWO_MENU_F1_E1, TWO_MENU_F1_E4, TWO_MENU_F1_E2,ONE_MENU_F1,Menu_F1_E1},
+    {TWO_MENU_F1_E2,  TWO_MENU_F1_E2, TWO_MENU_F1_E1, TWO_MENU_F1_E3,ONE_MENU_F1,Menu_F1_E2},
+    {TWO_MENU_F1_E3,  TWO_MENU_F1_E3, TWO_MENU_F1_E2, TWO_MENU_F1_E4,ONE_MENU_F1,Menu_F1_E3},
+    {TWO_MENU_F1_E4,  TWO_MENU_F1_E4, TWO_MENU_F1_E3, TWO_MENU_F1_E1,ONE_MENU_F1,Menu_F1_E4},
     
-    {TWO_MENU_F2_E1,  TWO_MENU_F2_E1, TWO_MENU_F2_E1, TWO_MENU_F2_E1,ONE_MENU_F2,Menu_F0},
-    {TWO_MENU_F2_E2,  TWO_MENU_F2_E2, TWO_MENU_F2_E2, TWO_MENU_F2_E2,ONE_MENU_F2,Menu_F0},
-    {TWO_MENU_F2_E3,  TWO_MENU_F2_E3, TWO_MENU_F2_E3, TWO_MENU_F2_E3,ONE_MENU_F2,Menu_F0},
-    {TWO_MENU_F2_E4,  TWO_MENU_F2_E4, TWO_MENU_F2_E4, TWO_MENU_F2_E4,ONE_MENU_F2,Menu_F0},
+    {TWO_MENU_F2_E1,  TWO_MENU_F2_E1, TWO_MENU_F2_E4, TWO_MENU_F2_E2,ONE_MENU_F2,Menu_F2_E1},
+    {TWO_MENU_F2_E2,  TWO_MENU_F2_E2, TWO_MENU_F2_E1, TWO_MENU_F2_E3,ONE_MENU_F2,Menu_F2_E2},
+    {TWO_MENU_F2_E3,  TWO_MENU_F2_E3, TWO_MENU_F2_E2, TWO_MENU_F2_E4,ONE_MENU_F2,Menu_F2_E3},
+    {TWO_MENU_F2_E4,  TWO_MENU_F2_E4, TWO_MENU_F2_E3, TWO_MENU_F2_E1,ONE_MENU_F2,Menu_F2_E4},
 
-    {TWO_MENU_F3_E1,  TWO_MENU_F3_E1, TWO_MENU_F3_E1, TWO_MENU_F3_E1,ONE_MENU_F3,Menu_F0},
-    {TWO_MENU_F3_E2,  TWO_MENU_F3_E2, TWO_MENU_F3_E2, TWO_MENU_F3_E2,ONE_MENU_F3,Menu_F0},
+    {TWO_MENU_F3_E1,  TWO_MENU_F3_E1, TWO_MENU_F3_E2, TWO_MENU_F3_E2,ONE_MENU_F3,Menu_F3_E1},
+    {TWO_MENU_F3_E2,  TWO_MENU_F3_E2, TWO_MENU_F3_E1, TWO_MENU_F3_E1,ONE_MENU_F3,Menu_F3_E2},
 
-    {TWO_MENU_F4_SET,  TWO_MENU_F4_SET, TWO_MENU_F4_SET, TWO_MENU_F4_SET,ONE_MENU_F4,Menu_F0},
-    {TWO_MENU_F5_SET,  TWO_MENU_F5_SET, TWO_MENU_F5_SET, TWO_MENU_F5_SET,ONE_MENU_F5,Menu_F0},
+    {TWO_MENU_F4_SET,  TWO_MENU_F4_SET, TWO_MENU_F4_SET, TWO_MENU_F4_SET,ONE_MENU_F4,Menu_F4_Set},
+    {TWO_MENU_F5_SET,  TWO_MENU_F5_SET, TWO_MENU_F5_SET, TWO_MENU_F5_SET,ONE_MENU_F5,Menu_F5_Set},
 
     {TWO_MENU_F6_E1,  TWO_MENU_F6_E1, TWO_MENU_F6_E1, TWO_MENU_F6_E1,ONE_MENU_F6,Menu_F0},
     {TWO_MENU_F6_E2,  TWO_MENU_F6_E2, TWO_MENU_F6_E2, TWO_MENU_F6_E2,ONE_MENU_F6,Menu_F0},
@@ -494,6 +497,167 @@ void Menu_F0_Week(void)
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }
+
+/**
+  * @brief  This function is Show sub menu of F1. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F1_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of F1. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F1_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show sub menu of F1. E3
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F1_E3(void)
+{
+    Tm1629_Show_Ex(0x03);
+}
+
+/**
+  * @brief  This function is Show sub menu of F1. E4
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F1_E4(void)
+{
+    Tm1629_Show_Ex(0x04);
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F2_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F2_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E3
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F2_E3(void)
+{
+    Tm1629_Show_Ex(0x03);
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E4
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F2_E4(void)
+{
+    Tm1629_Show_Ex(0x04);
+}
+
+/**
+  * @brief  This function is Show sub menu of F3. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F3_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of F3. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F3_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show menu of F4.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F4_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Remove_Call_Time == 99)
+            Remove_Call_Time=0;
+        else
+            Remove_Call_Time++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Remove_Call_Time == 0)
+            Remove_Call_Time=99;
+        else
+            Remove_Call_Time--;
+    }
+    Tm1629_Show_Two_Number(Remove_Call_Time); 
+}
+
+/**
+  * @brief  This function is Show menu of F5.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F5_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Cycle_Call_Time== 99)
+            Cycle_Call_Time=0;
+        else
+            Cycle_Call_Time++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Cycle_Call_Time == 0)
+            Cycle_Call_Time=99;
+        else
+            Cycle_Call_Time--;
+    }
+    Tm1629_Show_Two_Number(Cycle_Call_Time); 
+}
+
 
 
 #endif /* MENU_GLOBAL */
