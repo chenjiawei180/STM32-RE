@@ -31,6 +31,8 @@ u8 const Dis_TAB[]={
 
 u8 Tm1629_Display_Ram[6][8]={0}; 
 
+u8 Tm1629_Test_Time[8]={20,16,1,31,14,12,30,7};
+
 /**
   * @brief  This function is Tm1629 delay.
   * @param  time
@@ -322,7 +324,7 @@ void Tm1629_Clear(void)
 }
 
 /**
-  * @brief  This function is shou menu number . such F1 F2 F3 ,Data is F number.
+  * @brief  This function is show menu number . such F1 F2 F3 ,Data is F number.
   * @param  Data
   * @retval None
   */
@@ -336,7 +338,7 @@ void Tm1629_Show_Fx(u8 Data)
 }
 
 /**
-  * @brief  This function is shou menu number . such E1 E2 E3 ,Data is E number.
+  * @brief  This function is show menu number . such E1 E2 E3 ,Data is E number.
   * @param  Data
   * @retval None
   */
@@ -348,5 +350,174 @@ void Tm1629_Show_Ex(u8 Data)
     Tm1629_Display_Ram[0][0]=Dis_TAB[Data];
     Tm1629_Display();
 }
+
+/**
+  * @brief  This function is show RTC.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Show_Time(unsigned char* Time)
+{
+    Tm1629_Clear();
+    /* Show the Year on Left the digital tube.the rule is in china*/
+    Tm1629_Display_Ram[1][3] = Dis_TAB[(*(Time+0))/10];
+    Tm1629_Display_Ram[1][2] = Dis_TAB[(*(Time+0))%10];
+    Tm1629_Display_Ram[1][1] = Dis_TAB[(*(Time+1))/10];
+    Tm1629_Display_Ram[1][0] = Dis_TAB[(*(Time+1))%10];
+
+    /*Show the Month on the digital tube*/
+    Tm1629_Display_Ram[0][7] = Dis_TAB[(*(Time+2))/10];
+    Tm1629_Display_Ram[0][6] = Dis_TAB[(*(Time+2))%10];
+
+    /*Show the Day on the digital tube*/
+    Tm1629_Display_Ram[0][5] = Dis_TAB[(*(Time+3))/10];
+    Tm1629_Display_Ram[0][4] = Dis_TAB[(*(Time+3))%10];
+
+    /*Show the Hour on the digital tube*/
+    Tm1629_Display_Ram[0][3] = Dis_TAB[(*(Time+4))/10];
+    Tm1629_Display_Ram[0][2] = Dis_TAB[(*(Time+4))%10];
+
+    /*Show the Minute on the digital tube*/
+    Tm1629_Display_Ram[0][1] = Dis_TAB[(*(Time+5))/10];
+    Tm1629_Display_Ram[0][0] = Dis_TAB[(*(Time+5))%10];
+
+    /*Show the Week on the digital tube*/
+    Tm1629_Display_Ram[1][4] = Dis_TAB[*(Time+7)];
+
+    Tm1629_Display();
+}
+
+/**
+  * @brief  This function is blink the digital tube of Minute.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Blink_Time_Minute(void)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][1] =0;
+        Tm1629_Display_Ram[0][0] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the digital tube of Hour.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Blink_Time_Hour(void)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][3] =0;
+        Tm1629_Display_Ram[0][2] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the digital tube of Day.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Blink_Time_Day(void)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][5] =0;
+        Tm1629_Display_Ram[0][4] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the digital tube of Month.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Blink_Time_Month(void)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][7] =0;
+        Tm1629_Display_Ram[0][6] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the digital tube of Year.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Blink_Time_Year(void)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[1][1] =0;
+        Tm1629_Display_Ram[1][0] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the digital tube of Year.
+  * @param  Data
+  * @retval None
+  */
+  
+void Tm1629_Blink_Time_Week(void)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[1][4] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    flag++;
+}
+
 
 #endif /* TM1629_GLOBAL */

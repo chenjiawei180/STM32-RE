@@ -21,6 +21,8 @@
 #define KEY_DOWN    PAin(4)
 #define KEY_ESC    PAin(5)
 
+extern u8 gKeyValue; /*the value of key press*/
+
 extern void Key_IO_Init(void);
 extern unsigned char Key_Scan(void);
 static void Key_Delay_us(u16 Time);

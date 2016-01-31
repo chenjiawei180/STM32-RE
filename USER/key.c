@@ -14,6 +14,8 @@
 Menu_index index = STANDBY_MENU;
 void (*Function)(void);
 
+u8 gKeyValue=0; /*the value of key press*/
+
 /**
   * @brief  This function is Init Key GPIO.
   * @param  None
@@ -75,7 +77,6 @@ void Key_Delay_us(u16 Time)
   */
 void Key_Process(void)
 {
-    u8 gKeyValue=0;
     LongPressSec=0;
     gKeyValue=Key_Scan();
     if(gKeyValue)

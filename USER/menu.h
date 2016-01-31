@@ -31,10 +31,10 @@ typedef enum
     
     TWO_MENU_F0_MINUTE,
     TWO_MENU_F0_HOUR,
-    TWO_MENU_F0_WEEK,
     TWO_MENU_F0_DAY,
-    TWO_MENU_F0_MOUTH,
+    TWO_MENU_F0_MONTH,
     TWO_MENU_F0_YEAR,
+    TWO_MENU_F0_WEEK,    
 
     TWO_MENU_F1_E1,
     TWO_MENU_F1_E2,
@@ -174,6 +174,12 @@ static void Menu_FB(void);
 static void Menu_FC(void);
 static void Menu_FD(void);
 static void Menu_FE(void);
+static void Menu_F0_Minute(void);
+static void Menu_F0_Hour(void);
+static void Menu_F0_Day(void);
+static void Menu_F0_Month(void);
+static void Menu_F0_Year(void);
+static void Menu_F0_Week(void);
 
 
 #endif /* __MENU_H */

@@ -7,6 +7,7 @@
 #include "menu.h"
 #include "tm1629.h"
 #include "usart2.h"
+#include "key.h"
 
 #if defined MENU_GLOBAL
 
@@ -20,7 +21,7 @@ const struct Menu_def MenuProc[]=
 {
     {STANDBY_MENU,  STANDBY_MENU, STANDBY_MENU, STANDBY_MENU,STANDBY_MENU,Menu_Standby},  
     {ONE_MENU_F0,  TWO_MENU_F0_MINUTE, ONE_MENU_FE, ONE_MENU_F1,STANDBY_MENU,Menu_F0},  
-    {ONE_MENU_F1,  TWO_MENU_F1_E1, ONE_MENU_F0, ONE_MENU_F2,STANDBY_MENU,Menu_F1},  
+    {ONE_MENU_F1,  ONE_MENU_F1, ONE_MENU_F0, ONE_MENU_F2,STANDBY_MENU,Menu_F1},  
     {ONE_MENU_F2,  ONE_MENU_F2, ONE_MENU_F1, ONE_MENU_F3,STANDBY_MENU,Menu_F2},  
     {ONE_MENU_F3,  ONE_MENU_F3, ONE_MENU_F2, ONE_MENU_F4,STANDBY_MENU,Menu_F3},  
     {ONE_MENU_F4,  ONE_MENU_F4, ONE_MENU_F3, ONE_MENU_F5,STANDBY_MENU,Menu_F4}, 
@@ -35,12 +36,12 @@ const struct Menu_def MenuProc[]=
     {ONE_MENU_FD,  ONE_MENU_FD, ONE_MENU_FC, ONE_MENU_FE,STANDBY_MENU,Menu_FD},  
     {ONE_MENU_FE,  ONE_MENU_FE, ONE_MENU_FD, ONE_MENU_F0,STANDBY_MENU,Menu_FE},
 
-    {TWO_MENU_F0_MINUTE,  TWO_MENU_F0_MINUTE, TWO_MENU_F0_MINUTE, TWO_MENU_F0_MINUTE,ONE_MENU_F0,Menu_F0},
-    {TWO_MENU_F0_HOUR,  TWO_MENU_F0_HOUR, TWO_MENU_F0_HOUR, TWO_MENU_F0_HOUR,ONE_MENU_F0,Menu_F0},
-    {TWO_MENU_F0_WEEK,  TWO_MENU_F0_WEEK, TWO_MENU_F0_WEEK, TWO_MENU_F0_WEEK,ONE_MENU_F0,Menu_F0},
-    {TWO_MENU_F0_DAY,  TWO_MENU_F0_DAY, TWO_MENU_F0_DAY, TWO_MENU_F0_DAY,ONE_MENU_F0,Menu_F0},
-    {TWO_MENU_F0_MOUTH,  TWO_MENU_F0_MOUTH, TWO_MENU_F0_MOUTH, TWO_MENU_F0_MOUTH,ONE_MENU_F0,Menu_F0},
-    {TWO_MENU_F0_YEAR,  TWO_MENU_F0_YEAR, TWO_MENU_F0_YEAR, TWO_MENU_F0_YEAR,ONE_MENU_F0,Menu_F0},
+    {TWO_MENU_F0_MINUTE,  TWO_MENU_F0_HOUR, TWO_MENU_F0_MINUTE, TWO_MENU_F0_MINUTE,ONE_MENU_F0,Menu_F0_Minute},
+    {TWO_MENU_F0_HOUR,  TWO_MENU_F0_DAY, TWO_MENU_F0_HOUR, TWO_MENU_F0_HOUR,ONE_MENU_F0,Menu_F0_Hour},
+    {TWO_MENU_F0_DAY,  TWO_MENU_F0_MONTH, TWO_MENU_F0_DAY, TWO_MENU_F0_DAY,ONE_MENU_F0,Menu_F0_Day},
+    {TWO_MENU_F0_MONTH,  TWO_MENU_F0_YEAR, TWO_MENU_F0_MONTH, TWO_MENU_F0_MONTH,ONE_MENU_F0,Menu_F0_Month},
+    {TWO_MENU_F0_YEAR,  TWO_MENU_F0_WEEK, TWO_MENU_F0_YEAR, TWO_MENU_F0_YEAR,ONE_MENU_F0,Menu_F0_Year},
+    {TWO_MENU_F0_WEEK,  TWO_MENU_F0_MINUTE, TWO_MENU_F0_WEEK, TWO_MENU_F0_WEEK,ONE_MENU_F0,Menu_F0_Week},    
 
     {TWO_MENU_F1_E1,  TWO_MENU_F1_E1, TWO_MENU_F1_E1, TWO_MENU_F1_E1,ONE_MENU_F1,Menu_F0},
     {TWO_MENU_F1_E2,  TWO_MENU_F1_E2, TWO_MENU_F1_E2, TWO_MENU_F1_E2,ONE_MENU_F1,Menu_F0},
@@ -330,6 +331,168 @@ void Menu_FD(void)
 void Menu_FE(void)
 {
     Tm1629_Show_Fx(0x0E);
+}
+
+/**
+  * @brief  This function is Show TM1629 of F0 menu show Minute.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F0_Minute(void)
+{
+    Tm1629_Blink_Time_Minute();
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Tm1629_Test_Time[5] == 59)
+            Tm1629_Test_Time[5]=0;
+        else
+            Tm1629_Test_Time[5]++;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Tm1629_Test_Time[5] == 0)
+            Tm1629_Test_Time[5]=59;
+        else
+            Tm1629_Test_Time[5]--;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+}
+
+/**
+  * @brief  This function is Show TM1629 of F0 menu show Hour.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F0_Hour(void)
+{
+    Tm1629_Blink_Time_Hour();
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Tm1629_Test_Time[4] == 23)
+            Tm1629_Test_Time[4]=0;
+        else
+            Tm1629_Test_Time[4]++;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Tm1629_Test_Time[4] == 0)
+            Tm1629_Test_Time[4]=23;
+        else
+            Tm1629_Test_Time[4]--;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+}
+
+/**
+  * @brief  This function is Show TM1629 of F0 menu show Day.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F0_Day(void)
+{
+    Tm1629_Blink_Time_Day();
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Tm1629_Test_Time[3] == 31)
+            Tm1629_Test_Time[3]=1;
+        else
+            Tm1629_Test_Time[3]++;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Tm1629_Test_Time[3] == 1)
+            Tm1629_Test_Time[3]=31;
+        else
+            Tm1629_Test_Time[3]--;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+}
+
+/**
+  * @brief  This function is Show TM1629 of F0 menu show Month.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F0_Month(void)
+{
+    Tm1629_Blink_Time_Month();
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Tm1629_Test_Time[2] == 12)
+            Tm1629_Test_Time[2]=1;
+        else
+            Tm1629_Test_Time[2]++;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Tm1629_Test_Time[2] == 1)
+            Tm1629_Test_Time[2]=12;
+        else
+            Tm1629_Test_Time[2]--;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+}
+
+/**
+  * @brief  This function is Show TM1629 of F0 menu show Year.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F0_Year(void)
+{
+    Tm1629_Blink_Time_Year();
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Tm1629_Test_Time[1] == 99)
+            Tm1629_Test_Time[1]=0;
+        else
+            Tm1629_Test_Time[1]++;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Tm1629_Test_Time[1] == 0)
+            Tm1629_Test_Time[1]=99;
+        else
+            Tm1629_Test_Time[1]--;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+}
+
+/**
+  * @brief  This function is Show TM1629 of F0 menu show Week.
+  * @param  None
+  * @retval None
+  */
+
+void Menu_F0_Week(void)
+{
+    Tm1629_Blink_Time_Week();
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Tm1629_Test_Time[7] == 7)
+            Tm1629_Test_Time[7]=0;
+        else
+            Tm1629_Test_Time[7]++;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Tm1629_Test_Time[7] == 1)
+            Tm1629_Test_Time[7]=7;
+        else
+            Tm1629_Test_Time[7]--;
+        Tm1629_Show_Time(Tm1629_Test_Time);
+    }
 }
 
 

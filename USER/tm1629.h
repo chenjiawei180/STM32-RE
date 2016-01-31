@@ -51,6 +51,8 @@
 #define  TM1629_STB2 PBout(6) 
 #define  TM1629_STB3 PBout(7) 
 
+
+extern u8 Tm1629_Test_Time[8];
 extern u8 Tm1629_Display_Ram[6][8]; 
 extern void Delayus(u16 time);
 extern void Tm1629_GPIO_Config(void);
@@ -67,6 +69,13 @@ extern void Tm1629_Display(void);
 extern void Tm1629_Clear(void);
 extern void Tm1629_Show_Fx(u8 Data);
 extern void Tm1629_Show_Ex(u8 Data);
+extern void Tm1629_Show_Time(unsigned char* Time);
+extern void Tm1629_Blink_Time_Minute(void);
+extern void Tm1629_Blink_Time_Hour(void);
+extern void Tm1629_Blink_Time_Day(void);
+extern void Tm1629_Blink_Time_Month(void);
+extern void Tm1629_Blink_Time_Year(void);
+extern void Tm1629_Blink_Time_Week(void);
 
 #endif /* __TM1629_H */
 

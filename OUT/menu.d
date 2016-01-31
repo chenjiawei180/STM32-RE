@@ -34,3 +34,4 @@
 ..\out\menu.o: ..\USER\bitband.h
 ..\out\menu.o: ..\USER\usart2.h
 ..\out\menu.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\menu.o: ..\USER\key.h
