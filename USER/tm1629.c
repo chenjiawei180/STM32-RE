@@ -550,6 +550,19 @@ void Tm1629_Show_Two_Number(u8 Number)
 }
 
 /**
+  * @brief  This function is show one bit number for digital tube on the right. 
+  * @param  Number
+  * @retval None
+  */
+  
+void Tm1629_Show_One_Number(u8 Number)
+{
+    Tm1629_Clear();
+    Tm1629_Display_Ram[0][0]=Dis_TAB[Number%10];
+    Tm1629_Display();
+}
+
+/**
   * @brief  This function is blink the first digital tube. 
   * @param  Number
   * @retval None

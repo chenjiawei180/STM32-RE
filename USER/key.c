@@ -84,12 +84,29 @@ void Key_Process(void)
         switch(gKeyValue)
         {
             case KEY_VALUE_MAIN:
-                while((!KEY_MAIN)&&(index==STANDBY_MENU))
+                while(
+                        (!KEY_MAIN)&&( ( index==STANDBY_MENU )  
+                                        //      ||( index==ONE_MENU_FA)     
+                                              || (index==ONE_MENU_FB)     
+                                              || (index==ONE_MENU_FC)     
+                                        //      || (index==ONE_MENU_FD)     
+                                              || (index==ONE_MENU_FE)     )
+                       )
                 {
                     if( LongPressSec>2)      // ³¤°´
                     {
-                        index=ONE_MENU_F1;
-                        Function = MenuProc[ONE_MENU_F1].handle;
+                        switch(index)
+                        {
+                            case STANDBY_MENU :index=ONE_MENU_F1; break;
+                         //   case ONE_MENU_FA   :index=ONE_MENU_F1; break;
+                            case ONE_MENU_FB   :index=TWO_MENU_FB_SET; break;
+                            case ONE_MENU_FC   :index=TWO_MENU_FC_SET; break;
+                         //   case ONE_MENU_FD   :index=ONE_MENU_F1; break;
+                            case ONE_MENU_FE   :index=TWO_MENU_FE_E1; break;
+                            default: break;
+                        }
+                        
+                        Function = MenuProc[index].handle;
                         (*Function)();
                         while(!KEY_MAIN) ;
                         return;

@@ -14,6 +14,9 @@
 u8 Remove_Call_Time = 0 ;
 u8 Cycle_Call_Time = 0;
 
+u8 Change_Standby_Display_Mode = 0;    /* FC */
+u8 Set_Key_Remove_Call_Is_Or_Not = 0;    /* FB */
+
 /**
   * @brief  This is Menu index.
   * @param  None
@@ -29,10 +32,10 @@ const struct Menu_def MenuProc[]=
     {ONE_MENU_F3,  TWO_MENU_F3_E1, ONE_MENU_F2, ONE_MENU_F4,STANDBY_MENU,Menu_F3},  
     {ONE_MENU_F4,  TWO_MENU_F4_SET, ONE_MENU_F3, ONE_MENU_F5,STANDBY_MENU,Menu_F4}, 
     {ONE_MENU_F5,  TWO_MENU_F5_SET, ONE_MENU_F4, ONE_MENU_F6,STANDBY_MENU,Menu_F5},  
-    {ONE_MENU_F6,  ONE_MENU_F6, ONE_MENU_F5, ONE_MENU_F7,STANDBY_MENU,Menu_F6},  
-    {ONE_MENU_F7,  ONE_MENU_F7, ONE_MENU_F6, ONE_MENU_F8,STANDBY_MENU,Menu_F7},  
-    {ONE_MENU_F8,  ONE_MENU_F8, ONE_MENU_F7, ONE_MENU_F9,STANDBY_MENU,Menu_F8},  
-    {ONE_MENU_F9,  ONE_MENU_F9, ONE_MENU_F8, ONE_MENU_FA,STANDBY_MENU,Menu_F9},  
+    {ONE_MENU_F6,  TWO_MENU_F6_E1, ONE_MENU_F5, ONE_MENU_F7,STANDBY_MENU,Menu_F6},  
+    {ONE_MENU_F7,  TWO_MENU_F7_E1, ONE_MENU_F6, ONE_MENU_F8,STANDBY_MENU,Menu_F7},  
+    {ONE_MENU_F8,  TWO_MENU_F8_E1, ONE_MENU_F7, ONE_MENU_F9,STANDBY_MENU,Menu_F8},  
+    {ONE_MENU_F9,  TWO_MENU_F9_E1, ONE_MENU_F8, ONE_MENU_FA,STANDBY_MENU,Menu_F9},  
     {ONE_MENU_FA,  ONE_MENU_FA, ONE_MENU_F9, ONE_MENU_FB,STANDBY_MENU,Menu_FA},  
     {ONE_MENU_FB,  ONE_MENU_FB, ONE_MENU_FA,ONE_MENU_FC,STANDBY_MENU,Menu_FB},  
     {ONE_MENU_FC,  ONE_MENU_FC, ONE_MENU_FB, ONE_MENU_FD,STANDBY_MENU,Menu_FC},  
@@ -62,32 +65,32 @@ const struct Menu_def MenuProc[]=
     {TWO_MENU_F4_SET,  TWO_MENU_F4_SET, TWO_MENU_F4_SET, TWO_MENU_F4_SET,ONE_MENU_F4,Menu_F4_Set},
     {TWO_MENU_F5_SET,  TWO_MENU_F5_SET, TWO_MENU_F5_SET, TWO_MENU_F5_SET,ONE_MENU_F5,Menu_F5_Set},
 
-    {TWO_MENU_F6_E1,  TWO_MENU_F6_E1, TWO_MENU_F6_E1, TWO_MENU_F6_E1,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E2,  TWO_MENU_F6_E2, TWO_MENU_F6_E2, TWO_MENU_F6_E2,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E3,  TWO_MENU_F6_E3, TWO_MENU_F6_E3, TWO_MENU_F6_E3,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E4,  TWO_MENU_F6_E4, TWO_MENU_F6_E4, TWO_MENU_F6_E4,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E5,  TWO_MENU_F6_E5, TWO_MENU_F6_E5, TWO_MENU_F6_E5,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E6,  TWO_MENU_F6_E6, TWO_MENU_F6_E6, TWO_MENU_F6_E6,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E7,  TWO_MENU_F6_E7, TWO_MENU_F6_E7, TWO_MENU_F6_E7,ONE_MENU_F6,Menu_F0},
-    {TWO_MENU_F6_E8,  TWO_MENU_F6_E8, TWO_MENU_F6_E8, TWO_MENU_F6_E8,ONE_MENU_F6,Menu_F0},
+    {TWO_MENU_F6_E1,  TWO_MENU_F6_E1, TWO_MENU_F6_E8, TWO_MENU_F6_E2,ONE_MENU_F6,Menu_F6_E1},
+    {TWO_MENU_F6_E2,  TWO_MENU_F6_E2, TWO_MENU_F6_E1, TWO_MENU_F6_E3,ONE_MENU_F6,Menu_F6_E2},
+    {TWO_MENU_F6_E3,  TWO_MENU_F6_E3, TWO_MENU_F6_E2, TWO_MENU_F6_E4,ONE_MENU_F6,Menu_F6_E3},
+    {TWO_MENU_F6_E4,  TWO_MENU_F6_E4, TWO_MENU_F6_E3, TWO_MENU_F6_E5,ONE_MENU_F6,Menu_F6_E4},
+    {TWO_MENU_F6_E5,  TWO_MENU_F6_E5, TWO_MENU_F6_E4, TWO_MENU_F6_E6,ONE_MENU_F6,Menu_F6_E5},
+    {TWO_MENU_F6_E6,  TWO_MENU_F6_E6, TWO_MENU_F6_E5, TWO_MENU_F6_E7,ONE_MENU_F6,Menu_F6_E6},
+    {TWO_MENU_F6_E7,  TWO_MENU_F6_E7, TWO_MENU_F6_E6, TWO_MENU_F6_E8,ONE_MENU_F6,Menu_F6_E7},
+    {TWO_MENU_F6_E8,  TWO_MENU_F6_E8, TWO_MENU_F6_E7, TWO_MENU_F6_E1,ONE_MENU_F6,Menu_F6_E8},
 
-    {TWO_MENU_F7_E1,  TWO_MENU_F7_E1, TWO_MENU_F7_E1, TWO_MENU_F7_E1,ONE_MENU_F7,Menu_F0},
-    {TWO_MENU_F7_E2,  TWO_MENU_F7_E2, TWO_MENU_F7_E2, TWO_MENU_F7_E2,ONE_MENU_F7,Menu_F0},
-    {TWO_MENU_F7_E3,  TWO_MENU_F7_E3, TWO_MENU_F7_E3, TWO_MENU_F7_E3,ONE_MENU_F7,Menu_F0},
-    {TWO_MENU_F7_E4,  TWO_MENU_F7_E4, TWO_MENU_F7_E4, TWO_MENU_F7_E4,ONE_MENU_F7,Menu_F0},
+    {TWO_MENU_F7_E1,  TWO_MENU_F7_E1, TWO_MENU_F7_E4, TWO_MENU_F7_E2,ONE_MENU_F7,Menu_F7_E1},
+    {TWO_MENU_F7_E2,  TWO_MENU_F7_E2, TWO_MENU_F7_E1, TWO_MENU_F7_E3,ONE_MENU_F7,Menu_F7_E2},
+    {TWO_MENU_F7_E3,  TWO_MENU_F7_E3, TWO_MENU_F7_E2, TWO_MENU_F7_E4,ONE_MENU_F7,Menu_F7_E3},
+    {TWO_MENU_F7_E4,  TWO_MENU_F7_E4, TWO_MENU_F7_E3, TWO_MENU_F7_E1,ONE_MENU_F7,Menu_F7_E4},
 
-    {TWO_MENU_F8_E1,  TWO_MENU_F8_E1, TWO_MENU_F8_E1, TWO_MENU_F8_E1,ONE_MENU_F8,Menu_F0},
-    {TWO_MENU_F8_E2,  TWO_MENU_F8_E2, TWO_MENU_F8_E2, TWO_MENU_F8_E2,ONE_MENU_F8,Menu_F0},
+    {TWO_MENU_F8_E1,  TWO_MENU_F8_E1, TWO_MENU_F8_E2, TWO_MENU_F8_E2,ONE_MENU_F8,Menu_F8_E1},
+    {TWO_MENU_F8_E2,  TWO_MENU_F8_E2, TWO_MENU_F8_E1, TWO_MENU_F8_E1,ONE_MENU_F8,Menu_F8_E2},
 
-    {TWO_MENU_F9_E1,  TWO_MENU_F9_E1, TWO_MENU_F9_E1, TWO_MENU_F9_E1,ONE_MENU_F9,Menu_F0},
-    {TWO_MENU_F9_E2,  TWO_MENU_F9_E2, TWO_MENU_F9_E2, TWO_MENU_F9_E2,ONE_MENU_F9,Menu_F0},    
+    {TWO_MENU_F9_E1,  TWO_MENU_F9_E1, TWO_MENU_F9_E2, TWO_MENU_F9_E2,ONE_MENU_F9,Menu_F9_E1},
+    {TWO_MENU_F9_E2,  TWO_MENU_F9_E2, TWO_MENU_F9_E1, TWO_MENU_F9_E1,ONE_MENU_F9,Menu_F9_E2},    
 
-    {TWO_MENU_FA_SET,  TWO_MENU_FA_SET, TWO_MENU_FA_SET, TWO_MENU_FA_SET,ONE_MENU_FA,Menu_F0},
-    {TWO_MENU_FB_SET,  TWO_MENU_FB_SET, TWO_MENU_FB_SET, TWO_MENU_FB_SET,ONE_MENU_FB,Menu_F0},
-    {TWO_MENU_FC_SET,  TWO_MENU_FC_SET, TWO_MENU_FC_SET, TWO_MENU_FC_SET,ONE_MENU_FC,Menu_F0},
-    {TWO_MENU_FD_SET,  TWO_MENU_FD_SET, TWO_MENU_FD_SET, TWO_MENU_FD_SET,ONE_MENU_FD,Menu_F0},
-    {TWO_MENU_FE_E1,  TWO_MENU_FE_E1, TWO_MENU_FE_E1, TWO_MENU_FE_E1,ONE_MENU_FE,Menu_F0},
-    {TWO_MENU_FE_E2,  TWO_MENU_FE_E2, TWO_MENU_FE_E2, TWO_MENU_FE_E2,ONE_MENU_FE,Menu_F0},    
+    {TWO_MENU_FA_SET,  TWO_MENU_FA_SET, TWO_MENU_FA_SET, TWO_MENU_FA_SET,ONE_MENU_FA,Menu_FA_Set},
+    {TWO_MENU_FB_SET,  TWO_MENU_FB_SET, TWO_MENU_FB_SET, TWO_MENU_FB_SET,ONE_MENU_FB,Menu_FB_Set},
+    {TWO_MENU_FC_SET,  TWO_MENU_FC_SET, TWO_MENU_FC_SET, TWO_MENU_FC_SET,ONE_MENU_FC,Menu_FC_Set},
+    {TWO_MENU_FD_SET,  TWO_MENU_FD_SET, TWO_MENU_FD_SET, TWO_MENU_FD_SET,ONE_MENU_FD,Menu_FD_Set},
+    {TWO_MENU_FE_E1,  TWO_MENU_FE_E1, TWO_MENU_FE_E2, TWO_MENU_FE_E2,ONE_MENU_FE,Menu_FE_E1},
+    {TWO_MENU_FE_E2,  TWO_MENU_FE_E2, TWO_MENU_FE_E1, TWO_MENU_FE_E1,ONE_MENU_FE,Menu_FE_E2},    
 
     {THREE_MENU_F1_E1_D1,  THREE_MENU_F1_E1_D1, THREE_MENU_F1_E1_D1, THREE_MENU_F1_E1_D1,TWO_MENU_F1_E1,Menu_F0},  
     {THREE_MENU_F1_E1_D2,  THREE_MENU_F1_E1_D2, THREE_MENU_F1_E1_D2, THREE_MENU_F1_E1_D2,TWO_MENU_F1_E1,Menu_F0},
@@ -658,7 +661,276 @@ void Menu_F5_Set(void)
     Tm1629_Show_Two_Number(Cycle_Call_Time); 
 }
 
+/**
+  * @brief  This function is Show sub menu of F6. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
 
+/**
+  * @brief  This function is Show sub menu of F6. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show sub menu of F6. E3
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E3(void)
+{
+    Tm1629_Show_Ex(0x03);
+}
+
+/**
+  * @brief  This function is Show sub menu of F6. E4
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E4(void)
+{
+    Tm1629_Show_Ex(0x04);
+}
+
+
+/**
+  * @brief  This function is Show sub menu of F6. E5
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E5(void)
+{
+    Tm1629_Show_Ex(0x05);
+}
+
+/**
+  * @brief  This function is Show sub menu of F6. E6
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E6(void)
+{
+    Tm1629_Show_Ex(0x06);
+}
+
+/**
+  * @brief  This function is Show sub menu of F6. E7
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E7(void)
+{
+    Tm1629_Show_Ex(0x07);
+}
+
+/**
+  * @brief  This function is Show sub menu of F6. E8
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E8(void)
+{
+    Tm1629_Show_Ex(0x08);
+}
+
+/**
+  * @brief  This function is Show sub menu of F7. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of F7. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show sub menu of F7. E3
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E3(void)
+{
+    Tm1629_Show_Ex(0x03);
+}
+
+/**
+  * @brief  This function is Show sub menu of F7. E4
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E4(void)
+{
+    Tm1629_Show_Ex(0x04);
+}
+
+/**
+  * @brief  This function is Show sub menu of F8. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F8_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of F8. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F8_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show sub menu of F9. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F9_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of F9. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F9_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
+
+/**
+  * @brief  This function is Show menu of FA.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_FA_Set(void)
+{
+    ;
+}
+
+/**
+  * @brief  This function is Show menu of FB.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_FB_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Key_Remove_Call_Is_Or_Not == 1)
+            Set_Key_Remove_Call_Is_Or_Not = 0;
+        else
+            Set_Key_Remove_Call_Is_Or_Not = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Key_Remove_Call_Is_Or_Not == 1)
+            Set_Key_Remove_Call_Is_Or_Not = 0;
+        else
+            Set_Key_Remove_Call_Is_Or_Not = 1;
+    }
+    Tm1629_Show_One_Number(Set_Key_Remove_Call_Is_Or_Not); 
+}
+
+/**
+  * @brief  This function is Show menu of FC.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_FC_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Change_Standby_Display_Mode== 1)
+            Change_Standby_Display_Mode = 0;
+        else
+            Change_Standby_Display_Mode = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Change_Standby_Display_Mode == 1)
+            Change_Standby_Display_Mode = 0;
+        else
+            Change_Standby_Display_Mode = 1;
+    }
+    Tm1629_Show_One_Number(Change_Standby_Display_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of FD.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_FD_Set(void)
+{
+    ;
+}
+
+/**
+  * @brief  This function is Show sub menu of FE. E1
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_FE_E1(void)
+{
+    Tm1629_Show_Ex(0x01);
+}
+
+/**
+  * @brief  This function is Show sub menu of FE. E2
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_FE_E2(void)
+{
+    Tm1629_Show_Ex(0x02);
+}
 
 #endif /* MENU_GLOBAL */
 
