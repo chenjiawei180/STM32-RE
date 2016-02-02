@@ -5,6 +5,8 @@
   * @brief     This file contains the source of the eeprom.such as 24c32.
   ******************************************************************************/
 #include "eeprom_24c.h"
+#include "string.h"
+#include "menu.h"
 
 #if defined EEPROM_GLOBAL
 
@@ -248,6 +250,394 @@ u8 EEP_Write_Buffer(u16 ADD,u8 *DatStr,u16 Length)
   
     EEP_WP_ON();//将EEPROM置为写保护状态
     return I2C_OK;
+}
+
+/**
+  * @brief  This function is register call .
+  * @param  RF_def *pRF.
+  * @retval success or error
+  */
+
+u8 Register_Call_Function(RF_def *pRF)
+{
+    u16 addr;
+    u16 i;
+    RF_def RFtmp;
+    u16 tmp = 0;
+    addr = CALL_DATA_START;
+
+    for (i = 0; i < CALL_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr,(u8 *)&RFtmp, sizeof(RF_def));
+
+        if (!(RFtmp.rf & 0xff000000))
+        {
+/*
+            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            {
+                RFtmp.rf &= 0x00fffff0;
+                pRF->rf &= 0x00fffff0;
+            }
+*/
+            if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
+            {
+                memcpy(Register_Call_Buff, RFtmp.region, 4);
+                Register_Call_Buff[4] = 0;
+                //GD5800_select_chapter_new(SHIBAI);
+                return 1;
+            }
+        }
+        else
+        {
+            if (!tmp) tmp = addr;
+        }
+        addr += sizeof(RF_def);
+    }
+
+    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    if (tmp != 0)
+    {
+        //GD5800_select_chapter_new(CHENGGONG);
+    }
+    else
+    {
+        //GD5800_select_chapter_new(SHIBAI);
+        return 1;
+    }
+    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    return 0;
+}
+
+/**
+  * @brief  This function is register Host .
+  * @param  RF_def *pRF.
+  * @retval success or error
+  */
+
+u8 Register_Host_Function(RF_def *pRF)
+{
+    u16 addr;
+    u16 i;
+    RF_def RFtmp;
+    u16 tmp = 0;
+    addr = HOST_DATA_START;
+
+    for (i = 0; i < HOST_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr,(u8 *)&RFtmp, sizeof(RF_def));
+
+        if (!(RFtmp.rf & 0xff000000))
+        {
+/*
+            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            {
+                RFtmp.rf &= 0x00fffff0;
+                pRF->rf &= 0x00fffff0;
+            }
+*/
+            if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
+            {
+                memcpy(Register_Host_Buff, RFtmp.region, 4);
+                Register_Host_Buff[4] = 0;
+                //GD5800_select_chapter_new(SHIBAI);
+                return 1;
+            }
+        }
+        else
+        {
+            if (!tmp) tmp = addr;
+        }
+        addr += sizeof(RF_def);
+    }
+
+    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    if (tmp != 0)
+    {
+        //GD5800_select_chapter_new(CHENGGONG);
+    }
+    else
+    {
+        //GD5800_select_chapter_new(SHIBAI);
+        return 1;
+    }
+    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    return 0;
+}
+
+/**
+  * @brief  This function is register Alarm .
+  * @param  RF_def *pRF.
+  * @retval success or error
+  */
+
+u8 Register_Alarm_Function(RF_def *pRF)
+{
+    u16 addr;
+    u16 i;
+    RF_def RFtmp;
+    u16 tmp = 0;
+    addr = ALARM_DATA_START;
+
+    for (i = 0; i < ALARM_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr,(u8 *)&RFtmp, sizeof(RF_def));
+
+        if (!(RFtmp.rf & 0xff000000))
+        {
+/*
+            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            {
+                RFtmp.rf &= 0x00fffff0;
+                pRF->rf &= 0x00fffff0;
+            }
+*/
+            if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
+            {
+                memcpy(Register_Alarm_Buff, RFtmp.region, 4);
+                Register_Alarm_Buff[4] = 0;
+                //GD5800_select_chapter_new(SHIBAI);
+                return 1;
+            }
+        }
+        else
+        {
+            if (!tmp) tmp = addr;
+        }
+        addr += sizeof(RF_def);
+    }
+
+    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    if (tmp != 0)
+    {
+        //GD5800_select_chapter_new(CHENGGONG);
+    }
+    else
+    {
+        //GD5800_select_chapter_new(SHIBAI);
+        return 1;
+    }
+    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    return 0;
+}
+
+/**
+  * @brief  This function is register Cancel .
+  * @param  RF_def *pRF.
+  * @retval success or error
+  */
+
+u8 Register_Cancel_Function(RF_def *pRF)
+{
+    u16 addr;
+    u16 i;
+    RF_def RFtmp;
+    u16 tmp = 0;
+    addr = CANCEL_DATA_START;
+
+    for (i = 0; i < CANCEL_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr,(u8 *)&RFtmp, sizeof(RF_def));
+
+        if (!(RFtmp.rf & 0xff000000))
+        {
+/*
+            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            {
+                RFtmp.rf &= 0x00fffff0;
+                pRF->rf &= 0x00fffff0;
+            }
+*/
+            if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
+            {
+                memcpy(Register_Cancel_Buff, RFtmp.region, 4);
+                Register_Cancel_Buff[4] = 0;
+                //GD5800_select_chapter_new(SHIBAI);
+                return 1;
+            }
+        }
+        else
+        {
+            if (!tmp) tmp = addr;
+        }
+        addr += sizeof(RF_def);
+    }
+
+    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    if (tmp != 0)
+    {
+        //GD5800_select_chapter_new(CHENGGONG);
+    }
+    else
+    {
+        //GD5800_select_chapter_new(SHIBAI);
+        return 1;
+    }
+    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    return 0;
+}
+
+/**
+  * @brief  This function is delete Call .
+  * @param  unsigned char *buf
+  * @retval success or error
+  */
+
+u8 Delete_Call_Function(unsigned char *buf)//buf为组码数组的指针
+{
+    RF_def RFtmp;
+    u16 addr = CALL_DATA_START;
+    u16 i;
+    unsigned char dofly[32] = {0};
+    memset(dofly,0xff,32);
+    if (*(volatile u32*)buf == 0x00000000ul)
+    {
+        for (i = 0; i<128; i++)
+        {
+            EEP_Write_Buffer( addr + (i << 5), dofly, 32);
+            I2C_Delay_us(100);
+        }
+    }
+    else
+    {
+        for (i = 0; i < CALL_NUMBER; i++)
+        {
+            EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+            if (!(RFtmp.rf & 0xff000000ul))
+            {
+                if (*(volatile u32*)buf == *(volatile u32*)(RFtmp.region))
+                {
+                    memset(&RFtmp, 0xff, sizeof(RF_def));
+                    EEP_Write_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+                    break;
+                }
+            }
+            addr += sizeof(RF_def);
+        }
+    }
+    return 0;
+}
+
+/**
+  * @brief  This function is delete Host .
+  * @param  unsigned char *buf
+  * @retval success or error
+  */
+
+u8 Delete_Host_Function(unsigned char *buf)//buf为组码数组的指针
+{
+    RF_def RFtmp;
+    u16 addr = HOST_DATA_START;
+    u16 i;
+    unsigned char dofly[32] = {0};
+    memset(dofly,0xff,32);
+    if (*(volatile u32*)buf == 0x00000000ul)
+    {
+        for (i = 0; i<8; i++)
+        {
+            EEP_Write_Buffer( addr + (i << 5), dofly, 32);
+            I2C_Delay_us(100);
+        }
+    }
+    else
+    {
+        for (i = 0; i < HOST_NUMBER; i++)
+        {
+            EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+            if (!(RFtmp.rf & 0xff000000ul))
+            {
+                if (*(volatile u32*)buf == *(volatile u32*)(RFtmp.region))
+                {
+                    memset(&RFtmp, 0xff, sizeof(RF_def));
+                    EEP_Write_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+                    break;
+                }
+            }
+            addr += sizeof(RF_def);
+        }
+    }
+    return 0;
+}
+
+/**
+  * @brief  This function is delete Alarm .
+  * @param  unsigned char *buf
+  * @retval success or error
+  */
+
+u8 Delete_Alarm_Function(unsigned char *buf)//buf为组码数组的指针
+{
+    RF_def RFtmp;
+    u16 addr = ALARM_DATA_START;
+    u16 i;
+    unsigned char dofly[32] = {0};
+    memset(dofly,0xff,32);
+    if (*(volatile u32*)buf == 0x00000000ul)
+    {
+        for (i = 0; i<16; i++)
+        {
+            EEP_Write_Buffer( addr + (i << 5), dofly, 32);
+            I2C_Delay_us(100);
+        }
+    }
+    else
+    {
+        for (i = 0; i < ALARM_NUMBER; i++)
+        {
+            EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+            if (!(RFtmp.rf & 0xff000000ul))
+            {
+                if (*(volatile u32*)buf == *(volatile u32*)(RFtmp.region))
+                {
+                    memset(&RFtmp, 0xff, sizeof(RF_def));
+                    EEP_Write_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+                    break;
+                }
+            }
+            addr += sizeof(RF_def);
+        }
+    }
+    return 0;
+}
+
+/**
+  * @brief  This function is delete Cancel
+  * @param  unsigned char *buf.
+  * @retval success or error
+  */
+
+u8 Delete_Cancel_Function(unsigned char *buf)//buf为组码数组的指针
+{
+    RF_def RFtmp;
+    u16 addr = CANCEL_DATA_START;
+    u16 i;
+    unsigned char dofly[32] = {0};
+    memset(dofly,0xff,32);
+    if (*(volatile u32*)buf == 0x00000000ul)
+    {
+        for (i = 0; i<16; i++)
+        {
+            EEP_Write_Buffer( addr + (i << 5), dofly, 32);
+            I2C_Delay_us(100);
+        }
+    }
+    else
+    {
+        for (i = 0; i < CANCEL_NUMBER; i++)
+        {
+            EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+            if (!(RFtmp.rf & 0xff000000ul))
+            {
+                if (*(volatile u32*)buf == *(volatile u32*)(RFtmp.region))
+                {
+                    memset(&RFtmp, 0xff, sizeof(RF_def));
+                    EEP_Write_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+                    break;
+                }
+            }
+            addr += sizeof(RF_def);
+        }
+    }
+    return 0;
 }
 
 #endif /* EEPROM_GLOBAL */

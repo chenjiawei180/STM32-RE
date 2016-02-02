@@ -1,3 +1,11 @@
----- EEPROM Matches (2 in 1 files) ----
-Global.h (d:\github\stm32-re\user): * @ EEPROM 24C32
-Global.h (d:\github\stm32-re\user):#define EEPROM_GLOBAL
+---- uint8_t Matches (10 in 2 files) ----
+Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
+Stm32f10x_conf.h (d:\github\stm32-re\user):  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
+Stm32f10x_conf.h (d:\github\stm32-re\user):  void assert_failed(uint8_t* file, uint32_t line);

@@ -17,6 +17,15 @@ u8 Cycle_Call_Time = 0;
 u8 Change_Standby_Display_Mode = 0;    /* FC */
 u8 Set_Key_Remove_Call_Is_Or_Not = 0;    /* FB */
 
+u8 Register_Call_Buff[5]={0,0,0,1,0};
+u8 Delete_Call_Buff[5]={0,0,0,1,0};
+u8 Register_Host_Buff[5]={0,0,0,1,0};
+u8 Delete_Host_Buff[5]={0,0,0,1,0};
+u8 Register_Alarm_Buff[5]={0,0,0,1,0};
+u8 Delete_Alarm_Buff[5]={0,0,0,1,0};
+u8 Register_Cancel_Buff[5]={0,0,0,1,0};
+u8 Delete_Cancel_Buff[5]={0,0,0,1,0};
+
 /**
   * @brief  This is Menu index.
   * @param  None

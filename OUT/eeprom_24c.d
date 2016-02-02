@@ -31,3 +31,5 @@
 ..\out\eeprom_24c.o: ..\FWlib\inc\misc.h
 ..\out\eeprom_24c.o: ..\USER\global.h
 ..\out\eeprom_24c.o: ..\USER\bitband.h
+..\out\eeprom_24c.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\out\eeprom_24c.o: ..\USER\menu.h

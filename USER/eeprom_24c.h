@@ -24,6 +24,20 @@
 #define EEPADD    0xA0    //EEPROM器件地址
 #define EEP_PAGE_SIZE    32    //EEPROM写页大小
 
+#define  CALL_NUMBER   512
+#define  ALARM_NUMBER  64
+#define  CANCEL_NUMBER 64
+#define  HOST_NUMBER   32
+#define  CALL_DATA_START   0X0020
+#define  ALARM_DATA_START  0X1020
+#define  CANCEL_DATA_START 0X1220
+#define  HOST_DATA_START   0X1420
+
+typedef struct {
+    u8 region[4];      //区号0~9~A~Z; //存放的ASCII码
+    u32 rf;            //RF地址码，高8位为0表示此块已经被使用。其它为未使用 
+}RF_def;
+
 extern void I2C_IO_Init(void);
 static void I2C_Delay_us(u16 time);
 static void I2C_Start(void);
@@ -32,6 +46,17 @@ static u8 I2C_Receive_Byte(void);
 static void I2C_Stop(void);
 extern u8 EEP_Read_Buffer(u16 ADD,u8 *buff,u16 Length);
 extern u8 EEP_Write_Buffer(u16 ADD,u8 *DatStr,u16 Length);
+
+extern u8 Register_Call_Function(RF_def *pRF);
+extern u8 Delete_Call_Function(unsigned char *buf);
+extern u8 Register_Host_Function(RF_def *pRF);
+extern u8 Delete_Host_Function(unsigned char *buf);
+extern u8 Register_Alarm_Function(RF_def *pRF);
+extern u8 Delete_Alarm_Function(unsigned char *buf);
+extern u8 Register_Cancel_Function(RF_def *pRF);
+extern u8 Delete_Cancel_Function(unsigned char *buf);
+extern void Delete_All_Data(void);
+
 
 #endif /* __EEPROM_24C_H */
 

@@ -157,6 +157,14 @@ struct Menu_def
 };
 
 extern const struct Menu_def MenuProc[];
+extern u8 Register_Call_Buff[5];
+extern u8 Delete_Call_Buff[5];
+extern u8 Register_Host_Buff[5];
+extern u8 Delete_Host_Buff[5];
+extern u8 Register_Alarm_Buff[5];
+extern u8 Delete_Alarm_Buff[5];
+extern u8 Register_Cancel_Buff[5];
+extern u8 Delete_Cancel_Buff[5];
 
 static void Menu_Standby(void);
 static void Menu_F0(void);
