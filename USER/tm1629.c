@@ -521,17 +521,17 @@ void Tm1629_Blink_Time_Week(void)
 
 /**
   * @brief  This function is show four bit number for digital tube on the right. 
-  * @param  Number
+  * @param  u8* Str
   * @retval None
   */
   
-void Tm1629_Show_Four_Number(u16 Number)
+void Tm1629_Show_Four_Number(u8* Str)
 {
     Tm1629_Clear();
-    Tm1629_Display_Ram[0][3]=Dis_TAB[Number/1000];
-    Tm1629_Display_Ram[0][2]=Dis_TAB[Number/100%10];
-    Tm1629_Display_Ram[0][1]=Dis_TAB[Number%100/10];
-    Tm1629_Display_Ram[0][0]=Dis_TAB[Number%10];
+    Tm1629_Display_Ram[0][3]=Dis_TAB[*(Str+0)];
+    Tm1629_Display_Ram[0][2]=Dis_TAB[*(Str+1)];
+    Tm1629_Display_Ram[0][1]=Dis_TAB[*(Str+2)];
+    Tm1629_Display_Ram[0][0]=Dis_TAB[*(Str+3)];
     Tm1629_Display();
 }
 
@@ -564,11 +564,11 @@ void Tm1629_Show_One_Number(u8 Number)
 
 /**
   * @brief  This function is blink the first digital tube. 
-  * @param  Number
+  * @param  u8* Str
   * @retval None
   */
   
-void Tm1629_Blink_One_Position(u16 Number)
+void Tm1629_Blink_One_Position(u8* Str)
 {
     static u8 flag=0;
     if(flag & 0x01)
@@ -578,18 +578,18 @@ void Tm1629_Blink_One_Position(u16 Number)
     }
     else
     {
-        Tm1629_Show_Four_Number(Number);
+        Tm1629_Show_Four_Number(Str);
     }
     flag++;
 }
 
 /**
   * @brief  This function is blink the second digital tube. 
-  * @param  Number
+  * @param  u8* Str
   * @retval None
   */
   
-void Tm1629_Blink_Two_Position(u16 Number)
+void Tm1629_Blink_Two_Position(u8* Str)
 {
     static u8 flag=0;
     if(flag & 0x01)
@@ -599,18 +599,39 @@ void Tm1629_Blink_Two_Position(u16 Number)
     }
     else
     {
-        Tm1629_Show_Four_Number(Number);
+        Tm1629_Show_Four_Number(Str);
     }
     flag++;
 }
 
 /**
   * @brief  This function is blink the third digital tube. 
-  * @param  Number
+  * @param  u8* Str
   * @retval None
   */
   
-void Tm1629_Blink_Three_Position(u16 Number)
+void Tm1629_Blink_Three_Position(u8* Str)
+{
+    static u8 flag=0;
+    if(flag & 0x01)
+    {
+        Tm1629_Display_Ram[0][2] =0;
+        Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Show_Four_Number(Str);
+    }
+    flag++;
+}
+
+/**
+  * @brief  This function is blink the fouth digital tube. 
+  * @param  u8* Str
+  * @retval None
+  */
+  
+void Tm1629_Blink_Four_Position(u8* Str)
 {
     static u8 flag=0;
     if(flag & 0x01)
@@ -620,28 +641,7 @@ void Tm1629_Blink_Three_Position(u16 Number)
     }
     else
     {
-        Tm1629_Show_Four_Number(Number);
-    }
-    flag++;
-}
-
-/**
-  * @brief  This function is blink the fouth digital tube. 
-  * @param  Number
-  * @retval None
-  */
-  
-void Tm1629_Blink_Four_Position(u16 Number)
-{
-    static u8 flag=0;
-    if(flag & 0x01)
-    {
-        Tm1629_Display_Ram[0][4] =0;
-        Tm1629_Display();
-    }
-    else
-    {
-        Tm1629_Show_Four_Number(Number);
+        Tm1629_Show_Four_Number(Str);
     }
     flag++;
 }

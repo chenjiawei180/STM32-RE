@@ -166,6 +166,9 @@ extern u8 Delete_Alarm_Buff[5];
 extern u8 Register_Cancel_Buff[5];
 extern u8 Delete_Cancel_Buff[5];
 
+static u16 Str_To_Int(u8 *str);
+static void Int_To_Str(u16 dat,u8 *str);
+
 static void Menu_Standby(void);
 static void Menu_F0(void);
 static void Menu_F1(void);
@@ -222,6 +225,38 @@ static void Menu_FC_Set(void);
 static void Menu_FD_Set(void);
 static void Menu_FE_E1(void);
 static void Menu_FE_E2(void);
+static void Menu_F1_E1_D1(void);
+static void Menu_F1_E1_D2(void);
+static void Menu_F1_E1_D3(void);
+static void Menu_F1_E1_D4(void);
+static void Menu_F1_E2_D1(void);
+static void Menu_F1_E2_D2(void);
+static void Menu_F1_E2_D3(void);
+static void Menu_F1_E2_D4(void);
+static void Menu_F1_E3_D1(void);
+static void Menu_F1_E3_D2(void);
+static void Menu_F1_E3_D3(void);
+static void Menu_F1_E3_D4(void);
+static void Menu_F1_E4_D1(void);
+static void Menu_F1_E4_D2(void);
+static void Menu_F1_E4_D3(void);
+static void Menu_F1_E4_D4(void);
+static void Menu_F2_E1_D1(void);
+static void Menu_F2_E1_D2(void);
+static void Menu_F2_E1_D3(void);
+static void Menu_F2_E1_D4(void);
+static void Menu_F2_E2_D1(void);
+static void Menu_F2_E2_D2(void);
+static void Menu_F2_E2_D3(void);
+static void Menu_F2_E2_D4(void);
+static void Menu_F2_E3_D1(void);
+static void Menu_F2_E3_D2(void);
+static void Menu_F2_E3_D3(void);
+static void Menu_F2_E3_D4(void);
+static void Menu_F2_E4_D1(void);
+static void Menu_F2_E4_D2(void);
+static void Menu_F2_E4_D3(void);
+static void Menu_F2_E4_D4(void);
 
 #endif /* __MENU_H */
 
