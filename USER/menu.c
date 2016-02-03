@@ -63,10 +63,10 @@ const struct Menu_def MenuProc[]=
     {TWO_MENU_F1_E3,  THREE_MENU_F1_E3_D1, TWO_MENU_F1_E2, TWO_MENU_F1_E4,ONE_MENU_F1,Menu_F1_E3},
     {TWO_MENU_F1_E4,  THREE_MENU_F1_E4_D1, TWO_MENU_F1_E3, TWO_MENU_F1_E1,ONE_MENU_F1,Menu_F1_E4},
     
-    {TWO_MENU_F2_E1,  TWO_MENU_F2_E1, TWO_MENU_F2_E4, TWO_MENU_F2_E2,ONE_MENU_F2,Menu_F2_E1},
-    {TWO_MENU_F2_E2,  TWO_MENU_F2_E2, TWO_MENU_F2_E1, TWO_MENU_F2_E3,ONE_MENU_F2,Menu_F2_E2},
-    {TWO_MENU_F2_E3,  TWO_MENU_F2_E3, TWO_MENU_F2_E2, TWO_MENU_F2_E4,ONE_MENU_F2,Menu_F2_E3},
-    {TWO_MENU_F2_E4,  TWO_MENU_F2_E4, TWO_MENU_F2_E3, TWO_MENU_F2_E1,ONE_MENU_F2,Menu_F2_E4},
+    {TWO_MENU_F2_E1,  THREE_MENU_F2_E1_D1, TWO_MENU_F2_E4, TWO_MENU_F2_E2,ONE_MENU_F2,Menu_F2_E1},
+    {TWO_MENU_F2_E2,  THREE_MENU_F2_E2_D1, TWO_MENU_F2_E1, TWO_MENU_F2_E3,ONE_MENU_F2,Menu_F2_E2},
+    {TWO_MENU_F2_E3,  THREE_MENU_F2_E3_D1, TWO_MENU_F2_E2, TWO_MENU_F2_E4,ONE_MENU_F2,Menu_F2_E3},
+    {TWO_MENU_F2_E4,  THREE_MENU_F2_E4_D1, TWO_MENU_F2_E3, TWO_MENU_F2_E1,ONE_MENU_F2,Menu_F2_E4},
 
     {TWO_MENU_F3_E1,  TWO_MENU_F3_E1, TWO_MENU_F3_E2, TWO_MENU_F3_E2,ONE_MENU_F3,Menu_F3_E1},
     {TWO_MENU_F3_E2,  TWO_MENU_F3_E2, TWO_MENU_F3_E1, TWO_MENU_F3_E1,ONE_MENU_F3,Menu_F3_E2},
@@ -121,25 +121,25 @@ const struct Menu_def MenuProc[]=
     {THREE_MENU_F1_E4_D3,  THREE_MENU_F1_E4_D4, THREE_MENU_F1_E4_D3, THREE_MENU_F1_E4_D3,TWO_MENU_F1_E4,Menu_F1_E4_D3},
     {THREE_MENU_F1_E4_D4,  THREE_MENU_F1_E4_D1, THREE_MENU_F1_E4_D4, THREE_MENU_F1_E4_D4,TWO_MENU_F1_E4,Menu_F1_E4_D4},
 
-    {THREE_MENU_F2_E1_D1,  THREE_MENU_F2_E1_D1, THREE_MENU_F2_E1_D1, THREE_MENU_F2_E1_D1,TWO_MENU_F2_E1,Menu_F0},  
-    {THREE_MENU_F2_E1_D2,  THREE_MENU_F2_E1_D2, THREE_MENU_F2_E1_D2, THREE_MENU_F2_E1_D2,TWO_MENU_F2_E1,Menu_F0},
-    {THREE_MENU_F2_E1_D3,  THREE_MENU_F2_E1_D3, THREE_MENU_F2_E1_D3, THREE_MENU_F2_E1_D3,TWO_MENU_F2_E1,Menu_F0},
-    {THREE_MENU_F2_E1_D4,  THREE_MENU_F2_E1_D4, THREE_MENU_F2_E1_D4, THREE_MENU_F2_E1_D4,TWO_MENU_F2_E1,Menu_F0},
+    {THREE_MENU_F2_E1_D1,  THREE_MENU_F2_E1_D2, THREE_MENU_F2_E1_D1, THREE_MENU_F2_E1_D1,TWO_MENU_F2_E1,Menu_F2_E1_D1},  
+    {THREE_MENU_F2_E1_D2,  THREE_MENU_F2_E1_D3, THREE_MENU_F2_E1_D2, THREE_MENU_F2_E1_D2,TWO_MENU_F2_E1,Menu_F2_E1_D2},
+    {THREE_MENU_F2_E1_D3,  THREE_MENU_F2_E1_D4, THREE_MENU_F2_E1_D3, THREE_MENU_F2_E1_D3,TWO_MENU_F2_E1,Menu_F2_E1_D3},
+    {THREE_MENU_F2_E1_D4,  THREE_MENU_F2_E1_D1, THREE_MENU_F2_E1_D4, THREE_MENU_F2_E1_D4,TWO_MENU_F2_E1,Menu_F2_E1_D4},
 
-    {THREE_MENU_F2_E2_D1,  THREE_MENU_F2_E2_D1, THREE_MENU_F2_E2_D1, THREE_MENU_F2_E2_D1,TWO_MENU_F2_E2,Menu_F0},  
-    {THREE_MENU_F2_E2_D2,  THREE_MENU_F2_E2_D2, THREE_MENU_F2_E2_D2, THREE_MENU_F2_E2_D2,TWO_MENU_F2_E2,Menu_F0},
-    {THREE_MENU_F2_E2_D3,  THREE_MENU_F2_E2_D3, THREE_MENU_F2_E2_D3, THREE_MENU_F2_E2_D3,TWO_MENU_F2_E2,Menu_F0},
-    {THREE_MENU_F2_E2_D4,  THREE_MENU_F2_E2_D4, THREE_MENU_F2_E2_D4, THREE_MENU_F2_E2_D4,TWO_MENU_F2_E2,Menu_F0},
+    {THREE_MENU_F2_E2_D1,  THREE_MENU_F2_E2_D2, THREE_MENU_F2_E2_D1, THREE_MENU_F2_E2_D1,TWO_MENU_F2_E2,Menu_F2_E2_D1},  
+    {THREE_MENU_F2_E2_D2,  THREE_MENU_F2_E2_D3, THREE_MENU_F2_E2_D2, THREE_MENU_F2_E2_D2,TWO_MENU_F2_E2,Menu_F2_E2_D2},
+    {THREE_MENU_F2_E2_D3,  THREE_MENU_F2_E2_D4, THREE_MENU_F2_E2_D3, THREE_MENU_F2_E2_D3,TWO_MENU_F2_E2,Menu_F2_E2_D3},
+    {THREE_MENU_F2_E2_D4,  THREE_MENU_F2_E2_D1, THREE_MENU_F2_E2_D4, THREE_MENU_F2_E2_D4,TWO_MENU_F2_E2,Menu_F2_E2_D4},
 
-    {THREE_MENU_F2_E3_D1,  THREE_MENU_F2_E3_D1, THREE_MENU_F2_E3_D1, THREE_MENU_F2_E3_D1,TWO_MENU_F2_E3,Menu_F0},  
-    {THREE_MENU_F2_E3_D2,  THREE_MENU_F2_E3_D2, THREE_MENU_F2_E3_D2, THREE_MENU_F2_E3_D2,TWO_MENU_F2_E3,Menu_F0},
-    {THREE_MENU_F2_E3_D3,  THREE_MENU_F2_E3_D3, THREE_MENU_F2_E3_D3, THREE_MENU_F2_E3_D3,TWO_MENU_F2_E3,Menu_F0},
-    {THREE_MENU_F2_E3_D4,  THREE_MENU_F2_E3_D4, THREE_MENU_F2_E3_D4, THREE_MENU_F2_E3_D4,TWO_MENU_F2_E3,Menu_F0},
+    {THREE_MENU_F2_E3_D1,  THREE_MENU_F2_E3_D2, THREE_MENU_F2_E3_D1, THREE_MENU_F2_E3_D1,TWO_MENU_F2_E3,Menu_F2_E3_D1},  
+    {THREE_MENU_F2_E3_D2,  THREE_MENU_F2_E3_D3, THREE_MENU_F2_E3_D2, THREE_MENU_F2_E3_D2,TWO_MENU_F2_E3,Menu_F2_E3_D2},
+    {THREE_MENU_F2_E3_D3,  THREE_MENU_F2_E3_D4, THREE_MENU_F2_E3_D3, THREE_MENU_F2_E3_D3,TWO_MENU_F2_E3,Menu_F2_E3_D3},
+    {THREE_MENU_F2_E3_D4,  THREE_MENU_F2_E3_D1, THREE_MENU_F2_E3_D4, THREE_MENU_F2_E3_D4,TWO_MENU_F2_E3,Menu_F2_E3_D4},
 
-    {THREE_MENU_F2_E4_D1,  THREE_MENU_F2_E4_D1, THREE_MENU_F2_E4_D1, THREE_MENU_F2_E4_D1,TWO_MENU_F2_E4,Menu_F0},  
-    {THREE_MENU_F2_E4_D2,  THREE_MENU_F2_E4_D2, THREE_MENU_F2_E4_D2, THREE_MENU_F2_E4_D2,TWO_MENU_F2_E4,Menu_F0},
-    {THREE_MENU_F2_E4_D3,  THREE_MENU_F2_E4_D3, THREE_MENU_F2_E4_D3, THREE_MENU_F2_E4_D3,TWO_MENU_F2_E4,Menu_F0},
-    {THREE_MENU_F2_E4_D4,  THREE_MENU_F2_E4_D4, THREE_MENU_F2_E4_D4, THREE_MENU_F2_E4_D4,TWO_MENU_F2_E4,Menu_F0},
+    {THREE_MENU_F2_E4_D1,  THREE_MENU_F2_E4_D2, THREE_MENU_F2_E4_D1, THREE_MENU_F2_E4_D1,TWO_MENU_F2_E4,Menu_F2_E4_D1},  
+    {THREE_MENU_F2_E4_D2,  THREE_MENU_F2_E4_D3, THREE_MENU_F2_E4_D2, THREE_MENU_F2_E4_D2,TWO_MENU_F2_E4,Menu_F2_E4_D2},
+    {THREE_MENU_F2_E4_D3,  THREE_MENU_F2_E4_D4, THREE_MENU_F2_E4_D3, THREE_MENU_F2_E4_D3,TWO_MENU_F2_E4,Menu_F2_E4_D3},
+    {THREE_MENU_F2_E4_D4,  THREE_MENU_F2_E4_D1, THREE_MENU_F2_E4_D4, THREE_MENU_F2_E4_D4,TWO_MENU_F2_E4,Menu_F2_E4_D4},
 
     {THREE_MENU_F3_E1_SET,  THREE_MENU_F3_E1_SET, THREE_MENU_F3_E1_SET, THREE_MENU_F3_E1_SET,TWO_MENU_F3_E1,Menu_F0},    
     {THREE_MENU_F3_E2_SET,  THREE_MENU_F3_E2_SET, THREE_MENU_F3_E2_SET, THREE_MENU_F3_E2_SET,TWO_MENU_F3_E2,Menu_F0},    
@@ -1408,6 +1408,444 @@ void  Menu_F1_E4_D4(void)
         Tm1629_Show_Four_Number(Register_Cancel_Buff);
     }
 }
+
+/**
+  * @brief  This function is Show sub menu of F2. E1. D1
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E1_D1(void)
+{
+    Tm1629_Blink_One_Position(Delete_Call_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Call_Buff[3] == 9)
+            Delete_Call_Buff[3]=0;
+        else
+            Delete_Call_Buff[3]++;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Call_Buff[3] == 0)
+            Delete_Call_Buff[3]=9;
+        else
+            Delete_Call_Buff[3]--;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E1. D2
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E1_D2(void)
+{
+    Tm1629_Blink_Two_Position(Delete_Call_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Call_Buff[2] == 9)
+            Delete_Call_Buff[2]=0;
+        else
+            Delete_Call_Buff[2]++;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Call_Buff[2] == 0)
+            Delete_Call_Buff[2]=9;
+        else
+            Delete_Call_Buff[2]--;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E1. D3
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E1_D3(void)
+{
+    Tm1629_Blink_Three_Position(Delete_Call_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Call_Buff[1] == 9)
+            Delete_Call_Buff[1]=0;
+        else
+            Delete_Call_Buff[1]++;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Call_Buff[1] == 0)
+            Delete_Call_Buff[1]=9;
+        else
+            Delete_Call_Buff[1]--;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E1. D4
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E1_D4(void)
+{
+    Tm1629_Blink_Four_Position(Delete_Call_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Call_Buff[0] == 9)
+            Delete_Call_Buff[0]=0;
+        else
+            Delete_Call_Buff[0]++;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Call_Buff[0] == 0)
+            Delete_Call_Buff[0]=9;
+        else
+            Delete_Call_Buff[0]--;
+        Tm1629_Show_Four_Number(Delete_Call_Buff);
+    }
+}
+
+
+
+/**
+  * @brief  This function is Show sub menu of F2. E2. D1
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E2_D1(void)
+{
+    Tm1629_Blink_One_Position(Delete_Host_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Host_Buff[3] == 9)
+            Delete_Host_Buff[3]=0;
+        else
+            Delete_Host_Buff[3]++;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Host_Buff[3] == 0)
+            Delete_Host_Buff[3]=9;
+        else
+            Delete_Host_Buff[3]--;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E2. D2
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E2_D2(void)
+{
+    Tm1629_Blink_Two_Position(Delete_Host_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Host_Buff[2] == 9)
+            Delete_Host_Buff[2]=0;
+        else
+            Delete_Host_Buff[2]++;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Host_Buff[2] == 0)
+            Delete_Host_Buff[2]=9;
+        else
+            Delete_Host_Buff[2]--;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E2. D3
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E2_D3(void)
+{
+    Tm1629_Blink_Three_Position(Delete_Host_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Host_Buff[1] == 9)
+            Delete_Host_Buff[1]=0;
+        else
+            Delete_Host_Buff[1]++;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Host_Buff[1] == 0)
+            Delete_Host_Buff[1]=9;
+        else
+            Delete_Host_Buff[1]--;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E2. D4
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E2_D4(void)
+{
+    Tm1629_Blink_Four_Position(Delete_Host_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Host_Buff[0] == 9)
+            Delete_Host_Buff[0]=0;
+        else
+            Delete_Host_Buff[0]++;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Host_Buff[0] == 0)
+            Delete_Host_Buff[0]=9;
+        else
+            Delete_Host_Buff[0]--;
+        Tm1629_Show_Four_Number(Delete_Host_Buff);
+    }
+}
+
+
+/**
+  * @brief  This function is Show sub menu of F2. E3. D1
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E3_D1(void)
+{
+    Tm1629_Blink_One_Position(Delete_Alarm_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Alarm_Buff[3] == 9)
+            Delete_Alarm_Buff[3]=0;
+        else
+            Delete_Alarm_Buff[3]++;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Alarm_Buff[3] == 0)
+            Delete_Alarm_Buff[3]=9;
+        else
+            Delete_Alarm_Buff[3]--;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E3. D2
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E3_D2(void)
+{
+    Tm1629_Blink_Two_Position(Delete_Alarm_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Alarm_Buff[2] == 9)
+            Delete_Alarm_Buff[2]=0;
+        else
+            Delete_Alarm_Buff[2]++;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Alarm_Buff[2] == 0)
+            Delete_Alarm_Buff[2]=9;
+        else
+            Delete_Alarm_Buff[2]--;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E3. D3
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E3_D3(void)
+{
+    Tm1629_Blink_Three_Position(Delete_Alarm_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Alarm_Buff[1] == 9)
+            Delete_Alarm_Buff[1]=0;
+        else
+            Delete_Alarm_Buff[1]++;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Alarm_Buff[1] == 0)
+            Delete_Alarm_Buff[1]=9;
+        else
+            Delete_Alarm_Buff[1]--;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E3. D4
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E3_D4(void)
+{
+    Tm1629_Blink_Four_Position(Delete_Alarm_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Alarm_Buff[0] == 9)
+            Delete_Alarm_Buff[0]=0;
+        else
+            Delete_Alarm_Buff[0]++;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Alarm_Buff[0] == 0)
+            Delete_Alarm_Buff[0]=9;
+        else
+            Delete_Alarm_Buff[0]--;
+        Tm1629_Show_Four_Number(Delete_Alarm_Buff);
+    }
+}
+
+
+/**
+  * @brief  This function is Show sub menu of F2. E4. D1
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E4_D1(void)
+{
+    Tm1629_Blink_One_Position(Delete_Cancel_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Cancel_Buff[3] == 9)
+            Delete_Cancel_Buff[3]=0;
+        else
+            Delete_Cancel_Buff[3]++;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Cancel_Buff[3] == 0)
+            Delete_Cancel_Buff[3]=9;
+        else
+            Delete_Cancel_Buff[3]--;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E4. D2
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E4_D2(void)
+{
+    Tm1629_Blink_Two_Position(Delete_Cancel_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Cancel_Buff[2] == 9)
+            Delete_Cancel_Buff[2]=0;
+        else
+            Delete_Cancel_Buff[2]++;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Cancel_Buff[2] == 0)
+            Delete_Cancel_Buff[2]=9;
+        else
+            Delete_Cancel_Buff[2]--;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E4. D3
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E4_D3(void)
+{
+    Tm1629_Blink_Three_Position(Delete_Cancel_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Cancel_Buff[1] == 9)
+            Delete_Cancel_Buff[1]=0;
+        else
+            Delete_Cancel_Buff[1]++;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Cancel_Buff[1] == 0)
+            Delete_Cancel_Buff[1]=9;
+        else
+            Delete_Cancel_Buff[1]--;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+}
+
+/**
+  * @brief  This function is Show sub menu of F2. E4. D4
+  * @param  None
+  * @retval None
+  */
+  
+void  Menu_F2_E4_D4(void)
+{
+    Tm1629_Blink_Four_Position(Delete_Cancel_Buff);
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Delete_Cancel_Buff[0] == 9)
+            Delete_Cancel_Buff[0]=0;
+        else
+            Delete_Cancel_Buff[0]++;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Delete_Cancel_Buff[0] == 0)
+            Delete_Cancel_Buff[0]=9;
+        else
+            Delete_Cancel_Buff[0]--;
+        Tm1629_Show_Four_Number(Delete_Cancel_Buff);
+    }
+}
+
+
 
 #endif /* MENU_GLOBAL */
 
