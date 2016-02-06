@@ -26,6 +26,25 @@ u8 Delete_Alarm_Buff[5]={0,0,0,1,0};
 u8 Register_Cancel_Buff[5]={0,0,0,1,0};
 u8 Delete_Cancel_Buff[5]={0,0,0,1,0};
 
+u8 Set_Call_Line_Mode = 1;
+u8 Set_Call_Display_Number= 1;
+u8 Set_Voice_Play_Mode = 0;
+u8 Set_Voice_Play_Time = 1;
+u8 Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
+u8 Set_Voice_Volume = 6;
+u8 Set_Display_Tube_Brightness = 3;
+u8 Set_Voice_Navigation_Mode = 1;
+u8 Set_Voice_Navigation_On_Or_OFF = 0;
+u8 Set_Display_LED_Mode = 0;
+
+u8 Set_Two_Menu_F7_E1 = 11;
+u8 Set_Two_Menu_F7_E2 = 0;
+u8 Set_Two_Menu_F7_E3 = 0;
+u8 Set_Two_Menu_F7_E4 = 0;
+
+u8 Set_Singal_Or_Multiple_Key_Mode = 2;
+u8 Set_Key_Of_Call_Mode = 0 ;
+
 /**
   * @brief  This is Menu index.
   * @param  None
@@ -68,28 +87,28 @@ const struct Menu_def MenuProc[]=
     {TWO_MENU_F2_E3,  THREE_MENU_F2_E3_D1, TWO_MENU_F2_E2, TWO_MENU_F2_E4,ONE_MENU_F2,Menu_F2_E3},
     {TWO_MENU_F2_E4,  THREE_MENU_F2_E4_D1, TWO_MENU_F2_E3, TWO_MENU_F2_E1,ONE_MENU_F2,Menu_F2_E4},
 
-    {TWO_MENU_F3_E1,  TWO_MENU_F3_E1, TWO_MENU_F3_E2, TWO_MENU_F3_E2,ONE_MENU_F3,Menu_F3_E1},
-    {TWO_MENU_F3_E2,  TWO_MENU_F3_E2, TWO_MENU_F3_E1, TWO_MENU_F3_E1,ONE_MENU_F3,Menu_F3_E2},
+    {TWO_MENU_F3_E1,  THREE_MENU_F3_E1_SET, TWO_MENU_F3_E2, TWO_MENU_F3_E2,ONE_MENU_F3,Menu_F3_E1},
+    {TWO_MENU_F3_E2,  THREE_MENU_F3_E2_SET, TWO_MENU_F3_E1, TWO_MENU_F3_E1,ONE_MENU_F3,Menu_F3_E2},
 
     {TWO_MENU_F4_SET,  TWO_MENU_F4_SET, TWO_MENU_F4_SET, TWO_MENU_F4_SET,ONE_MENU_F4,Menu_F4_Set},
     {TWO_MENU_F5_SET,  TWO_MENU_F5_SET, TWO_MENU_F5_SET, TWO_MENU_F5_SET,ONE_MENU_F5,Menu_F5_Set},
 
-    {TWO_MENU_F6_E1,  TWO_MENU_F6_E1, TWO_MENU_F6_E8, TWO_MENU_F6_E2,ONE_MENU_F6,Menu_F6_E1},
-    {TWO_MENU_F6_E2,  TWO_MENU_F6_E2, TWO_MENU_F6_E1, TWO_MENU_F6_E3,ONE_MENU_F6,Menu_F6_E2},
-    {TWO_MENU_F6_E3,  TWO_MENU_F6_E3, TWO_MENU_F6_E2, TWO_MENU_F6_E4,ONE_MENU_F6,Menu_F6_E3},
-    {TWO_MENU_F6_E4,  TWO_MENU_F6_E4, TWO_MENU_F6_E3, TWO_MENU_F6_E5,ONE_MENU_F6,Menu_F6_E4},
-    {TWO_MENU_F6_E5,  TWO_MENU_F6_E5, TWO_MENU_F6_E4, TWO_MENU_F6_E6,ONE_MENU_F6,Menu_F6_E5},
-    {TWO_MENU_F6_E6,  TWO_MENU_F6_E6, TWO_MENU_F6_E5, TWO_MENU_F6_E7,ONE_MENU_F6,Menu_F6_E6},
-    {TWO_MENU_F6_E7,  TWO_MENU_F6_E7, TWO_MENU_F6_E6, TWO_MENU_F6_E8,ONE_MENU_F6,Menu_F6_E7},
-    {TWO_MENU_F6_E8,  TWO_MENU_F6_E8, TWO_MENU_F6_E7, TWO_MENU_F6_E1,ONE_MENU_F6,Menu_F6_E8},
+    {TWO_MENU_F6_E1,  THREE_MENU_F6_E1_SET, TWO_MENU_F6_E8, TWO_MENU_F6_E2,ONE_MENU_F6,Menu_F6_E1},
+    {TWO_MENU_F6_E2,  THREE_MENU_F6_E2_SET, TWO_MENU_F6_E1, TWO_MENU_F6_E3,ONE_MENU_F6,Menu_F6_E2},
+    {TWO_MENU_F6_E3,  THREE_MENU_F6_E3_SET, TWO_MENU_F6_E2, TWO_MENU_F6_E4,ONE_MENU_F6,Menu_F6_E3},
+    {TWO_MENU_F6_E4,  THREE_MENU_F6_E4_SET, TWO_MENU_F6_E3, TWO_MENU_F6_E5,ONE_MENU_F6,Menu_F6_E4},
+    {TWO_MENU_F6_E5,  THREE_MENU_F6_E5_SET, TWO_MENU_F6_E4, TWO_MENU_F6_E6,ONE_MENU_F6,Menu_F6_E5},
+    {TWO_MENU_F6_E6,  THREE_MENU_F6_E6_SET, TWO_MENU_F6_E5, TWO_MENU_F6_E7,ONE_MENU_F6,Menu_F6_E6},
+    {TWO_MENU_F6_E7,  THREE_MENU_F6_E7_SET, TWO_MENU_F6_E6, TWO_MENU_F6_E8,ONE_MENU_F6,Menu_F6_E7},
+    {TWO_MENU_F6_E8,  THREE_MENU_F6_E8_SET, TWO_MENU_F6_E7, TWO_MENU_F6_E1,ONE_MENU_F6,Menu_F6_E8},
 
-    {TWO_MENU_F7_E1,  TWO_MENU_F7_E1, TWO_MENU_F7_E4, TWO_MENU_F7_E2,ONE_MENU_F7,Menu_F7_E1},
-    {TWO_MENU_F7_E2,  TWO_MENU_F7_E2, TWO_MENU_F7_E1, TWO_MENU_F7_E3,ONE_MENU_F7,Menu_F7_E2},
-    {TWO_MENU_F7_E3,  TWO_MENU_F7_E3, TWO_MENU_F7_E2, TWO_MENU_F7_E4,ONE_MENU_F7,Menu_F7_E3},
-    {TWO_MENU_F7_E4,  TWO_MENU_F7_E4, TWO_MENU_F7_E3, TWO_MENU_F7_E1,ONE_MENU_F7,Menu_F7_E4},
+    {TWO_MENU_F7_E1,  THREE_MENU_F7_E1_SET, TWO_MENU_F7_E4, TWO_MENU_F7_E2,ONE_MENU_F7,Menu_F7_E1},
+    {TWO_MENU_F7_E2,  THREE_MENU_F7_E2_SET, TWO_MENU_F7_E1, TWO_MENU_F7_E3,ONE_MENU_F7,Menu_F7_E2},
+    {TWO_MENU_F7_E3,  THREE_MENU_F7_E3_SET, TWO_MENU_F7_E2, TWO_MENU_F7_E4,ONE_MENU_F7,Menu_F7_E3},
+    {TWO_MENU_F7_E4,  THREE_MENU_F7_E4_SET, TWO_MENU_F7_E3, TWO_MENU_F7_E1,ONE_MENU_F7,Menu_F7_E4},
 
-    {TWO_MENU_F8_E1,  TWO_MENU_F8_E1, TWO_MENU_F8_E2, TWO_MENU_F8_E2,ONE_MENU_F8,Menu_F8_E1},
-    {TWO_MENU_F8_E2,  TWO_MENU_F8_E2, TWO_MENU_F8_E1, TWO_MENU_F8_E1,ONE_MENU_F8,Menu_F8_E2},
+    {TWO_MENU_F8_E1,  THREE_MENU_F8_E1_SET, TWO_MENU_F8_E2, TWO_MENU_F8_E2,ONE_MENU_F8,Menu_F8_E1},
+    {TWO_MENU_F8_E2,  THREE_MENU_F8_E2_SET, TWO_MENU_F8_E1, TWO_MENU_F8_E1,ONE_MENU_F8,Menu_F8_E2},
 
     {TWO_MENU_F9_E1,  TWO_MENU_F9_E1, TWO_MENU_F9_E2, TWO_MENU_F9_E2,ONE_MENU_F9,Menu_F9_E1},
     {TWO_MENU_F9_E2,  TWO_MENU_F9_E2, TWO_MENU_F9_E1, TWO_MENU_F9_E1,ONE_MENU_F9,Menu_F9_E2},    
@@ -141,25 +160,25 @@ const struct Menu_def MenuProc[]=
     {THREE_MENU_F2_E4_D3,  THREE_MENU_F2_E4_D4, THREE_MENU_F2_E4_D3, THREE_MENU_F2_E4_D3,TWO_MENU_F2_E4,Menu_F2_E4_D3},
     {THREE_MENU_F2_E4_D4,  THREE_MENU_F2_E4_D1, THREE_MENU_F2_E4_D4, THREE_MENU_F2_E4_D4,TWO_MENU_F2_E4,Menu_F2_E4_D4},
 
-    {THREE_MENU_F3_E1_SET,  THREE_MENU_F3_E1_SET, THREE_MENU_F3_E1_SET, THREE_MENU_F3_E1_SET,TWO_MENU_F3_E1,Menu_F0},    
-    {THREE_MENU_F3_E2_SET,  THREE_MENU_F3_E2_SET, THREE_MENU_F3_E2_SET, THREE_MENU_F3_E2_SET,TWO_MENU_F3_E2,Menu_F0},    
+    {THREE_MENU_F3_E1_SET,  THREE_MENU_F3_E1_SET, THREE_MENU_F3_E1_SET, THREE_MENU_F3_E1_SET,TWO_MENU_F3_E1,Menu_F3_E1_Set},    
+    {THREE_MENU_F3_E2_SET,  THREE_MENU_F3_E2_SET, THREE_MENU_F3_E2_SET, THREE_MENU_F3_E2_SET,TWO_MENU_F3_E2,Menu_F3_E2_Set},    
 
-    {THREE_MENU_F6_E1_SET,  THREE_MENU_F6_E1_SET, THREE_MENU_F6_E1_SET, THREE_MENU_F6_E1_SET,TWO_MENU_F6_E1,Menu_F0},      
-    {THREE_MENU_F6_E2_SET,  THREE_MENU_F6_E2_SET, THREE_MENU_F6_E2_SET, THREE_MENU_F6_E2_SET,TWO_MENU_F6_E2,Menu_F0},    
-    {THREE_MENU_F6_E3_SET,  THREE_MENU_F6_E3_SET, THREE_MENU_F6_E3_SET, THREE_MENU_F6_E3_SET,TWO_MENU_F6_E3,Menu_F0},    
-    {THREE_MENU_F6_E4_SET,  THREE_MENU_F6_E4_SET, THREE_MENU_F6_E4_SET, THREE_MENU_F6_E4_SET,TWO_MENU_F6_E4,Menu_F0},    
-    {THREE_MENU_F6_E5_SET,  THREE_MENU_F6_E5_SET, THREE_MENU_F6_E5_SET, THREE_MENU_F6_E5_SET,TWO_MENU_F6_E5,Menu_F0},    
-    {THREE_MENU_F6_E6_SET,  THREE_MENU_F6_E6_SET, THREE_MENU_F6_E6_SET, THREE_MENU_F6_E6_SET,TWO_MENU_F6_E6,Menu_F0},    
-    {THREE_MENU_F6_E7_SET,  THREE_MENU_F6_E7_SET, THREE_MENU_F6_E7_SET, THREE_MENU_F6_E7_SET,TWO_MENU_F6_E7,Menu_F0},    
-    {THREE_MENU_F6_E8_SET,  THREE_MENU_F6_E8_SET, THREE_MENU_F6_E8_SET, THREE_MENU_F6_E8_SET,TWO_MENU_F6_E8,Menu_F0},    
+    {THREE_MENU_F6_E1_SET,  THREE_MENU_F6_E1_SET, THREE_MENU_F6_E1_SET, THREE_MENU_F6_E1_SET,TWO_MENU_F6_E1,Menu_F6_E1_Set},      
+    {THREE_MENU_F6_E2_SET,  THREE_MENU_F6_E2_SET, THREE_MENU_F6_E2_SET, THREE_MENU_F6_E2_SET,TWO_MENU_F6_E2,Menu_F6_E2_Set},    
+    {THREE_MENU_F6_E3_SET,  THREE_MENU_F6_E3_SET, THREE_MENU_F6_E3_SET, THREE_MENU_F6_E3_SET,TWO_MENU_F6_E3,Menu_F6_E3_Set},    
+    {THREE_MENU_F6_E4_SET,  THREE_MENU_F6_E4_SET, THREE_MENU_F6_E4_SET, THREE_MENU_F6_E4_SET,TWO_MENU_F6_E4,Menu_F6_E4_Set},    
+    {THREE_MENU_F6_E5_SET,  THREE_MENU_F6_E5_SET, THREE_MENU_F6_E5_SET, THREE_MENU_F6_E5_SET,TWO_MENU_F6_E5,Menu_F6_E5_Set},    
+    {THREE_MENU_F6_E6_SET,  THREE_MENU_F6_E6_SET, THREE_MENU_F6_E6_SET, THREE_MENU_F6_E6_SET,TWO_MENU_F6_E6,Menu_F6_E6_Set},    
+    {THREE_MENU_F6_E7_SET,  THREE_MENU_F6_E7_SET, THREE_MENU_F6_E7_SET, THREE_MENU_F6_E7_SET,TWO_MENU_F6_E7,Menu_F6_E7_Set},    
+    {THREE_MENU_F6_E8_SET,  THREE_MENU_F6_E8_SET, THREE_MENU_F6_E8_SET, THREE_MENU_F6_E8_SET,TWO_MENU_F6_E8,Menu_F6_E8_Set},    
 
-    {THREE_MENU_F7_E1_SET,  THREE_MENU_F7_E1_SET, THREE_MENU_F7_E1_SET, THREE_MENU_F7_E1_SET,TWO_MENU_F7_E1,Menu_F0},      
-    {THREE_MENU_F7_E2_SET,  THREE_MENU_F7_E2_SET, THREE_MENU_F7_E2_SET, THREE_MENU_F7_E2_SET,TWO_MENU_F7_E2,Menu_F0},    
-    {THREE_MENU_F7_E3_SET,  THREE_MENU_F7_E3_SET, THREE_MENU_F7_E3_SET, THREE_MENU_F7_E3_SET,TWO_MENU_F7_E3,Menu_F0},    
-    {THREE_MENU_F7_E4_SET,  THREE_MENU_F7_E4_SET, THREE_MENU_F7_E4_SET, THREE_MENU_F7_E4_SET,TWO_MENU_F7_E4,Menu_F0},   
+    {THREE_MENU_F7_E1_SET,  THREE_MENU_F7_E1_SET, THREE_MENU_F7_E1_SET, THREE_MENU_F7_E1_SET,TWO_MENU_F7_E1,Menu_F7_E1_Set},      
+    {THREE_MENU_F7_E2_SET,  THREE_MENU_F7_E2_SET, THREE_MENU_F7_E2_SET, THREE_MENU_F7_E2_SET,TWO_MENU_F7_E2,Menu_F7_E2_Set},    
+    {THREE_MENU_F7_E3_SET,  THREE_MENU_F7_E3_SET, THREE_MENU_F7_E3_SET, THREE_MENU_F7_E3_SET,TWO_MENU_F7_E3,Menu_F7_E3_Set},    
+    {THREE_MENU_F7_E4_SET,  THREE_MENU_F7_E4_SET, THREE_MENU_F7_E4_SET, THREE_MENU_F7_E4_SET,TWO_MENU_F7_E4,Menu_F7_E4_Set},   
 
-    {THREE_MENU_F8_E1_SET,  THREE_MENU_F8_E1_SET, THREE_MENU_F8_E1_SET, THREE_MENU_F8_E1_SET,TWO_MENU_F8_E1,Menu_F0},      
-    {THREE_MENU_F8_E2_SET,  THREE_MENU_F8_E2_SET, THREE_MENU_F8_E2_SET, THREE_MENU_F8_E2_SET,TWO_MENU_F8_E2,Menu_F0},    
+    {THREE_MENU_F8_E1_SET,  THREE_MENU_F8_E1_SET, THREE_MENU_F8_E1_SET, THREE_MENU_F8_E1_SET,TWO_MENU_F8_E1,Menu_F8_E1_Set},      
+    {THREE_MENU_F8_E2_SET,  THREE_MENU_F8_E2_SET, THREE_MENU_F8_E2_SET, THREE_MENU_F8_E2_SET,TWO_MENU_F8_E2,Menu_F8_E2_Set},    
 
     {THREE_MENU_FE_E1_SET,  THREE_MENU_FE_E1_SET, THREE_MENU_FE_E1_SET, THREE_MENU_FE_E1_SET,TWO_MENU_FE_E1,Menu_F0},      
     {THREE_MENU_FE_E2_SET,  THREE_MENU_FE_E2_SET, THREE_MENU_FE_E2_SET, THREE_MENU_FE_E2_SET,TWO_MENU_FE_E2,Menu_F0},    
@@ -1845,6 +1864,405 @@ void  Menu_F2_E4_D4(void)
     }
 }
 
+/**
+  * @brief  This function is Show menu of F3 E1 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F3_E1_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Call_Line_Mode== 1)
+            Set_Call_Line_Mode = 0;
+        else
+            Set_Call_Line_Mode = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Call_Line_Mode == 1)
+            Set_Call_Line_Mode = 0;
+        else
+            Set_Call_Line_Mode = 1;
+    }
+    Tm1629_Show_One_Number(Set_Call_Line_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of F3 E2 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F3_E2_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Call_Display_Number== 99)
+            Set_Call_Display_Number=0;
+        else
+            Set_Call_Display_Number++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Call_Display_Number == 0)
+            Set_Call_Display_Number=99;
+        else
+            Set_Call_Display_Number--;
+    }
+    Tm1629_Show_Two_Number(Set_Call_Display_Number); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E1 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E1_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Play_Mode== 7)
+            Set_Voice_Play_Mode=0;
+        else
+            Set_Voice_Play_Mode++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Play_Mode == 0)
+            Set_Voice_Play_Mode=7;
+        else
+            Set_Voice_Play_Mode--;
+    }
+    Tm1629_Show_One_Number(Set_Voice_Play_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E2 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E2_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Play_Time== 9)
+            Set_Voice_Play_Time=1;
+        else
+            Set_Voice_Play_Time++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Play_Time == 1)
+            Set_Voice_Play_Time=9;
+        else
+            Set_Voice_Play_Time--;
+    }
+    Tm1629_Show_One_Number(Set_Voice_Play_Time); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E3 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E3_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Play_Is_Or_Not_In_Cycle_Mode== 1)
+            Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
+        else
+            Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Play_Is_Or_Not_In_Cycle_Mode == 1)
+            Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
+        else
+            Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 1;
+    }
+    Tm1629_Show_One_Number(Set_Voice_Play_Is_Or_Not_In_Cycle_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E4 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E4_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Volume== 9)
+            Set_Voice_Volume=1;
+        else
+            Set_Voice_Volume++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Volume == 1)
+            Set_Voice_Volume=9;
+        else
+            Set_Voice_Volume--;
+    }
+    Tm1629_Show_One_Number(Set_Voice_Volume); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E5 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E5_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Display_Tube_Brightness== 7)
+            Set_Display_Tube_Brightness=1;
+        else
+            Set_Display_Tube_Brightness++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Display_Tube_Brightness == 1)
+            Set_Display_Tube_Brightness=7;
+        else
+            Set_Display_Tube_Brightness--;
+    }
+    Tm1629_Show_One_Number(Set_Display_Tube_Brightness); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E6 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E6_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Navigation_Mode== 1)
+            Set_Voice_Navigation_Mode = 0;
+        else
+            Set_Voice_Navigation_Mode = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Navigation_Mode == 1)
+            Set_Voice_Navigation_Mode = 0;
+        else
+            Set_Voice_Navigation_Mode = 1;
+    }
+    Tm1629_Show_One_Number(Set_Voice_Navigation_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E7 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E7_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Navigation_On_Or_OFF== 1)
+            Set_Voice_Navigation_On_Or_OFF = 0;
+        else
+            Set_Voice_Navigation_On_Or_OFF = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Navigation_On_Or_OFF == 1)
+            Set_Voice_Navigation_On_Or_OFF = 0;
+        else
+            Set_Voice_Navigation_On_Or_OFF = 1;
+    }
+    Tm1629_Show_One_Number(Set_Voice_Navigation_On_Or_OFF); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E8 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E8_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Display_LED_Mode== 1)
+            Set_Display_LED_Mode = 0;
+        else
+            Set_Display_LED_Mode = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Display_LED_Mode == 1)
+            Set_Display_LED_Mode = 0;
+        else
+            Set_Display_LED_Mode = 1;
+    }
+    Tm1629_Show_One_Number(Set_Display_LED_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of F7 E1 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E1_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Two_Menu_F7_E1== 11)
+            Set_Two_Menu_F7_E1=0;
+        else
+            Set_Two_Menu_F7_E1++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Two_Menu_F7_E1 == 0)
+            Set_Two_Menu_F7_E1=11;
+        else
+            Set_Two_Menu_F7_E1--;
+    }
+    Tm1629_Show_Two_Number(Set_Two_Menu_F7_E1); 
+}
+
+/**
+  * @brief  This function is Show menu of F7 E2 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E2_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Two_Menu_F7_E2== 11)
+            Set_Two_Menu_F7_E2=0;
+        else
+            Set_Two_Menu_F7_E2++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Two_Menu_F7_E2 == 0)
+            Set_Two_Menu_F7_E2=11;
+        else
+            Set_Two_Menu_F7_E2--;
+    }
+    Tm1629_Show_Two_Number(Set_Two_Menu_F7_E2); 
+}
+
+/**
+  * @brief  This function is Show menu of F7 E3 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E3_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Two_Menu_F7_E3== 11)
+            Set_Two_Menu_F7_E3=0;
+        else
+            Set_Two_Menu_F7_E3++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Two_Menu_F7_E3 == 0)
+            Set_Two_Menu_F7_E3=11;
+        else
+            Set_Two_Menu_F7_E3--;
+    }
+    Tm1629_Show_Two_Number(Set_Two_Menu_F7_E3); 
+}
+
+/**
+  * @brief  This function is Show menu of F7 E4 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F7_E4_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Two_Menu_F7_E4== 11)
+            Set_Two_Menu_F7_E4=0;
+        else
+            Set_Two_Menu_F7_E4++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Two_Menu_F7_E4== 0)
+            Set_Two_Menu_F7_E4=11;
+        else
+            Set_Two_Menu_F7_E4--;
+    }
+    Tm1629_Show_Two_Number(Set_Two_Menu_F7_E4); 
+}
+
+/**
+  * @brief  This function is Show menu of F8 E1 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F8_E1_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Singal_Or_Multiple_Key_Mode== 1)
+            Set_Singal_Or_Multiple_Key_Mode = 2;
+        else
+            Set_Singal_Or_Multiple_Key_Mode = 1;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Singal_Or_Multiple_Key_Mode == 1)
+            Set_Singal_Or_Multiple_Key_Mode = 2;
+        else
+            Set_Singal_Or_Multiple_Key_Mode = 1;
+    }
+    Tm1629_Show_One_Number(Set_Singal_Or_Multiple_Key_Mode); 
+}
+
+/**
+  * @brief  This function is Show menu of F8 E2 SET
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F8_E2_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Key_Of_Call_Mode== 38)
+            Set_Key_Of_Call_Mode=0;
+        else
+            Set_Key_Of_Call_Mode++;
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Key_Of_Call_Mode== 0)
+            Set_Key_Of_Call_Mode=38;
+        else
+            Set_Key_Of_Call_Mode--;
+    }
+    Tm1629_Show_Two_Number(Set_Key_Of_Call_Mode); 
+}
 
 
 #endif /* MENU_GLOBAL */

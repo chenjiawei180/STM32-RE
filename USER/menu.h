@@ -257,6 +257,22 @@ static void Menu_F2_E4_D1(void);
 static void Menu_F2_E4_D2(void);
 static void Menu_F2_E4_D3(void);
 static void Menu_F2_E4_D4(void);
+static void Menu_F3_E1_Set(void);
+static void Menu_F3_E2_Set(void);
+static void Menu_F6_E1_Set(void);
+static void Menu_F6_E2_Set(void);
+static void Menu_F6_E3_Set(void);
+static void Menu_F6_E4_Set(void);
+static void Menu_F6_E5_Set(void);
+static void Menu_F6_E6_Set(void);
+static void Menu_F6_E7_Set(void);
+static void Menu_F6_E8_Set(void);
+static void Menu_F7_E1_Set(void);
+static void Menu_F7_E2_Set(void);
+static void Menu_F7_E3_Set(void);
+static void Menu_F7_E4_Set(void);
+static void Menu_F8_E1_Set(void);
+static void Menu_F8_E2_Set(void);
 
 #endif /* __MENU_H */
 
