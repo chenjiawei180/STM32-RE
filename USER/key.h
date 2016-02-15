@@ -10,6 +10,7 @@
 #include "stm32f10x.h"
 #include "global.h"
 #include "bitband.h"
+#include "menu.h"
 
 #define KEY_VALUE_MAIN    0x01
 #define KEY_VALUE_UP    0x02
@@ -22,6 +23,7 @@
 #define KEY_ESC    PAin(5)
 
 extern u8 gKeyValue; /*the value of key press*/
+extern Menu_index index;  /* the index of menu */
 
 extern void Key_IO_Init(void);
 extern unsigned char Key_Scan(void);
