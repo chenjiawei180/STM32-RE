@@ -36,3 +36,5 @@
 ..\out\rf_app.o: ..\USER\key.h
 ..\out\rf_app.o: ..\USER\eeprom_24c.h
 ..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\out\rf_app.o: ..\USER\usart2.h
+..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

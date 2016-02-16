@@ -294,7 +294,7 @@ u8 Register_Call_Function(RF_def *pRF)
         addr += sizeof(RF_def);
     }
 
-    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
         //GD5800_select_chapter_new(CHENGGONG);
@@ -350,7 +350,7 @@ u8 Register_Host_Function(RF_def *pRF)
         addr += sizeof(RF_def);
     }
 
-    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
         //GD5800_select_chapter_new(CHENGGONG);
@@ -406,7 +406,7 @@ u8 Register_Alarm_Function(RF_def *pRF)
         addr += sizeof(RF_def);
     }
 
-    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
         //GD5800_select_chapter_new(CHENGGONG);
@@ -462,7 +462,7 @@ u8 Register_Cancel_Function(RF_def *pRF)
         addr += sizeof(RF_def);
     }
 
-    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
+    EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
         //GD5800_select_chapter_new(CHENGGONG);
@@ -638,6 +638,22 @@ u8 Delete_Cancel_Function(unsigned char *buf)//buf为组码数组的指针
         }
     }
     return 0;
+}
+
+/**
+  * @brief  This function is delete all data.
+  * @param  None
+  * @retval None
+  */
+
+void Delete_All_Data(void)
+{
+    unsigned char dofly[32] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+    unsigned int k;
+    for (k = 0; k<168; k++)
+    {
+        EEP_Write_Buffer( 0 + (k << 5), dofly, 32);                   //写入24c02
+    }
 }
 
 #endif /* EEPROM_GLOBAL */

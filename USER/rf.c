@@ -83,6 +83,7 @@ void EXTI15_10_IRQHandler(void)//
                             RF_Fun = (RF_Temp ) & 0xF;    //置呼叫按键编码
                         }
 */
+                        RF_ID=RF_Temp; //cjw 2016.1.21 for main while(1) test
                         RF_Flag = 1;    //置接收标志
                     }
 //mask                    Call_Off_Time = 0;

@@ -10,6 +10,7 @@
 #include "key.h"
 #include "eeprom_24c.h"
 #include "string.h"
+#include "usart2.h"
 
 #if defined RF_GLOBAL
 
@@ -42,6 +43,9 @@ void Decoder_Process(void)
         )
     )
     {
+#if defined DEBUG_GLOBAL
+        printf("RF_ID is %x  \r\n ",RF_ID);
+#endif
         switch(index)
         {
             case STANDBY_MENU:Decoder_Standby();    break;
@@ -92,11 +96,17 @@ void Decoder_Standby(void)
 void Decoder_F1_E1(void)
 {
     RF_def tmp;
+    u16 buff_temp=0;
+    u16 head_of_buff=0;
     memcpy(tmp.region, Register_Call_Buff, 4);
     tmp.rf = RF_ID;
     if (!(Register_Call_Function(&tmp)))
     {
-        
+        head_of_buff = Register_Call_Buff[0];    // save the defense area
+        buff_temp = Str_To_Int(Register_Call_Buff);
+        buff_temp++;
+        buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
+        Int_To_Str(buff_temp, Register_Call_Buff);
     }
 }
 
@@ -108,7 +118,19 @@ void Decoder_F1_E1(void)
 
 void Decoder_F1_E2(void)
 {
-
+    RF_def tmp;
+    u16 buff_temp=0;
+    u16 head_of_buff=0;
+    memcpy(tmp.region, Register_Host_Buff, 4);
+    tmp.rf = RF_ID;
+    if (!(Register_Host_Function(&tmp)))
+    {
+        head_of_buff = Register_Host_Buff[0];    // save the defense area
+        buff_temp = Str_To_Int(Register_Host_Buff);
+        buff_temp++;
+        buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
+        Int_To_Str(buff_temp, Register_Host_Buff);
+    }
 }
 
 /**
@@ -119,7 +141,19 @@ void Decoder_F1_E2(void)
 
 void Decoder_F1_E3(void)
 {
-
+    RF_def tmp;
+    u16 buff_temp=0;
+    u16 head_of_buff=0;
+    memcpy(tmp.region, Register_Alarm_Buff, 4);
+    tmp.rf = RF_ID;
+    if (!(Register_Alarm_Function(&tmp)))
+    {
+        head_of_buff = Register_Alarm_Buff[0];    // save the defense area
+        buff_temp = Str_To_Int(Register_Alarm_Buff);
+        buff_temp++;
+        buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
+        Int_To_Str(buff_temp, Register_Alarm_Buff);
+    }
 }
 
 /**
@@ -130,7 +164,19 @@ void Decoder_F1_E3(void)
 
 void Decoder_F1_E4(void)
 {
-
+    RF_def tmp;
+    u16 buff_temp=0;
+    u16 head_of_buff=0;
+    memcpy(tmp.region, Register_Cancel_Buff, 4);
+    tmp.rf = RF_ID;
+    if (!(Register_Cancel_Function(&tmp)))
+    {
+        head_of_buff = Register_Cancel_Buff[0];    // save the defense area
+        buff_temp = Str_To_Int(Register_Cancel_Buff);
+        buff_temp++;
+        buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
+        Int_To_Str(buff_temp, Register_Cancel_Buff);
+    }
 }
 
 #endif /* RF_GLOBAL */ 

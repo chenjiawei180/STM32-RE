@@ -14,6 +14,7 @@
 #include "tm1629.h"
 #include "eeprom_24c.h"
 #include "key.h"
+#include "rf_app.h"
 
 int main(void)
 {
@@ -61,6 +62,8 @@ int main(void)
 /*Print the test information for DUBUG*/
 #if defined (USART2_GLOBAL) && defined (DEBUG_GLOBAL)
     printf("Hello stm32. ");
+    Delete_All_Data();
+    printf("Delete_All_Data \r\n ");
 #endif /* USART2_GLOBAL && DEBUG_GLOBAL */
 
 
@@ -68,7 +71,7 @@ int main(void)
 
     while(1)
     {
-#if defined (RF_GLOBAL) && defined (DEBUG_GLOBAL)
+#if 0//defined (RF_GLOBAL) && defined (DEBUG_GLOBAL)
         if(RF_Flag == 1)
         {
             printf("RF_ID is %x  \r\n ",RF_ID);
@@ -79,6 +82,10 @@ int main(void)
 #if defined KEY_GLOBAL
         Key_Process();
 #endif /* KEY_GLOBAL */
+
+#if defined RF_GLOBAL
+        Decoder_Process();
+#endif
         ;
     }
 }
