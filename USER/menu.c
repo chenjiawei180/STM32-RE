@@ -276,11 +276,11 @@ void Buff_Add_One(u8 * str)
 
 void Menu_Standby(void)
 {
-    static u8 index=0;
+    static u8 Standby_index=0;
     Tm1629_Clear();
-    Tm1629_Display_Ram[0][index&0x03]=0x40; /* - */
+    Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
     Tm1629_Display();
-    index++;
+    Standby_index++;
 }
 
 /**

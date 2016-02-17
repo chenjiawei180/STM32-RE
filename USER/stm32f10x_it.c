@@ -135,7 +135,7 @@ void SysTick_Handler(void)
 #if defined SYSTEM_CLOCK_GLOBAL
 
     System_Time_Count ++;
-    if(System_Time_Count > 199)    //秒时间
+    if(System_Time_Count >59) //199)    //秒时间
     {
         LongPressSec++;
         Flag_1_Sec = 1;

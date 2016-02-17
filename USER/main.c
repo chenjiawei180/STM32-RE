@@ -79,13 +79,14 @@ int main(void)
         }
 #endif /* RF_GLOBAL && DEBUG_GLOBAL */
 
+#if defined RF_GLOBAL
+        Decoder_Process();
+#endif
+
 #if defined KEY_GLOBAL
         Key_Process();
 #endif /* KEY_GLOBAL */
 
-#if defined RF_GLOBAL
-        Decoder_Process();
-#endif
         ;
     }
 }

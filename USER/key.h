@@ -23,7 +23,7 @@
 #define KEY_ESC    PAin(5)
 
 extern u8 gKeyValue; /*the value of key press*/
-extern Menu_index index;  /* the index of menu */
+extern Menu_index M_index;  /* the index of menu */
 
 extern void Key_IO_Init(void);
 extern unsigned char Key_Scan(void);

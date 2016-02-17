@@ -23,30 +23,30 @@
 void Decoder_Process(void)
 {
     if( 
-        RF_Flag &&( ( index == STANDBY_MENU) 
-                            || ( index == THREE_MENU_F1_E1_D1) 
-                            || ( index == THREE_MENU_F1_E1_D2) 
-                            || ( index == THREE_MENU_F1_E1_D3) 
-                            || ( index == THREE_MENU_F1_E1_D4) 
-                            || ( index == THREE_MENU_F1_E2_D1) 
-                            || ( index == THREE_MENU_F1_E2_D2) 
-                            || ( index == THREE_MENU_F1_E2_D3) 
-                            || ( index == THREE_MENU_F1_E2_D4) 
-                            || ( index == THREE_MENU_F1_E3_D1) 
-                            || ( index == THREE_MENU_F1_E3_D2) 
-                            || ( index == THREE_MENU_F1_E3_D3) 
-                            || ( index == THREE_MENU_F1_E3_D4) 
-                            || ( index == THREE_MENU_F1_E4_D1) 
-                            || ( index == THREE_MENU_F1_E4_D2) 
-                            || ( index == THREE_MENU_F1_E4_D3) 
-                            || ( index == THREE_MENU_F1_E4_D4) 
+        RF_ID && RF_Flag &&( ( M_index == STANDBY_MENU) 
+                            || ( M_index == THREE_MENU_F1_E1_D1) 
+                            || ( M_index == THREE_MENU_F1_E1_D2) 
+                            || ( M_index == THREE_MENU_F1_E1_D3) 
+                            || ( M_index == THREE_MENU_F1_E1_D4) 
+                            || ( M_index == THREE_MENU_F1_E2_D1) 
+                            || ( M_index == THREE_MENU_F1_E2_D2) 
+                            || ( M_index == THREE_MENU_F1_E2_D3) 
+                            || ( M_index == THREE_MENU_F1_E2_D4) 
+                            || ( M_index == THREE_MENU_F1_E3_D1) 
+                            || ( M_index == THREE_MENU_F1_E3_D2) 
+                            || ( M_index == THREE_MENU_F1_E3_D3) 
+                            || ( M_index == THREE_MENU_F1_E3_D4) 
+                            || ( M_index == THREE_MENU_F1_E4_D1) 
+                            || ( M_index == THREE_MENU_F1_E4_D2) 
+                            || ( M_index == THREE_MENU_F1_E4_D3) 
+                            || ( M_index == THREE_MENU_F1_E4_D4) 
         )
     )
     {
-#if defined DEBUG_GLOBAL
+#if 0//defined DEBUG_GLOBAL
         printf("RF_ID is %x  \r\n ",RF_ID);
 #endif
-        switch(index)
+        switch(M_index)
         {
             case STANDBY_MENU:Decoder_Standby();    break;
 
@@ -73,6 +73,7 @@ void Decoder_Process(void)
             default:break;
         }
         RF_Flag = 0 ;
+        RF_ID = 0;
     }
 }
 
@@ -110,7 +111,7 @@ void Decoder_F1_E1(void)
         Int_To_Str(buff_temp, Register_Call_Buff);
 */
         Buff_Add_One(Register_Call_Buff);
-        index = THREE_MENU_F1_E1_D1;
+        M_index = THREE_MENU_F1_E1_D1;
     }
 }
 
@@ -137,8 +138,8 @@ void Decoder_F1_E2(void)
         Int_To_Str(buff_temp, Register_Host_Buff);
 */
         Buff_Add_One(Register_Host_Buff);
-        index = THREE_MENU_F1_E2_D1;
-#if defined DEBUG_GLOBAL
+        M_index = THREE_MENU_F1_E2_D1;
+#if 0//defined DEBUG_GLOBAL
         printf(" Register_Host_Function success \n ");
         //printf(" buff_temp is %d \n ",buff_temp);
 #endif
@@ -165,7 +166,7 @@ void Decoder_F1_E3(void)
         buff_temp++;
         buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
         Int_To_Str(buff_temp, Register_Alarm_Buff);
-        index = THREE_MENU_F1_E3_D1;
+        M_index = THREE_MENU_F1_E3_D1;
     }
 }
 
@@ -189,7 +190,7 @@ void Decoder_F1_E4(void)
         buff_temp++;
         buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
         Int_To_Str(buff_temp, Register_Cancel_Buff);
-        index = THREE_MENU_F1_E4_D1;
+        M_index = THREE_MENU_F1_E4_D1;
     }
 }
 

@@ -11,7 +11,7 @@
 
 #if defined KEY_GLOBAL
 
-Menu_index index = STANDBY_MENU;
+Menu_index M_index = STANDBY_MENU;
 void (*Function)(void);
 
 u8 gKeyValue=0; /*the value of key press*/
@@ -85,56 +85,56 @@ void Key_Process(void)
         {
             case KEY_VALUE_MAIN:
                 while(
-                        (!KEY_MAIN)&&( ( index==STANDBY_MENU )  
-                                        //      ||( index==ONE_MENU_FA)     
-                                              || (index==ONE_MENU_FB)     
-                                              || (index==ONE_MENU_FC)     
-                                        //      || (index==ONE_MENU_FD)     
-                                              || (index==ONE_MENU_FE)     )
+                        (!KEY_MAIN)&&( ( M_index==STANDBY_MENU )  
+                                        //      ||( M_index==ONE_MENU_FA)     
+                                              || (M_index==ONE_MENU_FB)     
+                                              || (M_index==ONE_MENU_FC)     
+                                        //      || (M_index==ONE_MENU_FD)     
+                                              || (M_index==ONE_MENU_FE)     )
                        )
                 {
                     if( LongPressSec>2)      // ³¤°´
                     {
-                        switch(index)
+                        switch(M_index)
                         {
-                            case STANDBY_MENU :index=ONE_MENU_F1; break;
-                         //   case ONE_MENU_FA   :index=ONE_MENU_F1; break;
-                            case ONE_MENU_FB   :index=TWO_MENU_FB_SET; break;
-                            case ONE_MENU_FC   :index=TWO_MENU_FC_SET; break;
-                         //   case ONE_MENU_FD   :index=ONE_MENU_F1; break;
-                            case ONE_MENU_FE   :index=TWO_MENU_FE_E1; break;
+                            case STANDBY_MENU :M_index=ONE_MENU_F1; break;
+                         //   case ONE_MENU_FA   :M_index=ONE_MENU_F1; break;
+                            case ONE_MENU_FB   :M_index=TWO_MENU_FB_SET; break;
+                            case ONE_MENU_FC   :M_index=TWO_MENU_FC_SET; break;
+                         //   case ONE_MENU_FD   :M_index=ONE_MENU_F1; break;
+                            case ONE_MENU_FE   :M_index=TWO_MENU_FE_E1; break;
                             default: break;
                         }
                         
-                        Function = MenuProc[index].handle;
+                        Function = MenuProc[M_index].handle;
                         (*Function)();
                         while(!KEY_MAIN) ;
                         return;
                     }                   
                 }
-                index = MenuProc[index].Enter;
-                Function = MenuProc[index].handle;
+                M_index = MenuProc[M_index].Enter;
+                Function = MenuProc[M_index].handle;
                 (*Function)();
                 while(!KEY_MAIN) ;
             break;
 
             case KEY_VALUE_UP:
-                index = MenuProc[index].Up;
-                Function = MenuProc[index].handle;  
+                M_index = MenuProc[M_index].Up;
+                Function = MenuProc[M_index].handle;  
                 (*Function)();
                 while(!KEY_UP) ;
             break;
 
            case KEY_VALUE_DOWN:  
-                index = MenuProc[index].Down;
-                Function = MenuProc[index].handle;
+                M_index = MenuProc[M_index].Down;
+                Function = MenuProc[M_index].handle;
                 (*Function)();  
                 while(!KEY_DOWN) ;
             break;
 
             case KEY_VALUE_ESC:
-                index = MenuProc[index].Return;
-                Function = MenuProc[index].handle;
+                M_index = MenuProc[M_index].Return;
+                Function = MenuProc[M_index].handle;
                 (*Function)();
                 while(!KEY_ESC) ;
             break;
@@ -143,7 +143,7 @@ void Key_Process(void)
                 if(Flag_1_Sec == 1)
                 {
                     Flag_1_Sec=0;
-                    Function = MenuProc[index].handle;  
+                    Function = MenuProc[M_index].handle;  
                     (*Function)();  
                 }
             break;        

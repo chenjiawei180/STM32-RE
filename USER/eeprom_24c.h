@@ -29,9 +29,9 @@
 #define  CANCEL_NUMBER 64
 #define  HOST_NUMBER   32
 #define  CALL_DATA_START   0X0020
-#define  ALARM_DATA_START  0X1020
-#define  CANCEL_DATA_START 0X1220
-#define  HOST_DATA_START   0X1420
+#define  ALARM_DATA_START  0X0820
+#define  CANCEL_DATA_START 0X0A20
+#define  HOST_DATA_START   0X0C20
 
 typedef struct {
     u8 region[4];      //ÇøºÅ0~9~A~Z; //´æ·ÅµÄASCIIÂë

@@ -396,18 +396,19 @@ void Tm1629_Show_Time(unsigned char* Time)
   
 void Tm1629_Blink_Time_Minute(void)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Time_Minute = 0;
+    if(Flag_Tm1629_Blink_Time_Minute == 0)
     {
         Tm1629_Display_Ram[0][1] =0;
         Tm1629_Display_Ram[0][0] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Time_Minute = 1;
     }
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+        Flag_Tm1629_Blink_Time_Minute = 0;
     }
-    flag++;
 }
 
 /**
@@ -418,18 +419,19 @@ void Tm1629_Blink_Time_Minute(void)
   
 void Tm1629_Blink_Time_Hour(void)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Time_Hour = 0;
+    if(Flag_Tm1629_Blink_Time_Hour == 0)
     {
         Tm1629_Display_Ram[0][3] =0;
         Tm1629_Display_Ram[0][2] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Time_Hour = 1;
     }
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+        Flag_Tm1629_Blink_Time_Hour = 0;
     }
-    flag++;
 }
 
 /**
@@ -440,18 +442,19 @@ void Tm1629_Blink_Time_Hour(void)
   
 void Tm1629_Blink_Time_Day(void)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Time_Day = 0;
+    if(Flag_Tm1629_Blink_Time_Day == 0)
     {
         Tm1629_Display_Ram[0][5] =0;
         Tm1629_Display_Ram[0][4] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Time_Day = 1;
     }
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+        Flag_Tm1629_Blink_Time_Day = 0;
     }
-    flag++;
 }
 
 /**
@@ -462,18 +465,19 @@ void Tm1629_Blink_Time_Day(void)
   
 void Tm1629_Blink_Time_Month(void)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Time_Month = 0;
+    if(Flag_Tm1629_Blink_Time_Month == 0)
     {
         Tm1629_Display_Ram[0][7] =0;
         Tm1629_Display_Ram[0][6] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Time_Month = 1;
     }
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+        Flag_Tm1629_Blink_Time_Month = 0;
     }
-    flag++;
 }
 
 /**
@@ -484,18 +488,19 @@ void Tm1629_Blink_Time_Month(void)
   
 void Tm1629_Blink_Time_Year(void)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Time_Year = 0;
+    if(Flag_Tm1629_Blink_Time_Year == 0)
     {
         Tm1629_Display_Ram[1][1] =0;
         Tm1629_Display_Ram[1][0] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Time_Year = 1;
     }
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+        Flag_Tm1629_Blink_Time_Year = 0;
     }
-    flag++;
 }
 
 /**
@@ -506,17 +511,18 @@ void Tm1629_Blink_Time_Year(void)
   
 void Tm1629_Blink_Time_Week(void)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Time_Week = 0;
+    if(Flag_Tm1629_Blink_Time_Week == 0)
     {
         Tm1629_Display_Ram[1][4] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Time_Week = 1;
     }
     else
     {
         Tm1629_Show_Time(Tm1629_Test_Time);
+        Flag_Tm1629_Blink_Time_Week = 0;
     }
-    flag++;
 }
 
 /**
@@ -570,17 +576,18 @@ void Tm1629_Show_One_Number(u8 Number)
   
 void Tm1629_Blink_One_Position(u8* Str)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_One_Position = 0;
+    if(Flag_Tm1629_Blink_One_Position == 0)
     {
         Tm1629_Display_Ram[0][0] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_One_Position = 1;
     }
     else
     {
         Tm1629_Show_Four_Number(Str);
+        Flag_Tm1629_Blink_One_Position = 0;
     }
-    flag++;
 }
 
 /**
@@ -591,17 +598,18 @@ void Tm1629_Blink_One_Position(u8* Str)
   
 void Tm1629_Blink_Two_Position(u8* Str)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Two_Position = 0;
+    if(Flag_Tm1629_Blink_Two_Position == 0)
     {
         Tm1629_Display_Ram[0][1] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Two_Position = 1;
     }
     else
     {
         Tm1629_Show_Four_Number(Str);
+        Flag_Tm1629_Blink_Two_Position = 0;
     }
-    flag++;
 }
 
 /**
@@ -612,17 +620,18 @@ void Tm1629_Blink_Two_Position(u8* Str)
   
 void Tm1629_Blink_Three_Position(u8* Str)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Three_Position = 0;
+    if(Flag_Tm1629_Blink_Three_Position == 0)
     {
         Tm1629_Display_Ram[0][2] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Three_Position = 1;
     }
     else
     {
         Tm1629_Show_Four_Number(Str);
+        Flag_Tm1629_Blink_Three_Position = 0;
     }
-    flag++;
 }
 
 /**
@@ -633,17 +642,18 @@ void Tm1629_Blink_Three_Position(u8* Str)
   
 void Tm1629_Blink_Four_Position(u8* Str)
 {
-    static u8 flag=0;
-    if(flag & 0x01)
+    static u8 Flag_Tm1629_Blink_Four_Position = 0;
+    if(Flag_Tm1629_Blink_Four_Position == 0)
     {
         Tm1629_Display_Ram[0][3] =0;
         Tm1629_Display();
+        Flag_Tm1629_Blink_Four_Position = 1;
     }
     else
     {
         Tm1629_Show_Four_Number(Str);
+        Flag_Tm1629_Blink_Four_Position = 0;
     }
-    flag++;
 }
 
 

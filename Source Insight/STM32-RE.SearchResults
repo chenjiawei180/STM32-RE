@@ -1,11 +1,62 @@
----- uint8_t Matches (10 in 2 files) ----
-Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    EEP_Write_Buffer(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Eeprom_24c.c (d:\github\stm32-re\user):    //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
-Stm32f10x_conf.h (d:\github\stm32-re\user):  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
-Stm32f10x_conf.h (d:\github\stm32-re\user):  void assert_failed(uint8_t* file, uint32_t line);
+---- index Matches (68 in 7 files) ----
+Eeprom_24c.c (d:\github\stm32-re\user):  * @param  ADD of internal eeprom,index of data buffer,length of data buffer.
+Eeprom_24c.c (d:\github\stm32-re\user):  * @param  ADD of internal eeprom,index of data buffer,length of data buffer.
+Key.c (d:\github\stm32-re\user):Menu_index M_index = STANDBY_MENU;
+Key.c (d:\github\stm32-re\user):                        (!KEY_MAIN)&&( ( Menu_index==STANDBY_MENU )  
+Key.c (d:\github\stm32-re\user):                                        //      ||( Menu_index==ONE_MENU_FA)     
+Key.c (d:\github\stm32-re\user):                                              || (Menu_index==ONE_MENU_FB)     
+Key.c (d:\github\stm32-re\user):                                              || (Menu_index==ONE_MENU_FC)     
+Key.c (d:\github\stm32-re\user):                                        //      || (Menu_index==ONE_MENU_FD)     
+Key.c (d:\github\stm32-re\user):                                              || (Menu_index==ONE_MENU_FE)     )
+Key.c (d:\github\stm32-re\user):                        switch(Menu_index)
+Key.c (d:\github\stm32-re\user):                            case STANDBY_MENU :Menu_index=ONE_MENU_F1; break;
+Key.c (d:\github\stm32-re\user):                         //   case ONE_MENU_FA   :Menu_index=ONE_MENU_F1; break;
+Key.c (d:\github\stm32-re\user):                            case ONE_MENU_FB   :Menu_index=TWO_MENU_FB_SET; break;
+Key.c (d:\github\stm32-re\user):                            case ONE_MENU_FC   :Menu_index=TWO_MENU_FC_SET; break;
+Key.c (d:\github\stm32-re\user):                         //   case ONE_MENU_FD   :Menu_index=ONE_MENU_F1; break;
+Key.c (d:\github\stm32-re\user):                            case ONE_MENU_FE   :Menu_index=TWO_MENU_FE_E1; break;
+Key.c (d:\github\stm32-re\user):                        Function = MenuProc[Menu_index].handle;
+Key.c (d:\github\stm32-re\user):                index = MenuProc[Menu_index].Enter;
+Key.c (d:\github\stm32-re\user):                Function = MenuProc[Menu_index].handle;
+Key.c (d:\github\stm32-re\user):                index = MenuProc[Menu_index].Up;
+Key.c (d:\github\stm32-re\user):                Function = MenuProc[Menu_index].handle;  
+Key.c (d:\github\stm32-re\user):                index = MenuProc[Menu_index].Down;
+Key.c (d:\github\stm32-re\user):                Function = MenuProc[Menu_index].handle;
+Key.c (d:\github\stm32-re\user):                index = MenuProc[Menu_index].Return;
+Key.c (d:\github\stm32-re\user):                Function = MenuProc[Menu_index].handle;
+Key.c (d:\github\stm32-re\user):                    Function = MenuProc[Menu_index].handle;  
+Key.h (d:\github\stm32-re\user):extern Menu_index Menu_index;  /* the index of menu */
+Menu.c (d:\github\stm32-re\user):  * @brief  This is Menu index.
+Menu.c (d:\github\stm32-re\user):    static u8 index=0;
+Menu.c (d:\github\stm32-re\user):    Tm1629_Display_Ram[0][index&0x03]=0x40; /* - */
+Menu.c (d:\github\stm32-re\user):    index++;
+Menu.h (d:\github\stm32-re\user):}Menu_index;
+Menu.h (d:\github\stm32-re\user):    Menu_index Index;               //本菜单索引号
+Menu.h (d:\github\stm32-re\user):    Menu_index Enter;               //按确认确时的索引
+Menu.h (d:\github\stm32-re\user):    Menu_index Up;                  //按UP键时的索引
+Menu.h (d:\github\stm32-re\user):    Menu_index Down;                //按DOWN键时的索引
+Menu.h (d:\github\stm32-re\user):    Menu_index Return;              //要执行的函数
+Rf_app.c (d:\github\stm32-re\user):        RF_Flag &&( ( index == STANDBY_MENU) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E1_D1) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E1_D2) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E1_D3) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E1_D4) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E2_D1) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E2_D2) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E2_D3) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E2_D4) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E3_D1) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E3_D2) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E3_D3) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E3_D4) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E4_D1) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E4_D2) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E4_D3) 
+Rf_app.c (d:\github\stm32-re\user):                            || ( index == THREE_MENU_F1_E4_D4) 
+Rf_app.c (d:\github\stm32-re\user):        switch(index)
+Rf_app.c (d:\github\stm32-re\user):        index = THREE_MENU_F1_E1_D1;
+Rf_app.c (d:\github\stm32-re\user):        index = THREE_MENU_F1_E2_D1;
+Rf_app.c (d:\github\stm32-re\user):        index = THREE_MENU_F1_E3_D1;
+Rf_app.c (d:\github\stm32-re\user):        index = THREE_MENU_F1_E4_D1;
+Usart2.c (d:\github\stm32-re\user):  * @brief  This function is send the char ch to the index of FILE *f.
+Usart2.c (d:\github\stm32-re\user):  * @param  char of ch,index of FILE *f.
