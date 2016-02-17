@@ -102,11 +102,15 @@ void Decoder_F1_E1(void)
     tmp.rf = RF_ID;
     if (!(Register_Call_Function(&tmp)))
     {
+/*
         head_of_buff = Register_Call_Buff[0];    // save the defense area
         buff_temp = Str_To_Int(Register_Call_Buff);
         buff_temp++;
         buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
         Int_To_Str(buff_temp, Register_Call_Buff);
+*/
+        Buff_Add_One(Register_Call_Buff);
+        index = THREE_MENU_F1_E1_D1;
     }
 }
 
@@ -125,11 +129,19 @@ void Decoder_F1_E2(void)
     tmp.rf = RF_ID;
     if (!(Register_Host_Function(&tmp)))
     {
+/*
         head_of_buff = Register_Host_Buff[0];    // save the defense area
         buff_temp = Str_To_Int(Register_Host_Buff);
         buff_temp++;
         buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
         Int_To_Str(buff_temp, Register_Host_Buff);
+*/
+        Buff_Add_One(Register_Host_Buff);
+        index = THREE_MENU_F1_E2_D1;
+#if defined DEBUG_GLOBAL
+        printf(" Register_Host_Function success \n ");
+        //printf(" buff_temp is %d \n ",buff_temp);
+#endif
     }
 }
 
@@ -153,6 +165,7 @@ void Decoder_F1_E3(void)
         buff_temp++;
         buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
         Int_To_Str(buff_temp, Register_Alarm_Buff);
+        index = THREE_MENU_F1_E3_D1;
     }
 }
 
@@ -176,6 +189,7 @@ void Decoder_F1_E4(void)
         buff_temp++;
         buff_temp = buff_temp + head_of_buff*1000;    // load the defense area
         Int_To_Str(buff_temp, Register_Cancel_Buff);
+        index = THREE_MENU_F1_E4_D1;
     }
 }
 

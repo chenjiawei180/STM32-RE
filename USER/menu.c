@@ -223,6 +223,52 @@ void Int_To_Str(u16 dat,u8 *str)
 }
 
 /**
+  * @brief  This function is add number of buff add one.
+  * @param  str
+  * @retval None
+  */
+
+void Buff_Add_One(u8 * str)
+{
+    if (str[3] == 9)
+    {
+        if (str[2] == 9)
+        {
+            if (str[1] == 9)
+            {
+                str[0]++;
+                str[1] = 0;
+                str[2] = 0;
+                if (str[0] == 21)
+                {
+                    str[0] = 0;
+                    str[3] = 1;
+                }
+                else
+                {
+                    str[3] = 1;
+                }
+            }
+            else
+            {
+                str[1]++;
+                str[2] = 0;
+                str[3] = 0;
+            }
+        }
+        else
+        {
+            str[2]++;
+            str[3] = 0;
+        }
+    }
+    else
+    {
+        str[3]++;
+    }
+}
+
+/**
   * @brief  This function is Show TM1629 of Standby menu.
   * @param  None
   * @retval None
