@@ -140,9 +140,9 @@ void Key_Process(void)
             break;
 
             default:
-                if(Flag_1_Sec == 1)
+                if(Flag_Half_Sec == 1)
                 {
-                    Flag_1_Sec=0;
+                    Flag_Half_Sec=0;
                     Function = MenuProc[M_index].handle;  
                     (*Function)();  
                 }

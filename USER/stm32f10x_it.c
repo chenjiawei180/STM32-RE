@@ -24,6 +24,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
 #include "set_system_clock.h"
+#include "rf_app.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Examples
   * @{
@@ -135,11 +136,16 @@ void SysTick_Handler(void)
 #if defined SYSTEM_CLOCK_GLOBAL
 
     System_Time_Count ++;
-    if(System_Time_Count >59) //199)    //秒时间
+    if(System_Time_Count >100) //199)    //秒时间
     {
         LongPressSec++;
-        Flag_1_Sec = 1;
+        Flag_Half_Sec = 1;
         System_Time_Count = 0;
+    }
+    Call_Off_Time ++;
+    if(Call_Off_Time > 400)		//2秒后可重复呼叫
+    {
+        Call_Code_Bak = 0;
     }
 
 #endif /* SYSTEM_CLOCK_GLOBAL */

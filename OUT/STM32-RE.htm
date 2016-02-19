@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\OUT\STM32-RE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OUT\STM32-RE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Feb 17 23:15:24 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Feb 19 18:43:30 2016
 <BR><P>
-<H3>Maximum Stack Usage =        112 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        104 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; Decoder_Process &rArr; Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 <P>
@@ -186,25 +186,25 @@ Global Symbols
 <P><STRONG><a name="[37]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
-<P><STRONG><a name="[124]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[122]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[a1]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[121]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<P><STRONG><a name="[11f]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[125]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[123]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[126]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[124]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[127]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[125]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[128]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[126]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[129]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[127]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
@@ -334,7 +334,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; Decoder_Process &rArr; Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = main &rArr; Decoder_Process &rArr; Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_GPIO_Config
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Display
@@ -379,7 +379,7 @@ Global Symbols
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, stm32f10x_it.o(.text))
+<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, stm32f10x_it.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[a4]"></a>Set_System_Clock</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, set_system_clock.o(.text))
@@ -479,7 +479,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[32]"></a>EXTI15_10_IRQHandler</STRONG> (Thumb, 220 bytes, Stack size 16 bytes, rf.o(.text))
+<P><STRONG><a name="[32]"></a>EXTI15_10_IRQHandler</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, rf.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = EXTI15_10_IRQHandler
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
@@ -899,7 +899,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
+<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
 </UL>
 
 <P><STRONG><a name="[f2]"></a>Register_Host_Function</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
@@ -908,7 +908,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
 </UL>
 
 <P><STRONG><a name="[f3]"></a>Register_Alarm_Function</STRONG> (Thumb, 134 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
@@ -917,7 +917,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
+<BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
 </UL>
 
 <P><STRONG><a name="[f4]"></a>Register_Cancel_Function</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
@@ -995,30 +995,24 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ff]"></a>Str_To_Int</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, menu.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
+<P><STRONG><a name="[128]"></a>Str_To_Int</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, menu.o(.text), UNUSED)
+
+<P><STRONG><a name="[129]"></a>Int_To_Str</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, menu.o(.text), UNUSED)
+
+<P><STRONG><a name="[ff]"></a>Buff_Add_One</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, menu.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 </UL>
 
-<P><STRONG><a name="[100]"></a>Int_To_Str</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, menu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Int_To_Str
+<P><STRONG><a name="[b1]"></a>Decoder_Process</STRONG> (Thumb, 316 bytes, Stack size 8 bytes, rf_app.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Decoder_Process &rArr; Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
-</UL>
-
-<P><STRONG><a name="[103]"></a>Buff_Add_One</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, menu.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
-</UL>
-
-<P><STRONG><a name="[b1]"></a>Decoder_Process</STRONG> (Thumb, 292 bytes, Stack size 8 bytes, rf_app.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Decoder_Process &rArr; Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
-</UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Standby
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
+<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Standby
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1062,12 +1056,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI15_10_IRQHandler
 </UL>
 
-<P><STRONG><a name="[106]"></a>GPIO_DeInit</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<P><STRONG><a name="[104]"></a>GPIO_DeInit</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
-<P><STRONG><a name="[108]"></a>GPIO_AFIODeInit</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<P><STRONG><a name="[106]"></a>GPIO_AFIODeInit</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
 <P><STRONG><a name="[c1]"></a>GPIO_Init</STRONG> (Thumb, 274 bytes, Stack size 24 bytes, stm32f10x_gpio.o(.text))
@@ -1129,10 +1123,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = RCC_GetFlagStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System_Clock
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_WaitForHSEStartUp
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_WaitForHSEStartUp
 </UL>
 
-<P><STRONG><a name="[109]"></a>RCC_WaitForHSEStartUp</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, stm32f10x_rcc.o(.text), UNUSED)
+<P><STRONG><a name="[107]"></a>RCC_WaitForHSEStartUp</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, stm32f10x_rcc.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
 </UL>
 
@@ -1186,7 +1180,7 @@ Global Symbols
 
 <P><STRONG><a name="[149]"></a>RCC_RTCCLKCmd</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
 
-<P><STRONG><a name="[11d]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, stm32f10x_rcc.o(.text))
+<P><STRONG><a name="[11b]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, stm32f10x_rcc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
@@ -1210,16 +1204,16 @@ Global Symbols
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CH340_USART2_Config
 </UL>
 
-<P><STRONG><a name="[107]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DeInit
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_AFIODeInit
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_DeInit
+<P><STRONG><a name="[105]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DeInit
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_AFIODeInit
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_DeInit
 </UL>
 
-<P><STRONG><a name="[10b]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DeInit
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[109]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DeInit
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
 <P><STRONG><a name="[14b]"></a>RCC_BackupResetCmd</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
@@ -1234,9 +1228,9 @@ Global Symbols
 
 <P><STRONG><a name="[150]"></a>RCC_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
 
-<P><STRONG><a name="[10a]"></a>TIM_DeInit</STRONG> (Thumb, 424 bytes, Stack size 8 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<P><STRONG><a name="[108]"></a>TIM_DeInit</STRONG> (Thumb, 424 bytes, Stack size 8 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
 <P><STRONG><a name="[ce]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text))
@@ -1251,40 +1245,40 @@ Global Symbols
 
 <P><STRONG><a name="[154]"></a>TIM_OC4Init</STRONG> (Thumb, 182 bytes, Stack size 16 bytes, stm32f10x_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[114]"></a>TIM_SetIC4Prescaler</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[112]"></a>TIM_SetIC4Prescaler</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[112]"></a>TIM_SetIC3Prescaler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[110]"></a>TIM_SetIC3Prescaler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[110]"></a>TIM_SetIC2Prescaler</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[10e]"></a>TIM_SetIC2Prescaler</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[10e]"></a>TIM_SetIC1Prescaler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[10c]"></a>TIM_SetIC1Prescaler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[10c]"></a>TIM_ICInit</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC1Prescaler
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC2Prescaler
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC3Prescaler
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC4Prescaler
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI3_Config
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI4_Config
+<P><STRONG><a name="[10a]"></a>TIM_ICInit</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC1Prescaler
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC2Prescaler
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC3Prescaler
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC4Prescaler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI3_Config
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI4_Config
 </UL>
 
-<P><STRONG><a name="[115]"></a>TIM_PWMIConfig</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC1Prescaler
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC2Prescaler
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
+<P><STRONG><a name="[113]"></a>TIM_PWMIConfig</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC1Prescaler
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetIC2Prescaler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
 </UL>
 
 <P><STRONG><a name="[155]"></a>TIM_BDTRConfig</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
@@ -1313,32 +1307,32 @@ Global Symbols
 
 <P><STRONG><a name="[15f]"></a>TIM_InternalClockConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[117]"></a>TIM_SelectInputTrigger</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TIxExternalClockConfig
-<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRxExternalClockConfig
+<P><STRONG><a name="[115]"></a>TIM_SelectInputTrigger</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TIxExternalClockConfig
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRxExternalClockConfig
 </UL>
 
-<P><STRONG><a name="[116]"></a>TIM_ITRxExternalClockConfig</STRONG> (Thumb, 24 bytes, Stack size 12 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectInputTrigger
+<P><STRONG><a name="[114]"></a>TIM_ITRxExternalClockConfig</STRONG> (Thumb, 24 bytes, Stack size 12 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectInputTrigger
 </UL>
 
-<P><STRONG><a name="[118]"></a>TIM_TIxExternalClockConfig</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectInputTrigger
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
+<P><STRONG><a name="[116]"></a>TIM_TIxExternalClockConfig</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SelectInputTrigger
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
 </UL>
 
-<P><STRONG><a name="[11a]"></a>TIM_ETRConfig</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRClockMode2Config
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRClockMode1Config
+<P><STRONG><a name="[118]"></a>TIM_ETRConfig</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRClockMode2Config
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRClockMode1Config
 </UL>
 
-<P><STRONG><a name="[119]"></a>TIM_ETRClockMode1Config</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRConfig
+<P><STRONG><a name="[117]"></a>TIM_ETRClockMode1Config</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRConfig
 </UL>
 
-<P><STRONG><a name="[11b]"></a>TIM_ETRClockMode2Config</STRONG> (Thumb, 32 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRConfig
+<P><STRONG><a name="[119]"></a>TIM_ETRClockMode2Config</STRONG> (Thumb, 32 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ETRConfig
 </UL>
 
 <P><STRONG><a name="[160]"></a>TIM_PrescalerConfig</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
@@ -1455,15 +1449,15 @@ Global Symbols
 
 <P><STRONG><a name="[198]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[11c]"></a>USART_DeInit</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, stm32f10x_usart.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<P><STRONG><a name="[11a]"></a>USART_DeInit</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, stm32f10x_usart.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
 <P><STRONG><a name="[c2]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_USART1_Config
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CH340_USART2_Config
@@ -1542,7 +1536,7 @@ Global Symbols
 <P><STRONG><a name="[36]"></a>SystemInit</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, system_stm32f10x.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo24
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
@@ -1561,7 +1555,7 @@ Global Symbols
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
@@ -1584,20 +1578,20 @@ Global Symbols
 
 <P><STRONG><a name="[1b5]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[120]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[11e]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
 <P><STRONG><a name="[a2]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
 <P><STRONG><a name="[1b6]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[122]"></a>__0printf$2</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf2.o(i.__0printf$2), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[120]"></a>__0printf$2</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf2.o(i.__0printf$2), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[1b7]"></a>__1printf$2</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf2.o(i.__0printf$2), UNUSED)
@@ -2499,84 +2493,82 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
 </UL>
-<P><STRONG><a name="[fe]"></a>Decoder_F1_E4</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, rf_app.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Decoder_F1_E4 &rArr; Register_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+<P><STRONG><a name="[fe]"></a>Decoder_F1_E4</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, rf_app.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E4 &rArr; Register_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int_To_Str
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_To_Int
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
 
-<P><STRONG><a name="[101]"></a>Decoder_F1_E3</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, rf_app.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Decoder_F1_E3 &rArr; Register_Alarm_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+<P><STRONG><a name="[100]"></a>Decoder_F1_E3</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, rf_app.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E3 &rArr; Register_Alarm_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int_To_Str
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Str_To_Int
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
 
-<P><STRONG><a name="[102]"></a>Decoder_F1_E2</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, rf_app.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Decoder_F1_E2 &rArr; Register_Host_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+<P><STRONG><a name="[101]"></a>Decoder_F1_E2</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, rf_app.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E2 &rArr; Register_Host_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
 
-<P><STRONG><a name="[104]"></a>Decoder_F1_E1</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, rf_app.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+<P><STRONG><a name="[102]"></a>Decoder_F1_E1</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, rf_app.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E1 &rArr; Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Call_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
 
-<P><STRONG><a name="[105]"></a>Decoder_Standby</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rf_app.o(.text))
+<P><STRONG><a name="[103]"></a>Decoder_Standby</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rf_app.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
 
-<P><STRONG><a name="[113]"></a>TI4_Config</STRONG> (Thumb, 130 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[111]"></a>TI4_Config</STRONG> (Thumb, 130 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[111]"></a>TI3_Config</STRONG> (Thumb, 122 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[10f]"></a>TI3_Config</STRONG> (Thumb, 122 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[10f]"></a>TI2_Config</STRONG> (Thumb, 130 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TIxExternalClockConfig
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[10d]"></a>TI2_Config</STRONG> (Thumb, 130 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TIxExternalClockConfig
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[10d]"></a>TI1_Config</STRONG> (Thumb, 108 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TIxExternalClockConfig
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
+<P><STRONG><a name="[10b]"></a>TI1_Config</STRONG> (Thumb, 108 bytes, Stack size 20 bytes, stm32f10x_tim.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TIxExternalClockConfig
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWMIConfig
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[11f]"></a>SetSysClockTo24</STRONG> (Thumb, 176 bytes, Stack size 12 bytes, system_stm32f10x.o(.text))
+<P><STRONG><a name="[11d]"></a>SetSysClockTo24</STRONG> (Thumb, 176 bytes, Stack size 12 bytes, system_stm32f10x.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo24
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 
-<P><STRONG><a name="[11e]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(.text))
+<P><STRONG><a name="[11c]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SetSysClock &rArr; SetSysClockTo24
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo24
+<BR>[Calls]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo24
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[123]"></a>_printf_core</STRONG> (Thumb, 208 bytes, Stack size 40 bytes, printf2.o(i._printf_core), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$2
+<P><STRONG><a name="[121]"></a>_printf_core</STRONG> (Thumb, 208 bytes, Stack size 40 bytes, printf2.o(i._printf_core), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$2
 </UL>
 <P>
 <H3>

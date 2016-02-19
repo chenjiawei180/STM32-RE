@@ -31,3 +31,5 @@
 ..\out\stm32f10x_it.o: ..\FWlib\inc\misc.h
 ..\out\stm32f10x_it.o: ..\USER\set_system_clock.h
 ..\out\stm32f10x_it.o: ..\USER\global.h
+..\out\stm32f10x_it.o: ..\USER\rf_app.h
+..\out\stm32f10x_it.o: ..\USER\bitband.h

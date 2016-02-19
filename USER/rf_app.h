@@ -11,6 +11,9 @@
 #include "global.h"
 #include "bitband.h"
 
+extern u32 Call_Code_Bak;
+extern u32 Call_Off_Time;
+
 extern void Decoder_Process(void);
 static void Decoder_Standby(void);
 static void Decoder_F1_E1(void);
