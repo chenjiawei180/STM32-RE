@@ -38,3 +38,4 @@
 ..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\rf_app.o: ..\USER\usart2.h
 ..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\rf_app.o: ..\USER\tm1629.h

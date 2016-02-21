@@ -166,6 +166,23 @@ extern u8 Delete_Alarm_Buff[5];
 extern u8 Register_Cancel_Buff[5];
 extern u8 Delete_Cancel_Buff[5];
 
+extern u8 Remove_Call_Time  ;
+extern u8 Cycle_Call_Time ;
+
+extern u8 Change_Standby_Display_Mode ;    /* FC */
+extern u8 Set_Key_Remove_Call_Is_Or_Not ;    /* FB */
+
+extern u8 Set_Call_Line_Mode ;
+extern u8 Set_Call_Display_Number ;
+extern u8 Set_Voice_Play_Mode ;
+extern u8 Set_Voice_Play_Time ;
+extern u8 Set_Voice_Play_Is_Or_Not_In_Cycle_Mode ;
+extern u8 Set_Voice_Volume ;
+extern u8 Set_Display_Tube_Brightness ;
+extern u8 Set_Voice_Navigation_Mode ;
+extern u8 Set_Voice_Navigation_On_Or_OFF ;
+extern u8 Set_Display_LED_Mode ;
+
 extern u16 Str_To_Int(u8 *str);
 extern void Int_To_Str(u16 dat,u8 *str);
 extern void Buff_Add_One(u8 *str);

@@ -51,7 +51,7 @@
 #define  TM1629_STB2 PBout(6) 
 #define  TM1629_STB3 PBout(7) 
 
-
+extern u8 const Dis_TAB[];
 extern u8 Tm1629_Test_Time[8];
 extern u8 Tm1629_Display_Ram[6][8]; 
 extern void Delayus(u16 time);
