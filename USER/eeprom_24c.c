@@ -656,4 +656,166 @@ void Delete_All_Data(void)
     }
 }
 
+/**
+  * @brief  This function is find the u32 dat is EEPROM save ID and it's type or not.
+  * @param  RF_def *p, u32 dat
+  * @retval 0 1 2 3   0 is not . 1 is cancel . 2 is alarm . 3 is call.
+  */
+
+u8 Find_RF_EEPROM(RF_def *p, u32 dat)
+{
+    if (Find_RF_EEPROM_Cancel(p, dat))
+    {
+        return 1;
+    }
+    else if (Find_RF_EEPROM_Alarm(p, dat))
+    {
+        return 2;
+    }
+    else if (Find_RF_EEPROM_Call(p, dat))
+    {
+        return 3;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+/**
+  * @brief  This function is find the u32 dat is EEPROM save CALL ID or not.
+  * @param  RF_def *p, u32 dat
+  * @retval 0 1 . 1 is success  0 is failure
+  */
+  
+u8 Find_RF_EEPROM_Call(RF_def *p, u32 dat)
+{
+    RF_def RFtmp;
+    u16 addr;
+    u16 i;
+    addr = CALL_DATA_START;
+
+    for (i = 0; i<CALL_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+        //EEP_ReadBytes(addr, (uint8_t *)&RFtmp, sizeof(RF_def));
+
+        if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
+        {
+            RFtmp.rf &= 0x00fffff0;
+            dat &= 0x00fffff0;
+        }
+
+        if (RFtmp.rf == dat)
+        {
+            memcpy(p, &RFtmp, sizeof(RF_def));
+            return 1;
+        }
+        addr += sizeof(RF_def);
+    }
+    return 0;
+}
+
+/**
+  * @brief  This function is find the u32 dat is EEPROM save Host ID or not.
+  * @param  RF_def *p, u32 dat
+  * @retval 0 1 . 1 is success  0 is failure
+  */
+  
+u8 Find_RF_EEPROM_Host(RF_def *p, u32 dat)
+{
+    RF_def RFtmp;
+    u16 addr;
+    u16 i;
+    addr = HOST_DATA_START;
+
+    for (i = 0; i<HOST_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+        //EEP_ReadBytes(addr, (uint8_t *)&RFtmp, sizeof(RF_def));
+
+        if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
+        {
+            RFtmp.rf &= 0x00fffff0;
+            dat &= 0x00fffff0;
+        }
+
+        if (RFtmp.rf == dat)
+        {
+            memcpy(p, &RFtmp, sizeof(RF_def));
+            return 1;
+        }
+        addr += sizeof(RF_def);
+    }
+    return 0;
+}
+
+/**
+  * @brief  This function is find the u32 dat is EEPROM save Alarm ID or not.
+  * @param  RF_def *p, u32 dat
+  * @retval 0 1 . 1 is success  0 is failure
+  */
+
+u8 Find_RF_EEPROM_Alarm(RF_def *p, u32 dat)
+{
+    RF_def RFtmp;
+    u16 addr;
+    u16 i;
+    addr = ALARM_DATA_START;
+
+    for (i = 0; i<ALARM_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+        //EEP_ReadBytes(addr, (uint8_t *)&RFtmp, sizeof(RF_def));
+
+        if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
+        {
+            RFtmp.rf &= 0x00fffff0;
+            dat &= 0x00fffff0;
+        }
+
+        if (RFtmp.rf == dat)
+        {
+            memcpy(p, &RFtmp, sizeof(RF_def));
+            return 1;
+        }
+        addr += sizeof(RF_def);
+    }
+    return 0;
+}
+
+/**
+  * @brief  This function is find the u32 dat is EEPROM save Cancel ID or not.
+  * @param  RF_def *p, u32 dat
+  * @retval 0 1 . 1 is success  0 is failure
+  */
+  
+u8 Find_RF_EEPROM_Cancel(RF_def *p, u32 dat)
+{
+    RF_def RFtmp;
+    u16 addr;
+    u16 i;
+    addr = CANCEL_DATA_START;
+
+    for (i = 0; i<CANCEL_NUMBER; i++)
+    {
+        EEP_Read_Buffer(addr, (u8 *)&RFtmp, sizeof(RF_def));
+        //EEP_ReadBytes(addr, (uint8_t *)&RFtmp, sizeof(RF_def));
+
+        if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
+        {
+            RFtmp.rf &= 0x00fffff0;
+            dat &= 0x00fffff0;
+        }
+
+        if (RFtmp.rf == dat)
+        {
+            memcpy(p, &RFtmp, sizeof(RF_def));
+            return 1;
+        }
+        addr += sizeof(RF_def);
+    }
+    return 0;
+}
+
 #endif /* EEPROM_GLOBAL */

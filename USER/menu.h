@@ -182,6 +182,12 @@ extern u8 Set_Display_Tube_Brightness ;
 extern u8 Set_Voice_Navigation_Mode ;
 extern u8 Set_Voice_Navigation_On_Or_OFF ;
 extern u8 Set_Display_LED_Mode ;
+extern u8 Set_Two_Menu_F7_E1 ;
+extern u8 Set_Two_Menu_F7_E2 ;
+extern u8 Set_Two_Menu_F7_E3 ;
+extern u8 Set_Two_Menu_F7_E4 ;
+extern u8 Set_Singal_Or_Multiple_Key_Mode ;
+extern u8 Set_Key_Of_Call_Mode  ;
 
 extern u16 Str_To_Int(u8 *str);
 extern void Int_To_Str(u16 dat,u8 *str);

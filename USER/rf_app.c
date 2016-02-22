@@ -101,7 +101,29 @@ void Decoder_Process(void)
 
 void Decoder_Standby(void)
 {
-
+    u32 dat;
+    u8 state;
+    RF_def RFtmp;
+    unsigned char decoder_temp_buff[8];
+    dat = RF_ID;
+    if(0)
+    {
+        
+    }
+    else
+    {
+        state = Find_RF_EEPROM(&RFtmp, dat);
+        if (state)
+        {
+            decoder_temp_buff[0] = (u8)(dat & 0x0f);
+            memcpy(decoder_temp_buff+1, RFtmp.region, 4);
+            decoder_temp_buff[5] = (u8) ((dat>>16)&0xff);
+            decoder_temp_buff[6] = (u8) ((dat>>8)&0xff);
+            decoder_temp_buff[7] = (u8) ((dat)&0xff);
+            Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Line);
+            Display_Ram_To_Tm1629();
+	 }
+    }
 }
 
 /**
@@ -211,7 +233,7 @@ u8 Return_End_Of_Buff(unsigned char * buff)
     buff_index = Set_Call_Display_Number;
     for(i=0;i<Set_Call_Display_Number;i++)
     {
-        if(*(buff+(i<<3)) != 0)
+        if(*(buff+(i<<3)) == 0)    //cjw    ==0
         {
             return i;
         }
@@ -243,12 +265,16 @@ void Buff_Move_Up_All_Position_And_Init(unsigned char * buff)
   * @retval None
   */
 
-void Buff_Move_Down_All_Position_And_Init(unsigned char * buff)
+void Buff_Move_Down_All_Position_And_Init(unsigned char * buff)   
 {
     u8 buff_index;
-    u8 i;
+    signed char i;     //cjw 2016.2.22 u8 change signed char
     buff_index = Return_End_Of_Buff(buff); // find the last one on end of buff
-    for(i=(buff_index-1);i>0;i--)    //move up from 2 to end
+    if(buff_index == Set_Call_Display_Number)    //the line is full.the last one is abort.  cjw 2016.2.22
+    {
+        buff_index--;
+    }
+    for(i=(buff_index-1);i>=0;i--)    //move up from 2 to end  // cjw 2016.2.22 i>=0
     {
         Buff_Move_Down_One_Position(buff+(i<<3));
     }
@@ -367,6 +393,7 @@ void Display_Ram_To_Tm1629(void)
         Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 7, Decoder_Call_Save_Line + 8);
     if (*(Decoder_Call_Save_Line + 0) != 0)
         Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 3, Decoder_Call_Save_Line);
+    Tm1629_Display();
 }
 
 #endif /* RF_GLOBAL */ 

@@ -8,6 +8,7 @@
 #include "tm1629.h"
 #include "usart2.h"
 #include "key.h"
+#include "rf_app.h"
 
 #if defined MENU_GLOBAL
 
@@ -27,7 +28,7 @@ u8 Register_Cancel_Buff[5]={0,0,0,1,0};
 u8 Delete_Cancel_Buff[5]={0,0,0,1,0};
 
 u8 Set_Call_Line_Mode = 1;
-u8 Set_Call_Display_Number= 1;
+u8 Set_Call_Display_Number= 10;
 u8 Set_Voice_Play_Mode = 0;
 u8 Set_Voice_Play_Time = 1;
 u8 Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
@@ -277,10 +278,14 @@ void Buff_Add_One(u8 * str)
 void Menu_Standby(void)
 {
     static u8 Standby_index=0;
-    Tm1629_Clear();
-    Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
-    Tm1629_Display();
-    Standby_index++;
+    if(Decoder_Call_Save_Line[0] == 0 )
+    {
+        Tm1629_Clear();
+        Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
+        Tm1629_Display();
+        Standby_index++;
+    }
+
 }
 
 /**

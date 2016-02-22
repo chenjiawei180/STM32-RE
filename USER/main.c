@@ -62,7 +62,7 @@ int main(void)
 /*Print the test information for DUBUG*/
 #if defined (USART2_GLOBAL) && defined (DEBUG_GLOBAL)
     printf("Hello stm32. ");
-    Delete_All_Data();
+    //Delete_All_Data();
     printf("Delete_All_Data \r\n ");
 #endif /* USART2_GLOBAL && DEBUG_GLOBAL */
 

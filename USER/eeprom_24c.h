@@ -56,6 +56,12 @@ extern u8 Delete_Alarm_Function(unsigned char *buf);
 extern u8 Register_Cancel_Function(RF_def *pRF);
 extern u8 Delete_Cancel_Function(unsigned char *buf);
 extern void Delete_All_Data(void);
+extern u8 Find_RF_EEPROM(RF_def *p, u32 dat);
+extern u8 Find_RF_EEPROM_Call(RF_def *p, u32 dat);
+extern u8 Find_RF_EEPROM_Host(RF_def *p, u32 dat);
+extern u8 Find_RF_EEPROM_Alarm(RF_def *p, u32 dat);
+extern u8 Find_RF_EEPROM_Cancel(RF_def *p, u32 dat);
+
 
 
 #endif /* __EEPROM_24C_H */
