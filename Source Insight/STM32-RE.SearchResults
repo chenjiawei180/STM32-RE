@@ -1,5 +1,4 @@
----- Flag_1_Sec Matches (4 in 3 files) ----
-Key.c (d:\github\stm32-re\user):                if(Flag_1_Sec == 1)
-Key.c (d:\github\stm32-re\user):                    Flag_1_Sec=0;
-Set_system_clock.c (d:\github\stm32-re\user):u8 Flag_1_Sec = 0;    //1秒时间到达标志
-Set_system_clock.h (d:\github\stm32-re\user):extern u8 Flag_1_Sec;    //1秒时间到达标志
+---- Buff_Move_Up_All_Position_And_Init Matches (3 in 2 files) ----
+Rf_app.c (d:\github\stm32-re\user):void Buff_Move_Up_All_Position_And_Init(unsigned char * buff)
+Rf_app.c (d:\github\stm32-re\user):        Buff_Move_Up_All_Position_And_Init(right_buff);
+Rf_app.h (d:\github\stm32-re\user):static void Buff_Move_Up_All_Position_And_Init(unsigned char * buff);

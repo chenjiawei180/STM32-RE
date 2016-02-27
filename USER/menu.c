@@ -27,7 +27,7 @@ u8 Delete_Alarm_Buff[5]={0,0,0,1,0};
 u8 Register_Cancel_Buff[5]={0,0,0,1,0};
 u8 Delete_Cancel_Buff[5]={0,0,0,1,0};
 
-u8 Set_Call_Line_Mode = 1;
+u8 Set_Call_Queue_Mode = 1;
 u8 Set_Call_Display_Number= 10;
 u8 Set_Voice_Play_Mode = 0;
 u8 Set_Voice_Play_Time = 1;
@@ -184,7 +184,7 @@ const struct Menu_def MenuProc[]=
     {THREE_MENU_FE_E1_SET,  THREE_MENU_FE_E1_SET, THREE_MENU_FE_E1_SET, THREE_MENU_FE_E1_SET,TWO_MENU_FE_E1,Menu_F0},      
     {THREE_MENU_FE_E2_SET,  THREE_MENU_FE_E2_SET, THREE_MENU_FE_E2_SET, THREE_MENU_FE_E2_SET,TWO_MENU_FE_E2,Menu_F0},    
 
-    {DECODER_MENU,  DECODER_MENU, DECODER_MENU, DECODER_MENU,DECODER_MENU,Menu_F0},    
+    {DECODER_MENU,  DECODER_MENU, DECODER_MENU, DECODER_MENU,DECODER_MENU,Menu_Decoder},    
 
 };
 
@@ -278,14 +278,25 @@ void Buff_Add_One(u8 * str)
 void Menu_Standby(void)
 {
     static u8 Standby_index=0;
-    if(Decoder_Call_Save_Line[0] == 0 )
+    if(Decoder_Call_Save_Queue[0] == 0 )
     {
         Tm1629_Clear();
         Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
         Tm1629_Display();
         Standby_index++;
     }
-
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        Decoder_Function_Of_Down();
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        Decoder_Function_Of_Up();
+    }
+    else if(gKeyValue == KEY_VALUE_ESC)
+    {
+        Decoder_Function_Of_Esc();
+    }
 }
 
 /**
@@ -1925,19 +1936,19 @@ void Menu_F3_E1_Set(void)
 {
     if(gKeyValue == KEY_VALUE_DOWN)
     {
-        if(Set_Call_Line_Mode== 1)
-            Set_Call_Line_Mode = 0;
+        if(Set_Call_Queue_Mode== 1)
+            Set_Call_Queue_Mode = 0;
         else
-            Set_Call_Line_Mode = 1;
+            Set_Call_Queue_Mode = 1;
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
-        if(Set_Call_Line_Mode == 1)
-            Set_Call_Line_Mode = 0;
+        if(Set_Call_Queue_Mode == 1)
+            Set_Call_Queue_Mode = 0;
         else
-            Set_Call_Line_Mode = 1;
+            Set_Call_Queue_Mode = 1;
     }
-    Tm1629_Show_One_Number(Set_Call_Line_Mode); 
+    Tm1629_Show_One_Number(Set_Call_Queue_Mode); 
 }
 
 /**
@@ -2315,6 +2326,27 @@ void Menu_F8_E2_Set(void)
     Tm1629_Show_Two_Number(Set_Key_Of_Call_Mode); 
 }
 
+/**
+  * @brief  This function is Show menu of Decoder
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_Decoder(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        Decoder_Function_Of_Down();
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        Decoder_Function_Of_Up();
+    }
+    else if(gKeyValue == KEY_VALUE_ESC)
+    {
+        Decoder_Function_Of_Esc();
+    }
+}
 
 #endif /* MENU_GLOBAL */
 

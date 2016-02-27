@@ -16,7 +16,7 @@
 
 #if defined RF_GLOBAL
 
-u8 Decoder_Call_Save_Line[800] = {0};
+u8 Decoder_Call_Save_Queue[800] = {0};
 
 u32 Call_Code_Bak = 0;			//上一次处理的呼叫编码
 u32 Call_Off_Time = 0;			//呼叫空闲时间
@@ -120,8 +120,18 @@ void Decoder_Standby(void)
             decoder_temp_buff[5] = (u8) ((dat>>16)&0xff);
             decoder_temp_buff[6] = (u8) ((dat>>8)&0xff);
             decoder_temp_buff[7] = (u8) ((dat)&0xff);
-            Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Line);
-            Display_Ram_To_Tm1629();
+            if(decoder_temp_buff[0] == 0x01)    //cancel
+            {
+                Decoder_Function_Of_Cancel(decoder_temp_buff);
+            }
+            else
+            {
+                if(!Decoder_Search_Buff_Is_Or_Not_In_Queue(decoder_temp_buff))
+                {
+                     Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
+                     Display_Ram_To_Tm1629();
+                }
+            }
 	 }
     }
 }
@@ -252,11 +262,11 @@ void Buff_Move_Up_All_Position_And_Init(unsigned char * buff)
     u8 buff_index;
     u8 i;
     buff_index = Return_End_Of_Buff(buff); // find the last one on end of buff
-    for(i=0;i<buff_index;i++)    //move up from 2 to end
+    for(i=0;i<buff_index-1;i++)    //move up from 2 to end
     {
         Buff_Move_Up_One_Position(buff+(i<<3));
     }
-    memset(buff+((i-1)<<3),0,8);//Init the last one 8Byte.
+    memset(buff+(i<<3),0,8);//Init the last one 8Byte.
 }
 
 /**
@@ -303,7 +313,7 @@ void Left_Buff_Add_To_End_Of_Right_Buff(unsigned char * left_buff , unsigned cha
 {
     unsigned char index;
     index = Return_End_Of_Buff(right_buff);
-    if(index == Set_Call_Display_Number)    //the line is full
+    if(index == Set_Call_Display_Number)    //the queuefull
     {
         Buff_Move_Up_All_Position_And_Init(right_buff);
         memcpy(right_buff+((Set_Call_Display_Number-1)<<3),left_buff,8);
@@ -369,32 +379,157 @@ void Decoder_Line_To_Display_Ram_For_Eight_Byte(unsigned char Display_Ram[48], u
 void Display_Ram_To_Tm1629(void)
 {
     Tm1629_Clear();
-    if (*(Decoder_Call_Save_Line + 88) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 7, Decoder_Call_Save_Line + 88);
-    if (*(Decoder_Call_Save_Line + 80) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 3, Decoder_Call_Save_Line + 80);
-    if (*(Decoder_Call_Save_Line + 72) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[4] + 7, Decoder_Call_Save_Line + 72);
-    if (*(Decoder_Call_Save_Line + 64) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[4] + 3, Decoder_Call_Save_Line + 64);
-    if (*(Decoder_Call_Save_Line + 56) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[3] + 7, Decoder_Call_Save_Line + 56);
-    if (*(Decoder_Call_Save_Line + 48) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[3] + 3, Decoder_Call_Save_Line + 48);
-    if (*(Decoder_Call_Save_Line + 40) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[2] + 7, Decoder_Call_Save_Line + 40);
-    if (*(Decoder_Call_Save_Line + 32) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[2] + 3, Decoder_Call_Save_Line + 32);
-    if (*(Decoder_Call_Save_Line + 24) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[1] + 7, Decoder_Call_Save_Line + 24);
-    if (*(Decoder_Call_Save_Line + 16) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[1] + 3, Decoder_Call_Save_Line + 16);
-    if (*(Decoder_Call_Save_Line + 8) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 7, Decoder_Call_Save_Line + 8);
-    if (*(Decoder_Call_Save_Line + 0) != 0)
-        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 3, Decoder_Call_Save_Line);
+    if (*(Decoder_Call_Save_Queue + 88) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 7, Decoder_Call_Save_Queue + 88);
+    if (*(Decoder_Call_Save_Queue + 80) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 3, Decoder_Call_Save_Queue + 80);
+    if (*(Decoder_Call_Save_Queue + 72) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[4] + 7, Decoder_Call_Save_Queue + 72);
+    if (*(Decoder_Call_Save_Queue + 64) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[4] + 3, Decoder_Call_Save_Queue + 64);
+    if (*(Decoder_Call_Save_Queue + 56) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[3] + 7, Decoder_Call_Save_Queue + 56);
+    if (*(Decoder_Call_Save_Queue + 48) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[3] + 3, Decoder_Call_Save_Queue + 48);
+    if (*(Decoder_Call_Save_Queue + 40) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[2] + 7, Decoder_Call_Save_Queue + 40);
+    if (*(Decoder_Call_Save_Queue + 32) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[2] + 3, Decoder_Call_Save_Queue + 32);
+    if (*(Decoder_Call_Save_Queue + 24) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[1] + 7, Decoder_Call_Save_Queue + 24);
+    if (*(Decoder_Call_Save_Queue + 16) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[1] + 3, Decoder_Call_Save_Queue + 16);
+    if (*(Decoder_Call_Save_Queue + 8) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 7, Decoder_Call_Save_Queue + 8);
+    if (*(Decoder_Call_Save_Queue + 0) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 3, Decoder_Call_Save_Queue);
     Tm1629_Display();
 }
+
+/**
+  * @brief  This function is Search call is or not in decoder queue.If the call in the queue.acconding to the Set_Call_Display_Number decide to how to do.
+  * @param  buff
+  * @retval 1 is exist . 0 is not exist
+  */
+
+u8 Decoder_Search_Buff_Is_Or_Not_In_Queue(unsigned char * buff)
+{
+    unsigned char index,index_end;
+    signed char i;
+    index = Return_End_Of_Buff(Decoder_Call_Save_Queue);
+    index_end = index ;
+    for(i=0;i<index;i++)
+    {
+       // if (*(buff + 1) == *(Decoder_Call_Save_Queue + (i << 3) + 1) && *(buff + 2) == *(Decoder_Call_Save_Queue + (i << 3) + 2) && *(buff + 2) == *(Decoder_Call_Save_Queue + (i << 3) + 2)&& *(buff + 2) == *(Decoder_Call_Save_Queue + (i << 3) + 2))
+        if (*(volatile u32*)(buff+1) == *(volatile u32*)(Decoder_Call_Save_Queue + (i << 3) + 1) )
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if(index !=index_end )
+    {
+        if(Set_Call_Queue_Mode== 1)
+        {
+            index--;
+            for(i=index;i>=0;i--)
+            {
+                Buff_Move_Down_One_Position(Decoder_Call_Save_Queue + (i << 3) );
+            }
+            memcpy(Decoder_Call_Save_Queue,buff,8);
+            Display_Ram_To_Tm1629();
+            return 1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    return 0;        
+}
+
+/**
+  * @brief  This function is function of cancel. delete the call.
+  * @param  buff
+  * @retval None
+  */
+
+void Decoder_Function_Of_Cancel(unsigned char * buff)
+{
+    unsigned char index,index_end;
+    signed char i;
+    index = Return_End_Of_Buff(Decoder_Call_Save_Queue);
+    index_end = index ;
+    for(i=0;i<index;i++)
+    {
+       //if (*(buff + 1) == *(Decoder_Call_Save_Queue + (i << 3) + 1) && *(buff + 2) == *(Decoder_Call_Save_Queue + (i << 3) + 2) && *(buff + 3) == *(Decoder_Call_Save_Queue + (i << 3) + 3)&& *(buff + 4) == *(Decoder_Call_Save_Queue + (i << 3) + 4))
+        if (*(volatile u32*)(buff+1) == *(volatile u32*)(Decoder_Call_Save_Queue + (i << 3) + 1) )
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if(index !=index_end )
+    {
+        for(i=index;i<index_end-1;i++)    //move up from 2 to end
+        {
+            Buff_Move_Up_One_Position(Decoder_Call_Save_Queue+(i<<3));
+        }
+        memset(Decoder_Call_Save_Queue+(i<<3),0,8);//Init the last one 8Byte.
+    }      
+    Display_Ram_To_Tm1629();
+}
+
+/**
+  * @brief  This function is function of Esc. delete the first call.
+  * @param  buff
+  * @retval None
+  */
+	
+void Decoder_Function_Of_Esc(void)
+{
+    Buff_Move_Up_All_Position_And_Init(Decoder_Call_Save_Queue);
+    Display_Ram_To_Tm1629();
+}
+
+/**
+  * @brief  This function is function of up. up cycle of queue.
+  * @param  buff
+  * @retval None
+  */
+	
+void Decoder_Function_Of_Up(void)
+{
+    unsigned char buff_temp[8]={0};
+    memcpy(buff_temp,Decoder_Call_Save_Queue,8);
+    Buff_Move_Up_All_Position_And_Init(Decoder_Call_Save_Queue);
+    Left_Buff_Add_To_End_Of_Right_Buff(buff_temp,Decoder_Call_Save_Queue);
+    Display_Ram_To_Tm1629();
+}
+
+/**
+  * @brief  This function is function of up. down cycle of queue.
+  * @param  buff
+  * @retval None
+  */
+	
+void Decoder_Function_Of_Down(void)
+{
+    unsigned char buff_temp[8]={0};
+    unsigned char index;
+    index = Return_End_Of_Buff(Decoder_Call_Save_Queue);
+    memcpy(buff_temp,Decoder_Call_Save_Queue+((index-1)<<3),8);
+    memset(Decoder_Call_Save_Queue+((index-1)<<3),0,8);
+    Left_Buff_Add_To_Head_Of_Right_Buff(buff_temp,Decoder_Call_Save_Queue);
+    Display_Ram_To_Tm1629();
+}
+
+/*	
+static void Decoder_Function_Of_Remove_Call_Time(unsigned char * buff);
+static void Decoder_Function_Of_Cycle_Call_Time(unsigned char * buff);
+*/
 
 #endif /* RF_GLOBAL */ 
 

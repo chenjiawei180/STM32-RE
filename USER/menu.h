@@ -172,7 +172,7 @@ extern u8 Cycle_Call_Time ;
 extern u8 Change_Standby_Display_Mode ;    /* FC */
 extern u8 Set_Key_Remove_Call_Is_Or_Not ;    /* FB */
 
-extern u8 Set_Call_Line_Mode ;
+extern u8 Set_Call_Queue_Mode ;
 extern u8 Set_Call_Display_Number ;
 extern u8 Set_Voice_Play_Mode ;
 extern u8 Set_Voice_Play_Time ;
@@ -297,6 +297,7 @@ static void Menu_F7_E3_Set(void);
 static void Menu_F7_E4_Set(void);
 static void Menu_F8_E1_Set(void);
 static void Menu_F8_E2_Set(void);
+static void Menu_Decoder(void);
 
 #endif /* __MENU_H */
 
