@@ -38,7 +38,7 @@ u8 Set_Voice_Navigation_Mode = 1;
 u8 Set_Voice_Navigation_On_Or_OFF = 0;
 u8 Set_Display_LED_Mode = 0;
 
-u8 Set_Two_Menu_F7_E1 = 11;
+u8 Set_Two_Menu_F7_E1 = 8;
 u8 Set_Two_Menu_F7_E2 = 0;
 u8 Set_Two_Menu_F7_E3 = 0;
 u8 Set_Two_Menu_F7_E4 = 0;
@@ -188,6 +188,7 @@ const struct Menu_def MenuProc[]=
 
 };
 
+#if 0
 /**
   * @brief  This function is change Str to int.
   * @param  str
@@ -222,6 +223,7 @@ void Int_To_Str(u16 dat,u8 *str)
     str[3]=tmp%10;
     str[4]=0;
 }
+#endif
 
 /**
   * @brief  This function is add number of buff add one.
@@ -939,6 +941,7 @@ void Menu_F8_E1(void)
 void Menu_F8_E2(void)
 {
     Tm1629_Show_Ex(0x02);
+    Set_Key_Of_Call_Mode = 0;
 }
 
 /**
@@ -1937,14 +1940,14 @@ void Menu_F3_E1_Set(void)
     if(gKeyValue == KEY_VALUE_DOWN)
     {
         if(Set_Call_Queue_Mode== 1)
-            Set_Call_Queue_Mode = 0;
+            Set_Call_Queue_Mode = 2;
         else
             Set_Call_Queue_Mode = 1;
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
         if(Set_Call_Queue_Mode == 1)
-            Set_Call_Queue_Mode = 0;
+            Set_Call_Queue_Mode = 2;
         else
             Set_Call_Queue_Mode = 1;
     }
@@ -2345,6 +2348,10 @@ void Menu_Decoder(void)
     else if(gKeyValue == KEY_VALUE_ESC)
     {
         Decoder_Function_Of_Esc();
+    }
+    if(Decoder_Call_Save_Queue[0] == 0)
+    {
+        M_index = STANDBY_MENU;
     }
 }
 

@@ -10,6 +10,7 @@
 #include "stm32f10x.h"
 #include "global.h"
 #include "bitband.h"
+#include "eeprom_24c.h"
 
 extern u8 Decoder_Call_Save_Queue[800];
 
@@ -22,6 +23,8 @@ static void Decoder_F1_E1(void);
 static void Decoder_F1_E2(void);
 static void Decoder_F1_E3(void);
 static void Decoder_F1_E4(void);
+static void Decoder_F8_E2(void);
+static void Decoder_Decoder_Menu(void);
 
 static void Buff_Move_Up_One_Position(unsigned char * buff);
 static void Buff_Move_Down_One_Position(unsigned char * buff);
@@ -37,6 +40,10 @@ static void Decoder_Function_Of_Cancel(unsigned char * buff);
 extern void Decoder_Function_Of_Esc(void);
 extern void Decoder_Function_Of_Up(void);
 extern void Decoder_Function_Of_Down(void);
+static void Decoder_Function_Of_Return_Fun_Id(unsigned char * buff,u32 data);
+static void Decoder_Function_Of_Assignment_For_KeyBoard(unsigned char * buff,u32 data);
+static void Decoder_Function_Of_Assignment_For_Call_Id(unsigned char * buff,u32 data,RF_def RFtmp,u8 state);
+static u8 Decoder_Funciton_Of_Is_Or_Not_KeyBoard(u32 data);
 static void Decoder_Function_Of_Remove_Call_Time(unsigned char * buff);
 static void Decoder_Function_Of_Cycle_Call_Time(unsigned char * buff);
 

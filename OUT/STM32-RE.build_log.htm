@@ -20,7 +20,7 @@ compiling eeprom_24c.c...
 compiling key.c...
 compiling menu.c...
 compiling rf_app.c...
-..\USER\rf_app.c(32): warning:  #177-D: variable "fun_id" was declared but never referenced
+..\USER\rf_app.c(36): warning:  #177-D: variable "fun_id" was declared but never referenced
       u8 fun_id;
 ..\USER\rf_app.c: 1 warning, 0 errors
 compiling misc.c...
@@ -49,7 +49,7 @@ compiling stm32f10x_wwdg.c...
 compiling core_cm3.c...
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=21690 RO-data=1602 RW-data=184 ZI-data=1872  
+Program Size: Code=22150 RO-data=1602 RW-data=216 ZI-data=1872  
 FromELF: creating hex file...
 "..\OUT\STM32-RE.axf" - 0 Error(s), 1 Warning(s).
 Load "..\\OUT\\STM32-RE.axf" 
@@ -60,30 +60,8 @@ Application running ...
 </pre>
 </body>
 </html>
-le...
-"..\OUT\STM32-RE.axf" - 0 Error(s), 2 Warning(s).
-Load "..\\OUT\\STM32-RE.axf" 
+f" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
-compiling rf_app.c...
-..\USER\rf_app.c(32): warning:  #177-D: variable "fun_id" was declared but never referenced
-      u8 fun_id;
-..\USER\rf_app.c(412): warning:  #177-D: function "Decoder_Search_Buff_Is_Or_Not_In_Queue" was declared but never referenced
-  u8 Decoder_Search_Buff_Is_Or_Not_In_Queue(unsigned char * buff)
-..\USER\rf_app.c: 2 warnings, 0 errors
-"..\USER\rf_app.c" - 0 Error(s), 2 Warning(s).
-..\USER\rf_app.c(405): warning:  #177-D: function "Decoder_Search_Buff_Is_Or_Not_In_Queue" was declared but never referenced
-  u8 Decoder_Search_Buff_Is_Or_Not_In_Queue(unsigned char * buff)
-..\USER\rf_app.c(447): warning:  #177-D: function "Decoder_Function_Of_Cancel" was declared but never referenced
-  void Decoder_Function_Of_Cancel(unsigned char * buff)
-..\USER\rf_app.c: 3 warnings, 0 errors
-"..\USER\rf_app.c" - 0 Error(s), 3 Warning(s).
-l(unsigned char * buff)
-..\USER\rf_app.c: 3 warnings, 0 errors
-"..\USER\rf_app.c" - 0 Error(s), 3 Warning(s).
-Load "..\\OUT\\STM32-RE.axf" 
-_____^
-*** error 56: cannot open file
-Error: Flash Download failed  -  Could not load file '..\OUT\STM32-RE.axf'

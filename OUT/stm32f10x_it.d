@@ -33,3 +33,4 @@
 ..\out\stm32f10x_it.o: ..\USER\global.h
 ..\out\stm32f10x_it.o: ..\USER\rf_app.h
 ..\out\stm32f10x_it.o: ..\USER\bitband.h
+..\out\stm32f10x_it.o: ..\USER\eeprom_24c.h

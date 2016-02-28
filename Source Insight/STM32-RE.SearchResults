@@ -1,4 +1,13 @@
----- Buff_Move_Up_All_Position_And_Init Matches (3 in 2 files) ----
-Rf_app.c (d:\github\stm32-re\user):void Buff_Move_Up_All_Position_And_Init(unsigned char * buff)
-Rf_app.c (d:\github\stm32-re\user):        Buff_Move_Up_All_Position_And_Init(right_buff);
-Rf_app.h (d:\github\stm32-re\user):static void Buff_Move_Up_All_Position_And_Init(unsigned char * buff);
+---- Set_Call_Queue_Mode Matches (12 in 3 files) ----
+Menu.c (d:\github\stm32-re\user):u8 Set_Call_Queue_Mode = 1;
+Menu.c (d:\github\stm32-re\user):        if(Set_Call_Queue_Mode== 1)
+Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 0;
+Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 1;
+Menu.c (d:\github\stm32-re\user):        if(Set_Call_Queue_Mode == 1)
+Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 0;
+Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 1;
+Menu.c (d:\github\stm32-re\user):    Tm1629_Show_One_Number(Set_Call_Queue_Mode); 
+Menu.h (d:\github\stm32-re\user):extern u8 Set_Call_Queue_Mode ;
+Rf_app.c (d:\github\stm32-re\user):                if(Set_Call_Queue_Mode == 1)
+Rf_app.c (d:\github\stm32-re\user):                    if(Set_Call_Queue_Mode == 1)
+Rf_app.c (d:\github\stm32-re\user):        if(Set_Call_Queue_Mode== 1)

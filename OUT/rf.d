@@ -32,5 +32,6 @@
 ..\out\rf.o: ..\USER\global.h
 ..\out\rf.o: ..\USER\rf_app.h
 ..\out\rf.o: ..\USER\bitband.h
+..\out\rf.o: ..\USER\eeprom_24c.h
 ..\out\rf.o: ..\USER\usart2.h
 ..\out\rf.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

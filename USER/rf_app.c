@@ -13,6 +13,7 @@
 #include "usart2.h"
 #include "string.h"
 #include "tm1629.h"
+#include "sound_list.h"
 
 #if defined RF_GLOBAL
 
@@ -20,6 +21,9 @@ u8 Decoder_Call_Save_Queue[800] = {0};
 
 u32 Call_Code_Bak = 0;			//上一次处理的呼叫编码
 u32 Call_Off_Time = 0;			//呼叫空闲时间
+
+unsigned char single_key[16]   = { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//单键位设置存储数组
+unsigned char multiple_key[16] = { 0x01, QUXIAO-QUXIAO, JIEZHANG-QUXIAO, DIANDANG-QUXIAO, JIUSHUI-QUXIAO, 0X01, 0x01, JIASHUI-QUXIAO, HUJIAO - QUXIAO, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//多键位设置存储数组
 
 /**
   * @brief  This function is RF decoder process.
@@ -49,6 +53,8 @@ void Decoder_Process(void)
                             || ( M_index == THREE_MENU_F1_E4_D2) 
                             || ( M_index == THREE_MENU_F1_E4_D3) 
                             || ( M_index == THREE_MENU_F1_E4_D4) 
+                            || ( M_index == THREE_MENU_F8_E2_SET) 
+                            || ( M_index == DECODER_MENU) 
         )
     )
     {
@@ -84,6 +90,10 @@ void Decoder_Process(void)
                     case THREE_MENU_F1_E4_D3:
                     case THREE_MENU_F1_E4_D4:Decoder_F1_E4();     break;
 
+                    case THREE_MENU_F8_E2_SET:Decoder_F8_E2();    break;
+
+                    case DECODER_MENU:Decoder_Decoder_Menu();    break;
+
                     default:break;
                 }
             }
@@ -102,37 +112,48 @@ void Decoder_Process(void)
 void Decoder_Standby(void)
 {
     u32 dat;
-    u8 state;
+    u8 state=0;
     RF_def RFtmp;
     unsigned char decoder_temp_buff[8];
     dat = RF_ID;
-    if(0)
+    if(Decoder_Funciton_Of_Is_Or_Not_KeyBoard(dat))
     {
-        
+        Decoder_Function_Of_Return_Fun_Id(decoder_temp_buff,dat);
+        Decoder_Function_Of_Assignment_For_KeyBoard(decoder_temp_buff,dat);
+        if(decoder_temp_buff[0] != QUXIAO_1 && decoder_temp_buff[0])
+        {
+            if(!Decoder_Search_Buff_Is_Or_Not_In_Queue(decoder_temp_buff))
+            {
+                Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
+                Display_Ram_To_Tm1629();
+                M_index = DECODER_MENU;
+            }
+        }
+        else
+        {
+             Decoder_Function_Of_Cancel(decoder_temp_buff);
+        }
     }
     else
     {
         state = Find_RF_EEPROM(&RFtmp, dat);
         if (state)
         {
-            decoder_temp_buff[0] = (u8)(dat & 0x0f);
-            memcpy(decoder_temp_buff+1, RFtmp.region, 4);
-            decoder_temp_buff[5] = (u8) ((dat>>16)&0xff);
-            decoder_temp_buff[6] = (u8) ((dat>>8)&0xff);
-            decoder_temp_buff[7] = (u8) ((dat)&0xff);
-            if(decoder_temp_buff[0] == 0x01)    //cancel
-            {
-                Decoder_Function_Of_Cancel(decoder_temp_buff);
-            }
-            else
+            Decoder_Function_Of_Assignment_For_Call_Id(decoder_temp_buff,dat,RFtmp,state);
+            if(decoder_temp_buff[0] != QUXIAO_1 && decoder_temp_buff[0])
             {
                 if(!Decoder_Search_Buff_Is_Or_Not_In_Queue(decoder_temp_buff))
                 {
-                     Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
-                     Display_Ram_To_Tm1629();
+                    Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
+                    Display_Ram_To_Tm1629();
+                    M_index = DECODER_MENU;
                 }
             }
-	 }
+            else
+            {
+                Decoder_Function_Of_Cancel(decoder_temp_buff);
+            }
+        }
     }
 }
 
@@ -205,6 +226,92 @@ void Decoder_F1_E4(void)
     {
         Buff_Add_One(Register_Cancel_Buff);
         M_index = THREE_MENU_F1_E4_D1;
+    }
+}
+
+/**
+  * @brief  This function is RF decoder F8 E2.
+  * @param  None
+  * @retval None
+  */
+
+void Decoder_F8_E2(void)
+{
+    if (Set_Singal_Or_Multiple_Key_Mode == 1)
+    {
+        single_key[RF_ID & 0x0f] = Set_Key_Of_Call_Mode;
+        //ISendStr(I2C_ADDRESS, SIN_KEY, single_key, 16);
+    }
+    else
+    {
+        multiple_key[RF_ID & 0x0f] = Set_Key_Of_Call_Mode;
+        //ISendStr(I2C_ADDRESS, MUL_KEY, multiple_key, 16);
+    }
+}
+
+/**
+  * @brief  This function is RF decoder menu.
+  * @param  None
+  * @retval None
+  */
+
+void Decoder_Decoder_Menu(void)
+{
+    u32 dat;
+    u8 state=0;
+    RF_def RFtmp;
+    unsigned char decoder_temp_buff[8];
+    dat = RF_ID;
+    if(Decoder_Funciton_Of_Is_Or_Not_KeyBoard(dat))
+    {
+        Decoder_Function_Of_Return_Fun_Id(decoder_temp_buff,dat);
+        Decoder_Function_Of_Assignment_For_KeyBoard(decoder_temp_buff,dat);
+        if(decoder_temp_buff[0] != QUXIAO_1 && decoder_temp_buff[0])
+        {
+            if(!Decoder_Search_Buff_Is_Or_Not_In_Queue(decoder_temp_buff))
+            {
+                if(Set_Call_Queue_Mode == 1)
+                {
+                    Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                    
+                }
+                else
+                {
+                     Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
+                }
+                Display_Ram_To_Tm1629();
+            }
+        }
+        else
+        {
+             Decoder_Function_Of_Cancel(decoder_temp_buff);
+        }
+    }
+    else
+    {
+        state = Find_RF_EEPROM(&RFtmp, dat);
+        if (state)
+        {
+            Decoder_Function_Of_Assignment_For_Call_Id(decoder_temp_buff,dat,RFtmp,state);
+            if(decoder_temp_buff[0] != QUXIAO_1 && decoder_temp_buff[0])
+            {
+                if(!Decoder_Search_Buff_Is_Or_Not_In_Queue(decoder_temp_buff))
+                {
+                    if(Set_Call_Queue_Mode == 1)
+                    {
+                        Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                    
+                    }
+                    else
+                    {
+                         Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
+                   }
+                    Display_Ram_To_Tm1629();
+                }
+            }
+            else
+            {
+                Decoder_Function_Of_Cancel(decoder_temp_buff);
+            }
+        }
     }
 }
 
@@ -510,7 +617,7 @@ void Decoder_Function_Of_Up(void)
 }
 
 /**
-  * @brief  This function is function of up. down cycle of queue.
+  * @brief  This function is function of down. down cycle of queue.
   * @param  buff
   * @retval None
   */
@@ -524,6 +631,86 @@ void Decoder_Function_Of_Down(void)
     memset(Decoder_Call_Save_Queue+((index-1)<<3),0,8);
     Left_Buff_Add_To_Head_Of_Right_Buff(buff_temp,Decoder_Call_Save_Queue);
     Display_Ram_To_Tm1629();
+}
+
+/**
+  * @brief  This function is function of return fun id. fun id is in the multiple_key[] of singal_key[]
+  * @param  buff  data
+  * @retval None
+  */
+	
+void Decoder_Function_Of_Return_Fun_Id(unsigned char * buff,u32 data)
+{
+    if (Set_Singal_Or_Multiple_Key_Mode == 1)  //为按键值
+    {
+        buff[0] = single_key[data & 0x0f];
+    }
+    else
+    {
+        buff[0] = multiple_key[data & 0x0f];
+    }
+}
+
+/**
+  * @brief  This function is judgment the call RFID is or not KeyBoard send.
+  * @param  data
+  * @retval 1 is keyboard . 0 is not.
+  */
+	
+u8 Decoder_Funciton_Of_Is_Or_Not_KeyBoard(u32 data)
+{
+    //if  (   ((old2_RF_RECE_REG[2] & 0xf0) == 0x00 && ((old2_RF_RECE_REG[0] >> 4) == Two_Menu_F7_E1_temp) && (old2_RF_RECE_REG[0] >> 4) < 10)  ||  (Two_Menu_F7_E1_temp == 11 &&(old2_RF_RECE_REG[2] & 0xf0) == 0x00 )  )
+    if( (  ( data & 0xf0)==0x00 &&  (data >>20)==Set_Two_Menu_F7_E1)  ||  ( Set_Two_Menu_F7_E1 == 11 &&  ( data & 0xf0)==0x00   )  )
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+/**
+  * @brief  This function is data Assignment for decoder_temp at keyboard.
+  * @param  buff  data
+  * @retval None
+  */
+	
+void Decoder_Function_Of_Assignment_For_KeyBoard(unsigned char * buff,u32 data)
+{
+    buff[1] = (u8) ((data>>16)&0x0f);	//为防区号
+    buff[2] = (u8) ((data>>16)&0x0f);	//为3位组码第一位
+    buff[3] = (u8) ((data>>8)&0xf0);	//为3位组码第二位
+    buff[4] = (u8) ((data>>8)&0x0f);	//为3位组码第三位
+    buff[5] = (u8) ((data>>16)&0xff);
+    buff[6] = (u8) ((data>>8)&0xff);
+    buff[7] = (u8) ((data)&0xff);
+}
+
+/**
+  * @brief  This function is data Assignment for decoder_temp at Call Id.
+  * @param  buff  data RFtmp
+  * @retval None
+  */
+
+void Decoder_Function_Of_Assignment_For_Call_Id(unsigned char * buff,u32 data,RF_def RFtmp,u8 state)
+{
+    if(state == 1)
+    {
+        buff[0] = QUXIAO_1;
+    }
+    else if(state == 2)
+    {
+        buff[0] = BAOJING_1;
+    }
+    else
+    {
+        Decoder_Function_Of_Return_Fun_Id(buff,data);
+    }
+    memcpy(buff+1, RFtmp.region, 4);
+    buff[5] = (u8) ((data>>16)&0xff);
+    buff[6] = (u8) ((data>>8)&0xff);
+    buff[7] = (u8) ((data)&0xff);
 }
 
 /*	

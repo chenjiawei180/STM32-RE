@@ -31,11 +31,12 @@
 ..\out\rf_app.o: ..\FWlib\inc\misc.h
 ..\out\rf_app.o: ..\USER\global.h
 ..\out\rf_app.o: ..\USER\bitband.h
+..\out\rf_app.o: ..\USER\eeprom_24c.h
 ..\out\rf_app.o: ..\USER\rf.h
 ..\out\rf_app.o: ..\USER\menu.h
 ..\out\rf_app.o: ..\USER\key.h
-..\out\rf_app.o: ..\USER\eeprom_24c.h
 ..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\rf_app.o: ..\USER\usart2.h
 ..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 ..\out\rf_app.o: ..\USER\tm1629.h
+..\out\rf_app.o: ..\USER\sound_list.h

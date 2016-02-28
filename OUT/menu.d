@@ -36,3 +36,4 @@
 ..\out\menu.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 ..\out\menu.o: ..\USER\key.h
 ..\out\menu.o: ..\USER\rf_app.h
+..\out\menu.o: ..\USER\eeprom_24c.h
