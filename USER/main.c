@@ -29,17 +29,17 @@ int main(void)
     SysTick_Configuration();
 #endif /* SYSTEM_CLOCK_GLOBAL */
 
-/* Init the usart2 and set it's class of interrupt*/
-#if defined USART2_GLOBAL
-    CH340_USART2_Config();
-    CH340_NVIC_Configuration();
-#endif /* USART2_GLOBAL */
-
 /* Init the usart1 and set it's class of interrupt*/
 #if defined USART1_GOLBAL
     GD5800_USART1_Config();
     GD5800_NVIC_Configuration();
 #endif /* USART1_GOLBAL */
+
+/* Init the usart2 and set it's class of interrupt*/
+#if defined USART2_GLOBAL
+    CH340_USART2_Config();
+    CH340_NVIC_Configuration();
+#endif /* USART2_GLOBAL */
 
 /* Init the RF config */
 #if defined RF_GLOBAL
@@ -86,8 +86,7 @@ int main(void)
 #if defined KEY_GLOBAL
         Key_Process();
 #endif /* KEY_GLOBAL */
-
-        ;
+        //printf("while(1) \n");
     }
 }
 

@@ -59,7 +59,7 @@ void GD5800_NVIC_Configuration(void)
     /* Enable the USARTy Interrupt */
     NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn; 
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 }
@@ -85,9 +85,10 @@ void USART1_SendByte(u8 Date)
 void USART1_IRQHandler(void)
 {
     //u8 c;
-    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+    if(USART_GetITStatus(USART1, USART_IT_RXNE) == SET)
     {
         //c=USART1->DR;
+        USART_ClearFlag(USART1,USART_FLAG_RXNE);
     } 
 }
 

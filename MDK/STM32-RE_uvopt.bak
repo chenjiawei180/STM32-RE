@@ -342,7 +342,7 @@
       <Focus>0</Focus>
       <ColumnNumber>9</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>698</TopLine>
+      <TopLine>699</TopLine>
       <CurrentLine>703</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\USER\eeprom_24c.c</PathWithFileName>
@@ -374,7 +374,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>292</TopLine>
+      <TopLine>1</TopLine>
       <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\USER\menu.c</PathWithFileName>

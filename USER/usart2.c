@@ -30,7 +30,7 @@ void CH340_USART2_Config(void)
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure);    
     /* Configure USART2 Rx (PA.03) as input floating */
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 
@@ -99,9 +99,10 @@ void USART2_SendByte(u8 Date)
 void USART2_IRQHandler(void)
 {
     //u8 c=0;
-    if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
+    if(USART_GetITStatus(USART2, USART_IT_RXNE) == SET)
     {
         //c=USART1->DR;
+        USART_ClearFlag(USART2,USART_FLAG_RXNE);
     }
 } 
 
