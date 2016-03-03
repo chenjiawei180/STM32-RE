@@ -8,6 +8,7 @@
 #include "menu.h"
 #include "set_system_clock.h"
 #include "usart2.h"
+#include "eeprom_24c.h"
 
 #if defined KEY_GLOBAL
 
@@ -90,6 +91,22 @@ void Key_Process(void)
                                               || (M_index==ONE_MENU_FB)     
                                               || (M_index==ONE_MENU_FC)     
                                         //      || (M_index==ONE_MENU_FD)     
+                                              || (M_index==THREE_MENU_F2_E1_D1)   
+                                              || (M_index==THREE_MENU_F2_E1_D2)   
+                                              || (M_index==THREE_MENU_F2_E1_D3)   
+                                              || (M_index==THREE_MENU_F2_E1_D4)   
+                                              || (M_index==THREE_MENU_F2_E2_D1)   
+                                              || (M_index==THREE_MENU_F2_E2_D2)   
+                                              || (M_index==THREE_MENU_F2_E2_D3)   
+                                              || (M_index==THREE_MENU_F2_E2_D4)   
+                                              || (M_index==THREE_MENU_F2_E3_D1)   
+                                              || (M_index==THREE_MENU_F2_E3_D2)   
+                                              || (M_index==THREE_MENU_F2_E3_D3)   
+                                              || (M_index==THREE_MENU_F2_E3_D4)   
+                                              || (M_index==THREE_MENU_F2_E4_D1)   
+                                              || (M_index==THREE_MENU_F2_E4_D2)   
+                                              || (M_index==THREE_MENU_F2_E4_D3)   
+                                              || (M_index==THREE_MENU_F2_E4_D4)                                               
                                               || (M_index==ONE_MENU_FE)     )
                        )
                 {
@@ -103,6 +120,27 @@ void Key_Process(void)
                             case ONE_MENU_FC   :M_index=TWO_MENU_FC_SET; break;
                          //   case ONE_MENU_FD   :M_index=ONE_MENU_F1; break;
                             case ONE_MENU_FE   :M_index=TWO_MENU_FE_E1; break;
+
+				case THREE_MENU_F2_E1_D1:
+				case THREE_MENU_F2_E1_D2:
+				case THREE_MENU_F2_E1_D3:
+				case THREE_MENU_F2_E1_D4:    Delete_Call_Function(Delete_Call_Buff);    break;
+
+				case THREE_MENU_F2_E2_D1:
+				case THREE_MENU_F2_E2_D2:
+				case THREE_MENU_F2_E2_D3:
+				case THREE_MENU_F2_E2_D4:    Delete_Host_Function(Delete_Host_Buff);    break;
+
+				case THREE_MENU_F2_E3_D1:
+				case THREE_MENU_F2_E3_D2:
+				case THREE_MENU_F2_E3_D3:
+				case THREE_MENU_F2_E3_D4:    Delete_Alarm_Function(Delete_Alarm_Buff);    break;
+
+				case THREE_MENU_F2_E4_D1:
+				case THREE_MENU_F2_E4_D2:
+				case THREE_MENU_F2_E4_D3:
+				case THREE_MENU_F2_E4_D4:    Delete_Cancel_Function(Delete_Cancel_Buff);    break;
+				
                             default: break;
                         }
                         

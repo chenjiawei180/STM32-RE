@@ -35,3 +35,4 @@
 ..\out\key.o: ..\USER\set_system_clock.h
 ..\out\key.o: ..\USER\usart2.h
 ..\out\key.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\key.o: ..\USER\eeprom_24c.h

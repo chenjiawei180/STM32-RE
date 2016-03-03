@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OUT\STM32-RE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OUT\STM32-RE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Mar 02 13:21:24 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu Mar 03 10:56:08 2016
 <BR><P>
 <H3>Maximum Stack Usage =        128 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -937,36 +937,52 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 </UL>
 
-<P><STRONG><a name="[f6]"></a>Delete_Call_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<P><STRONG><a name="[f6]"></a>Delete_Call_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
+</UL>
 
-<P><STRONG><a name="[f9]"></a>Delete_Host_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<P><STRONG><a name="[f9]"></a>Delete_Host_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Host_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
+</UL>
 
-<P><STRONG><a name="[fa]"></a>Delete_Alarm_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<P><STRONG><a name="[fa]"></a>Delete_Alarm_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Alarm_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
+</UL>
 
-<P><STRONG><a name="[fb]"></a>Delete_Cancel_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<P><STRONG><a name="[fb]"></a>Delete_Cancel_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
 <P><STRONG><a name="[fc]"></a>Delete_All_Data</STRONG> (Thumb, 44 bytes, Stack size 40 bytes, eeprom_24c.o(.text), UNUSED)
@@ -1030,10 +1046,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[b2]"></a>Key_Process</STRONG> (Thumb, 476 bytes, Stack size 8 bytes, key.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Key_Process &rArr; Key_Scan
+<P><STRONG><a name="[b2]"></a>Key_Process</STRONG> (Thumb, 724 bytes, Stack size 8 bytes, key.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Key_Process &rArr; Delete_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Scan
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1645,7 +1665,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Clear
 </UL>
 
-<P><STRONG><a name="[f7]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[f7]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
