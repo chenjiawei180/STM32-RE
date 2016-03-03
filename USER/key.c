@@ -9,6 +9,7 @@
 #include "set_system_clock.h"
 #include "usart2.h"
 #include "eeprom_24c.h"
+#include "rf.h"
 
 #if defined KEY_GLOBAL
 
@@ -171,6 +172,7 @@ void Key_Process(void)
             break;
 
             case KEY_VALUE_ESC:
+		  RF_Flag = 0;
                 M_index = MenuProc[M_index].Return;
                 Function = MenuProc[M_index].handle;
                 (*Function)();

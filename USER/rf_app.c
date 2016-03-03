@@ -660,7 +660,7 @@ void Decoder_Function_Of_Return_Fun_Id(unsigned char * buff,u32 data)
 u8 Decoder_Funciton_Of_Is_Or_Not_KeyBoard(u32 data)
 {
     //if  (   ((old2_RF_RECE_REG[2] & 0xf0) == 0x00 && ((old2_RF_RECE_REG[0] >> 4) == Two_Menu_F7_E1_temp) && (old2_RF_RECE_REG[0] >> 4) < 10)  ||  (Two_Menu_F7_E1_temp == 11 &&(old2_RF_RECE_REG[2] & 0xf0) == 0x00 )  )
-    if( (  ( data & 0xf0)==0x00 &&  (data >>20)==Set_Two_Menu_F7_E1)  ||  ( Set_Two_Menu_F7_E1 == 11 &&  ( data & 0xf0)==0x00   )  )
+    if( (  ( data & 0xf0)==0x00 &&  ( (data >>20) == Set_Two_Menu_F7_E1) )  ||  ( Set_Two_Menu_F7_E1 == 11 &&  ( data & 0xf0)==0x00   )  )
     {
         return 1;
     }
@@ -678,9 +678,9 @@ u8 Decoder_Funciton_Of_Is_Or_Not_KeyBoard(u32 data)
 	
 void Decoder_Function_Of_Assignment_For_KeyBoard(unsigned char * buff,u32 data)
 {
-    buff[1] = (u8) ((data>>16)&0x0f);	//为防区号
+    buff[1] = (u8) ((data>>20)&0x0f);	//为防区号
     buff[2] = (u8) ((data>>16)&0x0f);	//为3位组码第一位
-    buff[3] = (u8) ((data>>8)&0xf0);	//为3位组码第二位
+    buff[3] = (u8) ((data>>12)&0x0f);	//为3位组码第二位
     buff[4] = (u8) ((data>>8)&0x0f);	//为3位组码第三位
     buff[5] = (u8) ((data>>16)&0xff);
     buff[6] = (u8) ((data>>8)&0xff);

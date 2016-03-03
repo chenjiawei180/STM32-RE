@@ -38,7 +38,7 @@ u8 Set_Voice_Navigation_Mode = 1;
 u8 Set_Voice_Navigation_On_Or_OFF = 0;
 u8 Set_Display_LED_Mode = 0;
 
-u8 Set_Two_Menu_F7_E1 = 8;
+u8 Set_Two_Menu_F7_E1 = 11;
 u8 Set_Two_Menu_F7_E2 = 0;
 u8 Set_Two_Menu_F7_E3 = 0;
 u8 Set_Two_Menu_F7_E4 = 0;
