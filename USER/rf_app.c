@@ -22,6 +22,9 @@ u8 Decoder_Call_Save_Queue[800] = {0};
 u32 Call_Code_Bak = 0;			//上一次处理的呼叫编码
 u32 Call_Off_Time = 0;			//呼叫空闲时间
 
+u8 Remove_Or_Cycle_Time_Count = 0;
+u8 Remove_Or_Cycle_Time_Sec_Number = 0;
+
 unsigned char single_key[16]   = { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//单键位设置存储数组
 unsigned char multiple_key[16] = { 0x01, QUXIAO-QUXIAO, JIEZHANG-QUXIAO, DIANDANG-QUXIAO, JIUSHUI-QUXIAO, 0X01, 0x01, JIASHUI-QUXIAO, HUJIAO - QUXIAO, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//多键位设置存储数组
 
@@ -116,6 +119,7 @@ void Decoder_Standby(void)
     RF_def RFtmp;
     unsigned char decoder_temp_buff[8];
     dat = RF_ID;
+    Remove_Or_Cycle_Time_Sec_Number = 0;    // cycle or remove need clear the sec number
     if(Decoder_Funciton_Of_Is_Or_Not_KeyBoard(dat))
     {
         Decoder_Function_Of_Return_Fun_Id(decoder_temp_buff,dat);
@@ -262,6 +266,7 @@ void Decoder_Decoder_Menu(void)
     RF_def RFtmp;
     unsigned char decoder_temp_buff[8];
     dat = RF_ID;
+    Remove_Or_Cycle_Time_Sec_Number = 0;    // cycle or remove need clear the sec number
     if(Decoder_Funciton_Of_Is_Or_Not_KeyBoard(dat))
     {
         Decoder_Function_Of_Return_Fun_Id(decoder_temp_buff,dat);
@@ -713,10 +718,38 @@ void Decoder_Function_Of_Assignment_For_Call_Id(unsigned char * buff,u32 data,RF
     buff[7] = (u8) ((data)&0xff);
 }
 
-/*	
-static void Decoder_Function_Of_Remove_Call_Time(unsigned char * buff);
-static void Decoder_Function_Of_Cycle_Call_Time(unsigned char * buff);
-*/
+/**
+  * @brief  This function is Remove call. F4
+  * @param  buff  
+  * @retval None
+  */
+
+void Decoder_Function_Of_Remove_Call_Time(void)
+{
+    //if ((f4_xiaohao<f5_xunhuan&& logout_cycle_table_temp>f4_xiaohao && f5_xunhuan && f4_xiaohao) || (f5_xunhuan == 0 && f4_xiaohao && logout_cycle_table_temp>f4_xiaohao))
+    if ((Remove_Call_Time < Cycle_Call_Time && Remove_Or_Cycle_Time_Sec_Number > Remove_Call_Time && Cycle_Call_Time && Remove_Call_Time) || (Cycle_Call_Time == 0 && Remove_Call_Time && Remove_Or_Cycle_Time_Sec_Number>Remove_Call_Time))
+    {
+        Decoder_Function_Of_Esc();
+        Remove_Or_Cycle_Time_Sec_Number = 0;
+    }
+}
+
+/**
+  * @brief  This function is Remove call. F5
+  * @param  buff  
+  * @retval None
+  */
+
+void Decoder_Function_Of_Cycle_Call_Time(void)
+{
+    //if ((f5_xunhuan<f4_xiaohao && logout_cycle_table_temp>f5_xunhuan && f4_xiaohao && f5_xunhuan) || (f4_xiaohao == 0 && f5_xunhuan &&logout_cycle_table_temp>f5_xunhuan))
+    if ((Cycle_Call_Time < Remove_Call_Time && Remove_Or_Cycle_Time_Sec_Number > Cycle_Call_Time && Remove_Call_Time && Cycle_Call_Time) || (Remove_Call_Time == 0 && Cycle_Call_Time && Remove_Or_Cycle_Time_Sec_Number>Cycle_Call_Time))
+    {
+        Decoder_Function_Of_Up();
+        Remove_Or_Cycle_Time_Sec_Number = 0;
+    }
+}
+
 
 #endif /* RF_GLOBAL */ 
 

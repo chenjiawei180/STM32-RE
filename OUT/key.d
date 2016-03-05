@@ -37,3 +37,4 @@
 ..\out\key.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 ..\out\key.o: ..\USER\eeprom_24c.h
 ..\out\key.o: ..\USER\rf.h
+..\out\key.o: ..\USER\rf_app.h

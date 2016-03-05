@@ -17,6 +17,9 @@ extern u8 Decoder_Call_Save_Queue[800];
 extern u32 Call_Code_Bak;
 extern u32 Call_Off_Time;
 
+extern u8 Remove_Or_Cycle_Time_Count ;
+extern u8 Remove_Or_Cycle_Time_Sec_Number ;
+
 extern void Decoder_Process(void);
 static void Decoder_Standby(void);
 static void Decoder_F1_E1(void);
@@ -44,8 +47,8 @@ static void Decoder_Function_Of_Return_Fun_Id(unsigned char * buff,u32 data);
 static void Decoder_Function_Of_Assignment_For_KeyBoard(unsigned char * buff,u32 data);
 static void Decoder_Function_Of_Assignment_For_Call_Id(unsigned char * buff,u32 data,RF_def RFtmp,u8 state);
 static u8 Decoder_Funciton_Of_Is_Or_Not_KeyBoard(u32 data);
-static void Decoder_Function_Of_Remove_Call_Time(unsigned char * buff);
-static void Decoder_Function_Of_Cycle_Call_Time(unsigned char * buff);
+extern void Decoder_Function_Of_Remove_Call_Time(void);
+extern void Decoder_Function_Of_Cycle_Call_Time(void);
 
 #endif  /* __RF_APP_H */
 

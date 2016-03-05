@@ -25,6 +25,8 @@
 #include "stm32f10x_it.h"
 #include "set_system_clock.h"
 #include "rf_app.h"
+#include "menu.h"
+#include "key.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Examples
   * @{
@@ -134,7 +136,6 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
 #if defined SYSTEM_CLOCK_GLOBAL
-
     System_Time_Count ++;
     if(System_Time_Count >100) //199)    //ÃëÊ±¼ä
     {
@@ -147,6 +148,13 @@ void SysTick_Handler(void)
     {
         Call_Code_Bak = 0;
     }
+
+    Remove_Or_Cycle_Time_Count++;
+    if( Remove_Or_Cycle_Time_Count > 199)
+    {
+        Remove_Or_Cycle_Time_Sec_Number++;
+        Remove_Or_Cycle_Time_Count = 0;
+    } 
 
 #endif /* SYSTEM_CLOCK_GLOBAL */
 }

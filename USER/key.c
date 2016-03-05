@@ -10,6 +10,7 @@
 #include "usart2.h"
 #include "eeprom_24c.h"
 #include "rf.h"
+#include "rf_app.h"
 
 #if defined KEY_GLOBAL
 
@@ -185,7 +186,14 @@ void Key_Process(void)
                     Flag_Half_Sec=0;
                     Function = MenuProc[M_index].handle;  
                     (*Function)();  
+					
+                    if(M_index == DECODER_MENU)
+                    {
+                        Decoder_Function_Of_Remove_Call_Time();
+                        Decoder_Function_Of_Cycle_Call_Time();
+                    }
                 }
+
             break;        
         }
     }
