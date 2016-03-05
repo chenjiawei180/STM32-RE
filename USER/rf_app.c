@@ -14,6 +14,7 @@
 #include "string.h"
 #include "tm1629.h"
 #include "sound_list.h"
+#include "gd5800.h"
 
 #if defined RF_GLOBAL
 
@@ -130,6 +131,7 @@ void Decoder_Standby(void)
             {
                 Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                 Display_Ram_To_Tm1629();
+                GD5800_Play_Music_Of_Play_Music(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f);
                 M_index = DECODER_MENU;
             }
         }

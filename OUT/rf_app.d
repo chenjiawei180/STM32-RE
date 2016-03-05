@@ -40,3 +40,4 @@
 ..\out\rf_app.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 ..\out\rf_app.o: ..\USER\tm1629.h
 ..\out\rf_app.o: ..\USER\sound_list.h
+..\out\rf_app.o: ..\USER\gd5800.h

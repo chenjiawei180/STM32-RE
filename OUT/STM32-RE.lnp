@@ -11,6 +11,7 @@
 "..\out\key.o"
 "..\out\menu.o"
 "..\out\rf_app.o"
+"..\out\gd5800.o"
 "..\out\misc.o"
 "..\out\stm32f10x_adc.o"
 "..\out\stm32f10x_bkp.o"

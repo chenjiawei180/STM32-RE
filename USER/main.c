@@ -15,6 +15,7 @@
 #include "eeprom_24c.h"
 #include "key.h"
 #include "rf_app.h"
+#include "gd5800.h"
 
 int main(void)
 {
@@ -33,6 +34,7 @@ int main(void)
 #if defined USART1_GOLBAL
     GD5800_USART1_Config();
     GD5800_NVIC_Configuration();
+    GD5800_Initialization();
 #endif /* USART1_GOLBAL */
 
 /* Init the usart2 and set it's class of interrupt*/

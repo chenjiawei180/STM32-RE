@@ -1,13 +1,10 @@
----- Set_Call_Queue_Mode Matches (12 in 3 files) ----
-Menu.c (d:\github\stm32-re\user):u8 Set_Call_Queue_Mode = 1;
-Menu.c (d:\github\stm32-re\user):        if(Set_Call_Queue_Mode== 1)
-Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 0;
-Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 1;
-Menu.c (d:\github\stm32-re\user):        if(Set_Call_Queue_Mode == 1)
-Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 0;
-Menu.c (d:\github\stm32-re\user):            Set_Call_Queue_Mode = 1;
-Menu.c (d:\github\stm32-re\user):    Tm1629_Show_One_Number(Set_Call_Queue_Mode); 
-Menu.h (d:\github\stm32-re\user):extern u8 Set_Call_Queue_Mode ;
-Rf_app.c (d:\github\stm32-re\user):                if(Set_Call_Queue_Mode == 1)
-Rf_app.c (d:\github\stm32-re\user):                    if(Set_Call_Queue_Mode == 1)
-Rf_app.c (d:\github\stm32-re\user):        if(Set_Call_Queue_Mode== 1)
+---- Set_Voice_Navigation_Mode Matches (9 in 2 files) ----
+Menu.c (d:\github\stm32-re\user):u8 Set_Voice_Navigation_Mode = 1;    // 1 is chinese   0 is english
+Menu.c (d:\github\stm32-re\user):        if(Set_Voice_Navigation_Mode== 1)
+Menu.c (d:\github\stm32-re\user):            Set_Voice_Navigation_Mode = 0;
+Menu.c (d:\github\stm32-re\user):            Set_Voice_Navigation_Mode = 1;
+Menu.c (d:\github\stm32-re\user):        if(Set_Voice_Navigation_Mode == 1)
+Menu.c (d:\github\stm32-re\user):            Set_Voice_Navigation_Mode = 0;
+Menu.c (d:\github\stm32-re\user):            Set_Voice_Navigation_Mode = 1;
+Menu.c (d:\github\stm32-re\user):    Tm1629_Show_One_Number(Set_Voice_Navigation_Mode); 
+Menu.h (d:\github\stm32-re\user):extern u8 Set_Voice_Navigation_Mode ;

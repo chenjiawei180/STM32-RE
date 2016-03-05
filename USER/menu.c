@@ -34,7 +34,7 @@ u8 Set_Voice_Play_Time = 1;
 u8 Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
 u8 Set_Voice_Volume = 6;
 u8 Set_Display_Tube_Brightness = 3;
-u8 Set_Voice_Navigation_Mode = 1;
+u8 Set_Voice_Navigation_Mode = 0;    // 1 is chinese   0 is english
 u8 Set_Voice_Navigation_On_Or_OFF = 0;
 u8 Set_Display_LED_Mode = 0;
 

@@ -475,6 +475,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\rf_app.c</FilePath>
             </File>
+            <File>
+              <FileName>gd5800.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\gd5800.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

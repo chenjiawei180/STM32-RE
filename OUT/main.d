@@ -40,3 +40,4 @@
 ..\out\main.o: ..\USER\key.h
 ..\out\main.o: ..\USER\menu.h
 ..\out\main.o: ..\USER\rf_app.h
+..\out\main.o: ..\USER\gd5800.h

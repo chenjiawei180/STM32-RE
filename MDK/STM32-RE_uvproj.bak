@@ -470,6 +470,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\menu.c</FilePath>
             </File>
+            <File>
+              <FileName>rf_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\rf_app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

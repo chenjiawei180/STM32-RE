@@ -2,7 +2,7 @@
   * @file       USER/key.h
   * @author  cjw
   * @date     2016.1.27
-  * @brief     This file contains the headers of key drive.
+  * @brief     This file contains the headers of the Key.
   ******************************************************************************/
 #ifndef __KEY_H
 #define __KEY_H
@@ -31,3 +31,4 @@ static void Key_Delay_us(u16 Time);
 extern void Key_Process(void);
 
 #endif /* __KEY_H */
+
