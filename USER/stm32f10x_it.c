@@ -27,6 +27,7 @@
 #include "rf_app.h"
 #include "menu.h"
 #include "key.h"
+#include "gd5800.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Examples
   * @{
@@ -155,6 +156,19 @@ void SysTick_Handler(void)
         Remove_Or_Cycle_Time_Sec_Number++;
         Remove_Or_Cycle_Time_Count = 0;
     } 
+
+    if(GD5800_Busy_Soft_Table == 0)
+    {
+        GD5800_Busy_Soft_Table_Count++;
+        if(GD5800_Busy_Soft_Table_Count >15)
+        {
+            GD5800_Busy_Soft_Table = 1;
+        }
+    }
+    else
+    {
+        GD5800_Busy_Soft_Table_Count = 0;
+    }
 
 #endif /* SYSTEM_CLOCK_GLOBAL */
 }

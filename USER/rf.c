@@ -53,6 +53,10 @@ void EXTI15_10_IRQHandler(void)//
                     if(RF_Temp == RF_Temp_Bak)
                     {
                         RF_Same_Count ++;    //相同呼叫计数
+                        if( RF_Same_Count > 250 )
+                        {
+                            RF_Same_Count = 250 ;
+                        }
 /* key mode mask                        
                         if(Key_MODE==1)    //单按键模式
                         {
@@ -100,6 +104,7 @@ void EXTI15_10_IRQHandler(void)//
         {
             RF_Count = 0;
             RF_Temp = 0;
+            RF_Same_Count = 0;
         }
         else
         {  

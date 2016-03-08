@@ -131,7 +131,7 @@ void Decoder_Standby(void)
             {
                 Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                 Display_Ram_To_Tm1629();
-                GD5800_Play_Music_Of_Play_Music(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f);
+		  GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
                 M_index = DECODER_MENU;
             }
         }
@@ -152,6 +152,7 @@ void Decoder_Standby(void)
                 {
                     Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                     Display_Ram_To_Tm1629();
+		      GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);					
                     M_index = DECODER_MENU;
                 }
             }
@@ -279,7 +280,8 @@ void Decoder_Decoder_Menu(void)
             {
                 if(Set_Call_Queue_Mode == 1)
                 {
-                    Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                    
+                    Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);   
+		      GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
                 }
                 else
                 {
@@ -305,7 +307,8 @@ void Decoder_Decoder_Menu(void)
                 {
                     if(Set_Call_Queue_Mode == 1)
                     {
-                        Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                    
+                        Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);   
+			   GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
                     }
                     else
                     {

@@ -8,8 +8,13 @@
 #include "usart1.h"
 #include "sound_list.h"
 #include "menu.h"
+#include "string.h"
 
 #ifdef USART2_GLOBAL
+
+Repeat_Save_Paras Sound_Data;
+u8 GD5800_Busy_Soft_Table_Count = 0;
+u8 GD5800_Busy_Soft_Table = 1;
 
 /**
   * @brief  This function is Initialization GD5800. set the cycle mode.
@@ -19,6 +24,12 @@
 
 void GD5800_Initialization(void)
 {
+    GPIO_InitTypeDef  GPIO_Struct;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    GPIO_Struct.GPIO_Pin =GPIO_Pin_11;
+    GPIO_Struct.GPIO_Mode= GPIO_Mode_IPU;
+    GPIO_Init(GPIOA, &GPIO_Struct);
+
     USART1_SendByte(0x7E);       /***frame command ****/
     USART1_SendByte(0X03);
     USART1_SendByte(0X33);
@@ -338,6 +349,47 @@ void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, 
     else
     {
         GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(report_mode,number,key_type);
+    }
+}
+
+/**
+  * @brief  This function is GD5800_Play_Mucic_Of_Decoder_Process .
+  * @param  report_mode number call_type key_type repeat_time
+  * @retval None
+  */
+
+void GD5800_Play_Mucic_Of_Decoder_Process(u8 report_mode,u8 * number , u8 call_type, u8 key_type,u8 repeat_time)
+{
+    if(repeat_time > 1)
+    {
+        Sound_Data.repeat_times = repeat_time;
+        Sound_Data.call_type = call_type;
+        Sound_Data.key_value = key_type;
+        Sound_Data.report_mode= report_mode;
+        memcpy(Sound_Data.report_number,number,8);
+    }
+    else
+    {
+        GD5800_Play_Music_Of_Play_Music(report_mode,number ,call_type, key_type);
+    }
+}
+
+/**
+  * @brief  This function is GD5800_Play_Mucic_Of_Main_Process .
+  * @param  None
+  * @retval None
+  */
+
+void GD5800_Play_Mucic_Of_Main_Process(void)
+{
+    if(Sound_Data.repeat_times>0)
+    {
+        if(GD5800_Busy_Soft_Table && GD5800_Busy_Hard_Table)
+        {
+            GD5800_Busy_Soft_Table = 0 ;
+            GD5800_Play_Music_Of_Play_Music(Sound_Data.report_mode,Sound_Data.report_number,Sound_Data.call_type,Sound_Data.key_value);
+            Sound_Data.repeat_times--;
+        }
     }
 }
 

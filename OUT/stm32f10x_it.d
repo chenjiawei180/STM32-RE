@@ -36,3 +36,4 @@
 ..\out\stm32f10x_it.o: ..\USER\eeprom_24c.h
 ..\out\stm32f10x_it.o: ..\USER\menu.h
 ..\out\stm32f10x_it.o: ..\USER\key.h
+..\out\stm32f10x_it.o: ..\USER\gd5800.h

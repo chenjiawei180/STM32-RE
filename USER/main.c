@@ -41,6 +41,7 @@ int main(void)
 #if defined USART2_GLOBAL
     CH340_USART2_Config();
     CH340_NVIC_Configuration();
+    Sound_Data.repeat_times = 0 ;
 #endif /* USART2_GLOBAL */
 
 /* Init the RF config */
@@ -88,7 +89,11 @@ int main(void)
 #if defined KEY_GLOBAL
         Key_Process();
 #endif /* KEY_GLOBAL */
-        //printf("while(1) \n");
+
+#if defined USART2_GLOBAL
+        GD5800_Play_Mucic_Of_Main_Process();
+#endif
+       // printf("Sound_Data.repeat_times is %d",Sound_Data.repeat_times);
     }
 }
 
