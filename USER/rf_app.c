@@ -837,6 +837,10 @@ void Decoder_Function_Of_Cycle_Call_Time(void)
     {
         Decoder_Function_Of_Up();
         Remove_Or_Cycle_Time_Sec_Number = 0;
+        if(Set_Voice_Play_Is_Or_Not_In_Cycle_Mode == 1)
+        {
+            GD5800_Play_Music_Of_Play_Music(Set_Voice_Play_Mode,Decoder_Call_Save_Queue,Decoder_Call_Save_Queue[0],Decoder_Call_Save_Queue[7]&0x0f);
+        }
     }
 }
 

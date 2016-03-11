@@ -10,6 +10,7 @@
 #include "stm32f10x.h"
 #include "global.h"
 #include "bitband.h"
+#include "sound_list.h"
 
 #define	SIMPLE_REPORT			0
 #define	NOT_REPORT				1

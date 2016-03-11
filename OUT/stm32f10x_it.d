@@ -37,3 +37,4 @@
 ..\out\stm32f10x_it.o: ..\USER\menu.h
 ..\out\stm32f10x_it.o: ..\USER\key.h
 ..\out\stm32f10x_it.o: ..\USER\gd5800.h
+..\out\stm32f10x_it.o: ..\USER\sound_list.h

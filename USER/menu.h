@@ -192,6 +192,7 @@ extern u8 Set_Key_Of_Call_Mode  ;
 //extern u16 Str_To_Int(u8 *str);
 //extern void Int_To_Str(u16 dat,u8 *str);
 extern void Buff_Add_One(u8 *str);
+static void Play_Navigation_Voice(u8 data);
 
 static void Menu_Standby(void);
 static void Menu_F0(void);

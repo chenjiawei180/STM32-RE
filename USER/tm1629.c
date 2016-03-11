@@ -6,6 +6,7 @@
   ******************************************************************************/
 #include "tm1629.h"
 #include "string.h"
+#include "key.h"
 
 #if defined TM1629_GLOBAL
 
@@ -287,7 +288,7 @@ void SendCommandTo1629_3(unsigned char Data)
     WriteDataTo1629_1(Tm1629_Display_Ram[0][i]);
     WriteDataTo1629_1(Tm1629_Display_Ram[1][i]);
     }
-    SendCommandTo1629_1(0x8C);    //设置显示控制命令：打开显示，并设置为11/16.
+    SendCommandTo1629_1(0x88+Set_Display_Tube_Brightness);    //设置显示控制命令：打开显示，并设置为11/16.
     TM1629_STB1 = 1;
 
     SendCommandTo1629_2(0x40);    //设置数据命令:普通模式、地址自增1，写数据到显存
@@ -297,7 +298,7 @@ void SendCommandTo1629_3(unsigned char Data)
     WriteDataTo1629_2(Tm1629_Display_Ram[2][i]);
     WriteDataTo1629_2(Tm1629_Display_Ram[3][i]);
     }
-    SendCommandTo1629_2(0x8C);    //设置显示控制命令：打开显示，并设置为11/16.
+    SendCommandTo1629_2(0x88+Set_Display_Tube_Brightness);    //设置显示控制命令：打开显示，并设置为11/16.
     TM1629_STB2 = 1;
 
     SendCommandTo1629_3(0x40);    //设置数据命令:普通模式、地址自增1，写数据到显存
@@ -307,7 +308,7 @@ void SendCommandTo1629_3(unsigned char Data)
     WriteDataTo1629_3(Tm1629_Display_Ram[4][i]);
     WriteDataTo1629_3(Tm1629_Display_Ram[5][i]);
     }
-    SendCommandTo1629_3(0x8C);    //设置显示控制命令：打开显示，并设置为11/16.
+    SendCommandTo1629_3(0x88+Set_Display_Tube_Brightness);    //设置显示控制命令：打开显示，并设置为11/16.
     TM1629_STB3 = 1;
 
 }

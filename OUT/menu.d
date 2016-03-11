@@ -37,3 +37,5 @@
 ..\out\menu.o: ..\USER\key.h
 ..\out\menu.o: ..\USER\rf_app.h
 ..\out\menu.o: ..\USER\eeprom_24c.h
+..\out\menu.o: ..\USER\gd5800.h
+..\out\menu.o: ..\USER\sound_list.h

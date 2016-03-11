@@ -31,7 +31,7 @@
 ..\out\gd5800.o: ..\FWlib\inc\misc.h
 ..\out\gd5800.o: ..\USER\global.h
 ..\out\gd5800.o: ..\USER\bitband.h
-..\out\gd5800.o: ..\USER\usart1.h
 ..\out\gd5800.o: ..\USER\sound_list.h
+..\out\gd5800.o: ..\USER\usart1.h
 ..\out\gd5800.o: ..\USER\menu.h
 ..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

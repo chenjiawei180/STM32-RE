@@ -9,6 +9,7 @@
 #include "usart2.h"
 #include "key.h"
 #include "rf_app.h"
+#include "gd5800.h"
 
 #if defined MENU_GLOBAL
 
@@ -34,8 +35,8 @@ u8 Set_Voice_Play_Time = 1;
 u8 Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
 u8 Set_Voice_Volume = 6;
 u8 Set_Display_Tube_Brightness = 3;
-u8 Set_Voice_Navigation_Mode = 0;    // 1 is chinese   0 is english
-u8 Set_Voice_Navigation_On_Or_OFF = 0;
+u8 Set_Voice_Navigation_On_Or_OFF = 1 ;
+u8 Set_Voice_Navigation_Mode = 0;    // 1 is chinese   0 is english  
 u8 Set_Display_LED_Mode = 0;
 
 u8 Set_Two_Menu_F7_E1 = 11;
@@ -272,6 +273,32 @@ void Buff_Add_One(u8 * str)
 }
 
 /**
+  * @brief  This function is Play_Navigation_Voice.
+  * @param  data
+  * @retval None
+  */
+
+void Play_Navigation_Voice(u8 data)
+{
+    if(gKeyValue == KEY_VALUE_MAIN && Set_Voice_Navigation_On_Or_OFF == 1)
+    {
+        Specify_Music_Play(data);
+    }
+    else if(gKeyValue == KEY_VALUE_UP && Set_Voice_Navigation_On_Or_OFF == 1)
+    {
+        Specify_Music_Play(data);
+    }
+    else if(gKeyValue == KEY_VALUE_DOWN && Set_Voice_Navigation_On_Or_OFF == 1)
+    {
+        Specify_Music_Play(data);
+    }
+    else if(gKeyValue == KEY_VALUE_ESC && Set_Voice_Navigation_On_Or_OFF == 1)
+    {
+        Specify_Music_Play(data);
+    }
+}
+
+/**
   * @brief  This function is Show TM1629 of Standby menu.
   * @param  None
   * @retval None
@@ -321,6 +348,7 @@ void Menu_F0(void)
 void Menu_F1(void)
 {
     Tm1629_Show_Fx(0x01);
+    Play_Navigation_Voice(CUNCHUSHEZHI);
 }
 
 /**
@@ -332,6 +360,7 @@ void Menu_F1(void)
 void Menu_F2(void)
 {
     Tm1629_Show_Fx(0x02);
+    Play_Navigation_Voice(SHANGCHUSHEZHI);
 }
 
 /**
@@ -343,6 +372,7 @@ void Menu_F2(void)
 void Menu_F3(void)
 {
     Tm1629_Show_Fx(0x03);
+    Play_Navigation_Voice(XIANSHISHEZHI);
 }
 
 /**
@@ -354,6 +384,7 @@ void Menu_F3(void)
 void Menu_F4(void)
 {
     Tm1629_Show_Fx(0x04);
+    Play_Navigation_Voice(XIAOHAOSHEZHI);
 }
 
 /**
@@ -365,6 +396,7 @@ void Menu_F4(void)
 void Menu_F5(void)
 {
     Tm1629_Show_Fx(0x05);
+    Play_Navigation_Voice(XUNHUANSHEZHI);
 }
 
 /**
@@ -376,6 +408,7 @@ void Menu_F5(void)
 void Menu_F6(void)
 {
     Tm1629_Show_Fx(0x06);
+    Play_Navigation_Voice(YUYINSHEZHI);
 }
 
 /**
@@ -387,6 +420,7 @@ void Menu_F6(void)
 void Menu_F7(void)
 {
     Tm1629_Show_Fx(0x07);
+    Play_Navigation_Voice(JIANPANSHEZHI);
 }
 
 /**
@@ -398,6 +432,7 @@ void Menu_F7(void)
 void Menu_F8(void)
 {
     Tm1629_Show_Fx(0x08);
+    Play_Navigation_Voice(ANJIANSHEZHI);
 }
 
 /**
@@ -409,6 +444,7 @@ void Menu_F8(void)
 void Menu_F9(void)
 {
     Tm1629_Show_Fx(0x09);
+    Play_Navigation_Voice(HUIFUSHEZHI);
 }
 
 /**
@@ -2068,6 +2104,7 @@ void Menu_F6_E4_Set(void)
             Set_Voice_Volume=1;
         else
             Set_Voice_Volume++;
+        Specify_Volume(Set_Voice_Volume * 3);
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2075,6 +2112,7 @@ void Menu_F6_E4_Set(void)
             Set_Voice_Volume=9;
         else
             Set_Voice_Volume--;
+        Specify_Volume(Set_Voice_Volume * 3);
     }
     Tm1629_Show_One_Number(Set_Voice_Volume); 
 }
@@ -2324,8 +2362,9 @@ void Menu_F8_E2_Set(void)
         if(Set_Key_Of_Call_Mode== 0)
             Set_Key_Of_Call_Mode=38;
         else
-            Set_Key_Of_Call_Mode--;
+            Set_Key_Of_Call_Mode--;	
     }
+    Play_Navigation_Voice(Set_Key_Of_Call_Mode + QUXIAO);
     Tm1629_Show_Two_Number(Set_Key_Of_Call_Mode); 
 }
 
