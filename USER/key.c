@@ -11,6 +11,7 @@
 #include "eeprom_24c.h"
 #include "rf.h"
 #include "rf_app.h"
+#include "string.h"
 
 #if defined KEY_GLOBAL
 
@@ -143,7 +144,8 @@ void Key_Process(void)
                                               || (M_index==THREE_MENU_F2_E4_D1)   
                                               || (M_index==THREE_MENU_F2_E4_D2)   
                                               || (M_index==THREE_MENU_F2_E4_D3)   
-                                              || (M_index==THREE_MENU_F2_E4_D4)                                               
+                                              || (M_index==THREE_MENU_F2_E4_D4)   
+                                              || (M_index==DECODER_MENU )   
                                               || (M_index==ONE_MENU_FE)     )
                        )
                 {
@@ -177,6 +179,10 @@ void Key_Process(void)
 				case THREE_MENU_F2_E4_D2:
 				case THREE_MENU_F2_E4_D3:
 				case THREE_MENU_F2_E4_D4:    Delete_Cancel_Function(Delete_Cancel_Buff);    break;
+
+                            case DECODER_MENU:    M_index=ONE_MENU_F1;
+							                memset(Decoder_Call_Save_Queue,0,800);
+									  break;
 				
                             default: break;
                         }

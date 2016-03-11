@@ -35,3 +35,5 @@
 ..\out\gd5800.o: ..\USER\usart1.h
 ..\out\gd5800.o: ..\USER\menu.h
 ..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\out\gd5800.o: ..\USER\usart2.h
+..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OUT\STM32-RE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OUT\STM32-RE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Mar 11 16:33:37 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Mar 11 18:17:16 2016
 <BR><P>
 <H3>Maximum Stack Usage =        160 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -477,7 +477,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Volume
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Initialization
 </UL>
 
@@ -876,17 +876,17 @@ Global Symbols
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Start
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Host
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Cancel
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Alarm
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Call
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
+<BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Host
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Cancel
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Alarm
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Call
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Call_Function
 </UL>
 
@@ -898,142 +898,146 @@ Global Symbols
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Start
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_All_Data
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_All_Data
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Call_Function
 </UL>
 
-<P><STRONG><a name="[f4]"></a>Register_Call_Function</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[f4]"></a>Register_Call_Function</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Register_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
 </UL>
 
-<P><STRONG><a name="[f5]"></a>Register_Host_Function</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[f6]"></a>Register_Host_Function</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Register_Host_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E2
 </UL>
 
-<P><STRONG><a name="[f6]"></a>Register_Alarm_Function</STRONG> (Thumb, 134 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[f7]"></a>Register_Alarm_Function</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Register_Alarm_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E3
 </UL>
 
-<P><STRONG><a name="[f7]"></a>Register_Cancel_Function</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[f8]"></a>Register_Cancel_Function</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Register_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 </UL>
 
-<P><STRONG><a name="[f8]"></a>Delete_Call_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[f9]"></a>Delete_Call_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Call_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[fb]"></a>Delete_Host_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[fc]"></a>Delete_Host_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Host_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[fc]"></a>Delete_Alarm_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[fd]"></a>Delete_Alarm_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Alarm_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[fd]"></a>Delete_Cancel_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[fe]"></a>Delete_Cancel_Function</STRONG> (Thumb, 140 bytes, Stack size 56 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Delete_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Delay_us
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[fe]"></a>Delete_All_Data</STRONG> (Thumb, 44 bytes, Stack size 40 bytes, eeprom_24c.o(.text), UNUSED)
+<P><STRONG><a name="[ff]"></a>Delete_All_Data</STRONG> (Thumb, 44 bytes, Stack size 40 bytes, eeprom_24c.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 
-<P><STRONG><a name="[100]"></a>Find_RF_EEPROM_Call</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[101]"></a>Find_RF_EEPROM_Call</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Find_RF_EEPROM_Call &rArr; EEP_Read_Buffer &rArr; I2C_Receive_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
 </UL>
 
-<P><STRONG><a name="[101]"></a>Find_RF_EEPROM_Alarm</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[102]"></a>Find_RF_EEPROM_Alarm</STRONG> (Thumb, 136 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Find_RF_EEPROM_Alarm &rArr; EEP_Read_Buffer &rArr; I2C_Receive_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
 </UL>
 
-<P><STRONG><a name="[102]"></a>Find_RF_EEPROM_Cancel</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[103]"></a>Find_RF_EEPROM_Cancel</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Find_RF_EEPROM_Cancel &rArr; EEP_Read_Buffer &rArr; I2C_Receive_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
 </UL>
 
-<P><STRONG><a name="[103]"></a>Find_RF_EEPROM</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[104]"></a>Find_RF_EEPROM</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Find_RF_EEPROM &rArr; Find_RF_EEPROM_Cancel &rArr; EEP_Read_Buffer &rArr; I2C_Receive_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Cancel
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Alarm
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Call
+<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Cancel
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Alarm
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Call
 </UL>
 <BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Standby
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Decoder_Menu
 </UL>
 
-<P><STRONG><a name="[104]"></a>Find_RF_EEPROM_Host</STRONG> (Thumb, 132 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<P><STRONG><a name="[105]"></a>Find_RF_EEPROM_Host</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Find_RF_EEPROM_Host &rArr; EEP_Read_Buffer &rArr; I2C_Receive_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
@@ -1050,24 +1054,25 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[105]"></a>Key_Scan</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, key.o(.text))
+<P><STRONG><a name="[106]"></a>Key_Scan</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, key.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Key_Scan
 </UL>
-<BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Delay_us
+<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[b3]"></a>Key_Process</STRONG> (Thumb, 988 bytes, Stack size 8 bytes, key.o(.text))
+<P><STRONG><a name="[b3]"></a>Key_Process</STRONG> (Thumb, 1036 bytes, Stack size 8 bytes, key.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Key_Process &rArr; Delete_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Remove_Call_Time
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cycle_Call_Time
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Scan
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Remove_Call_Time
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cycle_Call_Time
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Scan
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1089,7 +1094,7 @@ Global Symbols
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F8_E2
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Decoder_Menu
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Host
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Host
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1102,7 +1107,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Decoder
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Standby
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Remove_Call_Time
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Remove_Call_Time
 </UL>
 
 <P><STRONG><a name="[10c]"></a>Decoder_Function_Of_Up</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, rf_app.o(.text))
@@ -1114,7 +1119,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Decoder
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Standby
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cycle_Call_Time
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cycle_Call_Time
 </UL>
 
 <P><STRONG><a name="[10b]"></a>Decoder_Function_Of_Down</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, rf_app.o(.text))
@@ -1128,7 +1133,7 @@ Global Symbols
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Standby
 </UL>
 
-<P><STRONG><a name="[107]"></a>Decoder_Function_Of_Remove_Call_Time</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, rf_app.o(.text))
+<P><STRONG><a name="[108]"></a>Decoder_Function_Of_Remove_Call_Time</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, rf_app.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Decoder_Function_Of_Remove_Call_Time &rArr; Decoder_Function_Of_Esc &rArr; Display_Ram_To_Tm1629 &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Esc
@@ -1136,7 +1141,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[108]"></a>Decoder_Function_Of_Cycle_Call_Time</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, rf_app.o(.text))
+<P><STRONG><a name="[109]"></a>Decoder_Function_Of_Cycle_Call_Time</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, rf_app.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_Function_Of_Cycle_Call_Time &rArr; GD5800_Play_Music_Of_Play_Music &rArr; GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Play_Music
@@ -1155,7 +1160,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[10a]"></a>Specify_Music_Play</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, gd5800.o(.text))
+<P><STRONG><a name="[f5]"></a>Specify_Music_Play</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Specify_Music_Play &rArr; USART1_SendByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_SendByte
@@ -1169,7 +1174,11 @@ Global Symbols
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Defense_Area_For_End
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Defense_Area_For_Head
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Play_Music
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Call_Function
 </UL>
 
 <P><STRONG><a name="[10e]"></a>Specify_Volume</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, gd5800.o(.text))
@@ -1188,10 +1197,10 @@ Global Symbols
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Last_Three_Bit
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Defense_Area_For_End
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Defense_Area_For_Head
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Mucic_Of_Decoder_Process
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cycle_Call_Time
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cycle_Call_Time
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Mucic_Of_Main_Process
 </UL>
 
@@ -1743,17 +1752,17 @@ Global Symbols
 
 <P><STRONG><a name="[1db]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[ff]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_All_Data
+<P><STRONG><a name="[100]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_All_Data
 </UL>
 
 <P><STRONG><a name="[1dc]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[fa]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<P><STRONG><a name="[fb]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
@@ -1763,22 +1772,23 @@ Global Symbols
 <P><STRONG><a name="[1de]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[dc]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+<BR><BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Clear
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[f9]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<P><STRONG><a name="[fa]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
 </UL>
 
 <P><STRONG><a name="[1df]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[14b]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
+<BR><BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
 <P><STRONG><a name="[a3]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -1882,10 +1892,10 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[ee]"></a>I2C_Delay_us</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, eeprom_24c.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
+<BR><BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Cancel_Function
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Alarm_Function
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Host_Function
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delete_Call_Function
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Write_Buffer
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Stop
@@ -1929,14 +1939,14 @@ Local Symbols
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
 </UL>
 
-<P><STRONG><a name="[106]"></a>Key_Delay_us</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, key.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Scan
+<P><STRONG><a name="[107]"></a>Key_Delay_us</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, key.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Scan
 </UL>
 
-<P><STRONG><a name="[109]"></a>Play_Navigation_Voice</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, menu.o(.text))
+<P><STRONG><a name="[10a]"></a>Play_Navigation_Voice</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Play_Navigation_Voice &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_F8_E2_Set
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_F9
@@ -1971,7 +1981,7 @@ Local Symbols
 <P><STRONG><a name="[3b]"></a>Menu_F1</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F1 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -1979,7 +1989,7 @@ Local Symbols
 <P><STRONG><a name="[3c]"></a>Menu_F2</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F2 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -1987,7 +1997,7 @@ Local Symbols
 <P><STRONG><a name="[3d]"></a>Menu_F3</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F3 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -1995,7 +2005,7 @@ Local Symbols
 <P><STRONG><a name="[3e]"></a>Menu_F4</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F4 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2003,7 +2013,7 @@ Local Symbols
 <P><STRONG><a name="[3f]"></a>Menu_F5</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F5 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2011,7 +2021,7 @@ Local Symbols
 <P><STRONG><a name="[40]"></a>Menu_F6</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F6 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2019,7 +2029,7 @@ Local Symbols
 <P><STRONG><a name="[41]"></a>Menu_F7</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F7 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2027,7 +2037,7 @@ Local Symbols
 <P><STRONG><a name="[42]"></a>Menu_F8</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F8 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2035,7 +2045,7 @@ Local Symbols
 <P><STRONG><a name="[43]"></a>Menu_F9</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F9 &rArr; Tm1629_Show_Fx &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Fx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2718,7 +2728,7 @@ Local Symbols
 <P><STRONG><a name="[a0]"></a>Menu_F8_E2_Set</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, menu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Menu_F8_E2_Set &rArr; Tm1629_Show_Two_Number &rArr; Tm1629_Display &rArr; SendCommandTo1629_3 &rArr; WriteDataTo1629_3
 </UL>
-<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Play_Navigation_Voice
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Show_Two_Number
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> menu.o(.constdata)
@@ -2871,7 +2881,7 @@ Local Symbols
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Left_Buff_Add_To_End_Of_Right_Buff
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cancel
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Ram_To_Tm1629
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
@@ -2884,7 +2894,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E4 &rArr; Register_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Cancel_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
@@ -2893,7 +2903,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E3 &rArr; Register_Alarm_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Alarm_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
@@ -2902,7 +2912,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Decoder_F1_E2 &rArr; Register_Host_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buff_Add_One
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Register_Host_Function
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
@@ -2928,7 +2938,7 @@ Local Symbols
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Left_Buff_Add_To_Head_Of_Right_Buff
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Cancel
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Ram_To_Tm1629
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
@@ -2936,7 +2946,7 @@ Local Symbols
 <P><STRONG><a name="[128]"></a>GD5800_Play_Music_Of_Defense_Area_For_Head</STRONG> (Thumb, 140 bytes, Stack size 16 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GD5800_Play_Music_Of_Defense_Area_For_Head &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Play_Music
 </UL>
@@ -2944,7 +2954,7 @@ Local Symbols
 <P><STRONG><a name="[129]"></a>GD5800_Play_Music_Of_Defense_Area_For_End</STRONG> (Thumb, 124 bytes, Stack size 16 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GD5800_Play_Music_Of_Defense_Area_For_End &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Play_Music
 </UL>
@@ -2952,7 +2962,7 @@ Local Symbols
 <P><STRONG><a name="[12a]"></a>GD5800_Play_Music_Of_Hundred</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GD5800_Play_Music_Of_Hundred &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Last_Three_Bit
 </UL>
@@ -2960,7 +2970,7 @@ Local Symbols
 <P><STRONG><a name="[12b]"></a>GD5800_Play_Music_Of_Ten</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GD5800_Play_Music_Of_Ten &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Last_Three_Bit
 </UL>
@@ -2968,7 +2978,7 @@ Local Symbols
 <P><STRONG><a name="[12c]"></a>GD5800_Play_Music_Of_One</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Last_Three_Bit
 </UL>
@@ -2976,7 +2986,7 @@ Local Symbols
 <P><STRONG><a name="[12d]"></a>GD5800_Play_Music_Of_Other</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GD5800_Play_Music_Of_Other &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Last_Three_Bit
 </UL>
@@ -2996,7 +3006,7 @@ Local Symbols
 <P><STRONG><a name="[12f]"></a>GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, gd5800.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Play_Music
 </UL>
@@ -3005,7 +3015,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Last_Three_Bit
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Specify_Music_Play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GD5800_Play_Music_Of_Play_Music
 </UL>

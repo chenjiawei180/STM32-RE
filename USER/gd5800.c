@@ -9,6 +9,7 @@
 #include "sound_list.h"
 #include "menu.h"
 #include "string.h"
+#include "usart2.h"
 
 #ifdef USART2_GLOBAL
 
@@ -268,17 +269,17 @@ void GD5800_Play_Music_Of_Last_Three_Bit(u8 report_mode,u8 * number)
 
 /**
   * @brief  This function is GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C .
-  * @param  report_mode number
+  * @param  call_type
   * @retval None
   */
 
-void GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(u8 key_type)
+void GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(u8 call_type)
 {
-    if (key_type < 50)
+    if (call_type < 50)
     {
-        Specify_Music_Play(key_type + QUXIAO);
+        Specify_Music_Play(call_type + QUXIAO);
     }
-    else if (key_type == BAOJING_1)
+    else if (call_type == BAOJING_1)
     {
         Specify_Music_Play(BAOJING);
     }		
@@ -290,9 +291,9 @@ void GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(u8 key_type)
   * @retval None
   */
 
-void GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(u8 report_mode,u8 * number ,u8 key_type)
+void GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(u8 report_mode,u8 * number ,u8 call_type)
 {
-    if (key_type == BAOJING_1 || key_type == BAOJING-QUXIAO)
+    if (call_type == BAOJING_1 || call_type == BAOJING-QUXIAO)
     {
         Specify_Music_Play(BAOJING);
     }
@@ -310,7 +311,7 @@ void GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(u8 report_mo
 
 void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, u8 key_type)
 {
-    if(call_type <= NOT_REPORT_C)
+    if(report_mode <= NOT_REPORT_C)
     {
         Specify_Music_Play(DINGDONG);
 		
@@ -328,7 +329,6 @@ void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, 
         {
             GD5800_Play_Music_Of_Defense_Area_For_Head(report_mode, number);
         }
-		
         GD5800_Play_Music_Of_Last_Three_Bit(report_mode, number);
 		
         if (Set_Voice_Navigation_Mode == 1 && report_mode <= NOT_REPORT)
@@ -343,12 +343,12 @@ void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, 
 		
         else if (report_mode != NOT_REPORT && report_mode != NOT_REPORT_C)
         {
-            GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(key_type);
+            GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(call_type);
         }
     }
     else
     {
-        GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(report_mode,number,key_type);
+        GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(report_mode,number,call_type);
     }
 }
 

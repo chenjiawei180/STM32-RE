@@ -7,6 +7,7 @@
 #include "eeprom_24c.h"
 #include "string.h"
 #include "menu.h"
+#include "gd5800.h"
 
 #if defined EEPROM_GLOBAL
 
@@ -272,18 +273,17 @@ u8 Register_Call_Function(RF_def *pRF)
 
         if (!(RFtmp.rf & 0xff000000))
         {
-/*
-            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
             {
                 RFtmp.rf &= 0x00fffff0;
                 pRF->rf &= 0x00fffff0;
             }
-*/
+			
             if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
             {
                 memcpy(Register_Call_Buff, RFtmp.region, 4);
                 Register_Call_Buff[4] = 0;
-                //GD5800_select_chapter_new(SHIBAI);
+                Specify_Music_Play(SHIBAI);
                 return 1;
             }
         }
@@ -297,11 +297,11 @@ u8 Register_Call_Function(RF_def *pRF)
     EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
-        //GD5800_select_chapter_new(CHENGGONG);
+        Specify_Music_Play(CHENGGONG);
     }
     else
     {
-        //GD5800_select_chapter_new(SHIBAI);
+        Specify_Music_Play(SHIBAI);
         return 1;
     }
     //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
@@ -328,18 +328,17 @@ u8 Register_Host_Function(RF_def *pRF)
 
         if (!(RFtmp.rf & 0xff000000))
         {
-/*
-            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
             {
                 RFtmp.rf &= 0x00fffff0;
                 pRF->rf &= 0x00fffff0;
             }
-*/
+
             if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
             {
                 memcpy(Register_Host_Buff, RFtmp.region, 4);
                 Register_Host_Buff[4] = 0;
-                //GD5800_select_chapter_new(SHIBAI);
+                Specify_Music_Play(SHIBAI);
                 return 1;
             }
         }
@@ -353,11 +352,11 @@ u8 Register_Host_Function(RF_def *pRF)
     EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
-        //GD5800_select_chapter_new(CHENGGONG);
+        Specify_Music_Play(CHENGGONG);
     }
     else
     {
-        //GD5800_select_chapter_new(SHIBAI);
+        Specify_Music_Play(SHIBAI);
         return 1;
     }
     //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
@@ -384,18 +383,17 @@ u8 Register_Alarm_Function(RF_def *pRF)
 
         if (!(RFtmp.rf & 0xff000000))
         {
-/*
-            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+            if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
             {
                 RFtmp.rf &= 0x00fffff0;
                 pRF->rf &= 0x00fffff0;
             }
-*/
+
             if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
             {
                 memcpy(Register_Alarm_Buff, RFtmp.region, 4);
                 Register_Alarm_Buff[4] = 0;
-                //GD5800_select_chapter_new(SHIBAI);
+                Specify_Music_Play(SHIBAI);
                 return 1;
             }
         }
@@ -409,11 +407,11 @@ u8 Register_Alarm_Function(RF_def *pRF)
     EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
-        //GD5800_select_chapter_new(CHENGGONG);
+        Specify_Music_Play(CHENGGONG);
     }
     else
     {
-        //GD5800_select_chapter_new(SHIBAI);
+        Specify_Music_Play(SHIBAI);
         return 1;
     }
     //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
@@ -440,18 +438,18 @@ u8 Register_Cancel_Function(RF_def *pRF)
 
         if (!(RFtmp.rf & 0xff000000))
         {
-/*
-            if (return_Two_Menu_F8_E1() == 2)      //多键模式低位为0
+
+            if (Set_Singal_Or_Multiple_Key_Mode == 2)      //多键模式低位为0
             {
                 RFtmp.rf &= 0x00fffff0;
                 pRF->rf &= 0x00fffff0;
             }
-*/
+
             if (RFtmp.rf == pRF->rf)    //有相等RF在里面，重新覆盖
             {
                 memcpy(Register_Cancel_Buff, RFtmp.region, 4);
                 Register_Cancel_Buff[4] = 0;
-                //GD5800_select_chapter_new(SHIBAI);
+                Specify_Music_Play(SHIBAI);
                 return 1;
             }
         }
@@ -465,11 +463,11 @@ u8 Register_Cancel_Function(RF_def *pRF)
     EEP_Write_Buffer(tmp, (u8 *)pRF, sizeof(RF_def));
     if (tmp != 0)
     {
-        //GD5800_select_chapter_new(CHENGGONG);
+        Specify_Music_Play(CHENGGONG);
     }
     else
     {
-        //GD5800_select_chapter_new(SHIBAI);
+        Specify_Music_Play(SHIBAI);
         return 1;
     }
     //EEP_WriteBytes(tmp, (uint8_t *)pRF, sizeof(RF_def));
