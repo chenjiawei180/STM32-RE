@@ -1,6 +1,2 @@
----- RF_Same_Count Matches (5 in 3 files) ----
-Rf.c (d:\github\stm32-re\user):u8 RF_Same_Count = 0;    //重复相同接收次数
-Rf.c (d:\github\stm32-re\user):                        RF_Same_Count ++;    //相同呼叫计数
-Rf.c (d:\github\stm32-re\user):                        RF_Same_Count = 0;
-Rf.h (d:\github\stm32-re\user):extern u8 RF_Same_Count;    //重复相同接收次数
-Rf_app.c (d:\github\stm32-re\user):        if(RF_Same_Count > 0)
+---- LongPressSec Matches (1 in 1 files) ----
+Stm32f10x_it.c (d:\github\stm32-re\user):        LongPressSec++;

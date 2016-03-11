@@ -26,6 +26,10 @@ u32 Call_Off_Time = 0;			//呼叫空闲时间
 u8 Remove_Or_Cycle_Time_Count = 0;
 u8 Remove_Or_Cycle_Time_Sec_Number = 0;
 
+u8 Host_Enter_Table = 0;
+u8 Host_Enter_Fun_Id = 0;
+u8 Host_Enter_Times = 0;
+
 unsigned char single_key[16]   = { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//单键位设置存储数组
 unsigned char multiple_key[16] = { 0x01, QUXIAO-QUXIAO, JIEZHANG-QUXIAO, DIANDANG-QUXIAO, JIUSHUI-QUXIAO, 0X01, 0x01, JIASHUI-QUXIAO, HUJIAO - QUXIAO, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };//多键位设置存储数组
 
@@ -39,6 +43,86 @@ void Decoder_Process(void)
 {
     u8 fun_id;
     u32 call_code;
+    RF_def RFtmp;
+
+    if(RF_ID && RF_Flag && RF_Same_Count > 0)
+    {
+        call_code = RF_ID;
+        if(Find_RF_EEPROM_Host(&RFtmp, call_code))
+        {
+            Host_Enter_Table = 1;
+            Host_Enter_Fun_Id = call_code & 0x0f ;
+            Host_Enter_Times = RF_Same_Count;
+        }
+        else
+        {
+            if(Call_Code_Bak != call_code)
+            {
+                Call_Code_Bak = call_code;
+                if(      (M_index == STANDBY_MENU) 
+                    || ( M_index == THREE_MENU_F1_E1_D1) 
+                    || ( M_index == THREE_MENU_F1_E1_D2) 
+                    || ( M_index == THREE_MENU_F1_E1_D3) 
+                    || ( M_index == THREE_MENU_F1_E1_D4) 
+                    || ( M_index == THREE_MENU_F1_E2_D1) 
+                    || ( M_index == THREE_MENU_F1_E2_D2) 
+                    || ( M_index == THREE_MENU_F1_E2_D3) 
+                    || ( M_index == THREE_MENU_F1_E2_D4) 
+                    || ( M_index == THREE_MENU_F1_E3_D1) 
+                    || ( M_index == THREE_MENU_F1_E3_D2) 
+                    || ( M_index == THREE_MENU_F1_E3_D3) 
+                    || ( M_index == THREE_MENU_F1_E3_D4) 
+                    || ( M_index == THREE_MENU_F1_E4_D1) 
+                    || ( M_index == THREE_MENU_F1_E4_D2) 
+                    || ( M_index == THREE_MENU_F1_E4_D3) 
+                    || ( M_index == THREE_MENU_F1_E4_D4) 
+                    || ( M_index == THREE_MENU_F8_E2_SET) 
+                    || ( M_index == DECODER_MENU) )
+                {
+                    switch(M_index)
+                    {
+                        case STANDBY_MENU:Decoder_Standby();    break;
+
+                        case THREE_MENU_F1_E1_D1:
+                        case THREE_MENU_F1_E1_D2:
+                        case THREE_MENU_F1_E1_D3:
+                        case THREE_MENU_F1_E1_D4:Decoder_F1_E1();    break;
+
+                        case THREE_MENU_F1_E2_D1:
+                        case THREE_MENU_F1_E2_D2:
+                        case THREE_MENU_F1_E2_D3:
+                        case THREE_MENU_F1_E2_D4:Decoder_F1_E2();     break;
+
+                        case THREE_MENU_F1_E3_D1:
+                        case THREE_MENU_F1_E3_D2:
+                        case THREE_MENU_F1_E3_D3:
+                        case THREE_MENU_F1_E3_D4:Decoder_F1_E3();     break;
+
+                        case THREE_MENU_F1_E4_D1:
+                        case THREE_MENU_F1_E4_D2:
+                        case THREE_MENU_F1_E4_D3:
+                        case THREE_MENU_F1_E4_D4:Decoder_F1_E4();     break;
+
+                        case THREE_MENU_F8_E2_SET:Decoder_F8_E2();    break;
+
+                        case DECODER_MENU:Decoder_Decoder_Menu();    break;
+
+                        default:break;
+                    }
+                }
+            }
+        }
+	 RF_Flag = 0 ;
+        RF_ID = 0;	
+    }
+    else
+    {
+        RF_Flag = 0 ;
+        RF_ID = 0;
+    }
+
+#if 0
+	
     if( 
         RF_ID && RF_Flag &&( ( M_index == STANDBY_MENU) 
                             || ( M_index == THREE_MENU_F1_E1_D1) 
@@ -105,6 +189,7 @@ void Decoder_Process(void)
         RF_Flag = 0 ;
         RF_ID = 0;
     }
+#endif
 }
 
 /**

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\OUT\STM32-RE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OUT\STM32-RE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue Mar 08 12:16:38 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Mar 11 12:52:28 2016
 <BR><P>
-<H3>Maximum Stack Usage =        152 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        160 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; Decoder_Process &rArr; Decoder_Standby &rArr; GD5800_Play_Mucic_Of_Decoder_Process &rArr; GD5800_Play_Music_Of_Play_Music &rArr; GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
 <P>
@@ -335,7 +335,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = main &rArr; Decoder_Process &rArr; Decoder_Standby &rArr; GD5800_Play_Mucic_Of_Decoder_Process &rArr; GD5800_Play_Music_Of_Play_Music &rArr; GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = main &rArr; Decoder_Process &rArr; Decoder_Standby &rArr; GD5800_Play_Mucic_Of_Decoder_Process &rArr; GD5800_Play_Music_Of_Play_Music &rArr; GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_GPIO_Config
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Tm1629_Display
@@ -1033,8 +1033,12 @@ Global Symbols
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Decoder_Menu
 </UL>
 
-<P><STRONG><a name="[104]"></a>Find_RF_EEPROM_Host</STRONG> (Thumb, 132 bytes, Stack size 32 bytes, eeprom_24c.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
+<P><STRONG><a name="[104]"></a>Find_RF_EEPROM_Host</STRONG> (Thumb, 132 bytes, Stack size 32 bytes, eeprom_24c.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Find_RF_EEPROM_Host &rArr; EEP_Read_Buffer &rArr; I2C_Receive_Byte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EEP_Read_Buffer
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Process
 </UL>
 
 <P><STRONG><a name="[b0]"></a>Key_IO_Init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, key.o(.text))
@@ -1054,7 +1058,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Process
 </UL>
 
-<P><STRONG><a name="[b3]"></a>Key_Process</STRONG> (Thumb, 746 bytes, Stack size 8 bytes, key.o(.text))
+<P><STRONG><a name="[b3]"></a>Key_Process</STRONG> (Thumb, 988 bytes, Stack size 8 bytes, key.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Key_Process &rArr; Delete_Cancel_Function &rArr; EEP_Write_Buffer &rArr; I2C_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Function_Of_Remove_Call_Time
@@ -1075,8 +1079,8 @@ Global Symbols
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 </UL>
 
-<P><STRONG><a name="[b2]"></a>Decoder_Process</STRONG> (Thumb, 448 bytes, Stack size 8 bytes, rf_app.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Decoder_Process &rArr; Decoder_Standby &rArr; GD5800_Play_Mucic_Of_Decoder_Process &rArr; GD5800_Play_Music_Of_Play_Music &rArr; GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
+<P><STRONG><a name="[b2]"></a>Decoder_Process</STRONG> (Thumb, 510 bytes, Stack size 16 bytes, rf_app.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Decoder_Process &rArr; Decoder_Standby &rArr; GD5800_Play_Mucic_Of_Decoder_Process &rArr; GD5800_Play_Music_Of_Play_Music &rArr; GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C &rArr; GD5800_Play_Music_Of_Last_Three_Bit &rArr; GD5800_Play_Music_Of_One &rArr; Specify_Music_Play &rArr; USART1_SendByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Standby
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E1
@@ -1085,6 +1089,7 @@ Global Symbols
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F1_E4
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_F8_E2
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decoder_Decoder_Menu
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Find_RF_EEPROM_Host
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>

@@ -18,7 +18,7 @@ Menu_index M_index = STANDBY_MENU;
 void (*Function)(void);
 
 u8 gKeyValue=0; /*the value of key press*/
-
+u8 Decoder_First_Long_Press = 0;
 /**
   * @brief  This function is Init Key GPIO.
   * @param  None
@@ -82,13 +82,48 @@ void Key_Process(void)
 {
     LongPressSec=0;
     gKeyValue=Key_Scan();
+    if(gKeyValue == 0xff && Host_Enter_Table ==1)
+    {
+        if(Host_Enter_Times == 0 || Host_Enter_Times > 30)
+        {
+            Host_Enter_Table = 0;
+            switch(Host_Enter_Fun_Id)
+            {
+                case 0x01:if(Host_Enter_Times  > 20)
+                	          {
+                	              LongPressSec = 3;
+					Host_Enter_Times = 1;
+					RF_Same_Count = 1;
+					Decoder_First_Long_Press = 1;
+					gKeyValue =KEY_VALUE_MAIN;break;
+                	          }
+                               else if(Decoder_First_Long_Press == 1)
+                               {
+                                   Decoder_First_Long_Press = 0; break;
+                               }
+                               else
+                               {
+                                   gKeyValue =KEY_VALUE_MAIN;break;
+                               }
+                case 0x02: gKeyValue =KEY_VALUE_UP ; break;
+                case 0x04: gKeyValue =KEY_VALUE_DOWN; break;
+                case 0x08: gKeyValue =KEY_VALUE_ESC; break;
+                default:break;				
+            }
+        }
+        else
+        {
+            Host_Enter_Times = RF_Same_Count ;
+        }
+    }
+	
     if(gKeyValue)
     {
         switch(gKeyValue)
         {
             case KEY_VALUE_MAIN:
                 while(
-                        (!KEY_MAIN)&&( ( M_index==STANDBY_MENU )  
+                        ( (!KEY_MAIN) || LongPressSec > 2)&&( ( M_index==STANDBY_MENU )  
                                         //      ||( M_index==ONE_MENU_FA)     
                                               || (M_index==ONE_MENU_FB)     
                                               || (M_index==ONE_MENU_FC)     

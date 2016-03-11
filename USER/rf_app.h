@@ -20,6 +20,10 @@ extern u32 Call_Off_Time;
 extern u8 Remove_Or_Cycle_Time_Count ;
 extern u8 Remove_Or_Cycle_Time_Sec_Number ;
 
+extern u8 Host_Enter_Table ;
+extern u8 Host_Enter_Fun_Id ;
+extern u8 Host_Enter_Times ;
+
 extern void Decoder_Process(void);
 static void Decoder_Standby(void);
 static void Decoder_F1_E1(void);
