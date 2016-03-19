@@ -33,3 +33,4 @@
 ..\out\stm32_rtc.o: ..\USER\bsp_date.h
 ..\out\stm32_rtc.o: ..\USER\usart2.h
 ..\out\stm32_rtc.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\stm32_rtc.o: ..\USER\menu.h

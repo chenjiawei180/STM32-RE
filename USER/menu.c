@@ -336,18 +336,18 @@ void Time_Adjust(struct rtc_time *tm)
 {
     /* Wait until last write operation on RTC registers has finished */
     RTC_WaitForLastTask();
-    printf("RTC_WaitForLastTask \r\n");
+    //printf("RTC_WaitForLastTask \r\n");
     Buff_Time_To_Struct_Time(Tm1629_Test_Time,tm);
-    printf("Buff_Time_To_Struct_Time \r\n");
+    //printf("Buff_Time_To_Struct_Time \r\n");
     /* Get wday */
     GregorianDay(tm);
-    printf("GregorianDay \r\n");
+    //printf("GregorianDay \r\n");
     RTC_SetCounter(mktimev(tm));
-    printf("RTC_SetCounter \r\n");
+    //printf("RTC_SetCounter \r\n");
 
     /* Wait until last write operation on RTC registers has finished */
     RTC_WaitForLastTask();
-    printf("RTC_WaitForLastTask \r\n");
+    //printf("RTC_WaitForLastTask \r\n");
 }
 
 /**
@@ -721,7 +721,7 @@ void Menu_F0_Week(void)
     if(gKeyValue == KEY_VALUE_DOWN)
     {
         if(Tm1629_Test_Time[7] == 7)
-            Tm1629_Test_Time[7]=0;
+            Tm1629_Test_Time[7]=1;
         else
             Tm1629_Test_Time[7]++;
         Time_Adjust(&systmtime);

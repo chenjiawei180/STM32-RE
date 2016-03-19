@@ -7,6 +7,7 @@
   
 #include "stm32_rtc.h"
 #include "usart2.h"
+#include "menu.h"
 
 #ifdef RTC_GLOBAL
 
@@ -41,15 +42,15 @@ void RTC_CheckAndConfig(struct rtc_time *tm)
 {
     if (BKP_ReadBackupRegister(BKP_DR1) != 0xA5A5)
     {
-        printf("\r\n\r\n RTC not yet configured....");
+        //printf("\r\n\r\n RTC not yet configured....");
 
         /* RTC Configuration */
         RTC_Configuration();
 
-        printf("\r\n\r\n RTC configured....");
+        //printf("\r\n\r\n RTC configured....");
 
         /* Adjust time by users typed on the hyperterminal */
-        //Time_Adjust(tm);
+        Time_Adjust(tm);
 
         BKP_WriteBackupRegister(BKP_DR1, 0xA5A5);
     }
@@ -57,14 +58,14 @@ void RTC_CheckAndConfig(struct rtc_time *tm)
     {
         if (RCC_GetFlagStatus(RCC_FLAG_PORRST) != RESET)
         {
-            printf("\r\n\r\n Power On Reset occurred....");
+            //printf("\r\n\r\n Power On Reset occurred....");
         }
         else if (RCC_GetFlagStatus(RCC_FLAG_PINRST) != RESET)
         {
-            printf("\r\n\r\n External Reset occurred....");
+            //printf("\r\n\r\n External Reset occurred....");
         }
 
-        printf("\r\n No need to configure RTC....");
+        //printf("\r\n No need to configure RTC....");
 
 	 /* Enable PWR and BKP clocks */
 	 RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_BKP, ENABLE);
