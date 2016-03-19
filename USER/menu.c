@@ -10,6 +10,7 @@
 #include "key.h"
 #include "rf_app.h"
 #include "gd5800.h"
+#include "stm32_rtc.h"
 
 #if defined MENU_GLOBAL
 
@@ -299,6 +300,57 @@ void Play_Navigation_Voice(u8 data)
 }
 
 /**
+  * @brief  This function is Time change.
+  * @param  data
+  * @retval None
+  */
+void Buff_Time_To_Struct_Time(u8 *buff,struct rtc_time *tm)
+{
+    tm->tm_year = buff[1]+2000;
+    tm->tm_mon = buff[2];
+    tm->tm_mday = buff[3];
+    tm->tm_hour = buff[4];
+    tm->tm_min = buff[5];
+    tm->tm_sec = buff[6];
+    tm->tm_wday = buff[7];
+}
+
+void Struct_Time_To_Buff_Time(struct rtc_time *tm,u8 *buff)
+{
+    buff[1] = tm->tm_year-2000;
+    buff[2] = tm->tm_mon;
+    buff[3] = tm->tm_mday;
+    buff[4] = tm->tm_hour ;
+    buff[5] = tm->tm_min ;
+    buff[6] = tm->tm_sec ;
+    buff[7] = tm->tm_wday;
+}
+
+/**
+  * @brief  This function is Time_Adjust.
+  * @param  None
+  * @retval None
+  */
+  
+void Time_Adjust(struct rtc_time *tm)
+{
+    /* Wait until last write operation on RTC registers has finished */
+    RTC_WaitForLastTask();
+    printf("RTC_WaitForLastTask \r\n");
+    Buff_Time_To_Struct_Time(Tm1629_Test_Time,tm);
+    printf("Buff_Time_To_Struct_Time \r\n");
+    /* Get wday */
+    GregorianDay(tm);
+    printf("GregorianDay \r\n");
+    RTC_SetCounter(mktimev(tm));
+    printf("RTC_SetCounter \r\n");
+
+    /* Wait until last write operation on RTC registers has finished */
+    RTC_WaitForLastTask();
+    printf("RTC_WaitForLastTask \r\n");
+}
+
+/**
   * @brief  This function is Show TM1629 of Standby menu.
   * @param  None
   * @retval None
@@ -309,10 +361,20 @@ void Menu_Standby(void)
     static u8 Standby_index=0;
     if(Decoder_Call_Save_Queue[0] == 0 )
     {
-        Tm1629_Clear();
-        Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
-        Tm1629_Display();
-        Standby_index++;
+        if(Change_Standby_Display_Mode == 0)
+        {
+            Tm1629_Clear();
+            Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
+            Tm1629_Display();
+            Standby_index++;
+        }
+        else
+        {
+            to_tm(RTC_GetCounter()+28800, &systmtime);
+            Struct_Time_To_Buff_Time(&systmtime, Tm1629_Test_Time);
+            Tm1629_Show_Time(Tm1629_Test_Time);    
+        }
+
     }
     if(gKeyValue == KEY_VALUE_DOWN)
     {
@@ -517,6 +579,7 @@ void Menu_F0_Minute(void)
             Tm1629_Test_Time[5]=0;
         else
             Tm1629_Test_Time[5]++;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
     else if(gKeyValue == KEY_VALUE_UP)
@@ -525,6 +588,7 @@ void Menu_F0_Minute(void)
             Tm1629_Test_Time[5]=59;
         else
             Tm1629_Test_Time[5]--;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }
@@ -544,6 +608,7 @@ void Menu_F0_Hour(void)
             Tm1629_Test_Time[4]=0;
         else
             Tm1629_Test_Time[4]++;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
     else if(gKeyValue == KEY_VALUE_UP)
@@ -552,6 +617,7 @@ void Menu_F0_Hour(void)
             Tm1629_Test_Time[4]=23;
         else
             Tm1629_Test_Time[4]--;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }
@@ -571,6 +637,7 @@ void Menu_F0_Day(void)
             Tm1629_Test_Time[3]=1;
         else
             Tm1629_Test_Time[3]++;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
     else if(gKeyValue == KEY_VALUE_UP)
@@ -579,6 +646,7 @@ void Menu_F0_Day(void)
             Tm1629_Test_Time[3]=31;
         else
             Tm1629_Test_Time[3]--;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }
@@ -598,6 +666,7 @@ void Menu_F0_Month(void)
             Tm1629_Test_Time[2]=1;
         else
             Tm1629_Test_Time[2]++;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
     else if(gKeyValue == KEY_VALUE_UP)
@@ -606,6 +675,7 @@ void Menu_F0_Month(void)
             Tm1629_Test_Time[2]=12;
         else
             Tm1629_Test_Time[2]--;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }
@@ -625,6 +695,7 @@ void Menu_F0_Year(void)
             Tm1629_Test_Time[1]=0;
         else
             Tm1629_Test_Time[1]++;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
     else if(gKeyValue == KEY_VALUE_UP)
@@ -633,6 +704,7 @@ void Menu_F0_Year(void)
             Tm1629_Test_Time[1]=99;
         else
             Tm1629_Test_Time[1]--;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }
@@ -652,6 +724,7 @@ void Menu_F0_Week(void)
             Tm1629_Test_Time[7]=0;
         else
             Tm1629_Test_Time[7]++;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
     else if(gKeyValue == KEY_VALUE_UP)
@@ -660,6 +733,7 @@ void Menu_F0_Week(void)
             Tm1629_Test_Time[7]=7;
         else
             Tm1629_Test_Time[7]--;
+        Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
 }

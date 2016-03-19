@@ -34,6 +34,8 @@
 ..\out\gd5800.o: ..\USER\sound_list.h
 ..\out\gd5800.o: ..\USER\usart1.h
 ..\out\gd5800.o: ..\USER\menu.h
+..\out\gd5800.o: ..\USER\stm32_rtc.h
+..\out\gd5800.o: ..\USER\bsp_date.h
 ..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\gd5800.o: ..\USER\usart2.h
 ..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

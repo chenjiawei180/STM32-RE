@@ -32,6 +32,8 @@
 ..\out\key.o: ..\USER\global.h
 ..\out\key.o: ..\USER\bitband.h
 ..\out\key.o: ..\USER\menu.h
+..\out\key.o: ..\USER\stm32_rtc.h
+..\out\key.o: ..\USER\bsp_date.h
 ..\out\key.o: ..\USER\set_system_clock.h
 ..\out\key.o: ..\USER\usart2.h
 ..\out\key.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

@@ -34,3 +34,5 @@
 ..\out\tm1629.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\tm1629.o: ..\USER\key.h
 ..\out\tm1629.o: ..\USER\menu.h
+..\out\tm1629.o: ..\USER\stm32_rtc.h
+..\out\tm1629.o: ..\USER\bsp_date.h

@@ -33,5 +33,7 @@
 ..\out\eeprom_24c.o: ..\USER\bitband.h
 ..\out\eeprom_24c.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\eeprom_24c.o: ..\USER\menu.h
+..\out\eeprom_24c.o: ..\USER\stm32_rtc.h
+..\out\eeprom_24c.o: ..\USER\bsp_date.h
 ..\out\eeprom_24c.o: ..\USER\gd5800.h
 ..\out\eeprom_24c.o: ..\USER\sound_list.h

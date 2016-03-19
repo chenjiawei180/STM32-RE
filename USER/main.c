@@ -16,6 +16,7 @@
 #include "key.h"
 #include "rf_app.h"
 #include "gd5800.h"
+#include "stm32_rtc.h"
 
 int main(void)
 {
@@ -61,6 +62,11 @@ int main(void)
 #if defined KEY_GLOBAL
     Key_IO_Init();
 #endif /* KEY_GLOBAL */
+
+#ifdef RTC_GLOBAL
+    RTC_NVIC_Config();
+    RTC_CheckAndConfig(&systmtime);
+#endif
 
 /*Print the test information for DUBUG*/
 #if defined (USART2_GLOBAL) && defined (DEBUG_GLOBAL)

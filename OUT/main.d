@@ -39,6 +39,8 @@
 ..\out\main.o: ..\USER\eeprom_24c.h
 ..\out\main.o: ..\USER\key.h
 ..\out\main.o: ..\USER\menu.h
+..\out\main.o: ..\USER\stm32_rtc.h
+..\out\main.o: ..\USER\bsp_date.h
 ..\out\main.o: ..\USER\rf_app.h
 ..\out\main.o: ..\USER\gd5800.h
 ..\out\main.o: ..\USER\sound_list.h

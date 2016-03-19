@@ -30,6 +30,8 @@
 ..\out\menu.o: ..\FWlib\inc\stm32f10x_wwdg.h
 ..\out\menu.o: ..\FWlib\inc\misc.h
 ..\out\menu.o: ..\USER\global.h
+..\out\menu.o: ..\USER\stm32_rtc.h
+..\out\menu.o: ..\USER\bsp_date.h
 ..\out\menu.o: ..\USER\tm1629.h
 ..\out\menu.o: ..\USER\bitband.h
 ..\out\menu.o: ..\USER\usart2.h

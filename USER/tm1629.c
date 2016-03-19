@@ -7,6 +7,8 @@
 #include "tm1629.h"
 #include "string.h"
 #include "key.h"
+#include "stm32_rtc.h"
+#include "menu.h"
 
 #if defined TM1629_GLOBAL
 

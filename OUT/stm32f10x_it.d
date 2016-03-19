@@ -35,6 +35,8 @@
 ..\out\stm32f10x_it.o: ..\USER\bitband.h
 ..\out\stm32f10x_it.o: ..\USER\eeprom_24c.h
 ..\out\stm32f10x_it.o: ..\USER\menu.h
+..\out\stm32f10x_it.o: ..\USER\stm32_rtc.h
+..\out\stm32f10x_it.o: ..\USER\bsp_date.h
 ..\out\stm32f10x_it.o: ..\USER\key.h
 ..\out\stm32f10x_it.o: ..\USER\gd5800.h
 ..\out\stm32f10x_it.o: ..\USER\sound_list.h

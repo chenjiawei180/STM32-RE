@@ -15,6 +15,7 @@
  * @ CLOCK
 ***************************************************/
 #define SYSTEM_CLOCK_GLOBAL
+#define RTC_GLOBAL
 
 /**************************************************
  * @ USART2  usart of CH340G MAX232 DEBUG
