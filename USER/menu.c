@@ -340,7 +340,7 @@ void Time_Adjust(struct rtc_time *tm)
     Buff_Time_To_Struct_Time(Tm1629_Test_Time,tm);
     //printf("Buff_Time_To_Struct_Time \r\n");
     /* Get wday */
-    GregorianDay(tm);
+    //GregorianDay(tm);
     //printf("GregorianDay \r\n");
     RTC_SetCounter(mktimev(tm));
     //printf("RTC_SetCounter \r\n");
@@ -399,6 +399,8 @@ void Menu_Standby(void)
 void Menu_F0(void)
 {
     Tm1629_Show_Fx(0x00);
+    to_tm(RTC_GetCounter()+28800, &systmtime);
+    Struct_Time_To_Buff_Time(&systmtime, Tm1629_Test_Time);
 }
 
 /**
@@ -718,10 +720,11 @@ void Menu_F0_Year(void)
 void Menu_F0_Week(void)
 {
     Tm1629_Blink_Time_Week();
+/*
     if(gKeyValue == KEY_VALUE_DOWN)
     {
-        if(Tm1629_Test_Time[7] == 7)
-            Tm1629_Test_Time[7]=1;
+        if(Tm1629_Test_Time[7] == 6)
+            Tm1629_Test_Time[7]=0;
         else
             Tm1629_Test_Time[7]++;
         Time_Adjust(&systmtime);
@@ -729,13 +732,14 @@ void Menu_F0_Week(void)
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
-        if(Tm1629_Test_Time[7] == 1)
-            Tm1629_Test_Time[7]=7;
+        if(Tm1629_Test_Time[7] == 0)
+            Tm1629_Test_Time[7]=6;
         else
             Tm1629_Test_Time[7]--;
         Time_Adjust(&systmtime);
         Tm1629_Show_Time(Tm1629_Test_Time);
     }
+*/
 }
 
 /**

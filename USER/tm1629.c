@@ -386,6 +386,9 @@ void Tm1629_Show_Time(unsigned char* Time)
     Tm1629_Display_Ram[0][0] = Dis_TAB[(*(Time+5))%10];
 
     /*Show the Week on the digital tube*/
+    if(*(Time+7) == 0)  // 0  is  sunday
+    Tm1629_Display_Ram[1][4] = Dis_TAB[7];
+    else
     Tm1629_Display_Ram[1][4] = Dis_TAB[*(Time+7)];
 
     Tm1629_Display();

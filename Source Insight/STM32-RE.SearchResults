@@ -1,10 +1,5 @@
----- GD5800_select_chapter_new Matches (9 in 1 files) ----
-Eeprom_24c.c (d:\github\stm32-re\user):                GD5800_select_chapter_new(SHIBAI);
-Eeprom_24c.c (d:\github\stm32-re\user):        //GD5800_select_chapter_new(CHENGGONG);
-Eeprom_24c.c (d:\github\stm32-re\user):        //GD5800_select_chapter_new(SHIBAI);
-Eeprom_24c.c (d:\github\stm32-re\user):                //GD5800_select_chapter_new(SHIBAI);
-Eeprom_24c.c (d:\github\stm32-re\user):        //GD5800_select_chapter_new(CHENGGONG);
-Eeprom_24c.c (d:\github\stm32-re\user):        //GD5800_select_chapter_new(SHIBAI);
-Eeprom_24c.c (d:\github\stm32-re\user):                //GD5800_select_chapter_new(SHIBAI);
-Eeprom_24c.c (d:\github\stm32-re\user):        //GD5800_select_chapter_new(CHENGGONG);
-Eeprom_24c.c (d:\github\stm32-re\user):        //GD5800_select_chapter_new(SHIBAI);
+---- tm_wday Matches (4 in 3 files) ----
+Bsp_date.c (d:\github\stm32-re\user):	tm->tm_wday=day%7;
+Bsp_date.h (d:\github\stm32-re\user):	int tm_wday;
+Menu.c (d:\github\stm32-re\user):    tm->tm_wday = buff[7];
+Menu.c (d:\github\stm32-re\user):    buff[7] = tm->tm_wday;
