@@ -7,6 +7,7 @@
 #include "rf.h"
 #include "rf_app.h"
 #include "usart2.h"
+#include "menu.h"
 
 #if defined RF_GLOBAL
 
@@ -71,6 +72,7 @@ void EXTI15_10_IRQHandler(void)//
 */
                         RF_ID=RF_Temp; //cjw 2016.1.21 for main while(1) test
                         RF_Flag = 1;//置接收标志
+                        Return_Standby_Time_Count = 0;
                     }
                     else
                     {
@@ -90,6 +92,7 @@ void EXTI15_10_IRQHandler(void)//
 */
                         RF_ID=RF_Temp; //cjw 2016.1.21 for main while(1) test
                         RF_Flag = 1;    //置接收标志
+                        Return_Standby_Time_Count = 0;
                     }
                     Call_Off_Time = 0;
                 }

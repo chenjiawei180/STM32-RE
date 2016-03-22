@@ -217,12 +217,14 @@ void Decoder_Standby(void)
                 Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                 Display_Ram_To_Tm1629();
 		  GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
+		  Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
                 M_index = DECODER_MENU;
             }
         }
         else
         {
              Decoder_Function_Of_Cancel(decoder_temp_buff);
+             Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
         }
     }
     else
@@ -237,13 +239,15 @@ void Decoder_Standby(void)
                 {
                     Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                     Display_Ram_To_Tm1629();
-		      GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);					
+		      GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);	
+		      Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
                     M_index = DECODER_MENU;
                 }
             }
             else
             {
                 Decoder_Function_Of_Cancel(decoder_temp_buff);
+                Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
             }
         }
     }
@@ -372,12 +376,14 @@ void Decoder_Decoder_Menu(void)
                 {
                      Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
                 }
+		  Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
                 Display_Ram_To_Tm1629();
             }
         }
         else
         {
              Decoder_Function_Of_Cancel(decoder_temp_buff);
+             Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
         }
     }
     else
@@ -399,12 +405,14 @@ void Decoder_Decoder_Menu(void)
                     {
                          Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
                    }
+		      Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
                     Display_Ram_To_Tm1629();
                 }
             }
             else
             {
                 Decoder_Function_Of_Cancel(decoder_temp_buff);
+                Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
             }
         }
     }

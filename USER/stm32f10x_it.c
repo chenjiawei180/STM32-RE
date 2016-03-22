@@ -29,6 +29,7 @@
 #include "key.h"
 #include "gd5800.h"
 
+
 /** @addtogroup STM32F10x_StdPeriph_Examples
   * @{
   */
@@ -188,6 +189,16 @@ void SysTick_Handler(void)
     else
     {
         GD5800_Busy_Soft_Table_Count = 0;
+    }
+
+    if(M_index != DECODER_MENU && M_index != TWO_MENU_FD_SET)
+    {
+        Return_Standby_Time_Count ++;
+        if(Return_Standby_Time_Count > 2000)
+        {
+            Return_Standby_Time_Count = 0;
+            M_index = STANDBY_MENU ;
+        }
     }
 
 #endif /* SYSTEM_CLOCK_GLOBAL */

@@ -5,6 +5,8 @@
   * @brief     This file contains the source of the usart2 drive.
   ******************************************************************************/
 #include "usart2.h"
+#include "menu.h"
+#include "tm1629.h"
 
 #if defined USART2_GLOBAL
 
@@ -96,6 +98,7 @@ void USART2_SendByte(u8 Date)
   * @param  None
   * @retval None
   */
+  
 void USART2_IRQHandler(void)
 {
     //u8 c=0;
@@ -105,6 +108,121 @@ void USART2_IRQHandler(void)
         USART_ClearFlag(USART2,USART_FLAG_RXNE);
     }
 } 
+
+/**
+  * @brief  This function is Mcu_Send_Call_To_Computer
+  * @param  call_type number key_type
+  * @retval None
+  */
+  
+void Mcu_Send_Call_To_Computer(unsigned char call_type, unsigned char* number,unsigned char key_type)
+{
+	unsigned char temp1=0,temp2=0,key=0;
+
+	unsigned char sec = 0, hour = 0, min = 0;
+	to_tm(RTC_GetCounter()+28800, &systmtime);
+       Struct_Time_To_Buff_Time(&systmtime, Tm1629_Test_Time);
+
+	USART2_SendByte(0xaa);
+	USART2_SendByte(0x42);
+	USART2_SendByte(0x01);
+	USART2_SendByte(0x01);
+	USART2_SendByte(0x01);
+	USART2_SendByte(call_type);//呼叫或者取消  91 92
+	USART2_SendByte(0xff);
+
+	temp1 = *(number+1) << 4 | *(number + 2);
+	temp2 = *(number+3) << 4 | *(number + 4);
+	USART2_SendByte(temp1);//号码
+	USART2_SendByte(temp2);//号码
+
+	switch (key_type)
+	{
+	case 1:
+		key = 0x01;
+		USART2_SendByte(0x01);
+		break;	
+	case 2:
+		key = 0x0d; 
+		USART2_SendByte(0x0d);
+		break;
+	case 3:
+		key = 0x03;
+		USART2_SendByte(0x03);
+		break;
+	case 4:
+		key = 0x0b; 
+		USART2_SendByte(0x0b); 
+		break;
+	case 5:
+		key = 0x05;
+		USART2_SendByte(0x05);
+		break;
+	case 6:
+		key = 0x06;
+		USART2_SendByte(0x06);
+		break;
+	case 7:
+		key = 0x07;
+		USART2_SendByte(0x07);
+		break;
+	case 8:
+		key = 0x0c;
+		USART2_SendByte(0x0c); 
+		break;
+	case 9:
+		key = 0x09;
+		USART2_SendByte(0x09);
+		break;
+	case 10:
+		key = 0x0A;
+		USART2_SendByte(0x0A);
+		break;
+	case 11:
+		key = 0x04;
+		USART2_SendByte(0x04);
+		break;
+	case 12:
+		key = 0x08;
+		USART2_SendByte(0x08);
+		break;
+	case 13:
+		key = 0x02;
+		USART2_SendByte(0x02);
+		break;
+	case 14:
+		key = 0x0e;
+		USART2_SendByte(0x0e);
+		break;
+	case 15:
+		key = 0x0f;
+		USART2_SendByte(0x0f);
+		break;
+	default:
+		key = 0x00;
+		USART2_SendByte(0x00);
+		break;
+	}
+	//Usart1_SendData(key_type);
+	//键值
+	
+
+	USART2_SendByte(0);
+	USART2_SendByte(0);
+
+	hour  =  ((Tm1629_Test_Time[4] / 10)*6) + Tm1629_Test_Time[4];
+	min =    ((Tm1629_Test_Time[5] / 10)*6) + Tm1629_Test_Time[5];
+	sec  =   ((Tm1629_Test_Time[6] / 10)*6) + Tm1629_Test_Time[6];
+
+	USART2_SendByte(hour);
+	USART2_SendByte(min);
+	USART2_SendByte(sec);
+
+	USART2_SendByte(0x1EE + call_type + temp1 + temp2 + key + hour + min + sec);//校验
+
+
+	USART2_SendByte(0x55);
+}
 
 
 #endif  /* USART2_GLOBAL  */

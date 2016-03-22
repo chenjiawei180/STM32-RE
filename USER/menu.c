@@ -48,6 +48,10 @@ u8 Set_Two_Menu_F7_E4 = 0;
 u8 Set_Singal_Or_Multiple_Key_Mode = 2;
 u8 Set_Key_Of_Call_Mode = 0 ;
 
+u32 Return_Standby_Time_Count = 0;
+
+u8 Set_Singal_Or_Multiple_Key_Mode_Bak = 0;
+
 /**
   * @brief  This is Menu index.
   * @param  None
@@ -866,6 +870,7 @@ void Menu_F4_Set(void)
             Remove_Call_Time=0;
         else
             Remove_Call_Time++;
+ 	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -873,6 +878,7 @@ void Menu_F4_Set(void)
             Remove_Call_Time=99;
         else
             Remove_Call_Time--;
+	 Env_Save();
     }
     Tm1629_Show_Two_Number(Remove_Call_Time); 
 }
@@ -891,6 +897,7 @@ void Menu_F5_Set(void)
             Cycle_Call_Time=0;
         else
             Cycle_Call_Time++;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -898,6 +905,7 @@ void Menu_F5_Set(void)
             Cycle_Call_Time=99;
         else
             Cycle_Call_Time--;
+	 Env_Save();
     }
     Tm1629_Show_Two_Number(Cycle_Call_Time); 
 }
@@ -1044,6 +1052,7 @@ void Menu_F7_E4(void)
 void Menu_F8_E1(void)
 {
     Tm1629_Show_Ex(0x01);
+    Set_Singal_Or_Multiple_Key_Mode_Bak = Set_Singal_Or_Multiple_Key_Mode;
 }
 
 /**
@@ -1105,6 +1114,7 @@ void Menu_FB_Set(void)
             Set_Key_Remove_Call_Is_Or_Not = 0;
         else
             Set_Key_Remove_Call_Is_Or_Not = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -1112,6 +1122,7 @@ void Menu_FB_Set(void)
             Set_Key_Remove_Call_Is_Or_Not = 0;
         else
             Set_Key_Remove_Call_Is_Or_Not = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Key_Remove_Call_Is_Or_Not); 
 }
@@ -1130,6 +1141,7 @@ void Menu_FC_Set(void)
             Change_Standby_Display_Mode = 0;
         else
             Change_Standby_Display_Mode = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -1137,6 +1149,7 @@ void Menu_FC_Set(void)
             Change_Standby_Display_Mode = 0;
         else
             Change_Standby_Display_Mode = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Change_Standby_Display_Mode); 
 }
@@ -2057,6 +2070,7 @@ void Menu_F3_E1_Set(void)
             Set_Call_Queue_Mode = 2;
         else
             Set_Call_Queue_Mode = 1;
+	Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2064,6 +2078,7 @@ void Menu_F3_E1_Set(void)
             Set_Call_Queue_Mode = 2;
         else
             Set_Call_Queue_Mode = 1;
+	Env_Save();
     }
     Tm1629_Show_One_Number(Set_Call_Queue_Mode); 
 }
@@ -2082,6 +2097,7 @@ void Menu_F3_E2_Set(void)
             Set_Call_Display_Number=0;
         else
             Set_Call_Display_Number++;
+	Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2089,6 +2105,7 @@ void Menu_F3_E2_Set(void)
             Set_Call_Display_Number=99;
         else
             Set_Call_Display_Number--;
+	Env_Save();
     }
     Tm1629_Show_Two_Number(Set_Call_Display_Number); 
 }
@@ -2107,6 +2124,7 @@ void Menu_F6_E1_Set(void)
             Set_Voice_Play_Mode=0;
         else
             Set_Voice_Play_Mode++;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2114,6 +2132,7 @@ void Menu_F6_E1_Set(void)
             Set_Voice_Play_Mode=7;
         else
             Set_Voice_Play_Mode--;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Play_Mode); 
 }
@@ -2132,6 +2151,7 @@ void Menu_F6_E2_Set(void)
             Set_Voice_Play_Time=1;
         else
             Set_Voice_Play_Time++;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2139,6 +2159,7 @@ void Menu_F6_E2_Set(void)
             Set_Voice_Play_Time=9;
         else
             Set_Voice_Play_Time--;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Play_Time); 
 }
@@ -2157,6 +2178,7 @@ void Menu_F6_E3_Set(void)
             Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
         else
             Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2164,6 +2186,7 @@ void Menu_F6_E3_Set(void)
             Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 0;
         else
             Set_Voice_Play_Is_Or_Not_In_Cycle_Mode = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Play_Is_Or_Not_In_Cycle_Mode); 
 }
@@ -2183,6 +2206,7 @@ void Menu_F6_E4_Set(void)
         else
             Set_Voice_Volume++;
         Specify_Volume(Set_Voice_Volume * 3);
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2191,6 +2215,7 @@ void Menu_F6_E4_Set(void)
         else
             Set_Voice_Volume--;
         Specify_Volume(Set_Voice_Volume * 3);
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Volume); 
 }
@@ -2209,6 +2234,7 @@ void Menu_F6_E5_Set(void)
             Set_Display_Tube_Brightness=1;
         else
             Set_Display_Tube_Brightness++;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2216,6 +2242,7 @@ void Menu_F6_E5_Set(void)
             Set_Display_Tube_Brightness=7;
         else
             Set_Display_Tube_Brightness--;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Display_Tube_Brightness); 
 }
@@ -2234,6 +2261,7 @@ void Menu_F6_E6_Set(void)
             Set_Voice_Navigation_Mode = 0;
         else
             Set_Voice_Navigation_Mode = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2241,6 +2269,7 @@ void Menu_F6_E6_Set(void)
             Set_Voice_Navigation_Mode = 0;
         else
             Set_Voice_Navigation_Mode = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Navigation_Mode); 
 }
@@ -2259,6 +2288,7 @@ void Menu_F6_E7_Set(void)
             Set_Voice_Navigation_On_Or_OFF = 0;
         else
             Set_Voice_Navigation_On_Or_OFF = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2266,6 +2296,7 @@ void Menu_F6_E7_Set(void)
             Set_Voice_Navigation_On_Or_OFF = 0;
         else
             Set_Voice_Navigation_On_Or_OFF = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Navigation_On_Or_OFF); 
 }
@@ -2284,6 +2315,7 @@ void Menu_F6_E8_Set(void)
             Set_Display_LED_Mode = 0;
         else
             Set_Display_LED_Mode = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2291,6 +2323,7 @@ void Menu_F6_E8_Set(void)
             Set_Display_LED_Mode = 0;
         else
             Set_Display_LED_Mode = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Display_LED_Mode); 
 }
@@ -2309,6 +2342,7 @@ void Menu_F7_E1_Set(void)
             Set_Two_Menu_F7_E1=0;
         else
             Set_Two_Menu_F7_E1++;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2316,6 +2350,7 @@ void Menu_F7_E1_Set(void)
             Set_Two_Menu_F7_E1=11;
         else
             Set_Two_Menu_F7_E1--;
+	 Env_Save();
     }
     Tm1629_Show_Two_Number(Set_Two_Menu_F7_E1); 
 }
@@ -2409,6 +2444,7 @@ void Menu_F8_E1_Set(void)
             Set_Singal_Or_Multiple_Key_Mode = 2;
         else
             Set_Singal_Or_Multiple_Key_Mode = 1;
+	 Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2416,8 +2452,14 @@ void Menu_F8_E1_Set(void)
             Set_Singal_Or_Multiple_Key_Mode = 2;
         else
             Set_Singal_Or_Multiple_Key_Mode = 1;
+	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Singal_Or_Multiple_Key_Mode); 
+    if(Set_Singal_Or_Multiple_Key_Mode_Bak != Set_Singal_Or_Multiple_Key_Mode)
+    {
+        Set_Singal_Or_Multiple_Key_Mode_Bak = Set_Singal_Or_Multiple_Key_Mode;
+        Delete_All_Data();
+    }
 }
 
 /**

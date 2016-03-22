@@ -57,6 +57,7 @@ int main(void)
 
 #if defined EEPROM_GLOBAL
     I2C_IO_Init();
+    
 #endif /* EEPROM_GLOBAL */
 
 #if defined KEY_GLOBAL
@@ -70,12 +71,13 @@ int main(void)
 
 /*Print the test information for DUBUG*/
 #if defined (USART2_GLOBAL) && defined (DEBUG_GLOBAL)
-    printf("Hello stm32. ");
+    //printf("Hello stm32. ");
     //Delete_All_Data();
-    printf("Delete_All_Data \r\n ");
+    //printf("Delete_All_Data \r\n ");
 #endif /* USART2_GLOBAL && DEBUG_GLOBAL */
-
-
+	printf("multiple_key is %x ",multiple_key[1]);
+    Env_Init();
+       	printf("multiple_key is %x ",multiple_key[1]);
 
 
     while(1)
@@ -99,7 +101,7 @@ int main(void)
 #if defined USART2_GLOBAL
         GD5800_Play_Mucic_Of_Main_Process();
 #endif
-       // printf("Sound_Data.repeat_times is %d",Sound_Data.repeat_times);
+      // printf("while(1)");
     }
 }
 

@@ -13,7 +13,8 @@
 #include "eeprom_24c.h"
 
 extern u8 Decoder_Call_Save_Queue[800];
-
+extern unsigned char single_key[16] ;
+extern unsigned char multiple_key[16] ;
 extern u32 Call_Code_Bak;
 extern u32 Call_Off_Time;
 

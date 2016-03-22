@@ -10,6 +10,7 @@
 #include "stm32f10x.h"
 #include "global.h"
 #include "bitband.h"
+#include "menu.h"
 
 #define I2C_SCL_H    PBout(10)=1    //SCL引脚输出高电平
 #define I2C_SCL_L    PBout(10)=0    //SCL引脚输出低电平
@@ -29,9 +30,31 @@
 #define  CANCEL_NUMBER 64
 #define  HOST_NUMBER   32
 #define  CALL_DATA_START   0X0020
-#define  ALARM_DATA_START  0X0820
-#define  CANCEL_DATA_START 0X0A20
-#define  HOST_DATA_START   0X0C20
+#define  ALARM_DATA_START  0X1020
+#define  CANCEL_DATA_START 0X1220
+#define  HOST_DATA_START   0X1420
+#define  SIN_KEY_START    0X1520
+#define  MUL_KEY_START    0X1530
+#define  BACK_START    0X1540
+
+typedef struct Env_struct{
+	unsigned char Set_Call_Queue_Mode;     //及时模式或者排队模式
+	unsigned char Set_Call_Display_Number;     //呼叫存储数量
+	unsigned char Remove_Call_Time;     //销号时间
+	unsigned char Cycle_Call_Time;     //循环时间
+	unsigned char Set_Voice_Play_Mode;    //语音模式
+	unsigned char Set_Voice_Play_Time;      //语音报读次数
+	unsigned char Set_Voice_Play_Is_Or_Not_In_Cycle_Mode;   //循环时候是否报读
+	unsigned char Set_Voice_Volume;  //音量大小调整
+	unsigned char Set_Display_Tube_Brightness;  //显示屏LED亮度调整
+	unsigned char Set_Voice_Navigation_On_Or_OFF;    //语音导航
+	unsigned char Set_Voice_Navigation_Mode;     //中英文
+	unsigned char Set_Display_LED_Mode;     //闪烁
+	unsigned char Set_Two_Menu_F7_E1;     //防区设置
+	unsigned char Set_Singal_Or_Multiple_Key_Mode;     //单键位还是多键位
+	unsigned char Set_Key_Remove_Call_Is_Or_Not;     //键盘销号
+	unsigned char Change_Standby_Display_Mode;     //时间切换
+}Env_t;
 
 typedef struct {
     u8 region[4];      //区号0~9~A~Z; //存放的ASCII码
@@ -61,6 +84,12 @@ extern u8 Find_RF_EEPROM_Call(RF_def *p, u32 dat);
 extern u8 Find_RF_EEPROM_Host(RF_def *p, u32 dat);
 extern u8 Find_RF_EEPROM_Alarm(RF_def *p, u32 dat);
 extern u8 Find_RF_EEPROM_Cancel(RF_def *p, u32 dat);
+
+extern void Env_Save(void);
+extern void Env_Init(void);
+extern void Var_Init(void);
+extern void Key_Init(void);
+
 
 
 

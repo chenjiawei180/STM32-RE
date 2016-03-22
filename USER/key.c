@@ -49,6 +49,7 @@ unsigned char Key_Scan(void)
         Key_Delay_us(10000);
         if(!(KEY_MAIN&&KEY_UP&&KEY_DOWN&&KEY_ESC))
         {
+            Return_Standby_Time_Count = 0;
             if(!KEY_MAIN) Key_val=KEY_VALUE_MAIN;
             if(!KEY_UP) Key_val=KEY_VALUE_UP;
             if(!KEY_DOWN) Key_val=KEY_VALUE_DOWN;
@@ -85,32 +86,34 @@ void Key_Process(void)
     gKeyValue=Key_Scan();
     if(gKeyValue == 0xff && Host_Enter_Table ==1)
     {
-        if(Host_Enter_Times == 0 || Host_Enter_Times > 30)
+        if(Host_Enter_Times > 30 && Host_Enter_Fun_Id == 0x01)
+        {
+            Host_Enter_Table = 0;
+            LongPressSec = 3;
+            Host_Enter_Times = 1;
+            RF_Same_Count = 1;
+            Decoder_First_Long_Press = 1;
+            gKeyValue =KEY_VALUE_MAIN;
+        }
+        else if(Host_Enter_Times == 0)
         {
             Host_Enter_Table = 0;
             switch(Host_Enter_Fun_Id)
             {
-                case 0x01:if(Host_Enter_Times  > 20)
-                	          {
-                	              LongPressSec = 3;
-					Host_Enter_Times = 1;
-					RF_Same_Count = 1;
-					Decoder_First_Long_Press = 1;
-					gKeyValue =KEY_VALUE_MAIN;break;
-                	          }
-                               else if(Decoder_First_Long_Press == 1)
-                               {
-                                   Decoder_First_Long_Press = 0; break;
-                               }
-                               else
-                               {
-                                   gKeyValue =KEY_VALUE_MAIN;break;
-                               }
+                case 0x01: if(Decoder_First_Long_Press == 1)
+                	           {
+                	               Decoder_First_Long_Press = 0;
+                	           }
+				    else
+				    {
+				         gKeyValue =KEY_VALUE_MAIN;
+				    }
+				    break;
                 case 0x02: gKeyValue =KEY_VALUE_UP ; break;
                 case 0x04: gKeyValue =KEY_VALUE_DOWN; break;
                 case 0x08: gKeyValue =KEY_VALUE_ESC; break;
-                default:break;				
-            }
+                default:break;
+            }			
         }
         else
         {
@@ -145,6 +148,8 @@ void Key_Process(void)
                                               || (M_index==THREE_MENU_F2_E4_D2)   
                                               || (M_index==THREE_MENU_F2_E4_D3)   
                                               || (M_index==THREE_MENU_F2_E4_D4)   
+                                              || (M_index==TWO_MENU_F9_E1) 
+                                              || (M_index==TWO_MENU_F9_E2) 
                                               || (M_index==DECODER_MENU )   
                                               || (M_index==ONE_MENU_FE)     )
                        )
@@ -183,7 +188,20 @@ void Key_Process(void)
                             case DECODER_MENU:    M_index=ONE_MENU_F1;
 							                memset(Decoder_Call_Save_Queue,0,800);
 									  break;
-				
+                            case TWO_MENU_F9_E2 :    Var_Init();
+								            Env_Save();
+								            __set_FAULTMASK(1);
+                                                                    NVIC_SystemReset();
+								            break;
+                            case TWO_MENU_F9_E1 :    Var_Init();
+							                   Key_Init();
+								            Env_Save();
+							                   EEP_Write_Buffer( SIN_KEY_START, single_key, 16);
+							                   EEP_Write_Buffer( MUL_KEY_START, multiple_key, 16);
+							                   Delete_All_Data();
+								            __set_FAULTMASK(1);
+								            NVIC_SystemReset();
+								            break;
                             default: break;
                         }
                         

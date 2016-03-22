@@ -31,3 +31,8 @@
 ..\out\usart2.o: ..\FWlib\inc\misc.h
 ..\out\usart2.o: ..\USER\global.h
 ..\out\usart2.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\usart2.o: ..\USER\menu.h
+..\out\usart2.o: ..\USER\stm32_rtc.h
+..\out\usart2.o: ..\USER\bsp_date.h
+..\out\usart2.o: ..\USER\tm1629.h
+..\out\usart2.o: ..\USER\bitband.h

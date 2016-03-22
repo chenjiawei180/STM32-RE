@@ -33,5 +33,8 @@
 ..\out\rf.o: ..\USER\rf_app.h
 ..\out\rf.o: ..\USER\bitband.h
 ..\out\rf.o: ..\USER\eeprom_24c.h
+..\out\rf.o: ..\USER\menu.h
+..\out\rf.o: ..\USER\stm32_rtc.h
+..\out\rf.o: ..\USER\bsp_date.h
 ..\out\rf.o: ..\USER\usart2.h
 ..\out\rf.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

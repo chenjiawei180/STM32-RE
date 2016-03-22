@@ -190,6 +190,8 @@ extern u8 Set_Two_Menu_F7_E4 ;
 extern u8 Set_Singal_Or_Multiple_Key_Mode ;
 extern u8 Set_Key_Of_Call_Mode  ;
 
+extern u32 Return_Standby_Time_Count ;
+
 //extern u16 Str_To_Int(u8 *str);
 //extern void Int_To_Str(u16 dat,u8 *str);
 extern void Buff_Time_To_Struct_Time(u8 *buff,struct rtc_time *tm);
