@@ -41,3 +41,5 @@
 ..\out\key.o: ..\USER\rf.h
 ..\out\key.o: ..\USER\rf_app.h
 ..\out\key.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+..\out\key.o: ..\USER\transmit.h
+..\out\key.o: ..\USER\tm1629.h

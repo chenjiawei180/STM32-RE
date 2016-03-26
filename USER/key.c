@@ -12,6 +12,8 @@
 #include "rf.h"
 #include "rf_app.h"
 #include "string.h"
+#include "transmit.h"
+#include "tm1629.h"
 
 #if defined KEY_GLOBAL
 
@@ -84,6 +86,10 @@ void Key_Process(void)
 {
     LongPressSec=0;
     gKeyValue=Key_Scan();
+    if(gKeyValue == 0xff)
+    {
+        gKeyValue = ReadDataFrom1629_1();
+    }
     if(gKeyValue == 0xff && Host_Enter_Table ==1)
     {
         if(Host_Enter_Times > 30 && Host_Enter_Fun_Id == 0x01)
@@ -127,7 +133,7 @@ void Key_Process(void)
         {
             case KEY_VALUE_MAIN:
                 while(
-                        ( (!KEY_MAIN) || LongPressSec > 2)&&( ( M_index==STANDBY_MENU )  
+                        ( (!KEY_MAIN  ||  ReadDataFrom1629_1() == KEY_03 ) || LongPressSec > 2)&&( ( M_index==STANDBY_MENU )  
                                         //      ||( M_index==ONE_MENU_FA)     
                                               || (M_index==ONE_MENU_FB)     
                                               || (M_index==ONE_MENU_FC)     
@@ -207,28 +213,28 @@ void Key_Process(void)
                         
                         Function = MenuProc[M_index].handle;
                         (*Function)();
-                        while(!KEY_MAIN) ;
+                        while(!KEY_MAIN  ||  ReadDataFrom1629_1() == KEY_03) ;
                         return;
                     }                   
                 }
                 M_index = MenuProc[M_index].Enter;
                 Function = MenuProc[M_index].handle;
                 (*Function)();
-                while(!KEY_MAIN) ;
+                while(!KEY_MAIN  ||  ReadDataFrom1629_1() == KEY_03 ) ;
             break;
 
             case KEY_VALUE_UP:
                 M_index = MenuProc[M_index].Up;
                 Function = MenuProc[M_index].handle;  
                 (*Function)();
-                while(!KEY_UP) ;
+                while(!KEY_UP  ||  ReadDataFrom1629_1() == KEY_11 ) ;
             break;
 
            case KEY_VALUE_DOWN:  
                 M_index = MenuProc[M_index].Down;
                 Function = MenuProc[M_index].handle;
                 (*Function)();  
-                while(!KEY_DOWN) ;
+                while(!KEY_DOWN  ||  ReadDataFrom1629_1() == KEY_19 ) ;
             break;
 
             case KEY_VALUE_ESC:
@@ -236,9 +242,122 @@ void Key_Process(void)
                 M_index = MenuProc[M_index].Return;
                 Function = MenuProc[M_index].handle;
                 (*Function)();
-                while(!KEY_ESC) ;
+                while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_27 ) ;
             break;
-
+#ifdef STM32_TRANSMIT
+            case KEY_01:break;
+            case KEY_02:break;
+            //case KEY_03:break;
+            case KEY_04:
+                Transmit_Set_Data(0);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_04 ) ;
+                break;// 0
+            case KEY_05:
+                Transmit_Set_Data(7);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_05) ;
+                break; // 7
+            case KEY_06:
+                Transmit_Set_Data(4);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_06 ) ;
+                break;// 4
+            case KEY_07:	
+                Transmit_Set_Data(1);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_07 ) ;
+                break;//  1
+            case KEY_08:
+                if(Transmit_Data < 999)
+                {
+                    Transmit_Data++;
+                }
+                else
+                {
+                    Transmit_Data = 999;
+                }
+                Display_Ram_To_Tm1629();	
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_08 ) ;
+                break;//功能1  号数+1
+            case KEY_09:break;
+            case KEY_10:break;
+            //case KEY_11:break;
+            case KEY_12:
+                Transmit_Data = 0;
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_12 ) ;
+                break;//clear
+            case KEY_13:
+                Transmit_Set_Data(8);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_13 ) ;
+                break;//8
+            case KEY_14:
+                Transmit_Set_Data(5);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_14 ) ;
+                break;//5
+            case KEY_15:
+                Transmit_Set_Data(2);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_15 ) ;
+                break;// 2
+            case KEY_16:			
+                if(Transmit_Data>0)
+                {
+                    Transmit_Data--;
+                }
+                else
+                {
+                    Transmit_Data = 0;
+                }
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_16 ) ;
+                break;//功能2 号数-1
+            case KEY_17:break;
+            case KEY_18:break;
+            //case KEY_19:break;
+            case KEY_20:break;
+            case KEY_21:
+                Transmit_Set_Data(9);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_21 ) ;
+                break;//9
+            case KEY_22:
+                Transmit_Set_Data(6);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_22 ) ;
+                break;//6
+            case KEY_23:
+                Transmit_Set_Data(3);
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_23 ) ;
+                break;// 3
+            case KEY_24:
+                Transmit_Number_Of_Set();
+                Transmit_Confirm_Key_Press= 1;
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_24 ) ;
+                break;//功能3 发送确认
+            case KEY_25:break;
+            case KEY_26:break;
+            //case KEY_27:break;
+            case KEY_28:break;//F4
+            case KEY_29:
+                Printer58mm_Print();
+                Queue_Number++;
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_29 ) ;
+                break;//F3//打印
+            case KEY_30:
+		  Transmit_Number_Of_Reciver_Sub_One();
+                Transmit_Confirm_Key_Press= 1;
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_30 ) ;
+                break;//F2//接收-1
+            case KEY_31:
+                Transmit_Number_Of_Reciver_Add_One();
+                Transmit_Confirm_Key_Press= 1;
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_31 ) ;
+                break;//F1 //接收+1
+            case KEY_32:
+                Transmit_Data_Set_FANGQU = 1;
+                Display_Ram_To_Tm1629();
+		  while(!KEY_ESC  ||  ReadDataFrom1629_1() == KEY_32 ) ;
+                break;//功能4		
+#endif
             default:
                 if(Flag_Half_Sec == 1)
                 {

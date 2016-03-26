@@ -44,3 +44,4 @@
 ..\out\main.o: ..\USER\rf_app.h
 ..\out\main.o: ..\USER\gd5800.h
 ..\out\main.o: ..\USER\sound_list.h
+..\out\main.o: ..\USER\transmit.h

@@ -7,6 +7,7 @@
 #include "usart2.h"
 #include "menu.h"
 #include "tm1629.h"
+#include "transmit.h"
 
 #if defined USART2_GLOBAL
 
@@ -108,6 +109,8 @@ void USART2_IRQHandler(void)
         USART_ClearFlag(USART2,USART_FLAG_RXNE);
     }
 } 
+
+#ifdef STM32_RECIVER
 
 /**
   * @brief  This function is Mcu_Send_Call_To_Computer
@@ -223,7 +226,110 @@ void Mcu_Send_Call_To_Computer(unsigned char call_type, unsigned char* number,un
 
 	USART2_SendByte(0x55);
 }
+#endif
 
+#ifdef STM32_TRANSMIT
+
+/**
+  * @brief  This function is Printer58mm_Print
+  * @param  call_type number key_type
+  * @retval None
+  */
+  
+void Printer58mm_Print(void)
+{
+    unsigned char temp=0;
+
+    USART2_SendByte(0x1B);      /*send command to printer for initialization*/
+    USART2_SendByte(0x40);     //初始化
+
+    USART2_SendByte(0x1B);   //设置居中
+    USART2_SendByte(0x61);
+    USART2_SendByte(0x01);
+
+    USART2_SendByte(0x57);   //welcome
+    USART2_SendByte(0x65);
+    USART2_SendByte(0x6C);
+    USART2_SendByte(0x63);
+    USART2_SendByte(0x6F);
+    USART2_SendByte(0x6D);
+    USART2_SendByte(0x65);
+
+    USART2_SendByte(0x0A); //换行
+    USART2_SendByte(0x0A); //换行
+
+    USART2_SendByte(0x1B); //倍高
+    USART2_SendByte(0x21);
+    USART2_SendByte(0x10);
+
+    USART2_SendByte(0x4E); //No. 
+    USART2_SendByte(0x6F);
+    USART2_SendByte(0x2E);
+    USART2_SendByte(0x20);
+
+    USART2_SendByte(Queue_Number/100+0x30);
+    USART2_SendByte(0x20);
+    USART2_SendByte(Queue_Number%100/10+0x30);
+    USART2_SendByte(0x20);	
+    USART2_SendByte(Queue_Number%10+0x30);
+    USART2_SendByte(0x20);
+
+    USART2_SendByte(0x1B);//取消倍高
+    USART2_SendByte(0x21);
+    USART2_SendByte(0x00);
+
+    USART2_SendByte(0x0A);//换行
+    USART2_SendByte(0x0A);//换行
+
+    USART2_SendByte(0x77);//wait number 
+    USART2_SendByte(0x61);
+    USART2_SendByte(0x69);
+    USART2_SendByte(0x74);
+    USART2_SendByte(0x20);
+    USART2_SendByte(0x6E);
+    USART2_SendByte(0x75);
+    USART2_SendByte(0x6D);
+    USART2_SendByte(0x62);
+    USART2_SendByte(0x65);
+    USART2_SendByte(0x72);
+    USART2_SendByte(0x3A);
+
+    if(Transmit_Data > (Queue_Number-1))
+    {
+        temp = 0;
+    }
+    else
+    {
+        temp=Queue_Number - Transmit_Data-1;
+    }
+    USART2_SendByte(temp/100+0x30);
+    USART2_SendByte(temp%100/10+0x30);
+    USART2_SendByte(temp%10+0x30);
+
+
+    USART2_SendByte(0x0A);//换行
+
+    USART2_SendByte(0x1B); //进纸
+    USART2_SendByte(0x4A);
+    USART2_SendByte(0x21);
+
+    USART2_SendByte(0x1B);//进纸
+    USART2_SendByte(0x4A);
+    USART2_SendByte(0x21);
+
+    USART2_SendByte(0x1B);//进纸
+    USART2_SendByte(0x4A);
+    USART2_SendByte(0x21);
+
+    USART2_SendByte(0x1B);//进纸
+    USART2_SendByte(0x4A);
+    USART2_SendByte(0x21);
+
+    USART2_SendByte(0x1B);//进纸
+    USART2_SendByte(0x4A);
+    USART2_SendByte(0x21);	
+}
+#endif
 
 #endif  /* USART2_GLOBAL  */
 

@@ -85,6 +85,10 @@ extern void Tm1629_Blink_Two_Position(u8* Str);
 extern void Tm1629_Blink_Three_Position(u8* Str);
 extern void Tm1629_Blink_Four_Position(u8* Str);
 
+extern void Tm1629_Show_Call_Number(u16 data);
+extern void Tm1629_Show_Printer_Number(u16 data);
+extern void Tm1629_Show_Number_Of_Call(void);
+extern void Tm1629_Show_Number_Of_Wait(void);
 
 #endif /* __TM1629_H */
 

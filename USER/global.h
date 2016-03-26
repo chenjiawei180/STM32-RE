@@ -54,5 +54,8 @@
 ***************************************************/
 #define MENU_GLOBAL
 
+#define STM32_TRANSMIT
+//#define STM32_RECIVER
+
 #endif /*  __GLOBAL_H */
 

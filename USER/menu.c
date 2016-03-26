@@ -11,6 +11,7 @@
 #include "rf_app.h"
 #include "gd5800.h"
 #include "stm32_rtc.h"
+#include "transmit.h"
 
 #if defined MENU_GLOBAL
 
@@ -367,10 +368,23 @@ void Menu_Standby(void)
     {
         if(Change_Standby_Display_Mode == 0)
         {
+#ifdef STM32_RECIVER
             Tm1629_Clear();
             Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
             Tm1629_Display();
             Standby_index++;
+#endif
+
+#ifdef STM32_TRANSMIT
+            Tm1629_Clear();
+            Tm1629_Show_Call_Number(Transmit_Data);
+            Tm1629_Show_Printer_Number(Queue_Number);
+            Tm1629_Show_Number_Of_Call();
+            Tm1629_Show_Number_Of_Wait();
+            Tm1629_Display_Ram[0][Standby_index&0x03]=0x40; /* - */
+            Tm1629_Display();
+            Standby_index++;
+#endif
         }
         else
         {

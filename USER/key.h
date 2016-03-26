@@ -12,10 +12,10 @@
 #include "bitband.h"
 #include "menu.h"
 
-#define KEY_VALUE_MAIN    0x01
-#define KEY_VALUE_UP    0x02
-#define KEY_VALUE_DOWN    0x03
-#define KEY_VALUE_ESC    0x04
+#define KEY_VALUE_MAIN    3
+#define KEY_VALUE_UP    11
+#define KEY_VALUE_DOWN    19
+#define KEY_VALUE_ESC    27
 
 #define KEY_MAIN    PAin(0)
 #define KEY_UP    PAin(1)

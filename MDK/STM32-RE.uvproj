@@ -490,6 +490,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\bsp_date.c</FilePath>
             </File>
+            <File>
+              <FileName>transmit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\transmit.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

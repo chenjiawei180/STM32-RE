@@ -42,7 +42,7 @@ static u8 Return_End_Of_Buff(unsigned char * buff);
 static void Left_Buff_Add_To_Head_Of_Right_Buff(unsigned char * left_buff , unsigned char * right_buff);
 static void Left_Buff_Add_To_End_Of_Right_Buff(unsigned char * left_buff , unsigned char * right_buff);
 static void Decoder_Line_To_Display_Ram_For_Eight_Byte(unsigned char Display_Ram[48], unsigned char * Decoder_Line);
-static void Display_Ram_To_Tm1629(void);
+extern void Display_Ram_To_Tm1629(void);
 static u8 Decoder_Search_Buff_Is_Or_Not_In_Queue(unsigned char * buff);
 static void Decoder_Function_Of_Cancel(unsigned char * buff);
 extern void Decoder_Function_Of_Esc(void);

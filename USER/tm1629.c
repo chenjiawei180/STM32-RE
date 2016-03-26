@@ -9,6 +9,8 @@
 #include "key.h"
 #include "stm32_rtc.h"
 #include "menu.h"
+#include "transmit.h"
+#include "rf_app.h"
 
 #if defined TM1629_GLOBAL
 
@@ -172,62 +174,62 @@ u8 ReadDataFrom1629_1(void)
             Delayus(5);
         }
         Delayus(5);
-
-        if(Key[0]!=0 || Key[1]!=0 ||Key[2]!=0 ||Key[3]!=0)
-        {
-            switch (Key[0])
-            {
-                case (0x01): Key_temp = KEY_25;break;
-                case (0x02): Key_temp = KEY_17;break;
-                case (0x04): Key_temp = KEY_09;break;
-                case (0x08): Key_temp = KEY_01;break;
-                case (0x10): Key_temp = KEY_26;break;
-                case (0x20): Key_temp = KEY_18;break;
-                case (0x40): Key_temp = KEY_10;break;
-                case (0x80): Key_temp = KEY_02;break;
-                default:break;
-            }
-            switch (Key[1])
-            {
-                case (0x01): Key_temp = KEY_27;break;
-                case (0x02): Key_temp = KEY_19;break;
-                case (0x04): Key_temp = KEY_11;break;
-                case (0x08): Key_temp = KEY_03;break;
-                case (0x10): Key_temp = KEY_28;break;
-                case (0x20): Key_temp = KEY_20;break;
-                case (0x40): Key_temp = KEY_12;break;
-                case (0x80): Key_temp = KEY_04;break;	
-                default:break;
-            }
-            switch (Key[2])
-            {
-                case (0x01): Key_temp = KEY_29;break;
-                case (0x02): Key_temp = KEY_21;break;
-                case (0x04): Key_temp = KEY_13;break;
-                case (0x08): Key_temp = KEY_05;break;
-                case (0x10): Key_temp = KEY_30;break;
-                case (0x20): Key_temp = KEY_22;break;
-                case (0x40): Key_temp = KEY_14;break;
-                case (0x80): Key_temp = KEY_06;break;	
-                default:break;
-            }
-            switch (Key[3])
-            {
-                case (0x01): Key_temp = KEY_31;break;
-                case (0x02): Key_temp = KEY_23;break;
-                case (0x04): Key_temp = KEY_15;break;
-                case (0x08): Key_temp = KEY_07;break;
-                case (0x10): Key_temp = KEY_32;break;
-                case (0x20): Key_temp = KEY_24;break;
-                case (0x40): Key_temp = KEY_16;break;
-                case (0x80): Key_temp = KEY_08;break;
-                default:break;
-            }
-        }
     }
     TM1629_CLK=0;
     TM1629_DOUT=0;
     TM1629_STB1=1;
+    if(Key[0]!=0 || Key[1]!=0 ||Key[2]!=0 ||Key[3]!=0)
+    {
+        Return_Standby_Time_Count = 0;
+        switch (Key[0])
+        {
+            case (0x01): Key_temp = KEY_25;break;
+            case (0x02): Key_temp = KEY_17;break;
+            case (0x04): Key_temp = KEY_09;break;
+            case (0x08): Key_temp = KEY_01;break;
+            case (0x10): Key_temp = KEY_26;break;
+            case (0x20): Key_temp = KEY_18;break;
+            case (0x40): Key_temp = KEY_10;break;
+            case (0x80): Key_temp = KEY_02;break;
+            default:break;
+        }
+        switch (Key[1])
+        {
+            case (0x01): Key_temp = KEY_27;break;
+            case (0x02): Key_temp = KEY_19;break;
+            case (0x04): Key_temp = KEY_11;break;
+            case (0x08): Key_temp = KEY_03;break;
+            case (0x10): Key_temp = KEY_28;break;
+            case (0x20): Key_temp = KEY_20;break;
+            case (0x40): Key_temp = KEY_12;break;
+            case (0x80): Key_temp = KEY_04;break;	
+            default:break;
+        }
+        switch (Key[2])
+        {
+            case (0x01): Key_temp = KEY_29;break;
+            case (0x02): Key_temp = KEY_21;break;
+            case (0x04): Key_temp = KEY_13;break;
+            case (0x08): Key_temp = KEY_05;break;
+            case (0x10): Key_temp = KEY_30;break;
+            case (0x20): Key_temp = KEY_22;break;
+            case (0x40): Key_temp = KEY_14;break;
+            case (0x80): Key_temp = KEY_06;break;	
+            default:break;
+        }
+        switch (Key[3])
+        {
+            case (0x01): Key_temp = KEY_31;break;
+            case (0x02): Key_temp = KEY_23;break;
+            case (0x04): Key_temp = KEY_15;break;
+            case (0x08): Key_temp = KEY_07;break;
+            case (0x10): Key_temp = KEY_32;break;
+            case (0x20): Key_temp = KEY_24;break;
+            case (0x40): Key_temp = KEY_16;break;
+            case (0x80): Key_temp = KEY_08;break;
+            default:break;
+        }
+    }
     return Key_temp;
 }
 
@@ -661,6 +663,101 @@ void Tm1629_Blink_Four_Position(u8* Str)
         Flag_Tm1629_Blink_Four_Position = 0;
     }
 }
+
+#ifdef STM32_TRANSMIT
+
+/**
+  * @brief  This function is Tm1629_Show_Call_Number. 
+  * @param  data
+  * @retval None
+  */
+  
+void Tm1629_Show_Call_Number(u16 data)
+{
+    if(Transmit_Data_Set_FANGQU == 1)
+    {
+        Tm1629_Display_Ram[0][7] = Dis_TAB[Transmit_Data_FANGQU];
+        Tm1629_Display_Ram[0][6] = 0x40;
+        Tm1629_Display_Ram[0][5] = 0x40;
+        Tm1629_Display_Ram[0][4] = 0x40;
+    }
+    else
+    {
+        if(data == 0)
+        {
+            Tm1629_Display_Ram[0][7] = 0x40;
+            Tm1629_Display_Ram[0][6] = 0x40;
+            Tm1629_Display_Ram[0][5] = 0x40;
+            Tm1629_Display_Ram[0][4] = 0x40;
+        }
+        else
+        {
+            Tm1629_Display_Ram[0][7] = Dis_TAB[Transmit_Data_FANGQU];
+            Tm1629_Display_Ram[0][6] = Dis_TAB[(data%1000/100)];
+            Tm1629_Display_Ram[0][5] = Dis_TAB[(data%100/10)];
+            Tm1629_Display_Ram[0][4] = Dis_TAB[(data%10)];
+        }
+    }
+}
+
+/**
+  * @brief  This function is Tm1629_Show_Printer_Number. 
+  * @param  data
+  * @retval None
+  */
+  
+void Tm1629_Show_Printer_Number(u16 data)
+{
+    Tm1629_Display_Ram[1][7] = Dis_TAB[(data%1000/100)];
+    Tm1629_Display_Ram[1][6] = Dis_TAB[(data%100/10)];
+    Tm1629_Display_Ram[1][5] = Dis_TAB[(data%10)];
+}
+
+/**
+  * @brief  This function is Tm1629_Show_Number_Of_Call. 
+  * @param  None
+  * @retval None
+  */
+  
+void Tm1629_Show_Number_Of_Call(void)
+{
+    unsigned char i;
+    for (i = 0; i<Set_Call_Display_Number; i++)
+    {
+        if (Decoder_Call_Save_Queue[i<<3] == 0)
+        {
+            break;
+        }
+    }    
+    Tm1629_Display_Ram[1][1] = Dis_TAB[(i/10)];
+    Tm1629_Display_Ram[1][0] = Dis_TAB[(i%10)];
+}
+
+/**
+  * @brief  This function is Tm1629_Show_Number_Of_Call. 
+  * @param  None
+  * @retval None
+  */
+  
+void Tm1629_Show_Number_Of_Wait(void)
+{
+    unsigned int temp;
+
+    if(Transmit_Data > (Queue_Number-1))
+    {
+        temp = 0;
+    }
+    else
+    {
+        temp=Queue_Number - Transmit_Data-1;
+    }
+
+    Tm1629_Display_Ram[1][4] = Dis_TAB[(temp/100)];
+    Tm1629_Display_Ram[1][3] = Dis_TAB[(temp%100/10)];
+    Tm1629_Display_Ram[1][2] = Dis_TAB[(temp%10)];
+}
+
+#endif
 
 
 #endif /* TM1629_GLOBAL */

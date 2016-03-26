@@ -1,5 +1,9 @@
----- tm_wday Matches (4 in 3 files) ----
-Bsp_date.c (d:\github\stm32-re\user):	tm->tm_wday=day%7;
-Bsp_date.h (d:\github\stm32-re\user):	int tm_wday;
-Menu.c (d:\github\stm32-re\user):    tm->tm_wday = buff[7];
-Menu.c (d:\github\stm32-re\user):    buff[7] = tm->tm_wday;
+---- Return_Standby_Time_Count Matches (8 in 5 files) ----
+Key.c (d:\github\stm32-re\user):            Return_Standby_Time_Count = 0;
+Menu.c (d:\github\stm32-re\user):u32 Return_Standby_Time_Count = 0;
+Menu.h (d:\github\stm32-re\user):extern u32 Return_Standby_Time_Count ;
+Rf.c (d:\github\stm32-re\user):                        Return_Standby_Time_Count = 0;
+Rf.c (d:\github\stm32-re\user):                        Return_Standby_Time_Count = 0;
+Stm32f10x_it.c (d:\github\stm32-re\user):        Return_Standby_Time_Count ++;
+Stm32f10x_it.c (d:\github\stm32-re\user):        if(Return_Standby_Time_Count > 2000)
+Stm32f10x_it.c (d:\github\stm32-re\user):            Return_Standby_Time_Count = 0;

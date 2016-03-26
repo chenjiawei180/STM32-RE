@@ -15,6 +15,7 @@
 #include "tm1629.h"
 #include "sound_list.h"
 #include "gd5800.h"
+#include "transmit.h"
 
 #if defined RF_GLOBAL
 
@@ -217,14 +218,18 @@ void Decoder_Standby(void)
                 Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                 Display_Ram_To_Tm1629();
 		  GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
+#ifdef STM32_RECIVER
 		  Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
+#endif
                 M_index = DECODER_MENU;
             }
         }
         else
         {
              Decoder_Function_Of_Cancel(decoder_temp_buff);
+#ifdef STM32_RECIVER
              Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
+#endif
         }
     }
     else
@@ -240,14 +245,18 @@ void Decoder_Standby(void)
                     Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);
                     Display_Ram_To_Tm1629();
 		      GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);	
+#ifdef STM32_RECIVER
 		      Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
+#endif
                     M_index = DECODER_MENU;
                 }
             }
             else
             {
                 Decoder_Function_Of_Cancel(decoder_temp_buff);
+#ifdef STM32_RECIVER
                 Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
+#endif
             }
         }
     }
@@ -376,14 +385,18 @@ void Decoder_Decoder_Menu(void)
                 {
                      Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
                 }
+#ifdef STM32_RECIVER
 		  Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
+#endif
                 Display_Ram_To_Tm1629();
             }
         }
         else
         {
              Decoder_Function_Of_Cancel(decoder_temp_buff);
+#ifdef STM32_RECIVER
              Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
+#endif
         }
     }
     else
@@ -405,14 +418,18 @@ void Decoder_Decoder_Menu(void)
                     {
                          Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
                    }
+#ifdef STM32_RECIVER
 		      Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
+#endif
                     Display_Ram_To_Tm1629();
                 }
             }
             else
             {
                 Decoder_Function_Of_Cancel(decoder_temp_buff);
-                Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
+#ifdef STM32_RECIVER
+                Mcu_Send_Call_To_Computer(0x92,decoder_temp_buff,dat & 0x0f);
+#endif
             }
         }
     }
@@ -588,6 +605,7 @@ void Decoder_Line_To_Display_Ram_For_Eight_Byte(unsigned char Display_Ram[48], u
   
 void Display_Ram_To_Tm1629(void)
 {
+#ifdef STM32_RECIVER
     Tm1629_Clear();
     if (*(Decoder_Call_Save_Queue + 88) != 0)
         Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 7, Decoder_Call_Save_Queue + 88);
@@ -614,6 +632,35 @@ void Display_Ram_To_Tm1629(void)
     if (*(Decoder_Call_Save_Queue + 0) != 0)
         Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 3, Decoder_Call_Save_Queue);
     Tm1629_Display();
+#endif
+
+#ifdef STM32_TRANSMIT
+    Tm1629_Clear();
+    if (*(Decoder_Call_Save_Queue + 64) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 7, Decoder_Call_Save_Queue + 64);
+    if (*(Decoder_Call_Save_Queue + 56) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[5] + 3, Decoder_Call_Save_Queue + 56);
+    if (*(Decoder_Call_Save_Queue + 48) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[4] + 7, Decoder_Call_Save_Queue + 48);
+    if (*(Decoder_Call_Save_Queue + 40) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[4] + 3, Decoder_Call_Save_Queue + 40);
+    if (*(Decoder_Call_Save_Queue + 32) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[3] + 7, Decoder_Call_Save_Queue + 32);
+    if (*(Decoder_Call_Save_Queue + 24) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[3] + 3, Decoder_Call_Save_Queue + 24);
+    if (*(Decoder_Call_Save_Queue + 16) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[2] + 7, Decoder_Call_Save_Queue + 16);
+    if (*(Decoder_Call_Save_Queue + 8) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[2] + 3, Decoder_Call_Save_Queue + 8);
+    if (*(Decoder_Call_Save_Queue + 0) != 0)
+        Decoder_Line_To_Display_Ram_For_Eight_Byte(Tm1629_Display_Ram[0] + 3, Decoder_Call_Save_Queue);
+    Tm1629_Show_Call_Number(Transmit_Data);
+    Tm1629_Show_Printer_Number(Queue_Number);
+    Tm1629_Show_Number_Of_Call();
+    Tm1629_Show_Number_Of_Wait();
+    Tm1629_Display();
+#endif
+
 }
 
 /**

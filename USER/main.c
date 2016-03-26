@@ -17,6 +17,7 @@
 #include "rf_app.h"
 #include "gd5800.h"
 #include "stm32_rtc.h"
+#include "transmit.h"
 
 int main(void)
 {
@@ -75,10 +76,13 @@ int main(void)
     //Delete_All_Data();
     //printf("Delete_All_Data \r\n ");
 #endif /* USART2_GLOBAL && DEBUG_GLOBAL */
-	printf("multiple_key is %x ",multiple_key[1]);
     Env_Init();
-       	printf("multiple_key is %x ",multiple_key[1]);
 
+#ifdef STM32_TRANSMIT
+    Transmit_IO_Init();
+    Transmit_Timer_Config();
+    Transmit_NVIC_Configuration();
+#endif
 
     while(1)
     {
@@ -100,6 +104,10 @@ int main(void)
 
 #if defined USART2_GLOBAL
         GD5800_Play_Mucic_Of_Main_Process();
+#endif
+
+#if defined STM32_TRANSMIT
+        //Transmit_Function(0x123456ul);
 #endif
       // printf("while(1)");
     }

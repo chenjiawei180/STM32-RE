@@ -36,3 +36,6 @@
 ..\out\tm1629.o: ..\USER\menu.h
 ..\out\tm1629.o: ..\USER\stm32_rtc.h
 ..\out\tm1629.o: ..\USER\bsp_date.h
+..\out\tm1629.o: ..\USER\transmit.h
+..\out\tm1629.o: ..\USER\rf_app.h
+..\out\tm1629.o: ..\USER\eeprom_24c.h

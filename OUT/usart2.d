@@ -36,3 +36,4 @@
 ..\out\usart2.o: ..\USER\bsp_date.h
 ..\out\usart2.o: ..\USER\tm1629.h
 ..\out\usart2.o: ..\USER\bitband.h
+..\out\usart2.o: ..\USER\transmit.h
