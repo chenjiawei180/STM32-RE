@@ -10,12 +10,14 @@
 #include "menu.h"
 #include "string.h"
 #include "usart2.h"
+#include "rf_app.h"
 
 #ifdef USART2_GLOBAL
 
 Repeat_Save_Paras Sound_Data;
 u8 GD5800_Busy_Soft_Table_Count = 0;
 u8 GD5800_Busy_Soft_Table = 1;
+u8 GD5800_Voice_Save_Queue[800] = {0};
 
 /**
   * @brief  This function is Initialization GD5800. set the cycle mode.
@@ -382,13 +384,37 @@ void GD5800_Play_Mucic_Of_Decoder_Process(u8 report_mode,u8 * number , u8 call_t
 
 void GD5800_Play_Mucic_Of_Main_Process(void)
 {
-    if(Sound_Data.repeat_times>0)
+    u8 voice_buff[8]={0};
+    if(Set_Call_Queue_Mode <3)
+    {
+        if(Sound_Data.repeat_times>0)
+        {
+            if(GD5800_Busy_Soft_Table && GD5800_Busy_Hard_Table)
+            {
+                GD5800_Busy_Soft_Table = 0 ;
+                GD5800_Play_Music_Of_Play_Music(Sound_Data.report_mode,Sound_Data.report_number,Sound_Data.call_type,Sound_Data.key_value);
+                Sound_Data.repeat_times--;
+            }
+        }
+    }
+    else
     {
         if(GD5800_Busy_Soft_Table && GD5800_Busy_Hard_Table)
         {
-            GD5800_Busy_Soft_Table = 0 ;
-            GD5800_Play_Music_Of_Play_Music(Sound_Data.report_mode,Sound_Data.report_number,Sound_Data.call_type,Sound_Data.key_value);
-            Sound_Data.repeat_times--;
+            if(Sound_Data.repeat_times>0)
+            {
+                GD5800_Busy_Soft_Table = 0 ;
+                GD5800_Play_Music_Of_Play_Music(Sound_Data.report_mode,Sound_Data.report_number,Sound_Data.call_type,Sound_Data.key_value);
+                Sound_Data.repeat_times--;
+            }
+            else if(Sound_Data.repeat_times == 0 && GD5800_Voice_Save_Queue[0] !=0)
+            {
+                memcpy(voice_buff,GD5800_Voice_Save_Queue,8);
+                Buff_Move_Up_All_Position_And_Init(GD5800_Voice_Save_Queue);
+                Left_Buff_Add_To_Head_Of_Right_Buff(voice_buff,Decoder_Call_Save_Queue);
+                Display_Ram_To_Tm1629();
+                GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, voice_buff, voice_buff[0], voice_buff[7] & 0x0f, Set_Voice_Play_Time);
+            }
         }
     }
 }

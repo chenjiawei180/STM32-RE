@@ -2080,18 +2080,18 @@ void Menu_F3_E1_Set(void)
 {
     if(gKeyValue == KEY_VALUE_DOWN)
     {
-        if(Set_Call_Queue_Mode== 1)
-            Set_Call_Queue_Mode = 2;
-        else
+        if(Set_Call_Queue_Mode== 3)
             Set_Call_Queue_Mode = 1;
+        else
+            Set_Call_Queue_Mode++ ;
 	Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
         if(Set_Call_Queue_Mode == 1)
-            Set_Call_Queue_Mode = 2;
+            Set_Call_Queue_Mode = 3;
         else
-            Set_Call_Queue_Mode = 1;
+            Set_Call_Queue_Mode --;
 	Env_Save();
     }
     Tm1629_Show_One_Number(Set_Call_Queue_Mode); 

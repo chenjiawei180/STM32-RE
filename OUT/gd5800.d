@@ -39,3 +39,5 @@
 ..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\gd5800.o: ..\USER\usart2.h
 ..\out\gd5800.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\out\gd5800.o: ..\USER\rf_app.h
+..\out\gd5800.o: ..\USER\eeprom_24c.h

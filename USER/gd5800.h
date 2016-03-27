@@ -33,7 +33,7 @@ unsigned char key_value;
 extern Repeat_Save_Paras Sound_Data;
 extern u8 GD5800_Busy_Soft_Table_Count;
 extern u8 GD5800_Busy_Soft_Table ;
-
+extern u8 GD5800_Voice_Save_Queue[800];
 
 extern void GD5800_Initialization(void);
 extern void Specify_Music_Play(u8 num);

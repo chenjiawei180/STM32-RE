@@ -877,7 +877,7 @@ void Env_Init(void)
     Set_Key_Remove_Call_Is_Or_Not = EEPROM.Set_Key_Remove_Call_Is_Or_Not ;
     Change_Standby_Display_Mode = EEPROM.Change_Standby_Display_Mode ;
 
-    if (EEPROM.Set_Call_Queue_Mode > 2)
+    if (EEPROM.Set_Call_Queue_Mode > 3)
     {
         Set_Call_Queue_Mode = 1;
     }

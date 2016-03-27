@@ -380,15 +380,20 @@ void Decoder_Decoder_Menu(void)
                 {
                     Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);   
 		      GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
+		      Display_Ram_To_Tm1629();
                 }
-                else
+                else if(Set_Call_Queue_Mode == 2)
                 {
-                     Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
+                     Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);   
+			Display_Ram_To_Tm1629();
                 }
+		  else
+		  {
+		      Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,GD5800_Voice_Save_Queue); 
+		  }
 #ifdef STM32_RECIVER
 		  Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
 #endif
-                Display_Ram_To_Tm1629();
             }
         }
         else
@@ -413,15 +418,20 @@ void Decoder_Decoder_Menu(void)
                     {
                         Left_Buff_Add_To_Head_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);   
 			   GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, decoder_temp_buff, decoder_temp_buff[0], dat & 0x0f, Set_Voice_Play_Time);
+			   Display_Ram_To_Tm1629();
                     }
-                    else
+                    else if(Set_Call_Queue_Mode == 2)
                     {
-                         Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);                       
-                   }
+                         Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,Decoder_Call_Save_Queue);    
+			    Display_Ram_To_Tm1629();
+                    }
+		      else
+		      {
+		          Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,GD5800_Voice_Save_Queue); 
+		      }
 #ifdef STM32_RECIVER
 		      Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
 #endif
-                    Display_Ram_To_Tm1629();
                 }
             }
             else

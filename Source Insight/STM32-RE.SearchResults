@@ -1,9 +1,16 @@
----- Return_Standby_Time_Count Matches (8 in 5 files) ----
-Key.c (d:\github\stm32-re\user):            Return_Standby_Time_Count = 0;
-Menu.c (d:\github\stm32-re\user):u32 Return_Standby_Time_Count = 0;
-Menu.h (d:\github\stm32-re\user):extern u32 Return_Standby_Time_Count ;
-Rf.c (d:\github\stm32-re\user):                        Return_Standby_Time_Count = 0;
-Rf.c (d:\github\stm32-re\user):                        Return_Standby_Time_Count = 0;
-Stm32f10x_it.c (d:\github\stm32-re\user):        Return_Standby_Time_Count ++;
-Stm32f10x_it.c (d:\github\stm32-re\user):        if(Return_Standby_Time_Count > 2000)
-Stm32f10x_it.c (d:\github\stm32-re\user):            Return_Standby_Time_Count = 0;
+---- GD5800_Play_Music_Of_Play_Music Matches (15 in 3 files) ----
+Gd5800.c (d:\github\stm32-re\user):  * @brief  This function is GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C .
+Gd5800.c (d:\github\stm32-re\user):void GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(u8 call_type)
+Gd5800.c (d:\github\stm32-re\user):  * @brief  This function is GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C .
+Gd5800.c (d:\github\stm32-re\user):void GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(u8 report_mode,u8 * number ,u8 call_type)
+Gd5800.c (d:\github\stm32-re\user):  * @brief  This function is GD5800_Play_Music_Of_Play_Music .
+Gd5800.c (d:\github\stm32-re\user):void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, u8 key_type)
+Gd5800.c (d:\github\stm32-re\user):            GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(call_type);
+Gd5800.c (d:\github\stm32-re\user):        GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(report_mode,number,call_type);
+Gd5800.c (d:\github\stm32-re\user):        GD5800_Play_Music_Of_Play_Music(report_mode,number ,call_type, key_type);
+Gd5800.c (d:\github\stm32-re\user):                GD5800_Play_Music_Of_Play_Music(Sound_Data.report_mode,Sound_Data.report_number,Sound_Data.call_type,Sound_Data.key_value);
+Gd5800.c (d:\github\stm32-re\user):                GD5800_Play_Music_Of_Play_Music(Sound_Data.report_mode,Sound_Data.report_number,Sound_Data.call_type,Sound_Data.key_value);
+Gd5800.h (d:\github\stm32-re\user):static void GD5800_Play_Music_Of_Play_Music_Of_Mode_Within_NOT_REPORT_C(u8 key_type);
+Gd5800.h (d:\github\stm32-re\user):static void GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(u8 report_mode,u8 * number ,u8 key_type);
+Gd5800.h (d:\github\stm32-re\user):extern void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, u8 key_type);
+Rf_app.c (d:\github\stm32-re\user):            GD5800_Play_Music_Of_Play_Music(Set_Voice_Play_Mode,Decoder_Call_Save_Queue,Decoder_Call_Save_Queue[0],Decoder_Call_Save_Queue[7]&0x0f);

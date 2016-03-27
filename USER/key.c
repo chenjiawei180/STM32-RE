@@ -86,10 +86,12 @@ void Key_Process(void)
 {
     LongPressSec=0;
     gKeyValue=Key_Scan();
+#ifdef STM32_TRANSMIT
     if(gKeyValue == 0xff)
     {
         gKeyValue = ReadDataFrom1629_1();
     }
+#endif
     if(gKeyValue == 0xff && Host_Enter_Table ==1)
     {
         if(Host_Enter_Times > 30 && Host_Enter_Fun_Id == 0x01)
