@@ -410,7 +410,7 @@ void GD5800_Play_Mucic_Of_Main_Process(void)
             else if(Sound_Data.repeat_times == 0 && GD5800_Voice_Save_Queue[0] !=0)
             {
                 memcpy(voice_buff,GD5800_Voice_Save_Queue,8);
-                Buff_Move_Up_All_Position_And_Init(GD5800_Voice_Save_Queue);
+                GD5800_Buff_Move_Up_All_Position_And_Init(GD5800_Voice_Save_Queue);
                 Left_Buff_Add_To_Head_Of_Right_Buff(voice_buff,Decoder_Call_Save_Queue);
                 Display_Ram_To_Tm1629();
                 GD5800_Play_Mucic_Of_Decoder_Process(Set_Voice_Play_Mode, voice_buff, voice_buff[0], voice_buff[7] & 0x0f, Set_Voice_Play_Time);
@@ -419,5 +419,72 @@ void GD5800_Play_Mucic_Of_Main_Process(void)
     }
 }
 
+/**
+  * @brief  This function is GD5800_Return_End_Of_Buff .
+  * @param  buff
+  * @retval None
+  */
+  
+u8 GD5800_Return_End_Of_Buff(unsigned char * buff)
+{
+    u8 i;
+    for(i=0;i<SAVE_NUMBER;i++)
+    {
+        if(*(buff+(i<<3)) == 0)    //cjw    ==0
+        {
+            return i;
+        }
+    }
+    return i;
+}
+
+/**
+  * @brief  This function is GD5800_Buff_Move_Up_One_Position .
+  * @param  buff
+  * @retval None
+  */
+  
+void GD5800_Buff_Move_Up_One_Position(unsigned char * buff)
+{
+    memcpy(buff,buff+8,8);
+}
+
+/**
+  * @brief  This function is GD5800_Buff_Move_Up_One_Position .
+  * @param  buff
+  * @retval None
+  */
+  
+void GD5800_Buff_Move_Up_All_Position_And_Init(unsigned char * buff)
+{
+    u8 buff_index;
+    u8 i;
+    buff_index = GD5800_Return_End_Of_Buff(buff); // find the last one on end of buff
+    for(i=0;i<buff_index-1;i++)    //move up from 2 to end
+    {
+        GD5800_Buff_Move_Up_One_Position(buff+(i<<3));
+    }
+    memset(buff+(i<<3),0,8);//Init the last one 8Byte.
+}
+
+/**
+  * @brief  This function is GD5800_Left_Buff_Add_To_End_Of_Right_Buff .
+  * @param  buff
+  * @retval None
+  */
+void GD5800_Left_Buff_Add_To_End_Of_Right_Buff(unsigned char * left_buff , unsigned char * right_buff)
+{
+    unsigned char index;
+    index = GD5800_Return_End_Of_Buff(right_buff);
+    if(index == SAVE_NUMBER)    //the queuefull
+    {
+        GD5800_Buff_Move_Up_All_Position_And_Init(right_buff);
+        memcpy(right_buff+((SAVE_NUMBER-1)<<3),left_buff,8);
+    }
+    else  
+    {
+        memcpy(right_buff+(index<<3),left_buff,8);
+    }
+}
 #endif
 

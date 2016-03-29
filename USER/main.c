@@ -83,7 +83,8 @@ int main(void)
     Transmit_Timer_Config();
     Transmit_NVIC_Configuration();
 #endif
-
+    Tm1629_Init();
+    
     while(1)
     {
 #if 0//defined (RF_GLOBAL) && defined (DEBUG_GLOBAL)

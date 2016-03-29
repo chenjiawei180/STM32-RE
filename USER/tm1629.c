@@ -11,6 +11,7 @@
 #include "menu.h"
 #include "transmit.h"
 #include "rf_app.h"
+#include "gd5800.h"
 
 #if defined TM1629_GLOBAL
 
@@ -34,6 +35,8 @@ u8 const Dis_TAB[]={
     0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,//段 abcdefgh，0-8，+0x2A
 };
 
+unsigned char const INIT_CODE[] = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };//逐段点亮数码管数组
+
 u8 Tm1629_Display_Ram[6][8]={0}; 
 
 u8 Tm1629_Test_Time[8]={20,16,1,31,14,12,30,7};
@@ -50,6 +53,22 @@ void Delayus(u16 time)
     while(time --)
     {
         time_temp = 2;
+        while(--time_temp);
+    }
+}
+
+/**
+  * @brief  This function is Tm1629 Delayms.
+  * @param  time
+  * @retval None
+  */
+
+void Delayms(u16 time)
+{
+    u16 time_temp;
+    while(time --)
+    {
+        time_temp = 2000;
         while(--time_temp);
     }
 }
@@ -277,7 +296,7 @@ void SendCommandTo1629_3(unsigned char Data)
 
 /**
   * @brief  This function is Tm1629 display .
-  * @param  Data
+  * @param  None
   * @retval None
   */
 
@@ -315,6 +334,67 @@ void SendCommandTo1629_3(unsigned char Data)
     SendCommandTo1629_3(0x88+Set_Display_Tube_Brightness);    //设置显示控制命令：打开显示，并设置为11/16.
     TM1629_STB3 = 1;
 
+}
+
+/**
+  * @brief  This function is Tm1629_Display_Test .
+  * @param  Data
+  * @retval None
+  */
+
+void Tm1629_Display_Test(u8 data)
+{
+    unsigned char i;
+
+    SendCommandTo1629_1(0x40);    //设置数据命令:普通模式、地址自增1，写数据到显存
+    SendCommandTo1629_1(0xc0);    //设置显示地址命令：从00H开始
+    for (i = 0; i<8; i++)    //发送16字节的显存数据
+    {
+    WriteDataTo1629_1(data);
+    WriteDataTo1629_1(data);
+    }
+    SendCommandTo1629_1(0x8f);    //设置显示控制命令：打开显示，并设置为11/16.
+    TM1629_STB1 = 1;
+
+    SendCommandTo1629_2(0x40);    //设置数据命令:普通模式、地址自增1，写数据到显存
+    SendCommandTo1629_2(0xc0);    //设置显示地址命令：从00H开始
+    for (i = 0; i<8; i++)	//发送16字节的显存数据
+    {
+    WriteDataTo1629_2(data);
+    WriteDataTo1629_2(data);
+    }
+    SendCommandTo1629_2(0x8f);    //设置显示控制命令：打开显示，并设置为11/16.
+    TM1629_STB2 = 1;
+
+    SendCommandTo1629_3(0x40);    //设置数据命令:普通模式、地址自增1，写数据到显存
+    SendCommandTo1629_3(0xc0);    //设置显示地址命令：从00H开始
+    for (i = 0; i<8; i++)  //发送16字节的显存数据
+    {
+    WriteDataTo1629_3(data);
+    WriteDataTo1629_3(data);
+    }
+    SendCommandTo1629_3(0x8f);    //设置显示控制命令：打开显示，并设置为11/16.
+    TM1629_STB3 = 1;
+
+}
+
+
+/**
+  * @brief  This function is Tm1629_Initr .
+  * @param  None
+  * @retval None
+  */
+  
+void Tm1629_Init(void) //TM1629开机初始化函数
+{
+    unsigned char  k;		//k控制显示的具体数字，i和j控制buf_display的刷新
+    Specify_Music_Play(CHUSHIHUA);
+    for (k = 0; k<8; k++)
+    {
+        memset(Tm1629_Display_Ram,INIT_CODE[k],48);
+        Tm1629_Display();
+        Delayms(1500);
+    }
 }
 
 /**

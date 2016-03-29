@@ -21,6 +21,8 @@
 #define	YINYUEER_type			6
 #define	EMERGENCY_type			7
 
+#define SAVE_NUMBER 20
+
 typedef struct  Repeat_Mode_Saved_Parameters{
 unsigned char repeat_times ;
 unsigned char report_mode;
@@ -51,5 +53,9 @@ static void GD5800_Play_Music_Of_Play_Music_Of_Mode_More_Than_NOT_REPORT_C(u8 re
 extern void GD5800_Play_Music_Of_Play_Music(u8 report_mode,u8 * number , u8 call_type, u8 key_type);
 extern void GD5800_Play_Mucic_Of_Decoder_Process(u8 report_mode,u8 * number , u8 call_type, u8 key_type,u8 repeat_time);
 extern void GD5800_Play_Mucic_Of_Main_Process(void);
+static u8 GD5800_Return_End_Of_Buff(unsigned char * buff);
+static void GD5800_Buff_Move_Up_One_Position(unsigned char * buff);
+static void GD5800_Buff_Move_Up_All_Position_And_Init(unsigned char * buff);
+extern void GD5800_Left_Buff_Add_To_End_Of_Right_Buff(unsigned char * left_buff , unsigned char * right_buff);
 
 #endif /*  __GD5800_H  */

@@ -389,7 +389,7 @@ void Decoder_Decoder_Menu(void)
                 }
 		  else
 		  {
-		      Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,GD5800_Voice_Save_Queue); 
+		      GD5800_Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,GD5800_Voice_Save_Queue); 
 		  }
 #ifdef STM32_RECIVER
 		  Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);
@@ -427,7 +427,7 @@ void Decoder_Decoder_Menu(void)
                     }
 		      else
 		      {
-		          Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,GD5800_Voice_Save_Queue); 
+		          GD5800_Left_Buff_Add_To_End_Of_Right_Buff(decoder_temp_buff,GD5800_Voice_Save_Queue); 
 		      }
 #ifdef STM32_RECIVER
 		      Mcu_Send_Call_To_Computer(0x91,decoder_temp_buff,dat & 0x0f);

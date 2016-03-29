@@ -36,7 +36,7 @@ static void Decoder_Decoder_Menu(void);
 
 static void Buff_Move_Up_One_Position(unsigned char * buff);
 static void Buff_Move_Down_One_Position(unsigned char * buff);
-extern void Buff_Move_Up_All_Position_And_Init(unsigned char * buff);
+static void Buff_Move_Up_All_Position_And_Init(unsigned char * buff);
 static void Buff_Move_Down_All_Position_And_Init(unsigned char * buff);
 static u8 Return_End_Of_Buff(unsigned char * buff);
 extern void Left_Buff_Add_To_Head_Of_Right_Buff(unsigned char * left_buff , unsigned char * right_buff);

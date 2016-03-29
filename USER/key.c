@@ -14,6 +14,7 @@
 #include "string.h"
 #include "transmit.h"
 #include "tm1629.h"
+#include "gd5800.h"
 
 #if defined KEY_GLOBAL
 
@@ -128,7 +129,22 @@ void Key_Process(void)
             Host_Enter_Times = RF_Same_Count ;
         }
     }
-	
+
+    if(gKeyValue != 0xff)
+    {
+        if (M_index!= THREE_MENU_F8_E2_SET  && (Set_Voice_Navigation_On_Or_OFF ==1 ? M_index > ONE_MENU_FE : 1))
+        {
+            if(M_index == TWO_MENU_F8_E2 && gKeyValue == KEY_VALUE_MAIN )
+            {
+                
+            }
+	     else
+	     {
+	         Specify_Music_Play(DI);
+	     }
+        }
+    }
+
     if(gKeyValue)
     {
         switch(gKeyValue)
@@ -139,7 +155,7 @@ void Key_Process(void)
                                         //      ||( M_index==ONE_MENU_FA)     
                                               || (M_index==ONE_MENU_FB)     
                                               || (M_index==ONE_MENU_FC)     
-                                        //      || (M_index==ONE_MENU_FD)     
+                                              || (M_index==ONE_MENU_FD)     
                                               || (M_index==THREE_MENU_F2_E1_D1)   
                                               || (M_index==THREE_MENU_F2_E1_D2)   
                                               || (M_index==THREE_MENU_F2_E1_D3)   
@@ -170,38 +186,56 @@ void Key_Process(void)
                          //   case ONE_MENU_FA   :M_index=ONE_MENU_F1; break;
                             case ONE_MENU_FB   :M_index=TWO_MENU_FB_SET; break;
                             case ONE_MENU_FC   :M_index=TWO_MENU_FC_SET; break;
-                         //   case ONE_MENU_FD   :M_index=ONE_MENU_F1; break;
+                            case ONE_MENU_FD   :M_index=TWO_MENU_FD_SET; break;
                             case ONE_MENU_FE   :M_index=TWO_MENU_FE_E1; break;
 
 				case THREE_MENU_F2_E1_D1:
 				case THREE_MENU_F2_E1_D2:
 				case THREE_MENU_F2_E1_D3:
-				case THREE_MENU_F2_E1_D4:    Delete_Call_Function(Delete_Call_Buff);    break;
+				case THREE_MENU_F2_E1_D4:    if(!Delete_Call_Function(Delete_Call_Buff))
+					                                         {
+					                                             Specify_Music_Play(CHENGGONG);
+					                                         }
+				                                                break;
 
 				case THREE_MENU_F2_E2_D1:
 				case THREE_MENU_F2_E2_D2:
 				case THREE_MENU_F2_E2_D3:
-				case THREE_MENU_F2_E2_D4:    Delete_Host_Function(Delete_Host_Buff);    break;
+				case THREE_MENU_F2_E2_D4:    if(!Delete_Call_Function(Delete_Host_Buff))
+					                                         {
+					                                             Specify_Music_Play(CHENGGONG);
+					                                         }
+				                                                break;
 
 				case THREE_MENU_F2_E3_D1:
 				case THREE_MENU_F2_E3_D2:
 				case THREE_MENU_F2_E3_D3:
-				case THREE_MENU_F2_E3_D4:    Delete_Alarm_Function(Delete_Alarm_Buff);    break;
+				case THREE_MENU_F2_E3_D4:    if(!Delete_Call_Function(Delete_Alarm_Buff))
+					                                         {
+					                                             Specify_Music_Play(CHENGGONG);
+					                                         }
+				                                                break;
 
 				case THREE_MENU_F2_E4_D1:
 				case THREE_MENU_F2_E4_D2:
 				case THREE_MENU_F2_E4_D3:
-				case THREE_MENU_F2_E4_D4:    Delete_Cancel_Function(Delete_Cancel_Buff);    break;
+				case THREE_MENU_F2_E4_D4:    if(!Delete_Call_Function(Delete_Cancel_Buff))
+					                                         {
+					                                             Specify_Music_Play(CHENGGONG);
+					                                         }
+				                                                break;
 
                             case DECODER_MENU:    M_index=ONE_MENU_F1;
 							                memset(Decoder_Call_Save_Queue,0,800);
 									  break;
-                            case TWO_MENU_F9_E2 :    Var_Init();
+                            case TWO_MENU_F9_E2 :    Specify_Music_Play(CHENGGONG);
+								            Var_Init();
 								            Env_Save();
 								            __set_FAULTMASK(1);
                                                                     NVIC_SystemReset();
 								            break;
-                            case TWO_MENU_F9_E1 :    Var_Init();
+                            case TWO_MENU_F9_E1 :   Specify_Music_Play(CHENGGONG);
+								            Var_Init();
 							                   Key_Init();
 								            Env_Save();
 							                   EEP_Write_Buffer( SIN_KEY_START, single_key, 16);

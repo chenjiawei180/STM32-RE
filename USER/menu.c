@@ -366,7 +366,9 @@ void Menu_Standby(void)
     static u8 Standby_index=0;
     if(Decoder_Call_Save_Queue[0] == 0 )
     {
+#ifdef STM32_RECIVER
         if(Change_Standby_Display_Mode == 0)
+#endif
         {
 #ifdef STM32_RECIVER
             Tm1629_Clear();
@@ -386,14 +388,16 @@ void Menu_Standby(void)
             Standby_index++;
 #endif
         }
+#ifdef STM32_RECIVER
         else
         {
             to_tm(RTC_GetCounter()+28800, &systmtime);
             Struct_Time_To_Buff_Time(&systmtime, Tm1629_Test_Time);
             Tm1629_Show_Time(Tm1629_Test_Time);    
         }
-
+#endif
     }
+/*
     if(gKeyValue == KEY_VALUE_DOWN)
     {
         Decoder_Function_Of_Down();
@@ -406,6 +410,7 @@ void Menu_Standby(void)
     {
         Decoder_Function_Of_Esc();
     }
+*/
 }
 
 /**
@@ -1176,7 +1181,38 @@ void Menu_FC_Set(void)
   
 void Menu_FD_Set(void)
 {
-    ;
+    static u8 index=0;
+    if(index <= 20)
+    {
+        if(index < 4)
+        {
+            Tm1629_Display_Test(0xff);
+        }
+	 else if(index <= 18)
+        {
+            Tm1629_Display_Test(INIT_CODE[index / 2 - 2]);
+        }
+	 else
+	 {
+	     Tm1629_Display_Test(0xff);
+	 }
+    }
+    else
+    {
+        Tm1629_Clear();
+	 Tm1629_Display();
+    }
+    if(index > 24) 
+    {
+        index = 0;
+    }
+    index++;
+
+    if(GD5800_Busy_Soft_Table && GD5800_Busy_Hard_Table)
+    {
+        Specify_Music_Play(YINGYUEYI);
+    }
+    
 }
 
 /**
@@ -2108,14 +2144,14 @@ void Menu_F3_E2_Set(void)
     if(gKeyValue == KEY_VALUE_DOWN)
     {
         if(Set_Call_Display_Number== 99)
-            Set_Call_Display_Number=0;
+            Set_Call_Display_Number=1;
         else
             Set_Call_Display_Number++;
 	Env_Save();
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
-        if(Set_Call_Display_Number == 0)
+        if(Set_Call_Display_Number == 1)
             Set_Call_Display_Number=99;
         else
             Set_Call_Display_Number--;
@@ -2271,33 +2307,6 @@ void Menu_F6_E6_Set(void)
 {
     if(gKeyValue == KEY_VALUE_DOWN)
     {
-        if(Set_Voice_Navigation_Mode== 1)
-            Set_Voice_Navigation_Mode = 0;
-        else
-            Set_Voice_Navigation_Mode = 1;
-	 Env_Save();
-    }
-    else if(gKeyValue == KEY_VALUE_UP)
-    {
-        if(Set_Voice_Navigation_Mode == 1)
-            Set_Voice_Navigation_Mode = 0;
-        else
-            Set_Voice_Navigation_Mode = 1;
-	 Env_Save();
-    }
-    Tm1629_Show_One_Number(Set_Voice_Navigation_Mode); 
-}
-
-/**
-  * @brief  This function is Show menu of F6 E7 SET.
-  * @param  None
-  * @retval None
-  */
-  
-void Menu_F6_E7_Set(void)
-{
-    if(gKeyValue == KEY_VALUE_DOWN)
-    {
         if(Set_Voice_Navigation_On_Or_OFF== 1)
             Set_Voice_Navigation_On_Or_OFF = 0;
         else
@@ -2313,6 +2322,33 @@ void Menu_F6_E7_Set(void)
 	 Env_Save();
     }
     Tm1629_Show_One_Number(Set_Voice_Navigation_On_Or_OFF); 
+}
+
+/**
+  * @brief  This function is Show menu of F6 E7 SET.
+  * @param  None
+  * @retval None
+  */
+  
+void Menu_F6_E7_Set(void)
+{
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
+        if(Set_Voice_Navigation_Mode== 1)
+            Set_Voice_Navigation_Mode = 0;
+        else
+            Set_Voice_Navigation_Mode = 1;
+	 Env_Save();
+    }
+    else if(gKeyValue == KEY_VALUE_UP)
+    {
+        if(Set_Voice_Navigation_Mode == 1)
+            Set_Voice_Navigation_Mode = 0;
+        else
+            Set_Voice_Navigation_Mode = 1;
+	 Env_Save();
+    }
+    Tm1629_Show_One_Number(Set_Voice_Navigation_Mode); 
 }
 
 /**
@@ -2366,7 +2402,24 @@ void Menu_F7_E1_Set(void)
             Set_Two_Menu_F7_E1--;
 	 Env_Save();
     }
-    Tm1629_Show_Two_Number(Set_Two_Menu_F7_E1); 
+    if(Set_Two_Menu_F7_E1 < 10)
+    {
+        Tm1629_Show_One_Number(Set_Two_Menu_F7_E1); 
+    }
+    else if(Set_Two_Menu_F7_E1 == 11)
+    {
+        Tm1629_Clear();
+	 Tm1629_Display_Ram[0][1] = Dis_TAB[0];
+	 Tm1629_Display_Ram[0][0] = 0x37;
+	 Tm1629_Display();
+    }
+    else
+    {
+        Tm1629_Clear();
+	 Tm1629_Display_Ram[0][1] = Dis_TAB[0];
+	 Tm1629_Display_Ram[0][0] = Dis_TAB[0x0f];
+	 Tm1629_Display();
+    }
 }
 
 /**
@@ -2486,10 +2539,15 @@ void Menu_F8_E2_Set(void)
 {
     if(gKeyValue == KEY_VALUE_DOWN)
     {
+        Specify_Music_Play(Set_Key_Of_Call_Mode + QUXIAO);
+    }
+    if(gKeyValue == KEY_VALUE_DOWN)
+    {
         if(Set_Key_Of_Call_Mode== 38)
             Set_Key_Of_Call_Mode=0;
         else
             Set_Key_Of_Call_Mode++;
+        Specify_Music_Play(Set_Key_Of_Call_Mode + QUXIAO);
     }
     else if(gKeyValue == KEY_VALUE_UP)
     {
@@ -2497,8 +2555,8 @@ void Menu_F8_E2_Set(void)
             Set_Key_Of_Call_Mode=38;
         else
             Set_Key_Of_Call_Mode--;	
+        Specify_Music_Play(Set_Key_Of_Call_Mode + QUXIAO);
     }
-    Play_Navigation_Voice(Set_Key_Of_Call_Mode + QUXIAO);
     Tm1629_Show_Two_Number(Set_Key_Of_Call_Mode); 
 }
 
@@ -2525,6 +2583,13 @@ void Menu_Decoder(void)
     if(Decoder_Call_Save_Queue[0] == 0)
     {
         M_index = STANDBY_MENU;
+    }
+    if(Decoder_Call_Save_Queue[0] == BAOJING_1)
+    {
+        if(GD5800_Busy_Soft_Table && GD5800_Busy_Hard_Table)
+        {
+            Specify_Music_Play(BAOJING);
+        }
     }
 }
 

@@ -52,9 +52,11 @@
 #define  TM1629_STB3 PBout(7) 
 
 extern u8 const Dis_TAB[];
+extern unsigned char const INIT_CODE[];
 extern u8 Tm1629_Test_Time[8];
 extern u8 Tm1629_Display_Ram[6][8]; 
 extern void Delayus(u16 time);
+extern void Delayms(u16 time);
 extern void Tm1629_GPIO_Config(void);
 
 static void WriteDataTo1629_1(unsigned char Data);
@@ -65,8 +67,10 @@ static void SendCommandTo1629_1(unsigned char Data);
 static void SendCommandTo1629_2(unsigned char Data);
 static void SendCommandTo1629_3(unsigned char Data);
 extern void Tm1629_Display(void);
+extern void Tm1629_Display_Test(u8 data);
 
 extern void Tm1629_Clear(void);
+extern void Tm1629_Init(void);
 extern void Tm1629_Show_Fx(u8 Data);
 extern void Tm1629_Show_Ex(u8 Data);
 extern void Tm1629_Show_Time(unsigned char* Time);

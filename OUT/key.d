@@ -43,3 +43,5 @@
 ..\out\key.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 ..\out\key.o: ..\USER\transmit.h
 ..\out\key.o: ..\USER\tm1629.h
+..\out\key.o: ..\USER\gd5800.h
+..\out\key.o: ..\USER\sound_list.h

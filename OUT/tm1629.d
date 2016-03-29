@@ -39,3 +39,5 @@
 ..\out\tm1629.o: ..\USER\transmit.h
 ..\out\tm1629.o: ..\USER\rf_app.h
 ..\out\tm1629.o: ..\USER\eeprom_24c.h
+..\out\tm1629.o: ..\USER\gd5800.h
+..\out\tm1629.o: ..\USER\sound_list.h
